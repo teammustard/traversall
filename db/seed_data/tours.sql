@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS tours;
+
 create table tours (
 	id INT,
 	name TEXT,
