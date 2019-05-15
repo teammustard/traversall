@@ -1,8 +1,4 @@
-const sqlite3 = require('sqlite3').verbose();
+const sqlite = require('sqlite');
+const db = sqlite.open('./database.sqlite', { Promise });
 
-let db = new sqlite3.Database('./kontiki_zz.db', err => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Connected to the kontiki_zz database.');
-});
+exports.modules = { db };
