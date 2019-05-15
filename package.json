@@ -2,9 +2,8 @@
   "name": "kontiki_component_zackzeyu",
   "version": "1.0.0",
   "description": "> Kontiki is a replication of Contiki Travel Tour's tour details page. It aims to provide the identical seamless, single-page-app based presentation of Contiki's website.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel client/src/index.js client/src/index.html"
   },
   "repository": {
     "type": "git",
@@ -17,6 +16,15 @@
   },
   "homepage": "https://github.com/teammustard/kontiki_component_zackzeyu#readme",
   "dependencies": {
+    "express": "^4.16.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "sqlite3": "^4.0.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "parcel-bundler": "^1.12.3"
   }
 }
