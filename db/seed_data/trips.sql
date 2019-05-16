@@ -4,11 +4,11 @@ create table trips (
 	id INT,
 	tour_id INT,
 	start_date DATE,
-	end_date DECIMAL(10,2),
+	end_date DATE,
 	start_time VARCHAR(50),
 	end_time VARCHAR(50),
 	capacity INT,
-	booked DECIMAL(10,2)
+	booked INT
 );
 insert into trips (id, tour_id, start_date, end_date, start_time, end_time, capacity, booked) values (1, 3, '2018-07-12', '2018-07-26', '3:55 PM', '8:46 PM', 16, 2);
 insert into trips (id, tour_id, start_date, end_date, start_time, end_time, capacity, booked) values (2, 15, '2018-10-25', '2018-11-08', '1:34 AM', '5:10 PM', 16, 14);
