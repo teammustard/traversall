@@ -1,35 +1,39 @@
 {
-  "name": "kontiki_component_zackzeyu",
-  "version": "1.0.0",
-  "description": "> Kontiki is a replication of Contiki Travel Tour's tour details page. It aims to provide the identical seamless, single-page-app based presentation of Contiki's website.",
-  "scripts": {
-    "dev": "parcel client/src/index.js client/src/index.html"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/teammustard/kontiki_component_zackzeyu.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/teammustard/kontiki_component_zackzeyu/issues"
-  },
-  "homepage": "https://github.com/teammustard/kontiki_component_zackzeyu#readme",
-  "dependencies": {
-    "apollo-server-express": "^2.5.0",
-    "express": "^4.16.4",
-    "express-graphql": "^0.8.0",
-    "graphql": "^14.3.0",
-    "nodemon": "^1.19.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "sqlite": "^3.0.3",
-    "sqlite3": "^4.0.8"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.12.3"
-  }
+	"name": "kontiki_component_zackzeyu",
+	"version": "1.0.0",
+	"description": "> Kontiki is a replication of Contiki Travel Tour's tour details page. It aims to provide the identical seamless, single-page-app based presentation of Contiki's website.",
+	"scripts": {
+		"dev": "parcel client/src/index.js client/src/index.html",
+		"test": "jest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/teammustard/kontiki_component_zackzeyu.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/teammustard/kontiki_component_zackzeyu/issues"
+	},
+	"homepage": "https://github.com/teammustard/kontiki_component_zackzeyu#readme",
+	"dependencies": {
+		"apollo-server-express": "^2.5.0",
+		"express": "^4.16.4",
+		"express-graphql": "^0.8.0",
+		"graphql": "^14.3.0",
+		"nodemon": "^1.19.0",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"sqlite": "^3.0.3",
+		"sqlite3": "^4.0.8"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.3",
+		"babel-jest": "^24.8.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"easygraphql-tester": "^5.1.3",
+		"jest": "^24.8.0",
+		"parcel-bundler": "^1.12.3"
+	}
 }
