@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const EasyGraphQLTester = require('easygraphql-tester');
 const schemaCode = fs.readFileSync('./server/schema.graphql', 'utf8');

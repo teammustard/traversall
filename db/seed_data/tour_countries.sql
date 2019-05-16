@@ -1,10 +1,3 @@
-DROP TABLE IF EXISTS tour_countries;
-
-create table tour_countries (
-	id INT,
-	tour_id INT,
-	country_id VARCHAR(3)
-);
 insert into tour_countries (id, tour_id, country_id) values (1, 49, 166);
 insert into tour_countries (id, tour_id, country_id) values (2, 40, 50);
 insert into tour_countries (id, tour_id, country_id) values (3, 38, 108);

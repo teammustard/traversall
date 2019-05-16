@@ -1,12 +1,3 @@
-DROP TABLE IF EXISTS travel_styles;
-
-create table travel_styles (
-	id INT,
-	name TEXT,
-	description TEXT,
-	logo VARCHAR(50),
-	video VARCHAR(50)
-);
 insert into travel_styles (id, name, description, logo, video) values (1, 'dui maecenas tristique est', 'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.', 'http://dummyimage.com/100x100.png/ff4444/ffffff', 'http://dummyimage.com/400x300.png/dddddd/000000');
 insert into travel_styles (id, name, description, logo, video) values (2, 'duis aliquam convallis nunc proin', 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.', 'http://dummyimage.com/100x100.png/dddddd/000000', 'http://dummyimage.com/400x300.png/cc0000/ffffff');
 insert into travel_styles (id, name, description, logo, video) values (3, 'viverra eget congue eget semper', 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', 'http://dummyimage.com/100x100.png/dddddd/000000', 'http://dummyimage.com/400x300.png/dddddd/000000');

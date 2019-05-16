@@ -1,7 +1,7 @@
 type Query {
 	info: String!
 	getTours: [Tour!]!
-	getTour(id: ID!): Tour
+	getTour(id: ID!): Tour!
 }
 
 type Tour {

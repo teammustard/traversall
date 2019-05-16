@@ -1,31 +1,3 @@
-DROP TABLE IF EXISTS tours;
-
-create table tours (
-	id INT,
-	name TEXT,
-	starting_loc VARCHAR(50),
-	ending_loc VARCHAR(50),
-	duration INT,
-	travel_style INT,
-	listed_price INT,
-	tagline TEXT,
-	description TEXT,
-	video TEXT,
-	hashtag TEXT,
-	accommodation_summary TEXT,
-	accommodation_detail TEXT,
-	breakfast_included INT,
-	lunch_included INT,
-	dinner_included INT,
-	meals_detail TEXT,
-	team_summary TEXT,
-	team_detail TEXT,
-	transport_summary TEXT,
-	transport_detail TEXT,
-	experiences_included INT,
-	experiences_optional INT,
-	experiences_detail TEXT
-);
 insert into tours (id, name, starting_loc, ending_loc, duration, travel_style, listed_price, tagline, description, video, hashtag, accommodation_summary, accommodation_detail, breakfast_included, lunch_included, dinner_included, meals_detail, team_summary, team_detail, transport_summary, transport_detail, experiences_included, experiences_optional, experiences_detail) values (1, 'faucibus orci luctus et', 'Kumbo', 'Áno Kómi', 13, 1, 805, 'ante vestibulum ante ipsum primis in faucibus orci luctus et', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.
 
 In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 'etiam', 'vel', 'at nunc commodo placerat praesent', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.', 4, 4, 5, 'Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo.', 'vehicula consequat morbi a ipsum integer', 'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum.', 'nisl duis bibendum felis sed', 'Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.', 5, 8, 'Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.');
