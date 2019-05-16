@@ -19,6 +19,7 @@
 ## Usage [TBU]
 
 > [TBU]
+> Seed database with `countries.sqlite.sql`
 
 ## Requirements
 

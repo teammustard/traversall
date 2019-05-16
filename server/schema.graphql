@@ -1,0 +1,16 @@
+
+const typeDefs = gql`
+	type Query {
+		info: String!
+		tours: [Tour!]!
+	}
+
+	type Mutation {
+		post(name: String!, duration: Int!): Tour!
+	}
+
+	type Tour {
+		id: ID!
+		name: String!
+		duration: Int!
+	}
