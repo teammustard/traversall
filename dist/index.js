@@ -36937,7 +36937,58 @@ var App = function App() {
     return _react.default.createElement("div", null, "Got an error: ", error.message);
   }
 
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Name: ", data.getTour.name), _react.default.createElement("h2", null, "Duration: ", data.getTour.duration), _react.default.createElement("h2", null, "Description: ", data.getTour.description));
+  return (// <div>
+    // 	<h1>Name: {data.getTour.name}</h1>
+    // 	<h2>Duration: {data.getTour.duration}</h2>
+    // 	<h2>Description: {data.getTour.description}</h2>
+    // </div>
+    _react.default.createElement("div", {
+      className: "o-layout__wrap"
+    }, _react.default.createElement("div", {
+      className: "o-layout"
+    }, _react.default.createElement("div", {
+      className: "o-layout__row"
+    }, _react.default.createElement("div", {
+      className: "c-menu prop-has-secondary-items"
+    }), _react.default.createElement("div", {
+      className: "o-canvas"
+    }, _react.default.createElement("div", {
+      className: "o-canvas__table"
+    }, _react.default.createElement("header", {
+      className: "o-header"
+    }, _react.default.createElement("div", {
+      className: "o-header__wrapper"
+    }, _react.default.createElement("div", {
+      className: "o-header__search"
+    }, _react.default.createElement("div", {
+      className: "c-search__input-wrap"
+    }, _react.default.createElement("form", {
+      action: "",
+      id: "search-form"
+    }, _react.default.createElement("span", {
+      className: "c-search__btn"
+    }), _react.default.createElement("input", {
+      type: "text",
+      className: "c-search__input",
+      placeholder: "go away"
+    })))))), _react.default.createElement("div", {
+      className: "o-content"
+    }, _react.default.createElement("div", {
+      className: "o-content__table"
+    }, _react.default.createElement("div", {
+      className: "o-content__wrapper"
+    }, _react.default.createElement("div", {
+      className: "js-prevent-no-content"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail js-main-content prop-is-affiliate"
+    }, _react.default.createElement("div", {
+      class: "c-trip-detail-info"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__left"
+    }, _react.default.createElement("h1", null, "European Discovery")), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right"
+    }))))))))))))
+  );
 };
 
 var _default = App;
@@ -39885,7 +39936,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64327" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53434" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
