@@ -11,7 +11,7 @@ describe('GraphQL Schema', () => {
 		tester = new EasyGraphQLTester(schemaCode);
 	});
 
-	test('Should evaluate valid query', () => {
+	test('Should pass if the server processes a valid query', () => {
 		const validQuery = `{
       getTour(id: 8) {
         name
@@ -33,7 +33,7 @@ describe('GraphQL Schema', () => {
 		tester.test(true, validQuery);
 	});
 
-	test('Should not evaluate query that does not provide required type', () => {
+	test('Should pass if a query that is missing required information is rejected', () => {
 		const invalidQuery = `{
       getTour {
         name
@@ -45,7 +45,7 @@ describe('GraphQL Schema', () => {
 		tester.test(false, invalidQuery);
 	});
 
-	test('Should not evaluate an invalid query', () => {
+	test('Should pass if a query that does not conform to the schema is rejected', () => {
 		const invalidQuery = `{
       getTour {
         name
@@ -72,7 +72,7 @@ describe('GraphQL Resolvers', () => {
 		};
 	});
 
-	test('Should resolve a valid query for all trips', () => {
+	test('Should pass if a valid query for all trips returns the correct data', () => {
 		const query = `
       query TEST {
         getTours {
@@ -91,7 +91,7 @@ describe('GraphQL Resolvers', () => {
 		});
 	});
 
-	test('Should resolve a valid query for single tour', () => {
+	test('Should pass if a valid query for a single tour returns the correct data', () => {
 		const query = `
       query TEST {
         getTour(id: 5) {
@@ -106,7 +106,7 @@ describe('GraphQL Resolvers', () => {
 
 		expect.assertions(4);
 
-		return tester.graphql(query, undefined, context, { id: 5 }).then((result) => {
+		return tester.graphql(query, undefined, context, undefined).then((result) => {
 			expect(result.data.getTour).toBeDefined();
 			expect(result.data.getTour.id).toBe('5');
 			expect(result.data.getTour.name).toBe('Test Tour 5');

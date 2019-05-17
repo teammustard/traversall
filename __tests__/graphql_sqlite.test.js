@@ -9,7 +9,7 @@ const sqlite = require('sqlite');
 const { createTables } = require('../db/createTables');
 const seedExamples = fs.readFileSync('./__tests__/exampleData.sql').toString();
 
-describe.only('GraphQL Query Database', () => {
+describe('GraphQL Query Database', () => {
 	let tester;
 	let db;
 	let context;
@@ -39,7 +39,7 @@ describe.only('GraphQL Query Database', () => {
 		});
 	});
 
-	test('Should pass if the server correctedly processes a valid query for all trips', () => {
+	test('Should pass if a valid query for all trips returns the correct data from sqlite', () => {
 		const query = `
       query TEST {
         getTours {
@@ -58,7 +58,7 @@ describe.only('GraphQL Query Database', () => {
 		});
 	});
 
-	test('Should pass if the server correctly processes a valid query for a single trip', () => {
+	test('Should pass if a valid query for a single trip returns the correct data from sqlite', () => {
 		const query = `
       query TEST {
         getTour(id: 2) {
@@ -81,7 +81,7 @@ describe.only('GraphQL Query Database', () => {
 		});
 	});
 
-	test('Should pass if the server appropriately generates an error for an invalid query format', () => {
+	test('Should pass if an invalid query format appropriately results in an error', () => {
 		const query = `
       query TEST {
         getTour(id: 2) {
@@ -102,7 +102,7 @@ describe.only('GraphQL Query Database', () => {
 		});
 	});
 
-	test('Should pass if the server appropriately returns null when querying for a nonexistent entry', () => {
+	test('Should pass if querying for a nonexistent, non-nullable entry appropriately results in an error', () => {
 		const query = `
       query TEST {
         getTour(id: 100) {
