@@ -21,4 +21,4 @@ if (require.main === module) {
 	app.listen(PORT, () => console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`));
 }
 
-module.exports = { app, PORT };
+module.exports = { app };

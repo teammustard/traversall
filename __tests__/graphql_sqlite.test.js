@@ -15,8 +15,13 @@ describe('GraphQL Query Database', () => {
 	let context;
 
 	beforeAll(async () => {
+		// Establish EasyGraphQLTester using actual schema/resolvers
 		tester = new EasyGraphQLTester(schemaCode, resolvers);
+
+		// Establish test database in memory
 		db = await sqlite.open(':memory:', { Promise });
+
+		// Insert test data into the test database
 		return db
 			.exec(createTables)
 			.then(() => {
@@ -34,9 +39,7 @@ describe('GraphQL Query Database', () => {
 	});
 
 	afterAll(() => {
-		db.close(() => {
-			console.log('Database disconnected');
-		});
+		db.close();
 	});
 
 	test('Should pass if a valid query for all trips returns the correct data from sqlite', () => {

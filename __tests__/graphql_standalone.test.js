@@ -8,6 +8,7 @@ const { resolvers } = require('../server/resolvers.js');
 describe('GraphQL Schema', () => {
 	let tester;
 	beforeAll(() => {
+		// Establish EasyGraphQLTester using actual schema
 		tester = new EasyGraphQLTester(schemaCode);
 	});
 
@@ -63,6 +64,9 @@ describe('GraphQL Resolvers', () => {
 	let context;
 
 	beforeAll(() => {
+		// Establish EasyGraphQLTester using actual schema/resolvers
+		// For database, we create a mock db object with methods that simulate
+		// database functionalities.
 		tester = new EasyGraphQLTester(schemaCode, resolvers);
 		context = {
 			db: {
