@@ -1,7 +1,3 @@
-DROP TABLE IF EXISTS countries;
-
-CREATE TABLE countries (id INTEGER PRIMARY KEY, country_code TEXT NOT NULL, full_name TEXT NOT NULL);
-
 INSERT INTO "countries" ("country_code", "full_name") VALUES ('AF', 'Afghanistan');
 INSERT INTO "countries" ("country_code", "full_name") VALUES ('AX', 'Åland Islands');
 INSERT INTO "countries" ("country_code", "full_name") VALUES ('AL', 'Albania');

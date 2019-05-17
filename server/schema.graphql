@@ -1,16 +1,59 @@
+type Query {
+	info: String!
+	getTours: [Tour!]!
+	getTour(id: ID!): Tour!
+}
 
-const typeDefs = gql`
-	type Query {
-		info: String!
-		tours: [Tour!]!
-	}
+type Tour {
+	id: ID!
+	name: String!
+	starting_loc: String!
+	ending_loc: String!
+	duration: Int!
+	travel_style: TravelStyle!
+	listed_price: Int!
+	tagline: String!
+	description: String!
+	video: String!
+	hashtag: String!
+	accommodation_summary: String!
+	accommodation_detail: String!
+	breakfast_included: Int!
+	lunch_included: Int!
+	dinner_included: Int!
+	meals_detail: String!
+	team_summary: String!
+	team_detail: String!
+	transport_summary: String!
+	transport_detail: String!
+	experiences_included: Int!
+	experiences_optional: Int!
+	experiences_detail: String!
+	trips: [Trip!]!
+	countries: [Country!]!
+}
 
-	type Mutation {
-		post(name: String!, duration: Int!): Tour!
-	}
+type Trip {
+	id: ID!
+	tour_id: Int!
+	start_date: String!
+	end_date: String!
+	start_time: String!
+	end_time: String!
+	capacity: Int!
+	booked: Int!
+}
 
-	type Tour {
-		id: ID!
-		name: String!
-		duration: Int!
-	}
+type TravelStyle {
+	id: ID!
+	name: String!
+	description: String!
+	logo: String!
+	video: String!
+}
+
+type Country {
+	id: ID!
+	country_code: String!
+	full_name: String!
+}
