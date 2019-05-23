@@ -55,9 +55,10 @@ create table trips (
 	id INT,
 	tour_id INT,
 	start_date DATE,
-	end_date DATE,
+	end_date INT,
 	start_time TEXT,
 	end_time TEXT,
 	capacity INT,
-	booked INT
+	booked INT,
+	discount INT
 );

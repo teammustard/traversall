@@ -36928,7 +36928,33 @@ var Header = function Header() {
 
 var _default = Header;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"components/tripdetails.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"graphql/queries.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GET_TOUR_DETAILS = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t}\n\t\t}\n\t}\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var GET_TOUR_DETAILS = (0, _graphqlTag.default)(_templateObject());
+exports.GET_TOUR_DETAILS = GET_TOUR_DETAILS;
+},{"graphql-tag":"../../node_modules/graphql-tag/src/index.js"}],"components/tripdetails.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36938,14 +36964,54 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactApolloHooks = require("react-apollo-hooks");
+
+var _queries = require("../graphql/queries");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var numberWithCommas = function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
 var TripDetails = function TripDetails() {
+  var _useQuery = (0, _reactApolloHooks.useQuery)(_queries.GET_TOUR_DETAILS, {
+    variables: {
+      id: 3
+    }
+  }),
+      data = _useQuery.data,
+      error = _useQuery.error,
+      loading = _useQuery.loading;
+
+  if (loading) {
+    return _react.default.createElement("div", null, "loading");
+  }
+
+  if (error) {
+    return _react.default.createElement("div", null, "Got an error: ", error.message);
+  }
+
+  var getDiscountedPrice = function getDiscountedPrice() {
+    var highestDiscount = Math.max.apply(Math, _toConsumableArray(data.getTour.trips.map(function (trip) {
+      return trip.discount;
+    })));
+    return data.getTour.listed_price * ((100 - highestDiscount) / 100);
+  };
+
   return _react.default.createElement("div", {
     className: "c-trip-detail-info"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info-top__left"
-  }, _react.default.createElement("h1", null, "European Discovery")), _react.default.createElement("div", {
+  }, _react.default.createElement("h1", null, data.getTour.name)), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right prop-has-discount prop-has-uplift"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-info-col prop-name-countries"
@@ -36953,25 +37019,25 @@ var TripDetails = function TripDetails() {
     className: "c-trip-detail-info-top__right-label"
   }, "COUNTRIES"), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-value prop-value-countries"
-  }, "9")), _react.default.createElement("div", {
+  }, data.getTour.countries.length)), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-info-col prop-name-duration"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-label"
   }, "DAYS"), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-value prop-value-duration"
-  }, "13")), _react.default.createElement("div", {
+  }, data.getTour.duration)), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-info-col prop-name-price prop-discounted"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-label"
   }, "WAS"), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-value prop-value-price"
-  }, "$3,125")), _react.default.createElement("div", {
+  }, "$", numberWithCommas(data.getTour.listed_price))), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-info-col prop-name-discount"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-label"
   }, "NOW FROM"), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-value prop-value-discount"
-  }, "$2,500")), _react.default.createElement("div", {
+  }, "$", numberWithCommas(getDiscountedPrice()))), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-info-col prop-name-uplift prop-listen-change-attr"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-label"
@@ -36979,7 +37045,7 @@ var TripDetails = function TripDetails() {
     className: "c-trip-detail-info-top__right-value prop-value-uplift"
   }, _react.default.createElement("span", {
     className: "c-trip-cover__financing-amount"
-  }, "$223", _react.default.createElement("span", {
+  }, "$???", _react.default.createElement("span", {
     className: "c-trip-cover__financing-text uplift-more-info"
   }, "/mo"))))), _react.default.createElement("div", {
     className: "c-trip-detail-info-middle__left"
@@ -37032,7 +37098,7 @@ var TripDetails = function TripDetails() {
 
 var _default = TripDetails;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"components/content.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","../graphql/queries":"graphql/queries.js"}],"components/content.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37104,34 +37170,23 @@ var _sidebar = _interopRequireDefault(require("./components/sidebar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\t{\n\t\tgetTour(id: 4) {\n\t\t\tname\n\t\t\tduration\n\t\t\tdescription\n\t\t}\n\t}\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var GET_TOUR_DETAILS = (0, _graphqlTag.default)(_templateObject());
-
+// const GET_TOUR_DETAILS = gql`
+// 	{
+// 		getTour(id: 4) {
+// 			name
+// 			duration
+// 			description
+// 		}
+// 	}
+// `;
 var App = function App() {
-  var _useQuery = (0, _reactApolloHooks.useQuery)(GET_TOUR_DETAILS),
-      data = _useQuery.data,
-      error = _useQuery.error,
-      loading = _useQuery.loading;
-
-  if (loading) {
-    return _react.default.createElement("div", null, "loading");
-  }
-
-  if (error) {
-    return _react.default.createElement("div", null, "Got an error: ", error.message);
-  }
-
+  // const { data, error, loading } = useQuery(GET_TOUR_DETAILS);
+  // if (loading) {
+  // 	return <div>loading</div>;
+  // }
+  // if (error) {
+  // 	return <div>Got an error: {error.message}</div>;
+  // }
   return (// <div>
     // 	<h1>Name: {data.getTour.name}</h1>
     // 	<h2>Duration: {data.getTour.duration}</h2>

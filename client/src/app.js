@@ -5,24 +5,24 @@ import Header from './components/header';
 import Content from './components/content';
 import Sidebar from './components/sidebar';
 
-const GET_TOUR_DETAILS = gql`
-	{
-		getTour(id: 4) {
-			name
-			duration
-			description
-		}
-	}
-`;
+// const GET_TOUR_DETAILS = gql`
+// 	{
+// 		getTour(id: 4) {
+// 			name
+// 			duration
+// 			description
+// 		}
+// 	}
+// `;
 
 const App = () => {
-	const { data, error, loading } = useQuery(GET_TOUR_DETAILS);
-	if (loading) {
-		return <div>loading</div>;
-	}
-	if (error) {
-		return <div>Got an error: {error.message}</div>;
-	}
+	// const { data, error, loading } = useQuery(GET_TOUR_DETAILS);
+	// if (loading) {
+	// 	return <div>loading</div>;
+	// }
+	// if (error) {
+	// 	return <div>Got an error: {error.message}</div>;
+	// }
 
 	return (
 		// <div>
