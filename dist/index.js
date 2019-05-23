@@ -36982,12 +36982,92 @@ var App = function App() {
     }, _react.default.createElement("div", {
       className: "c-trip-detail js-main-content prop-is-affiliate"
     }, _react.default.createElement("div", {
-      class: "c-trip-detail-info"
+      className: "c-trip-detail-info"
     }, _react.default.createElement("div", {
       className: "c-trip-detail-info-top__left"
     }, _react.default.createElement("h1", null, "European Discovery")), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right"
-    }))))))))))))
+      className: "c-trip-detail-info-top__right prop-has-discount prop-has-uplift"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-info-col prop-name-countries"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-label"
+    }, "COUNTRIES"), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-value prop-value-countries"
+    }, "9")), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-info-col prop-name-duration"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-label"
+    }, "DAYS"), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-value prop-value-duration"
+    }, "13")), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-info-col prop-name-price prop-discounted"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-label"
+    }, "WAS"), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-value prop-value-price"
+    }, "$3,125")), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-info-col prop-name-discount"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-label"
+    }, "NOW FROM"), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-value prop-value-discount"
+    }, "$2,500")), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-info-col prop-name-uplift prop-listen-change-attr"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-label"
+    }, "FINANCING FROM"), _react.default.createElement("div", {
+      className: "c-trip-detail-info-top__right-value prop-value-uplift"
+    }, _react.default.createElement("span", {
+      className: "c-trip-cover__financing-amount"
+    }, "$223", _react.default.createElement("span", {
+      className: "c-trip-cover__financing-text uplift-more-info"
+    }, "/mo"))))), _react.default.createElement("div", {
+      className: "c-trip-detail-info-middle__left"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info__style c-trip-detail-info__value-prop-modal-btn link-modal-iframe"
+    }, "Discoverer"), _react.default.createElement("div", {
+      className: "c-trip-detail-info__reviews"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info__rating"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info__rating_1 is-active"
+    }), _react.default.createElement("div", {
+      className: "c-trip-detail-info__rating_2 is-active"
+    }), _react.default.createElement("div", {
+      className: "c-trip-detail-info__rating_3 is-active"
+    }), _react.default.createElement("div", {
+      className: "c-trip-detail-info__rating_4 is-active"
+    }), _react.default.createElement("div", {
+      className: "c-trip-detail-info__rating_5 is-active"
+    })), _react.default.createElement("div", {
+      className: "c-trip-detail-info__rating-overall"
+    }, "4.7"), _react.default.createElement("div", {
+      className: "c-trip-detail-info__rating-number-reviews"
+    }, "441 reviews"))), _react.default.createElement("div", {
+      className: "c-trip-detail-info-middle__right area-up-lift"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-info-middle__area-buttons"
+    }, _react.default.createElement("span", {
+      className: "soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift"
+    }, "BOOK TRIP"), _react.default.createElement("span", {
+      className: "soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe"
+    }, "REQUEST MORE INFO")), _react.default.createElement("div", {
+      className: "c-trip-detail-info-middle__down"
+    }, _react.default.createElement("div", {
+      className: "c-trip-detail-cover__financing"
+    }, _react.default.createElement("span", {
+      className: "c-trip-detail-cover__financing-entry uplift-is-loaded"
+    }))), _react.default.createElement("div", {
+      className: "c-trip-detail-info-middle__right-trip-statement"
+    }, _react.default.createElement("div", {
+      className: "flexi-payment-text__with-icon"
+    }, _react.default.createElement("span", {
+      style: {
+        fontSize: '13px'
+      }
+    }, "Save your space with only $200 deposit")), _react.default.createElement("div", {
+      className: "zip-money-text"
+    }))))))))))))))
   );
 };
 
@@ -39936,7 +40016,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53434" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49644" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
