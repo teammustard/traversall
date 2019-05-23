@@ -1,6 +1,9 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from 'react-apollo-hooks';
+import Header from './components/header';
+import Content from './components/content';
+import Sidebar from './components/sidebar';
 
 const GET_TOUR_DETAILS = gql`
 	{
@@ -30,126 +33,11 @@ const App = () => {
 		<div className="o-layout__wrap">
 			<div className="o-layout">
 				<div className="o-layout__row">
-					<div className="c-menu prop-has-secondary-items" />
+					<Sidebar />
 					<div className="o-canvas">
 						<div className="o-canvas__table">
-							<header className="o-header">
-								<div className="o-header__wrapper">
-									<div className="o-header__search">
-										<div className="c-search__input-wrap">
-											<form action="" id="search-form">
-												<span className="c-search__btn" />
-												<input type="text" className="c-search__input" placeholder="go away" />
-											</form>
-										</div>
-									</div>
-								</div>
-							</header>
-							<div className="o-content">
-								<div className="o-content__table">
-									<div className="o-content__wrapper">
-										<div className="js-prevent-no-content">
-											<div className="c-trip-detail js-main-content prop-is-affiliate">
-												<div className="c-trip-detail-info">
-													<div className="c-trip-detail-info-top__left">
-														<h1>European Discovery</h1>
-													</div>
-													<div className="c-trip-detail-info-top__right prop-has-discount prop-has-uplift">
-														<div className="c-trip-detail-info-top__right-info-col prop-name-countries">
-															<div className="c-trip-detail-info-top__right-label">
-																COUNTRIES
-															</div>
-															<div className="c-trip-detail-info-top__right-value prop-value-countries">
-																9
-															</div>
-														</div>
-														<div className="c-trip-detail-info-top__right-info-col prop-name-duration">
-															<div className="c-trip-detail-info-top__right-label">
-																DAYS
-															</div>
-															<div className="c-trip-detail-info-top__right-value prop-value-duration">
-																13
-															</div>
-														</div>
-														<div className="c-trip-detail-info-top__right-info-col prop-name-price prop-discounted">
-															<div className="c-trip-detail-info-top__right-label">
-																WAS
-															</div>
-															<div className="c-trip-detail-info-top__right-value prop-value-price">
-																$3,125
-															</div>
-														</div>
-														<div className="c-trip-detail-info-top__right-info-col prop-name-discount">
-															<div className="c-trip-detail-info-top__right-label">
-																NOW FROM
-															</div>
-															<div className="c-trip-detail-info-top__right-value prop-value-discount">
-																$2,500
-															</div>
-														</div>
-														<div className="c-trip-detail-info-top__right-info-col prop-name-uplift prop-listen-change-attr">
-															<div className="c-trip-detail-info-top__right-label">
-																FINANCING FROM
-															</div>
-															<div className="c-trip-detail-info-top__right-value prop-value-uplift">
-																<span className="c-trip-cover__financing-amount">
-																	$223
-																	<span className="c-trip-cover__financing-text uplift-more-info">
-																		/mo
-																	</span>
-																</span>
-															</div>
-														</div>
-													</div>
-													<div className="c-trip-detail-info-middle__left">
-														<div className="c-trip-detail-info__style c-trip-detail-info__value-prop-modal-btn link-modal-iframe">
-															Discoverer
-														</div>
-														<div className="c-trip-detail-info__reviews">
-															<div className="c-trip-detail-info__rating">
-																<div className="c-trip-detail-info__rating_1 is-active" />
-																<div className="c-trip-detail-info__rating_2 is-active" />
-																<div className="c-trip-detail-info__rating_3 is-active" />
-																<div className="c-trip-detail-info__rating_4 is-active" />
-																<div className="c-trip-detail-info__rating_5 is-active" />
-															</div>
-															<div className="c-trip-detail-info__rating-overall">
-																4.7
-															</div>
-															<div className="c-trip-detail-info__rating-number-reviews">
-																441 reviews
-															</div>
-														</div>
-													</div>
-													<div className="c-trip-detail-info-middle__right area-up-lift">
-														<div className="c-trip-detail-info-middle__area-buttons">
-															<span className="soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift">
-																BOOK TRIP
-															</span>
-															<span className="soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe">
-																REQUEST MORE INFO
-															</span>
-														</div>
-														<div className="c-trip-detail-info-middle__down">
-															<div className="c-trip-detail-cover__financing">
-																<span className="c-trip-detail-cover__financing-entry uplift-is-loaded" />
-															</div>
-														</div>
-														<div className="c-trip-detail-info-middle__right-trip-statement">
-															<div className="flexi-payment-text__with-icon">
-																<span style={{ fontSize: '13px' }}>
-																	Save your space with only $200 deposit
-																</span>
-															</div>
-															<div className="zip-money-text" />
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<Header />
+							<Content />
 						</div>
 					</div>
 				</div>

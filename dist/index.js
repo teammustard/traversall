@@ -36893,7 +36893,196 @@ Object.keys(_useSubscription).forEach(function (key) {
     }
   });
 });
-},{"./useQuery":"../../node_modules/react-apollo-hooks/es/useQuery.js","./useMutation":"../../node_modules/react-apollo-hooks/es/useMutation.js","./ApolloContext":"../../node_modules/react-apollo-hooks/es/ApolloContext.js","./SuspenseSSR":"../../node_modules/react-apollo-hooks/es/SuspenseSSR.js","./getMarkupFromTree":"../../node_modules/react-apollo-hooks/es/getMarkupFromTree.js","./useSubscription":"../../node_modules/react-apollo-hooks/es/useSubscription.js"}],"app.js":[function(require,module,exports) {
+},{"./useQuery":"../../node_modules/react-apollo-hooks/es/useQuery.js","./useMutation":"../../node_modules/react-apollo-hooks/es/useMutation.js","./ApolloContext":"../../node_modules/react-apollo-hooks/es/ApolloContext.js","./SuspenseSSR":"../../node_modules/react-apollo-hooks/es/SuspenseSSR.js","./getMarkupFromTree":"../../node_modules/react-apollo-hooks/es/getMarkupFromTree.js","./useSubscription":"../../node_modules/react-apollo-hooks/es/useSubscription.js"}],"components/header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header() {
+  return _react.default.createElement("header", {
+    className: "o-header"
+  }, _react.default.createElement("div", {
+    className: "o-header__wrapper"
+  }, _react.default.createElement("div", {
+    className: "o-header__search"
+  }, _react.default.createElement("div", {
+    className: "c-search__input-wrap"
+  }, _react.default.createElement("form", {
+    action: "",
+    id: "search-form"
+  }, _react.default.createElement("span", {
+    className: "c-search__btn"
+  }), _react.default.createElement("input", {
+    type: "text",
+    className: "c-search__input",
+    placeholder: "go away"
+  }))))));
+};
+
+var _default = Header;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/tripdetails.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TripDetails = function TripDetails() {
+  return _react.default.createElement("div", {
+    className: "c-trip-detail-info"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__left"
+  }, _react.default.createElement("h1", null, "European Discovery")), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right prop-has-discount prop-has-uplift"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-info-col prop-name-countries"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-label"
+  }, "COUNTRIES"), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-value prop-value-countries"
+  }, "9")), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-info-col prop-name-duration"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-label"
+  }, "DAYS"), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-value prop-value-duration"
+  }, "13")), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-info-col prop-name-price prop-discounted"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-label"
+  }, "WAS"), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-value prop-value-price"
+  }, "$3,125")), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-info-col prop-name-discount"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-label"
+  }, "NOW FROM"), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-value prop-value-discount"
+  }, "$2,500")), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-info-col prop-name-uplift prop-listen-change-attr"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-label"
+  }, "FINANCING FROM"), _react.default.createElement("div", {
+    className: "c-trip-detail-info-top__right-value prop-value-uplift"
+  }, _react.default.createElement("span", {
+    className: "c-trip-cover__financing-amount"
+  }, "$223", _react.default.createElement("span", {
+    className: "c-trip-cover__financing-text uplift-more-info"
+  }, "/mo"))))), _react.default.createElement("div", {
+    className: "c-trip-detail-info-middle__left"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__style c-trip-detail-info__value-prop-modal-btn link-modal-iframe"
+  }, "Discoverer"), _react.default.createElement("div", {
+    className: "c-trip-detail-info__reviews"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__rating"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__rating_1 is-active"
+  }), _react.default.createElement("div", {
+    className: "c-trip-detail-info__rating_2 is-active"
+  }), _react.default.createElement("div", {
+    className: "c-trip-detail-info__rating_3 is-active"
+  }), _react.default.createElement("div", {
+    className: "c-trip-detail-info__rating_4 is-active"
+  }), _react.default.createElement("div", {
+    className: "c-trip-detail-info__rating_5 is-active"
+  })), _react.default.createElement("div", {
+    className: "c-trip-detail-info__rating-overall"
+  }, "4.7"), _react.default.createElement("div", {
+    className: "c-trip-detail-info__rating-number-reviews"
+  }, "441 reviews"))), _react.default.createElement("div", {
+    className: "c-trip-detail-info-middle__right area-up-lift"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-middle__area-buttons"
+  }, _react.default.createElement("span", {
+    className: "soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift"
+  }, "BOOK TRIP"), _react.default.createElement("span", {
+    className: "soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe"
+  }, "REQUEST MORE INFO")), _react.default.createElement("div", {
+    className: "c-trip-detail-info-middle__down"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-cover__financing"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-cover__financing-entry uplift-is-loaded"
+  }))), _react.default.createElement("div", {
+    className: "c-trip-detail-info-middle__right-trip-statement"
+  }, _react.default.createElement("div", {
+    className: "flexi-payment-text__with-icon"
+  }, _react.default.createElement("span", {
+    style: {
+      fontSize: '13px'
+    }
+  }, "Save your space with only $200 deposit")), _react.default.createElement("div", {
+    className: "zip-money-text"
+  }))));
+};
+
+var _default = TripDetails;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/content.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _tripdetails = _interopRequireDefault(require("./tripdetails"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Content = function Content() {
+  return _react.default.createElement("div", {
+    className: "o-content"
+  }, _react.default.createElement("div", {
+    className: "o-content__table"
+  }, _react.default.createElement("div", {
+    className: "o-content__wrapper"
+  }, _react.default.createElement("div", {
+    className: "js-prevent-no-content"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail js-main-content prop-is-affiliate"
+  }, _react.default.createElement(_tripdetails.default, null))))));
+};
+
+var _default = Content;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./tripdetails":"components/tripdetails.js"}],"components/sidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Sidebar = function Sidebar() {
+  return _react.default.createElement("div", {
+    className: "c-menu prop-has-secondary-items"
+  });
+};
+
+var _default = Sidebar;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36906,6 +37095,12 @@ var _react = _interopRequireDefault(require("react"));
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
 var _reactApolloHooks = require("react-apollo-hooks");
+
+var _header = _interopRequireDefault(require("./components/header"));
+
+var _content = _interopRequireDefault(require("./components/content"));
+
+var _sidebar = _interopRequireDefault(require("./components/sidebar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36948,132 +37143,17 @@ var App = function App() {
       className: "o-layout"
     }, _react.default.createElement("div", {
       className: "o-layout__row"
-    }, _react.default.createElement("div", {
-      className: "c-menu prop-has-secondary-items"
-    }), _react.default.createElement("div", {
+    }, _react.default.createElement(_sidebar.default, null), _react.default.createElement("div", {
       className: "o-canvas"
     }, _react.default.createElement("div", {
       className: "o-canvas__table"
-    }, _react.default.createElement("header", {
-      className: "o-header"
-    }, _react.default.createElement("div", {
-      className: "o-header__wrapper"
-    }, _react.default.createElement("div", {
-      className: "o-header__search"
-    }, _react.default.createElement("div", {
-      className: "c-search__input-wrap"
-    }, _react.default.createElement("form", {
-      action: "",
-      id: "search-form"
-    }, _react.default.createElement("span", {
-      className: "c-search__btn"
-    }), _react.default.createElement("input", {
-      type: "text",
-      className: "c-search__input",
-      placeholder: "go away"
-    })))))), _react.default.createElement("div", {
-      className: "o-content"
-    }, _react.default.createElement("div", {
-      className: "o-content__table"
-    }, _react.default.createElement("div", {
-      className: "o-content__wrapper"
-    }, _react.default.createElement("div", {
-      className: "js-prevent-no-content"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail js-main-content prop-is-affiliate"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__left"
-    }, _react.default.createElement("h1", null, "European Discovery")), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right prop-has-discount prop-has-uplift"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-info-col prop-name-countries"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-label"
-    }, "COUNTRIES"), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-value prop-value-countries"
-    }, "9")), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-info-col prop-name-duration"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-label"
-    }, "DAYS"), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-value prop-value-duration"
-    }, "13")), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-info-col prop-name-price prop-discounted"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-label"
-    }, "WAS"), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-value prop-value-price"
-    }, "$3,125")), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-info-col prop-name-discount"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-label"
-    }, "NOW FROM"), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-value prop-value-discount"
-    }, "$2,500")), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-info-col prop-name-uplift prop-listen-change-attr"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-label"
-    }, "FINANCING FROM"), _react.default.createElement("div", {
-      className: "c-trip-detail-info-top__right-value prop-value-uplift"
-    }, _react.default.createElement("span", {
-      className: "c-trip-cover__financing-amount"
-    }, "$223", _react.default.createElement("span", {
-      className: "c-trip-cover__financing-text uplift-more-info"
-    }, "/mo"))))), _react.default.createElement("div", {
-      className: "c-trip-detail-info-middle__left"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info__style c-trip-detail-info__value-prop-modal-btn link-modal-iframe"
-    }, "Discoverer"), _react.default.createElement("div", {
-      className: "c-trip-detail-info__reviews"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info__rating"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info__rating_1 is-active"
-    }), _react.default.createElement("div", {
-      className: "c-trip-detail-info__rating_2 is-active"
-    }), _react.default.createElement("div", {
-      className: "c-trip-detail-info__rating_3 is-active"
-    }), _react.default.createElement("div", {
-      className: "c-trip-detail-info__rating_4 is-active"
-    }), _react.default.createElement("div", {
-      className: "c-trip-detail-info__rating_5 is-active"
-    })), _react.default.createElement("div", {
-      className: "c-trip-detail-info__rating-overall"
-    }, "4.7"), _react.default.createElement("div", {
-      className: "c-trip-detail-info__rating-number-reviews"
-    }, "441 reviews"))), _react.default.createElement("div", {
-      className: "c-trip-detail-info-middle__right area-up-lift"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-info-middle__area-buttons"
-    }, _react.default.createElement("span", {
-      className: "soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift"
-    }, "BOOK TRIP"), _react.default.createElement("span", {
-      className: "soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe"
-    }, "REQUEST MORE INFO")), _react.default.createElement("div", {
-      className: "c-trip-detail-info-middle__down"
-    }, _react.default.createElement("div", {
-      className: "c-trip-detail-cover__financing"
-    }, _react.default.createElement("span", {
-      className: "c-trip-detail-cover__financing-entry uplift-is-loaded"
-    }))), _react.default.createElement("div", {
-      className: "c-trip-detail-info-middle__right-trip-statement"
-    }, _react.default.createElement("div", {
-      className: "flexi-payment-text__with-icon"
-    }, _react.default.createElement("span", {
-      style: {
-        fontSize: '13px'
-      }
-    }, "Save your space with only $200 deposit")), _react.default.createElement("div", {
-      className: "zip-money-text"
-    }))))))))))))))
+    }, _react.default.createElement(_header.default, null), _react.default.createElement(_content.default, null))))))
   );
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","graphql-tag":"../../node_modules/graphql-tag/src/index.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js"}],"../../node_modules/apollo-link-http-common/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","graphql-tag":"../../node_modules/graphql-tag/src/index.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","./components/header":"components/header.js","./components/content":"components/content.js","./components/sidebar":"components/sidebar.js"}],"../../node_modules/apollo-link-http-common/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
