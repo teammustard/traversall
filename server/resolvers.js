@@ -3,6 +3,7 @@ const resolvers = {
 		info: () => "This is Zack's attempt at a GraphQL server",
 		getTours: async (parent, args, context, info) => await context.db.all('SELECT * FROM tours'),
 		getTour: async (parent, { id }, context, info) => {
+			console.log('Output: id', id);
 			const tour = await context.db.get(`SELECT * FROM tours WHERE id=${+id}`);
 			return tour;
 		}

@@ -1,0 +1,63 @@
+@font-face {
+	font-display: swap;
+	font-family: 'contiki';
+	src: url("./contiki.woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "Soleil W02 Regular";
+	src: url("./soleil_regular.woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "Soleil W02 Bold";
+	src: url("./soleil_bold.woff2");
+	font-weight: bold;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "Soleil W02 ExtraBold";
+	src: url("./soleil_extra_bold.woff2");
+	font-weight: bold;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "Trade Gothic Pro Condensed Bold";
+	src: url("./gothic.woff2");
+	font-weight: bold;
+	font-style: normal;
+}
+/* 
+@font-face {
+	font-display: swap;
+	font-family: "Trade Gothic Pro Condensed Bold";
+	src: url("/v-ee4e393bc348639ca2cd74b6cdbc7300/content/fonts/trade-gothic-pro-condensed-bold-italic/0061ab1d-ac0a-492f-a33d-d95980a095a8.eot?#iefix");
+	src: url("/v-ee4e393bc348639ca2cd74b6cdbc7300/content/fonts/trade-gothic-pro-condensed-bold-italic/0061ab1d-ac0a-492f-a33d-d95980a095a8.eot?#iefix")
+			format("eot"),
+		url("/v-78ad31bbb2ab22f2f828b21d6c1b5ac3/content/fonts/trade-gothic-pro-condensed-bold-italic/2d0f2527-9135-46ea-8ebb-c5ac063478f7.woff2")
+			format("woff2"),
+		url("/v-a9cfddf74d48f69815e4557b61ac654a/content/fonts/trade-gothic-pro-condensed-bold-italic/1feee13e-ded1-4d73-9d76-c5ed16a43117.woff")
+			format("woff"),
+		url("/v-5e314312fde789ae1c0992b8a8dc2580/content/fonts/trade-gothic-pro-condensed-bold-italic/b3f82d90-14bc-4c20-8a10-a6b7bd0f304f.ttf")
+			format("truetype"),
+		url("/v-7d5d93e936335f10482fb61b489d085e/content/fonts/trade-gothic-pro-condensed-bold-italic/5e602f8a-1e6a-461e-bfd8-ff46a5460527.svg#5e602f8a-1e6a-461e-bfd8-ff46a5460527")
+			format("svg");
+	font-weight: bold;
+	font-style: italic;
+} */
+
+@font-face {
+	font-display: swap;
+	font-family: "Futura W01 ExtraBold Condensed";
+	src: url("./futura_extra.woff");
+	font-weight: normal;
+	font-style: bold;
+}

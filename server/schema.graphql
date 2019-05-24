@@ -42,6 +42,7 @@ type Trip {
 	end_time: String!
 	capacity: Int!
 	booked: Int!
+	discount: Int!
 }
 
 type TravelStyle {
