@@ -992,6 +992,50 @@ span.soleil-cta-button-black {
 	font-size: 14px;
 }
 
+.c-faq__cta:hover,
+.o-footer .c-page-form .btn:hover,
+a.soleil-cta-button-black:hover,
+a.soleil-cta-button-pink:hover,
+a.soleil-cta-button-red:hover,
+a.soleil-cta-button-transparent:hover,
+a.soleil-cta-button-white:hover,
+a.soleil-cta-button:hover,
+span.soleil-cta-button-black:hover,
+span.soleil-cta-button-pink:hover,
+span.soleil-cta-button-red:hover,
+span.soleil-cta-button-transparent:hover,
+span.soleil-cta-button-white:hover,
+span.soleil-cta-button:hover {
+	background-color: rgba(255, 255, 255, .2);
+	border-color: #efeef0;
+	color: #efeef0;
+	text-decoration: none;
+}
+
+.c-faq__cta:hover,
+a.soleil-cta-button-black:hover,
+span.soleil-cta-button-black:hover {
+	background-color: rgba(48, 42, 61, .2);
+	border: 1px solid #302a3d;
+	color: #302a3d;
+}
+
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info:hover {
+	background: 0 0;
+	border-color: #cf0043;
+	color: #cf0043;
+}
+
+.o-footer .c-page-form .btn:focus,
+.o-footer .c-page-form .btn:hover,
+a.soleil-cta-button-pink:focus,
+a.soleil-cta-button-pink:hover,
+span.soleil-cta-button-pink:focus,
+span.soleil-cta-button-pink:hover {
+	background-color: #cf0043;
+	color: #fff;
+}
+
 .c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info::before {
 	content: "\e99f";
 }
