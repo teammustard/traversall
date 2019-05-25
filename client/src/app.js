@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/header';
 import Content from './components/content';
 import Sidebar from './components/sidebar';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 const App = () => {
 	return (
@@ -12,7 +13,10 @@ const App = () => {
 					<div className="o-canvas">
 						<div className="o-canvas__table">
 							<Header />
-							<Content />
+							<Switch>
+								<Route exact path="/" render={() => <Redirect to="/tours/1" />} />
+								<Route path="/tours/:tourId" component={Content} />
+							</Switch>
 						</div>
 					</div>
 				</div>

@@ -7,18 +7,18 @@ const numberWithCommas = (x) => {
 };
 
 const TripDetails = (props) => {
-	const { data, error, loading } = useQuery(GET_TOUR_DETAILS, { variables: { id: 3 } });
+	const { data, error, loading } = useQuery(GET_TOUR_DETAILS, { variables: { id: props.tourId } });
 
 	if (loading) {
 		return <div>loading</div>;
 	}
 	if (error) {
-		return <div>Got an error: {error.message}</div>;
+		return <div>Got an error - Please ensure that you have entered a valid URL</div>;
 	}
 
 	const getDiscountedPrice = () => {
 		const highestDiscount = Math.max(...data.getTour.trips.map((trip) => trip.discount));
-		return data.getTour.listed_price * ((100 - highestDiscount) / 100);
+		return Math.round(data.getTour.listed_price * ((100 - highestDiscount) / 100));
 	};
 
 	return (
