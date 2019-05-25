@@ -6,7 +6,7 @@ const numberWithCommas = (x) => {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-const TripDetails = () => {
+const TripDetails = (props) => {
 	const { data, error, loading } = useQuery(GET_TOUR_DETAILS, { variables: { id: 3 } });
 
 	if (loading) {
@@ -62,7 +62,10 @@ const TripDetails = () => {
 				</div>
 			</div>
 			<div className="c-trip-detail-info-middle__left">
-				<div className="c-trip-detail-info__style c-trip-detail-info__value-prop-modal-btn link-modal-iframe">
+				<div
+					className="c-trip-detail-info__style c-trip-detail-info__value-prop-modal-btn link-modal-iframe"
+					onClick={props.handleShow}
+				>
 					Discoverer
 				</div>
 				<div className="c-trip-detail-info__reviews">

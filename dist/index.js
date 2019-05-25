@@ -25748,3458 +25748,42 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../../node_modules/react-dom/cjs/react-dom.development.js"}],"../../node_modules/graphql/jsutils/nodejsCustomInspectSymbol.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../../node_modules/react-dom/cjs/react-dom.development.js"}],"components/header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
 
-var nodejsCustomInspectSymbol = typeof Symbol === 'function' ? Symbol.for('nodejs.util.inspect.custom') : undefined;
-var _default = nodejsCustomInspectSymbol;
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header() {
+  return _react.default.createElement("header", {
+    className: "o-header"
+  }, _react.default.createElement("div", {
+    className: "o-header__wrapper"
+  }, _react.default.createElement("div", {
+    className: "o-header__search"
+  }, _react.default.createElement("div", {
+    className: "c-search__input-wrap"
+  }, _react.default.createElement("form", {
+    action: "",
+    id: "search-form"
+  }, _react.default.createElement("span", {
+    className: "c-search__btn"
+  }), _react.default.createElement("input", {
+    type: "text",
+    className: "c-search__input",
+    placeholder: "go away"
+  }))))));
+};
+
+var _default = Header;
 exports.default = _default;
-},{}],"../../node_modules/graphql/jsutils/inspect.js":[function(require,module,exports) {
-"use strict";
-
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function (obj) { return typeof obj; }; } else { _typeof2 = function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = inspect;
-
-var _nodejsCustomInspectSymbol = _interopRequireDefault(require("./nodejsCustomInspectSymbol"));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
-
-var MAX_ARRAY_LENGTH = 10;
-var MAX_RECURSIVE_DEPTH = 2;
-/**
- * Used to print values in error messages.
- */
-
-function inspect(value) {
-  return formatValue(value, []);
-}
-
-function formatValue(value, seenValues) {
-  switch (_typeof(value)) {
-    case 'string':
-      return JSON.stringify(value);
-
-    case 'function':
-      return value.name ? "[function ".concat(value.name, "]") : '[function]';
-
-    case 'object':
-      return formatObjectValue(value, seenValues);
-
-    default:
-      return String(value);
-  }
-}
-
-function formatObjectValue(value, previouslySeenValues) {
-  if (previouslySeenValues.indexOf(value) !== -1) {
-    return '[Circular]';
-  }
-
-  var seenValues = [].concat(previouslySeenValues, [value]);
-
-  if (value) {
-    var customInspectFn = getCustomFn(value);
-
-    if (customInspectFn) {
-      // $FlowFixMe(>=0.90.0)
-      var customValue = customInspectFn.call(value); // check for infinite recursion
-
-      if (customValue !== value) {
-        return typeof customValue === 'string' ? customValue : formatValue(customValue, seenValues);
-      }
-    } else if (Array.isArray(value)) {
-      return formatArray(value, seenValues);
-    }
-
-    return formatObject(value, seenValues);
-  }
-
-  return String(value);
-}
-
-function formatObject(object, seenValues) {
-  var keys = Object.keys(object);
-
-  if (keys.length === 0) {
-    return '{}';
-  }
-
-  if (seenValues.length > MAX_RECURSIVE_DEPTH) {
-    return '[' + getObjectTag(object) + ']';
-  }
-
-  var properties = keys.map(function (key) {
-    var value = formatValue(object[key], seenValues);
-    return key + ': ' + value;
-  });
-  return '{ ' + properties.join(', ') + ' }';
-}
-
-function formatArray(array, seenValues) {
-  if (array.length === 0) {
-    return '[]';
-  }
-
-  if (seenValues.length > MAX_RECURSIVE_DEPTH) {
-    return '[Array]';
-  }
-
-  var len = Math.min(MAX_ARRAY_LENGTH, array.length);
-  var remaining = array.length - len;
-  var items = [];
-
-  for (var i = 0; i < len; ++i) {
-    items.push(formatValue(array[i], seenValues));
-  }
-
-  if (remaining === 1) {
-    items.push('... 1 more item');
-  } else if (remaining > 1) {
-    items.push("... ".concat(remaining, " more items"));
-  }
-
-  return '[' + items.join(', ') + ']';
-}
-
-function getCustomFn(object) {
-  var customInspectFn = object[String(_nodejsCustomInspectSymbol.default)];
-
-  if (typeof customInspectFn === 'function') {
-    return customInspectFn;
-  }
-
-  if (typeof object.inspect === 'function') {
-    return object.inspect;
-  }
-}
-
-function getObjectTag(object) {
-  var tag = Object.prototype.toString.call(object).replace(/^\[object /, '').replace(/]$/, '');
-
-  if (tag === 'Object' && typeof object.constructor === 'function') {
-    var name = object.constructor.name;
-
-    if (typeof name === 'string') {
-      return name;
-    }
-  }
-
-  return tag;
-}
-},{"./nodejsCustomInspectSymbol":"../../node_modules/graphql/jsutils/nodejsCustomInspectSymbol.js"}],"../../node_modules/graphql/jsutils/defineToJSON.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = defineToJSON;
-
-var _nodejsCustomInspectSymbol = _interopRequireDefault(require("./nodejsCustomInspectSymbol"));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * The `defineToJSON()` function defines toJSON() and inspect() prototype
- * methods, if no function provided they become aliases for toString().
- */
-
-
-function defineToJSON( // eslint-disable-next-line flowtype/no-weak-types
-classObject) {
-  var fn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : classObject.prototype.toString;
-  classObject.prototype.toJSON = fn;
-  classObject.prototype.inspect = fn;
-
-  if (_nodejsCustomInspectSymbol.default) {
-    classObject.prototype[_nodejsCustomInspectSymbol.default] = fn;
-  }
-}
-},{"./nodejsCustomInspectSymbol":"../../node_modules/graphql/jsutils/nodejsCustomInspectSymbol.js"}],"../../node_modules/graphql/jsutils/invariant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = invariant;
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-function invariant(condition, message) {
-  /* istanbul ignore else */
-  if (!condition) {
-    throw new Error(message);
-  }
-}
-},{}],"../../node_modules/graphql/jsutils/defineToStringTag.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = defineToStringTag;
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * The `defineToStringTag()` function checks first to see if the runtime
- * supports the `Symbol` class and then if the `Symbol.toStringTag` constant
- * is defined as a `Symbol` instance. If both conditions are met, the
- * Symbol.toStringTag property is defined as a getter that returns the
- * supplied class constructor's name.
- *
- * @method defineToStringTag
- *
- * @param {Class<any>} classObject a class such as Object, String, Number but
- * typically one of your own creation through the class keyword; `class A {}`,
- * for example.
- */
-
-function defineToStringTag(classObject) {
-  if (typeof Symbol === 'function' && Symbol.toStringTag) {
-    Object.defineProperty(classObject.prototype, Symbol.toStringTag, {
-      get: function get() {
-        return this.constructor.name;
-      }
-    });
-  }
-}
-},{}],"../../node_modules/graphql/language/source.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Source = void 0;
-
-var _invariant = _interopRequireDefault(require("../jsutils/invariant"));
-
-var _defineToStringTag = _interopRequireDefault(require("../jsutils/defineToStringTag"));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * A representation of source input to GraphQL.
- * `name` and `locationOffset` are optional. They are useful for clients who
- * store GraphQL documents in source files; for example, if the GraphQL input
- * starts at line 40 in a file named Foo.graphql, it might be useful for name to
- * be "Foo.graphql" and location to be `{ line: 40, column: 0 }`.
- * line and column in locationOffset are 1-indexed
- */
-
-
-var Source = function Source(body, name, locationOffset) {
-  this.body = body;
-  this.name = name || 'GraphQL request';
-  this.locationOffset = locationOffset || {
-    line: 1,
-    column: 1
-  };
-  !(this.locationOffset.line > 0) ? (0, _invariant.default)(0, 'line in locationOffset is 1-indexed and must be positive') : void 0;
-  !(this.locationOffset.column > 0) ? (0, _invariant.default)(0, 'column in locationOffset is 1-indexed and must be positive') : void 0;
-}; // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
-
-
-exports.Source = Source;
-(0, _defineToStringTag.default)(Source);
-},{"../jsutils/invariant":"../../node_modules/graphql/jsutils/invariant.js","../jsutils/defineToStringTag":"../../node_modules/graphql/jsutils/defineToStringTag.js"}],"../../node_modules/graphql/language/location.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getLocation = getLocation;
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * Represents a location in a Source.
- */
-
-/**
- * Takes a Source and a UTF-8 character offset, and returns the corresponding
- * line and column as a SourceLocation.
- */
-
-function getLocation(source, position) {
-  var lineRegexp = /\r\n|[\n\r]/g;
-  var line = 1;
-  var column = position + 1;
-  var match;
-
-  while ((match = lineRegexp.exec(source.body)) && match.index < position) {
-    line += 1;
-    column = position + 1 - (match.index + match[0].length);
-  }
-
-  return {
-    line: line,
-    column: column
-  };
-}
-},{}],"../../node_modules/graphql/error/printError.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.printError = printError;
-
-var _location = require("../language/location");
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * Prints a GraphQLError to a string, representing useful location information
- * about the error's position in the source.
- */
-
-
-function printError(error) {
-  var printedLocations = [];
-
-  if (error.nodes) {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = error.nodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var node = _step.value;
-
-        if (node.loc) {
-          printedLocations.push(highlightSourceAtLocation(node.loc.source, (0, _location.getLocation)(node.loc.source, node.loc.start)));
-        }
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-  } else if (error.source && error.locations) {
-    var source = error.source;
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
-
-    try {
-      for (var _iterator2 = error.locations[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var location = _step2.value;
-        printedLocations.push(highlightSourceAtLocation(source, location));
-      }
-    } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-          _iterator2.return();
-        }
-      } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
-        }
-      }
-    }
-  }
-
-  return printedLocations.length === 0 ? error.message : [error.message].concat(printedLocations).join('\n\n') + '\n';
-}
-/**
- * Render a helpful description of the location of the error in the GraphQL
- * Source document.
- */
-
-
-function highlightSourceAtLocation(source, location) {
-  var firstLineColumnOffset = source.locationOffset.column - 1;
-  var body = whitespace(firstLineColumnOffset) + source.body;
-  var lineIndex = location.line - 1;
-  var lineOffset = source.locationOffset.line - 1;
-  var lineNum = location.line + lineOffset;
-  var columnOffset = location.line === 1 ? firstLineColumnOffset : 0;
-  var columnNum = location.column + columnOffset;
-  var lines = body.split(/\r\n|[\n\r]/g);
-  return "".concat(source.name, " (").concat(lineNum, ":").concat(columnNum, ")\n") + printPrefixedLines([// Lines specified like this: ["prefix", "string"],
-  ["".concat(lineNum - 1, ": "), lines[lineIndex - 1]], ["".concat(lineNum, ": "), lines[lineIndex]], ['', whitespace(columnNum - 1) + '^'], ["".concat(lineNum + 1, ": "), lines[lineIndex + 1]]]);
-}
-
-function printPrefixedLines(lines) {
-  var existingLines = lines.filter(function (_ref) {
-    var _ = _ref[0],
-        line = _ref[1];
-    return line !== undefined;
-  });
-  var padLen = 0;
-  var _iteratorNormalCompletion3 = true;
-  var _didIteratorError3 = false;
-  var _iteratorError3 = undefined;
-
-  try {
-    for (var _iterator3 = existingLines[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-      var _ref4 = _step3.value;
-      var prefix = _ref4[0];
-      padLen = Math.max(padLen, prefix.length);
-    }
-  } catch (err) {
-    _didIteratorError3 = true;
-    _iteratorError3 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
-        _iterator3.return();
-      }
-    } finally {
-      if (_didIteratorError3) {
-        throw _iteratorError3;
-      }
-    }
-  }
-
-  return existingLines.map(function (_ref3) {
-    var prefix = _ref3[0],
-        line = _ref3[1];
-    return lpad(padLen, prefix) + line;
-  }).join('\n');
-}
-
-function whitespace(len) {
-  return Array(len + 1).join(' ');
-}
-
-function lpad(len, str) {
-  return whitespace(len - str.length) + str;
-}
-},{"../language/location":"../../node_modules/graphql/language/location.js"}],"../../node_modules/graphql/error/GraphQLError.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GraphQLError = GraphQLError;
-
-var _printError = require("./printError");
-
-var _location = require("../language/location");
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-
-function GraphQLError( // eslint-disable-line no-redeclare
-message, nodes, source, positions, path, originalError, extensions) {
-  // Compute list of blame nodes.
-  var _nodes = Array.isArray(nodes) ? nodes.length !== 0 ? nodes : undefined : nodes ? [nodes] : undefined; // Compute locations in the source for the given nodes/positions.
-
-
-  var _source = source;
-
-  if (!_source && _nodes) {
-    var node = _nodes[0];
-    _source = node && node.loc && node.loc.source;
-  }
-
-  var _positions = positions;
-
-  if (!_positions && _nodes) {
-    _positions = _nodes.reduce(function (list, node) {
-      if (node.loc) {
-        list.push(node.loc.start);
-      }
-
-      return list;
-    }, []);
-  }
-
-  if (_positions && _positions.length === 0) {
-    _positions = undefined;
-  }
-
-  var _locations;
-
-  if (positions && source) {
-    _locations = positions.map(function (pos) {
-      return (0, _location.getLocation)(source, pos);
-    });
-  } else if (_nodes) {
-    _locations = _nodes.reduce(function (list, node) {
-      if (node.loc) {
-        list.push((0, _location.getLocation)(node.loc.source, node.loc.start));
-      }
-
-      return list;
-    }, []);
-  }
-
-  var _extensions = extensions || originalError && originalError.extensions;
-
-  Object.defineProperties(this, {
-    message: {
-      value: message,
-      // By being enumerable, JSON.stringify will include `message` in the
-      // resulting output. This ensures that the simplest possible GraphQL
-      // service adheres to the spec.
-      enumerable: true,
-      writable: true
-    },
-    locations: {
-      // Coercing falsey values to undefined ensures they will not be included
-      // in JSON.stringify() when not provided.
-      value: _locations || undefined,
-      // By being enumerable, JSON.stringify will include `locations` in the
-      // resulting output. This ensures that the simplest possible GraphQL
-      // service adheres to the spec.
-      enumerable: Boolean(_locations)
-    },
-    path: {
-      // Coercing falsey values to undefined ensures they will not be included
-      // in JSON.stringify() when not provided.
-      value: path || undefined,
-      // By being enumerable, JSON.stringify will include `path` in the
-      // resulting output. This ensures that the simplest possible GraphQL
-      // service adheres to the spec.
-      enumerable: Boolean(path)
-    },
-    nodes: {
-      value: _nodes || undefined
-    },
-    source: {
-      value: _source || undefined
-    },
-    positions: {
-      value: _positions || undefined
-    },
-    originalError: {
-      value: originalError
-    },
-    extensions: {
-      // Coercing falsey values to undefined ensures they will not be included
-      // in JSON.stringify() when not provided.
-      value: _extensions || undefined,
-      // By being enumerable, JSON.stringify will include `path` in the
-      // resulting output. This ensures that the simplest possible GraphQL
-      // service adheres to the spec.
-      enumerable: Boolean(_extensions)
-    }
-  }); // Include (non-enumerable) stack trace.
-
-  if (originalError && originalError.stack) {
-    Object.defineProperty(this, 'stack', {
-      value: originalError.stack,
-      writable: true,
-      configurable: true
-    });
-  } else if (Error.captureStackTrace) {
-    Error.captureStackTrace(this, GraphQLError);
-  } else {
-    Object.defineProperty(this, 'stack', {
-      value: Error().stack,
-      writable: true,
-      configurable: true
-    });
-  }
-}
-
-GraphQLError.prototype = Object.create(Error.prototype, {
-  constructor: {
-    value: GraphQLError
-  },
-  name: {
-    value: 'GraphQLError'
-  },
-  toString: {
-    value: function toString() {
-      return (0, _printError.printError)(this);
-    }
-  }
-});
-},{"./printError":"../../node_modules/graphql/error/printError.js","../language/location":"../../node_modules/graphql/language/location.js"}],"../../node_modules/graphql/error/syntaxError.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.syntaxError = syntaxError;
-
-var _GraphQLError = require("./GraphQLError");
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * Produces a GraphQLError representing a syntax error, containing useful
- * descriptive information about the syntax error's position in the source.
- */
-
-
-function syntaxError(source, position, description) {
-  return new _GraphQLError.GraphQLError("Syntax Error: ".concat(description), undefined, source, [position]);
-}
-},{"./GraphQLError":"../../node_modules/graphql/error/GraphQLError.js"}],"../../node_modules/graphql/error/locatedError.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.locatedError = locatedError;
-
-var _GraphQLError = require("./GraphQLError");
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * Given an arbitrary Error, presumably thrown while attempting to execute a
- * GraphQL operation, produce a new GraphQLError aware of the location in the
- * document responsible for the original Error.
- */
-
-
-function locatedError(originalError, nodes, path) {
-  // Note: this uses a brand-check to support GraphQL errors originating from
-  // other contexts.
-  if (originalError && Array.isArray(originalError.path)) {
-    return originalError;
-  }
-
-  return new _GraphQLError.GraphQLError(originalError && originalError.message, originalError && originalError.nodes || nodes, originalError && originalError.source, originalError && originalError.positions, path, originalError);
-}
-},{"./GraphQLError":"../../node_modules/graphql/error/GraphQLError.js"}],"../../node_modules/graphql/error/formatError.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.formatError = formatError;
-
-var _invariant = _interopRequireDefault(require("../jsutils/invariant"));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * Given a GraphQLError, format it according to the rules described by the
- * Response Format, Errors section of the GraphQL Specification.
- */
-
-
-function formatError(error) {
-  !error ? (0, _invariant.default)(0, 'Received null or undefined error.') : void 0;
-  var message = error.message || 'An unknown error occurred.';
-  var locations = error.locations;
-  var path = error.path;
-  var extensions = error.extensions;
-  return extensions ? {
-    message: message,
-    locations: locations,
-    path: path,
-    extensions: extensions
-  } : {
-    message: message,
-    locations: locations,
-    path: path
-  };
-}
-},{"../jsutils/invariant":"../../node_modules/graphql/jsutils/invariant.js"}],"../../node_modules/graphql/error/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "GraphQLError", {
-  enumerable: true,
-  get: function get() {
-    return _GraphQLError.GraphQLError;
-  }
-});
-Object.defineProperty(exports, "syntaxError", {
-  enumerable: true,
-  get: function get() {
-    return _syntaxError.syntaxError;
-  }
-});
-Object.defineProperty(exports, "locatedError", {
-  enumerable: true,
-  get: function get() {
-    return _locatedError.locatedError;
-  }
-});
-Object.defineProperty(exports, "printError", {
-  enumerable: true,
-  get: function get() {
-    return _printError.printError;
-  }
-});
-Object.defineProperty(exports, "formatError", {
-  enumerable: true,
-  get: function get() {
-    return _formatError.formatError;
-  }
-});
-
-var _GraphQLError = require("./GraphQLError");
-
-var _syntaxError = require("./syntaxError");
-
-var _locatedError = require("./locatedError");
-
-var _printError = require("./printError");
-
-var _formatError = require("./formatError");
-},{"./GraphQLError":"../../node_modules/graphql/error/GraphQLError.js","./syntaxError":"../../node_modules/graphql/error/syntaxError.js","./locatedError":"../../node_modules/graphql/error/locatedError.js","./printError":"../../node_modules/graphql/error/printError.js","./formatError":"../../node_modules/graphql/error/formatError.js"}],"../../node_modules/graphql/language/blockString.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.dedentBlockStringValue = dedentBlockStringValue;
-exports.getBlockStringIndentation = getBlockStringIndentation;
-exports.printBlockString = printBlockString;
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * Produces the value of a block string from its parsed raw value, similar to
- * CoffeeScript's block string, Python's docstring trim or Ruby's strip_heredoc.
- *
- * This implements the GraphQL spec's BlockStringValue() static algorithm.
- */
-
-function dedentBlockStringValue(rawString) {
-  // Expand a block string's raw value into independent lines.
-  var lines = rawString.split(/\r\n|[\n\r]/g); // Remove common indentation from all lines but first.
-
-  var commonIndent = getBlockStringIndentation(lines);
-
-  if (commonIndent !== 0) {
-    for (var i = 1; i < lines.length; i++) {
-      lines[i] = lines[i].slice(commonIndent);
-    }
-  } // Remove leading and trailing blank lines.
-
-
-  while (lines.length > 0 && isBlank(lines[0])) {
-    lines.shift();
-  }
-
-  while (lines.length > 0 && isBlank(lines[lines.length - 1])) {
-    lines.pop();
-  } // Return a string of the lines joined with U+000A.
-
-
-  return lines.join('\n');
-} // @internal
-
-
-function getBlockStringIndentation(lines) {
-  var commonIndent = null;
-
-  for (var i = 1; i < lines.length; i++) {
-    var line = lines[i];
-    var indent = leadingWhitespace(line);
-
-    if (indent === line.length) {
-      continue; // skip empty lines
-    }
-
-    if (commonIndent === null || indent < commonIndent) {
-      commonIndent = indent;
-
-      if (commonIndent === 0) {
-        break;
-      }
-    }
-  }
-
-  return commonIndent === null ? 0 : commonIndent;
-}
-
-function leadingWhitespace(str) {
-  var i = 0;
-
-  while (i < str.length && (str[i] === ' ' || str[i] === '\t')) {
-    i++;
-  }
-
-  return i;
-}
-
-function isBlank(str) {
-  return leadingWhitespace(str) === str.length;
-}
-/**
- * Print a block string in the indented block form by adding a leading and
- * trailing blank line. However, if a block string starts with whitespace and is
- * a single-line, adding a leading blank line would strip that whitespace.
- */
-
-
-function printBlockString(value) {
-  var indentation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  var preferMultipleLines = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  var isSingleLine = value.indexOf('\n') === -1;
-  var hasLeadingSpace = value[0] === ' ' || value[0] === '\t';
-  var hasTrailingQuote = value[value.length - 1] === '"';
-  var printAsMultipleLines = !isSingleLine || hasTrailingQuote || preferMultipleLines;
-  var result = ''; // Format a multi-line block quote to account for leading space.
-
-  if (printAsMultipleLines && !(isSingleLine && hasLeadingSpace)) {
-    result += '\n' + indentation;
-  }
-
-  result += indentation ? value.replace(/\n/g, '\n' + indentation) : value;
-
-  if (printAsMultipleLines) {
-    result += '\n';
-  }
-
-  return '"""' + result.replace(/"""/g, '\\"""') + '"""';
-}
-},{}],"../../node_modules/graphql/language/lexer.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createLexer = createLexer;
-exports.isPunctuatorToken = isPunctuatorToken;
-exports.getTokenDesc = getTokenDesc;
-exports.TokenKind = void 0;
-
-var _defineToJSON = _interopRequireDefault(require("../jsutils/defineToJSON"));
-
-var _error = require("../error");
-
-var _blockString = require("./blockString");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * Given a Source object, this returns a Lexer for that source.
- * A Lexer is a stateful stream generator in that every time
- * it is advanced, it returns the next token in the Source. Assuming the
- * source lexes, the final Token emitted by the lexer will be of kind
- * EOF, after which the lexer will repeatedly return the same EOF token
- * whenever called.
- */
-
-
-function createLexer(source, options) {
-  var startOfFileToken = new Tok(TokenKind.SOF, 0, 0, 0, 0, null);
-  var lexer = {
-    source: source,
-    options: options,
-    lastToken: startOfFileToken,
-    token: startOfFileToken,
-    line: 1,
-    lineStart: 0,
-    advance: advanceLexer,
-    lookahead: lookahead
-  };
-  return lexer;
-}
-
-function advanceLexer() {
-  this.lastToken = this.token;
-  var token = this.token = this.lookahead();
-  return token;
-}
-
-function lookahead() {
-  var token = this.token;
-
-  if (token.kind !== TokenKind.EOF) {
-    do {
-      // Note: next is only mutable during parsing, so we cast to allow this.
-      token = token.next || (token.next = readToken(this, token));
-    } while (token.kind === TokenKind.COMMENT);
-  }
-
-  return token;
-}
-/**
- * The return type of createLexer.
- */
-
-/**
- * An exported enum describing the different kinds of tokens that the
- * lexer emits.
- */
-
-
-var TokenKind = Object.freeze({
-  SOF: '<SOF>',
-  EOF: '<EOF>',
-  BANG: '!',
-  DOLLAR: '$',
-  AMP: '&',
-  PAREN_L: '(',
-  PAREN_R: ')',
-  SPREAD: '...',
-  COLON: ':',
-  EQUALS: '=',
-  AT: '@',
-  BRACKET_L: '[',
-  BRACKET_R: ']',
-  BRACE_L: '{',
-  PIPE: '|',
-  BRACE_R: '}',
-  NAME: 'Name',
-  INT: 'Int',
-  FLOAT: 'Float',
-  STRING: 'String',
-  BLOCK_STRING: 'BlockString',
-  COMMENT: 'Comment'
-});
-/**
- * The enum type representing the token kinds values.
- */
-
-exports.TokenKind = TokenKind; // @internal
-
-function isPunctuatorToken(token) {
-  var kind = token.kind;
-  return kind === TokenKind.BANG || kind === TokenKind.DOLLAR || kind === TokenKind.AMP || kind === TokenKind.PAREN_L || kind === TokenKind.PAREN_R || kind === TokenKind.SPREAD || kind === TokenKind.COLON || kind === TokenKind.EQUALS || kind === TokenKind.AT || kind === TokenKind.BRACKET_L || kind === TokenKind.BRACKET_R || kind === TokenKind.BRACE_L || kind === TokenKind.PIPE || kind === TokenKind.BRACE_R;
-}
-/**
- * A helper function to describe a token as a string for debugging
- */
-
-
-function getTokenDesc(token) {
-  var value = token.value;
-  return value ? "".concat(token.kind, " \"").concat(value, "\"") : token.kind;
-}
-/**
- * Helper function for constructing the Token object.
- */
-
-
-function Tok(kind, start, end, line, column, prev, value) {
-  this.kind = kind;
-  this.start = start;
-  this.end = end;
-  this.line = line;
-  this.column = column;
-  this.value = value;
-  this.prev = prev;
-  this.next = null;
-} // Print a simplified form when appearing in JSON/util.inspect.
-
-
-(0, _defineToJSON.default)(Tok, function () {
-  return {
-    kind: this.kind,
-    value: this.value,
-    line: this.line,
-    column: this.column
-  };
-});
-
-function printCharCode(code) {
-  return (// NaN/undefined represents access beyond the end of the file.
-    isNaN(code) ? TokenKind.EOF : // Trust JSON for ASCII.
-    code < 0x007f ? JSON.stringify(String.fromCharCode(code)) : // Otherwise print the escaped form.
-    "\"\\u".concat(('00' + code.toString(16).toUpperCase()).slice(-4), "\"")
-  );
-}
-/**
- * Gets the next token from the source starting at the given position.
- *
- * This skips over whitespace until it finds the next lexable token, then lexes
- * punctuators immediately or calls the appropriate helper function for more
- * complicated tokens.
- */
-
-
-function readToken(lexer, prev) {
-  var source = lexer.source;
-  var body = source.body;
-  var bodyLength = body.length;
-  var pos = positionAfterWhitespace(body, prev.end, lexer);
-  var line = lexer.line;
-  var col = 1 + pos - lexer.lineStart;
-
-  if (pos >= bodyLength) {
-    return new Tok(TokenKind.EOF, bodyLength, bodyLength, line, col, prev);
-  }
-
-  var code = body.charCodeAt(pos); // SourceCharacter
-
-  switch (code) {
-    // !
-    case 33:
-      return new Tok(TokenKind.BANG, pos, pos + 1, line, col, prev);
-    // #
-
-    case 35:
-      return readComment(source, pos, line, col, prev);
-    // $
-
-    case 36:
-      return new Tok(TokenKind.DOLLAR, pos, pos + 1, line, col, prev);
-    // &
-
-    case 38:
-      return new Tok(TokenKind.AMP, pos, pos + 1, line, col, prev);
-    // (
-
-    case 40:
-      return new Tok(TokenKind.PAREN_L, pos, pos + 1, line, col, prev);
-    // )
-
-    case 41:
-      return new Tok(TokenKind.PAREN_R, pos, pos + 1, line, col, prev);
-    // .
-
-    case 46:
-      if (body.charCodeAt(pos + 1) === 46 && body.charCodeAt(pos + 2) === 46) {
-        return new Tok(TokenKind.SPREAD, pos, pos + 3, line, col, prev);
-      }
-
-      break;
-    // :
-
-    case 58:
-      return new Tok(TokenKind.COLON, pos, pos + 1, line, col, prev);
-    // =
-
-    case 61:
-      return new Tok(TokenKind.EQUALS, pos, pos + 1, line, col, prev);
-    // @
-
-    case 64:
-      return new Tok(TokenKind.AT, pos, pos + 1, line, col, prev);
-    // [
-
-    case 91:
-      return new Tok(TokenKind.BRACKET_L, pos, pos + 1, line, col, prev);
-    // ]
-
-    case 93:
-      return new Tok(TokenKind.BRACKET_R, pos, pos + 1, line, col, prev);
-    // {
-
-    case 123:
-      return new Tok(TokenKind.BRACE_L, pos, pos + 1, line, col, prev);
-    // |
-
-    case 124:
-      return new Tok(TokenKind.PIPE, pos, pos + 1, line, col, prev);
-    // }
-
-    case 125:
-      return new Tok(TokenKind.BRACE_R, pos, pos + 1, line, col, prev);
-    // A-Z _ a-z
-
-    case 65:
-    case 66:
-    case 67:
-    case 68:
-    case 69:
-    case 70:
-    case 71:
-    case 72:
-    case 73:
-    case 74:
-    case 75:
-    case 76:
-    case 77:
-    case 78:
-    case 79:
-    case 80:
-    case 81:
-    case 82:
-    case 83:
-    case 84:
-    case 85:
-    case 86:
-    case 87:
-    case 88:
-    case 89:
-    case 90:
-    case 95:
-    case 97:
-    case 98:
-    case 99:
-    case 100:
-    case 101:
-    case 102:
-    case 103:
-    case 104:
-    case 105:
-    case 106:
-    case 107:
-    case 108:
-    case 109:
-    case 110:
-    case 111:
-    case 112:
-    case 113:
-    case 114:
-    case 115:
-    case 116:
-    case 117:
-    case 118:
-    case 119:
-    case 120:
-    case 121:
-    case 122:
-      return readName(source, pos, line, col, prev);
-    // - 0-9
-
-    case 45:
-    case 48:
-    case 49:
-    case 50:
-    case 51:
-    case 52:
-    case 53:
-    case 54:
-    case 55:
-    case 56:
-    case 57:
-      return readNumber(source, pos, code, line, col, prev);
-    // "
-
-    case 34:
-      if (body.charCodeAt(pos + 1) === 34 && body.charCodeAt(pos + 2) === 34) {
-        return readBlockString(source, pos, line, col, prev, lexer);
-      }
-
-      return readString(source, pos, line, col, prev);
-  }
-
-  throw (0, _error.syntaxError)(source, pos, unexpectedCharacterMessage(code));
-}
-/**
- * Report a message that an unexpected character was encountered.
- */
-
-
-function unexpectedCharacterMessage(code) {
-  if (code < 0x0020 && code !== 0x0009 && code !== 0x000a && code !== 0x000d) {
-    return "Cannot contain the invalid character ".concat(printCharCode(code), ".");
-  }
-
-  if (code === 39) {
-    // '
-    return "Unexpected single quote character ('), did you mean to use " + 'a double quote (")?';
-  }
-
-  return "Cannot parse the unexpected character ".concat(printCharCode(code), ".");
-}
-/**
- * Reads from body starting at startPosition until it finds a non-whitespace
- * character, then returns the position of that character for lexing.
- */
-
-
-function positionAfterWhitespace(body, startPosition, lexer) {
-  var bodyLength = body.length;
-  var position = startPosition;
-
-  while (position < bodyLength) {
-    var code = body.charCodeAt(position); // tab | space | comma | BOM
-
-    if (code === 9 || code === 32 || code === 44 || code === 0xfeff) {
-      ++position;
-    } else if (code === 10) {
-      // new line
-      ++position;
-      ++lexer.line;
-      lexer.lineStart = position;
-    } else if (code === 13) {
-      // carriage return
-      if (body.charCodeAt(position + 1) === 10) {
-        position += 2;
-      } else {
-        ++position;
-      }
-
-      ++lexer.line;
-      lexer.lineStart = position;
-    } else {
-      break;
-    }
-  }
-
-  return position;
-}
-/**
- * Reads a comment token from the source file.
- *
- * #[\u0009\u0020-\uFFFF]*
- */
-
-
-function readComment(source, start, line, col, prev) {
-  var body = source.body;
-  var code;
-  var position = start;
-
-  do {
-    code = body.charCodeAt(++position);
-  } while (!isNaN(code) && ( // SourceCharacter but not LineTerminator
-  code > 0x001f || code === 0x0009));
-
-  return new Tok(TokenKind.COMMENT, start, position, line, col, prev, body.slice(start + 1, position));
-}
-/**
- * Reads a number token from the source file, either a float
- * or an int depending on whether a decimal point appears.
- *
- * Int:   -?(0|[1-9][0-9]*)
- * Float: -?(0|[1-9][0-9]*)(\.[0-9]+)?((E|e)(+|-)?[0-9]+)?
- */
-
-
-function readNumber(source, start, firstCode, line, col, prev) {
-  var body = source.body;
-  var code = firstCode;
-  var position = start;
-  var isFloat = false;
-
-  if (code === 45) {
-    // -
-    code = body.charCodeAt(++position);
-  }
-
-  if (code === 48) {
-    // 0
-    code = body.charCodeAt(++position);
-
-    if (code >= 48 && code <= 57) {
-      throw (0, _error.syntaxError)(source, position, "Invalid number, unexpected digit after 0: ".concat(printCharCode(code), "."));
-    }
-  } else {
-    position = readDigits(source, position, code);
-    code = body.charCodeAt(position);
-  }
-
-  if (code === 46) {
-    // .
-    isFloat = true;
-    code = body.charCodeAt(++position);
-    position = readDigits(source, position, code);
-    code = body.charCodeAt(position);
-  }
-
-  if (code === 69 || code === 101) {
-    // E e
-    isFloat = true;
-    code = body.charCodeAt(++position);
-
-    if (code === 43 || code === 45) {
-      // + -
-      code = body.charCodeAt(++position);
-    }
-
-    position = readDigits(source, position, code);
-  }
-
-  return new Tok(isFloat ? TokenKind.FLOAT : TokenKind.INT, start, position, line, col, prev, body.slice(start, position));
-}
-/**
- * Returns the new position in the source after reading digits.
- */
-
-
-function readDigits(source, start, firstCode) {
-  var body = source.body;
-  var position = start;
-  var code = firstCode;
-
-  if (code >= 48 && code <= 57) {
-    // 0 - 9
-    do {
-      code = body.charCodeAt(++position);
-    } while (code >= 48 && code <= 57); // 0 - 9
-
-
-    return position;
-  }
-
-  throw (0, _error.syntaxError)(source, position, "Invalid number, expected digit but got: ".concat(printCharCode(code), "."));
-}
-/**
- * Reads a string token from the source file.
- *
- * "([^"\\\u000A\u000D]|(\\(u[0-9a-fA-F]{4}|["\\/bfnrt])))*"
- */
-
-
-function readString(source, start, line, col, prev) {
-  var body = source.body;
-  var position = start + 1;
-  var chunkStart = position;
-  var code = 0;
-  var value = '';
-
-  while (position < body.length && !isNaN(code = body.charCodeAt(position)) && // not LineTerminator
-  code !== 0x000a && code !== 0x000d) {
-    // Closing Quote (")
-    if (code === 34) {
-      value += body.slice(chunkStart, position);
-      return new Tok(TokenKind.STRING, start, position + 1, line, col, prev, value);
-    } // SourceCharacter
-
-
-    if (code < 0x0020 && code !== 0x0009) {
-      throw (0, _error.syntaxError)(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
-    }
-
-    ++position;
-
-    if (code === 92) {
-      // \
-      value += body.slice(chunkStart, position - 1);
-      code = body.charCodeAt(position);
-
-      switch (code) {
-        case 34:
-          value += '"';
-          break;
-
-        case 47:
-          value += '/';
-          break;
-
-        case 92:
-          value += '\\';
-          break;
-
-        case 98:
-          value += '\b';
-          break;
-
-        case 102:
-          value += '\f';
-          break;
-
-        case 110:
-          value += '\n';
-          break;
-
-        case 114:
-          value += '\r';
-          break;
-
-        case 116:
-          value += '\t';
-          break;
-
-        case 117:
-          // u
-          var charCode = uniCharCode(body.charCodeAt(position + 1), body.charCodeAt(position + 2), body.charCodeAt(position + 3), body.charCodeAt(position + 4));
-
-          if (charCode < 0) {
-            throw (0, _error.syntaxError)(source, position, 'Invalid character escape sequence: ' + "\\u".concat(body.slice(position + 1, position + 5), "."));
-          }
-
-          value += String.fromCharCode(charCode);
-          position += 4;
-          break;
-
-        default:
-          throw (0, _error.syntaxError)(source, position, "Invalid character escape sequence: \\".concat(String.fromCharCode(code), "."));
-      }
-
-      ++position;
-      chunkStart = position;
-    }
-  }
-
-  throw (0, _error.syntaxError)(source, position, 'Unterminated string.');
-}
-/**
- * Reads a block string token from the source file.
- *
- * """("?"?(\\"""|\\(?!=""")|[^"\\]))*"""
- */
-
-
-function readBlockString(source, start, line, col, prev, lexer) {
-  var body = source.body;
-  var position = start + 3;
-  var chunkStart = position;
-  var code = 0;
-  var rawValue = '';
-
-  while (position < body.length && !isNaN(code = body.charCodeAt(position))) {
-    // Closing Triple-Quote (""")
-    if (code === 34 && body.charCodeAt(position + 1) === 34 && body.charCodeAt(position + 2) === 34) {
-      rawValue += body.slice(chunkStart, position);
-      return new Tok(TokenKind.BLOCK_STRING, start, position + 3, line, col, prev, (0, _blockString.dedentBlockStringValue)(rawValue));
-    } // SourceCharacter
-
-
-    if (code < 0x0020 && code !== 0x0009 && code !== 0x000a && code !== 0x000d) {
-      throw (0, _error.syntaxError)(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
-    }
-
-    if (code === 10) {
-      // new line
-      ++position;
-      ++lexer.line;
-      lexer.lineStart = position;
-    } else if (code === 13) {
-      // carriage return
-      if (body.charCodeAt(position + 1) === 10) {
-        position += 2;
-      } else {
-        ++position;
-      }
-
-      ++lexer.line;
-      lexer.lineStart = position;
-    } else if ( // Escape Triple-Quote (\""")
-    code === 92 && body.charCodeAt(position + 1) === 34 && body.charCodeAt(position + 2) === 34 && body.charCodeAt(position + 3) === 34) {
-      rawValue += body.slice(chunkStart, position) + '"""';
-      position += 4;
-      chunkStart = position;
-    } else {
-      ++position;
-    }
-  }
-
-  throw (0, _error.syntaxError)(source, position, 'Unterminated string.');
-}
-/**
- * Converts four hexadecimal chars to the integer that the
- * string represents. For example, uniCharCode('0','0','0','f')
- * will return 15, and uniCharCode('0','0','f','f') returns 255.
- *
- * Returns a negative number on error, if a char was invalid.
- *
- * This is implemented by noting that char2hex() returns -1 on error,
- * which means the result of ORing the char2hex() will also be negative.
- */
-
-
-function uniCharCode(a, b, c, d) {
-  return char2hex(a) << 12 | char2hex(b) << 8 | char2hex(c) << 4 | char2hex(d);
-}
-/**
- * Converts a hex character to its integer value.
- * '0' becomes 0, '9' becomes 9
- * 'A' becomes 10, 'F' becomes 15
- * 'a' becomes 10, 'f' becomes 15
- *
- * Returns -1 on error.
- */
-
-
-function char2hex(a) {
-  return a >= 48 && a <= 57 ? a - 48 // 0-9
-  : a >= 65 && a <= 70 ? a - 55 // A-F
-  : a >= 97 && a <= 102 ? a - 87 // a-f
-  : -1;
-}
-/**
- * Reads an alphanumeric + underscore name from the source.
- *
- * [_A-Za-z][_0-9A-Za-z]*
- */
-
-
-function readName(source, start, line, col, prev) {
-  var body = source.body;
-  var bodyLength = body.length;
-  var position = start + 1;
-  var code = 0;
-
-  while (position !== bodyLength && !isNaN(code = body.charCodeAt(position)) && (code === 95 || // _
-  code >= 48 && code <= 57 || // 0-9
-  code >= 65 && code <= 90 || // A-Z
-  code >= 97 && code <= 122) // a-z
-  ) {
-    ++position;
-  }
-
-  return new Tok(TokenKind.NAME, start, position, line, col, prev, body.slice(start, position));
-}
-},{"../jsutils/defineToJSON":"../../node_modules/graphql/jsutils/defineToJSON.js","../error":"../../node_modules/graphql/error/index.js","./blockString":"../../node_modules/graphql/language/blockString.js"}],"../../node_modules/graphql/language/kinds.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Kind = void 0;
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * The set of allowed kind values for AST nodes.
- */
-
-var Kind = Object.freeze({
-  // Name
-  NAME: 'Name',
-  // Document
-  DOCUMENT: 'Document',
-  OPERATION_DEFINITION: 'OperationDefinition',
-  VARIABLE_DEFINITION: 'VariableDefinition',
-  SELECTION_SET: 'SelectionSet',
-  FIELD: 'Field',
-  ARGUMENT: 'Argument',
-  // Fragments
-  FRAGMENT_SPREAD: 'FragmentSpread',
-  INLINE_FRAGMENT: 'InlineFragment',
-  FRAGMENT_DEFINITION: 'FragmentDefinition',
-  // Values
-  VARIABLE: 'Variable',
-  INT: 'IntValue',
-  FLOAT: 'FloatValue',
-  STRING: 'StringValue',
-  BOOLEAN: 'BooleanValue',
-  NULL: 'NullValue',
-  ENUM: 'EnumValue',
-  LIST: 'ListValue',
-  OBJECT: 'ObjectValue',
-  OBJECT_FIELD: 'ObjectField',
-  // Directives
-  DIRECTIVE: 'Directive',
-  // Types
-  NAMED_TYPE: 'NamedType',
-  LIST_TYPE: 'ListType',
-  NON_NULL_TYPE: 'NonNullType',
-  // Type System Definitions
-  SCHEMA_DEFINITION: 'SchemaDefinition',
-  OPERATION_TYPE_DEFINITION: 'OperationTypeDefinition',
-  // Type Definitions
-  SCALAR_TYPE_DEFINITION: 'ScalarTypeDefinition',
-  OBJECT_TYPE_DEFINITION: 'ObjectTypeDefinition',
-  FIELD_DEFINITION: 'FieldDefinition',
-  INPUT_VALUE_DEFINITION: 'InputValueDefinition',
-  INTERFACE_TYPE_DEFINITION: 'InterfaceTypeDefinition',
-  UNION_TYPE_DEFINITION: 'UnionTypeDefinition',
-  ENUM_TYPE_DEFINITION: 'EnumTypeDefinition',
-  ENUM_VALUE_DEFINITION: 'EnumValueDefinition',
-  INPUT_OBJECT_TYPE_DEFINITION: 'InputObjectTypeDefinition',
-  // Directive Definitions
-  DIRECTIVE_DEFINITION: 'DirectiveDefinition',
-  // Type System Extensions
-  SCHEMA_EXTENSION: 'SchemaExtension',
-  // Type Extensions
-  SCALAR_TYPE_EXTENSION: 'ScalarTypeExtension',
-  OBJECT_TYPE_EXTENSION: 'ObjectTypeExtension',
-  INTERFACE_TYPE_EXTENSION: 'InterfaceTypeExtension',
-  UNION_TYPE_EXTENSION: 'UnionTypeExtension',
-  ENUM_TYPE_EXTENSION: 'EnumTypeExtension',
-  INPUT_OBJECT_TYPE_EXTENSION: 'InputObjectTypeExtension'
-});
-/**
- * The enum type representing the possible kind values of AST nodes.
- */
-
-exports.Kind = Kind;
-},{}],"../../node_modules/graphql/language/directiveLocation.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DirectiveLocation = void 0;
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * The set of allowed directive location values.
- */
-
-var DirectiveLocation = Object.freeze({
-  // Request Definitions
-  QUERY: 'QUERY',
-  MUTATION: 'MUTATION',
-  SUBSCRIPTION: 'SUBSCRIPTION',
-  FIELD: 'FIELD',
-  FRAGMENT_DEFINITION: 'FRAGMENT_DEFINITION',
-  FRAGMENT_SPREAD: 'FRAGMENT_SPREAD',
-  INLINE_FRAGMENT: 'INLINE_FRAGMENT',
-  VARIABLE_DEFINITION: 'VARIABLE_DEFINITION',
-  // Type System Definitions
-  SCHEMA: 'SCHEMA',
-  SCALAR: 'SCALAR',
-  OBJECT: 'OBJECT',
-  FIELD_DEFINITION: 'FIELD_DEFINITION',
-  ARGUMENT_DEFINITION: 'ARGUMENT_DEFINITION',
-  INTERFACE: 'INTERFACE',
-  UNION: 'UNION',
-  ENUM: 'ENUM',
-  ENUM_VALUE: 'ENUM_VALUE',
-  INPUT_OBJECT: 'INPUT_OBJECT',
-  INPUT_FIELD_DEFINITION: 'INPUT_FIELD_DEFINITION'
-});
-/**
- * The enum type representing the directive location values.
- */
-
-exports.DirectiveLocation = DirectiveLocation;
-},{}],"../../node_modules/graphql/language/parser.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.parse = parse;
-exports.parseValue = parseValue;
-exports.parseType = parseType;
-exports.parseConstValue = parseConstValue;
-exports.parseTypeReference = parseTypeReference;
-exports.parseNamedType = parseNamedType;
-
-var _inspect = _interopRequireDefault(require("../jsutils/inspect"));
-
-var _defineToJSON = _interopRequireDefault(require("../jsutils/defineToJSON"));
-
-var _source = require("./source");
-
-var _error = require("../error");
-
-var _lexer = require("./lexer");
-
-var _kinds = require("./kinds");
-
-var _directiveLocation = require("./directiveLocation");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-/**
- * Given a GraphQL source, parses it into a Document.
- * Throws GraphQLError if a syntax error is encountered.
- */
-
-
-function parse(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source.Source(source) : source;
-
-  if (!(sourceObj instanceof _source.Source)) {
-    throw new TypeError("Must provide Source. Received: ".concat((0, _inspect.default)(sourceObj)));
-  }
-
-  var lexer = (0, _lexer.createLexer)(sourceObj, options || {});
-  return parseDocument(lexer);
-}
-/**
- * Given a string containing a GraphQL value (ex. `[42]`), parse the AST for
- * that value.
- * Throws GraphQLError if a syntax error is encountered.
- *
- * This is useful within tools that operate upon GraphQL Values directly and
- * in isolation of complete GraphQL documents.
- *
- * Consider providing the results to the utility function: valueFromAST().
- */
-
-
-function parseValue(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source.Source(source) : source;
-  var lexer = (0, _lexer.createLexer)(sourceObj, options || {});
-  expectToken(lexer, _lexer.TokenKind.SOF);
-  var value = parseValueLiteral(lexer, false);
-  expectToken(lexer, _lexer.TokenKind.EOF);
-  return value;
-}
-/**
- * Given a string containing a GraphQL Type (ex. `[Int!]`), parse the AST for
- * that type.
- * Throws GraphQLError if a syntax error is encountered.
- *
- * This is useful within tools that operate upon GraphQL Types directly and
- * in isolation of complete GraphQL documents.
- *
- * Consider providing the results to the utility function: typeFromAST().
- */
-
-
-function parseType(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source.Source(source) : source;
-  var lexer = (0, _lexer.createLexer)(sourceObj, options || {});
-  expectToken(lexer, _lexer.TokenKind.SOF);
-  var type = parseTypeReference(lexer);
-  expectToken(lexer, _lexer.TokenKind.EOF);
-  return type;
-}
-/**
- * Converts a name lex token into a name parse node.
- */
-
-
-function parseName(lexer) {
-  var token = expectToken(lexer, _lexer.TokenKind.NAME);
-  return {
-    kind: _kinds.Kind.NAME,
-    value: token.value,
-    loc: loc(lexer, token)
-  };
-} // Implements the parsing rules in the Document section.
-
-/**
- * Document : Definition+
- */
-
-
-function parseDocument(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds.Kind.DOCUMENT,
-    definitions: many(lexer, _lexer.TokenKind.SOF, parseDefinition, _lexer.TokenKind.EOF),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * Definition :
- *   - ExecutableDefinition
- *   - TypeSystemDefinition
- *   - TypeSystemExtension
- */
-
-
-function parseDefinition(lexer) {
-  if (peek(lexer, _lexer.TokenKind.NAME)) {
-    switch (lexer.token.value) {
-      case 'query':
-      case 'mutation':
-      case 'subscription':
-      case 'fragment':
-        return parseExecutableDefinition(lexer);
-
-      case 'schema':
-      case 'scalar':
-      case 'type':
-      case 'interface':
-      case 'union':
-      case 'enum':
-      case 'input':
-      case 'directive':
-        return parseTypeSystemDefinition(lexer);
-
-      case 'extend':
-        return parseTypeSystemExtension(lexer);
-    }
-  } else if (peek(lexer, _lexer.TokenKind.BRACE_L)) {
-    return parseExecutableDefinition(lexer);
-  } else if (peekDescription(lexer)) {
-    return parseTypeSystemDefinition(lexer);
-  }
-
-  throw unexpected(lexer);
-}
-/**
- * ExecutableDefinition :
- *   - OperationDefinition
- *   - FragmentDefinition
- */
-
-
-function parseExecutableDefinition(lexer) {
-  if (peek(lexer, _lexer.TokenKind.NAME)) {
-    switch (lexer.token.value) {
-      case 'query':
-      case 'mutation':
-      case 'subscription':
-        return parseOperationDefinition(lexer);
-
-      case 'fragment':
-        return parseFragmentDefinition(lexer);
-    }
-  } else if (peek(lexer, _lexer.TokenKind.BRACE_L)) {
-    return parseOperationDefinition(lexer);
-  }
-
-  throw unexpected(lexer);
-} // Implements the parsing rules in the Operations section.
-
-/**
- * OperationDefinition :
- *  - SelectionSet
- *  - OperationType Name? VariableDefinitions? Directives? SelectionSet
- */
-
-
-function parseOperationDefinition(lexer) {
-  var start = lexer.token;
-
-  if (peek(lexer, _lexer.TokenKind.BRACE_L)) {
-    return {
-      kind: _kinds.Kind.OPERATION_DEFINITION,
-      operation: 'query',
-      name: undefined,
-      variableDefinitions: [],
-      directives: [],
-      selectionSet: parseSelectionSet(lexer),
-      loc: loc(lexer, start)
-    };
-  }
-
-  var operation = parseOperationType(lexer);
-  var name;
-
-  if (peek(lexer, _lexer.TokenKind.NAME)) {
-    name = parseName(lexer);
-  }
-
-  return {
-    kind: _kinds.Kind.OPERATION_DEFINITION,
-    operation: operation,
-    name: name,
-    variableDefinitions: parseVariableDefinitions(lexer),
-    directives: parseDirectives(lexer, false),
-    selectionSet: parseSelectionSet(lexer),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * OperationType : one of query mutation subscription
- */
-
-
-function parseOperationType(lexer) {
-  var operationToken = expectToken(lexer, _lexer.TokenKind.NAME);
-
-  switch (operationToken.value) {
-    case 'query':
-      return 'query';
-
-    case 'mutation':
-      return 'mutation';
-
-    case 'subscription':
-      return 'subscription';
-  }
-
-  throw unexpected(lexer, operationToken);
-}
-/**
- * VariableDefinitions : ( VariableDefinition+ )
- */
-
-
-function parseVariableDefinitions(lexer) {
-  return peek(lexer, _lexer.TokenKind.PAREN_L) ? many(lexer, _lexer.TokenKind.PAREN_L, parseVariableDefinition, _lexer.TokenKind.PAREN_R) : [];
-}
-/**
- * VariableDefinition : Variable : Type DefaultValue? Directives[Const]?
- */
-
-
-function parseVariableDefinition(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds.Kind.VARIABLE_DEFINITION,
-    variable: parseVariable(lexer),
-    type: (expectToken(lexer, _lexer.TokenKind.COLON), parseTypeReference(lexer)),
-    defaultValue: expectOptionalToken(lexer, _lexer.TokenKind.EQUALS) ? parseValueLiteral(lexer, true) : undefined,
-    directives: parseDirectives(lexer, true),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * Variable : $ Name
- */
-
-
-function parseVariable(lexer) {
-  var start = lexer.token;
-  expectToken(lexer, _lexer.TokenKind.DOLLAR);
-  return {
-    kind: _kinds.Kind.VARIABLE,
-    name: parseName(lexer),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * SelectionSet : { Selection+ }
- */
-
-
-function parseSelectionSet(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds.Kind.SELECTION_SET,
-    selections: many(lexer, _lexer.TokenKind.BRACE_L, parseSelection, _lexer.TokenKind.BRACE_R),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * Selection :
- *   - Field
- *   - FragmentSpread
- *   - InlineFragment
- */
-
-
-function parseSelection(lexer) {
-  return peek(lexer, _lexer.TokenKind.SPREAD) ? parseFragment(lexer) : parseField(lexer);
-}
-/**
- * Field : Alias? Name Arguments? Directives? SelectionSet?
- *
- * Alias : Name :
- */
-
-
-function parseField(lexer) {
-  var start = lexer.token;
-  var nameOrAlias = parseName(lexer);
-  var alias;
-  var name;
-
-  if (expectOptionalToken(lexer, _lexer.TokenKind.COLON)) {
-    alias = nameOrAlias;
-    name = parseName(lexer);
-  } else {
-    name = nameOrAlias;
-  }
-
-  return {
-    kind: _kinds.Kind.FIELD,
-    alias: alias,
-    name: name,
-    arguments: parseArguments(lexer, false),
-    directives: parseDirectives(lexer, false),
-    selectionSet: peek(lexer, _lexer.TokenKind.BRACE_L) ? parseSelectionSet(lexer) : undefined,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * Arguments[Const] : ( Argument[?Const]+ )
- */
-
-
-function parseArguments(lexer, isConst) {
-  var item = isConst ? parseConstArgument : parseArgument;
-  return peek(lexer, _lexer.TokenKind.PAREN_L) ? many(lexer, _lexer.TokenKind.PAREN_L, item, _lexer.TokenKind.PAREN_R) : [];
-}
-/**
- * Argument[Const] : Name : Value[?Const]
- */
-
-
-function parseArgument(lexer) {
-  var start = lexer.token;
-  var name = parseName(lexer);
-  expectToken(lexer, _lexer.TokenKind.COLON);
-  return {
-    kind: _kinds.Kind.ARGUMENT,
-    name: name,
-    value: parseValueLiteral(lexer, false),
-    loc: loc(lexer, start)
-  };
-}
-
-function parseConstArgument(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds.Kind.ARGUMENT,
-    name: parseName(lexer),
-    value: (expectToken(lexer, _lexer.TokenKind.COLON), parseConstValue(lexer)),
-    loc: loc(lexer, start)
-  };
-} // Implements the parsing rules in the Fragments section.
-
-/**
- * Corresponds to both FragmentSpread and InlineFragment in the spec.
- *
- * FragmentSpread : ... FragmentName Directives?
- *
- * InlineFragment : ... TypeCondition? Directives? SelectionSet
- */
-
-
-function parseFragment(lexer) {
-  var start = lexer.token;
-  expectToken(lexer, _lexer.TokenKind.SPREAD);
-  var hasTypeCondition = expectOptionalKeyword(lexer, 'on');
-
-  if (!hasTypeCondition && peek(lexer, _lexer.TokenKind.NAME)) {
-    return {
-      kind: _kinds.Kind.FRAGMENT_SPREAD,
-      name: parseFragmentName(lexer),
-      directives: parseDirectives(lexer, false),
-      loc: loc(lexer, start)
-    };
-  }
-
-  return {
-    kind: _kinds.Kind.INLINE_FRAGMENT,
-    typeCondition: hasTypeCondition ? parseNamedType(lexer) : undefined,
-    directives: parseDirectives(lexer, false),
-    selectionSet: parseSelectionSet(lexer),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * FragmentDefinition :
- *   - fragment FragmentName on TypeCondition Directives? SelectionSet
- *
- * TypeCondition : NamedType
- */
-
-
-function parseFragmentDefinition(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'fragment'); // Experimental support for defining variables within fragments changes
-  // the grammar of FragmentDefinition:
-  //   - fragment FragmentName VariableDefinitions? on TypeCondition Directives? SelectionSet
-
-  if (lexer.options.experimentalFragmentVariables) {
-    return {
-      kind: _kinds.Kind.FRAGMENT_DEFINITION,
-      name: parseFragmentName(lexer),
-      variableDefinitions: parseVariableDefinitions(lexer),
-      typeCondition: (expectKeyword(lexer, 'on'), parseNamedType(lexer)),
-      directives: parseDirectives(lexer, false),
-      selectionSet: parseSelectionSet(lexer),
-      loc: loc(lexer, start)
-    };
-  }
-
-  return {
-    kind: _kinds.Kind.FRAGMENT_DEFINITION,
-    name: parseFragmentName(lexer),
-    typeCondition: (expectKeyword(lexer, 'on'), parseNamedType(lexer)),
-    directives: parseDirectives(lexer, false),
-    selectionSet: parseSelectionSet(lexer),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * FragmentName : Name but not `on`
- */
-
-
-function parseFragmentName(lexer) {
-  if (lexer.token.value === 'on') {
-    throw unexpected(lexer);
-  }
-
-  return parseName(lexer);
-} // Implements the parsing rules in the Values section.
-
-/**
- * Value[Const] :
- *   - [~Const] Variable
- *   - IntValue
- *   - FloatValue
- *   - StringValue
- *   - BooleanValue
- *   - NullValue
- *   - EnumValue
- *   - ListValue[?Const]
- *   - ObjectValue[?Const]
- *
- * BooleanValue : one of `true` `false`
- *
- * NullValue : `null`
- *
- * EnumValue : Name but not `true`, `false` or `null`
- */
-
-
-function parseValueLiteral(lexer, isConst) {
-  var token = lexer.token;
-
-  switch (token.kind) {
-    case _lexer.TokenKind.BRACKET_L:
-      return parseList(lexer, isConst);
-
-    case _lexer.TokenKind.BRACE_L:
-      return parseObject(lexer, isConst);
-
-    case _lexer.TokenKind.INT:
-      lexer.advance();
-      return {
-        kind: _kinds.Kind.INT,
-        value: token.value,
-        loc: loc(lexer, token)
-      };
-
-    case _lexer.TokenKind.FLOAT:
-      lexer.advance();
-      return {
-        kind: _kinds.Kind.FLOAT,
-        value: token.value,
-        loc: loc(lexer, token)
-      };
-
-    case _lexer.TokenKind.STRING:
-    case _lexer.TokenKind.BLOCK_STRING:
-      return parseStringLiteral(lexer);
-
-    case _lexer.TokenKind.NAME:
-      if (token.value === 'true' || token.value === 'false') {
-        lexer.advance();
-        return {
-          kind: _kinds.Kind.BOOLEAN,
-          value: token.value === 'true',
-          loc: loc(lexer, token)
-        };
-      } else if (token.value === 'null') {
-        lexer.advance();
-        return {
-          kind: _kinds.Kind.NULL,
-          loc: loc(lexer, token)
-        };
-      }
-
-      lexer.advance();
-      return {
-        kind: _kinds.Kind.ENUM,
-        value: token.value,
-        loc: loc(lexer, token)
-      };
-
-    case _lexer.TokenKind.DOLLAR:
-      if (!isConst) {
-        return parseVariable(lexer);
-      }
-
-      break;
-  }
-
-  throw unexpected(lexer);
-}
-
-function parseStringLiteral(lexer) {
-  var token = lexer.token;
-  lexer.advance();
-  return {
-    kind: _kinds.Kind.STRING,
-    value: token.value,
-    block: token.kind === _lexer.TokenKind.BLOCK_STRING,
-    loc: loc(lexer, token)
-  };
-}
-
-function parseConstValue(lexer) {
-  return parseValueLiteral(lexer, true);
-}
-
-function parseValueValue(lexer) {
-  return parseValueLiteral(lexer, false);
-}
-/**
- * ListValue[Const] :
- *   - [ ]
- *   - [ Value[?Const]+ ]
- */
-
-
-function parseList(lexer, isConst) {
-  var start = lexer.token;
-  var item = isConst ? parseConstValue : parseValueValue;
-  return {
-    kind: _kinds.Kind.LIST,
-    values: any(lexer, _lexer.TokenKind.BRACKET_L, item, _lexer.TokenKind.BRACKET_R),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ObjectValue[Const] :
- *   - { }
- *   - { ObjectField[?Const]+ }
- */
-
-
-function parseObject(lexer, isConst) {
-  var start = lexer.token;
-
-  var item = function item() {
-    return parseObjectField(lexer, isConst);
-  };
-
-  return {
-    kind: _kinds.Kind.OBJECT,
-    fields: any(lexer, _lexer.TokenKind.BRACE_L, item, _lexer.TokenKind.BRACE_R),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ObjectField[Const] : Name : Value[?Const]
- */
-
-
-function parseObjectField(lexer, isConst) {
-  var start = lexer.token;
-  var name = parseName(lexer);
-  expectToken(lexer, _lexer.TokenKind.COLON);
-  return {
-    kind: _kinds.Kind.OBJECT_FIELD,
-    name: name,
-    value: parseValueLiteral(lexer, isConst),
-    loc: loc(lexer, start)
-  };
-} // Implements the parsing rules in the Directives section.
-
-/**
- * Directives[Const] : Directive[?Const]+
- */
-
-
-function parseDirectives(lexer, isConst) {
-  var directives = [];
-
-  while (peek(lexer, _lexer.TokenKind.AT)) {
-    directives.push(parseDirective(lexer, isConst));
-  }
-
-  return directives;
-}
-/**
- * Directive[Const] : @ Name Arguments[?Const]?
- */
-
-
-function parseDirective(lexer, isConst) {
-  var start = lexer.token;
-  expectToken(lexer, _lexer.TokenKind.AT);
-  return {
-    kind: _kinds.Kind.DIRECTIVE,
-    name: parseName(lexer),
-    arguments: parseArguments(lexer, isConst),
-    loc: loc(lexer, start)
-  };
-} // Implements the parsing rules in the Types section.
-
-/**
- * Type :
- *   - NamedType
- *   - ListType
- *   - NonNullType
- */
-
-
-function parseTypeReference(lexer) {
-  var start = lexer.token;
-  var type;
-
-  if (expectOptionalToken(lexer, _lexer.TokenKind.BRACKET_L)) {
-    type = parseTypeReference(lexer);
-    expectToken(lexer, _lexer.TokenKind.BRACKET_R);
-    type = {
-      kind: _kinds.Kind.LIST_TYPE,
-      type: type,
-      loc: loc(lexer, start)
-    };
-  } else {
-    type = parseNamedType(lexer);
-  }
-
-  if (expectOptionalToken(lexer, _lexer.TokenKind.BANG)) {
-    return {
-      kind: _kinds.Kind.NON_NULL_TYPE,
-      type: type,
-      loc: loc(lexer, start)
-    };
-  }
-
-  return type;
-}
-/**
- * NamedType : Name
- */
-
-
-function parseNamedType(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds.Kind.NAMED_TYPE,
-    name: parseName(lexer),
-    loc: loc(lexer, start)
-  };
-} // Implements the parsing rules in the Type Definition section.
-
-/**
- * TypeSystemDefinition :
- *   - SchemaDefinition
- *   - TypeDefinition
- *   - DirectiveDefinition
- *
- * TypeDefinition :
- *   - ScalarTypeDefinition
- *   - ObjectTypeDefinition
- *   - InterfaceTypeDefinition
- *   - UnionTypeDefinition
- *   - EnumTypeDefinition
- *   - InputObjectTypeDefinition
- */
-
-
-function parseTypeSystemDefinition(lexer) {
-  // Many definitions begin with a description and require a lookahead.
-  var keywordToken = peekDescription(lexer) ? lexer.lookahead() : lexer.token;
-
-  if (keywordToken.kind === _lexer.TokenKind.NAME) {
-    switch (keywordToken.value) {
-      case 'schema':
-        return parseSchemaDefinition(lexer);
-
-      case 'scalar':
-        return parseScalarTypeDefinition(lexer);
-
-      case 'type':
-        return parseObjectTypeDefinition(lexer);
-
-      case 'interface':
-        return parseInterfaceTypeDefinition(lexer);
-
-      case 'union':
-        return parseUnionTypeDefinition(lexer);
-
-      case 'enum':
-        return parseEnumTypeDefinition(lexer);
-
-      case 'input':
-        return parseInputObjectTypeDefinition(lexer);
-
-      case 'directive':
-        return parseDirectiveDefinition(lexer);
-    }
-  }
-
-  throw unexpected(lexer, keywordToken);
-}
-
-function peekDescription(lexer) {
-  return peek(lexer, _lexer.TokenKind.STRING) || peek(lexer, _lexer.TokenKind.BLOCK_STRING);
-}
-/**
- * Description : StringValue
- */
-
-
-function parseDescription(lexer) {
-  if (peekDescription(lexer)) {
-    return parseStringLiteral(lexer);
-  }
-}
-/**
- * SchemaDefinition : schema Directives[Const]? { OperationTypeDefinition+ }
- */
-
-
-function parseSchemaDefinition(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'schema');
-  var directives = parseDirectives(lexer, true);
-  var operationTypes = many(lexer, _lexer.TokenKind.BRACE_L, parseOperationTypeDefinition, _lexer.TokenKind.BRACE_R);
-  return {
-    kind: _kinds.Kind.SCHEMA_DEFINITION,
-    directives: directives,
-    operationTypes: operationTypes,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * OperationTypeDefinition : OperationType : NamedType
- */
-
-
-function parseOperationTypeDefinition(lexer) {
-  var start = lexer.token;
-  var operation = parseOperationType(lexer);
-  expectToken(lexer, _lexer.TokenKind.COLON);
-  var type = parseNamedType(lexer);
-  return {
-    kind: _kinds.Kind.OPERATION_TYPE_DEFINITION,
-    operation: operation,
-    type: type,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ScalarTypeDefinition : Description? scalar Name Directives[Const]?
- */
-
-
-function parseScalarTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'scalar');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  return {
-    kind: _kinds.Kind.SCALAR_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ObjectTypeDefinition :
- *   Description?
- *   type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition?
- */
-
-
-function parseObjectTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'type');
-  var name = parseName(lexer);
-  var interfaces = parseImplementsInterfaces(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseFieldsDefinition(lexer);
-  return {
-    kind: _kinds.Kind.OBJECT_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    interfaces: interfaces,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ImplementsInterfaces :
- *   - implements `&`? NamedType
- *   - ImplementsInterfaces & NamedType
- */
-
-
-function parseImplementsInterfaces(lexer) {
-  var types = [];
-
-  if (expectOptionalKeyword(lexer, 'implements')) {
-    // Optional leading ampersand
-    expectOptionalToken(lexer, _lexer.TokenKind.AMP);
-
-    do {
-      types.push(parseNamedType(lexer));
-    } while (expectOptionalToken(lexer, _lexer.TokenKind.AMP) || // Legacy support for the SDL?
-    lexer.options.allowLegacySDLImplementsInterfaces && peek(lexer, _lexer.TokenKind.NAME));
-  }
-
-  return types;
-}
-/**
- * FieldsDefinition : { FieldDefinition+ }
- */
-
-
-function parseFieldsDefinition(lexer) {
-  // Legacy support for the SDL?
-  if (lexer.options.allowLegacySDLEmptyFields && peek(lexer, _lexer.TokenKind.BRACE_L) && lexer.lookahead().kind === _lexer.TokenKind.BRACE_R) {
-    lexer.advance();
-    lexer.advance();
-    return [];
-  }
-
-  return peek(lexer, _lexer.TokenKind.BRACE_L) ? many(lexer, _lexer.TokenKind.BRACE_L, parseFieldDefinition, _lexer.TokenKind.BRACE_R) : [];
-}
-/**
- * FieldDefinition :
- *   - Description? Name ArgumentsDefinition? : Type Directives[Const]?
- */
-
-
-function parseFieldDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  var name = parseName(lexer);
-  var args = parseArgumentDefs(lexer);
-  expectToken(lexer, _lexer.TokenKind.COLON);
-  var type = parseTypeReference(lexer);
-  var directives = parseDirectives(lexer, true);
-  return {
-    kind: _kinds.Kind.FIELD_DEFINITION,
-    description: description,
-    name: name,
-    arguments: args,
-    type: type,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ArgumentsDefinition : ( InputValueDefinition+ )
- */
-
-
-function parseArgumentDefs(lexer) {
-  if (!peek(lexer, _lexer.TokenKind.PAREN_L)) {
-    return [];
-  }
-
-  return many(lexer, _lexer.TokenKind.PAREN_L, parseInputValueDef, _lexer.TokenKind.PAREN_R);
-}
-/**
- * InputValueDefinition :
- *   - Description? Name : Type DefaultValue? Directives[Const]?
- */
-
-
-function parseInputValueDef(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  var name = parseName(lexer);
-  expectToken(lexer, _lexer.TokenKind.COLON);
-  var type = parseTypeReference(lexer);
-  var defaultValue;
-
-  if (expectOptionalToken(lexer, _lexer.TokenKind.EQUALS)) {
-    defaultValue = parseConstValue(lexer);
-  }
-
-  var directives = parseDirectives(lexer, true);
-  return {
-    kind: _kinds.Kind.INPUT_VALUE_DEFINITION,
-    description: description,
-    name: name,
-    type: type,
-    defaultValue: defaultValue,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InterfaceTypeDefinition :
- *   - Description? interface Name Directives[Const]? FieldsDefinition?
- */
-
-
-function parseInterfaceTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'interface');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseFieldsDefinition(lexer);
-  return {
-    kind: _kinds.Kind.INTERFACE_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * UnionTypeDefinition :
- *   - Description? union Name Directives[Const]? UnionMemberTypes?
- */
-
-
-function parseUnionTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'union');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var types = parseUnionMemberTypes(lexer);
-  return {
-    kind: _kinds.Kind.UNION_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    types: types,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * UnionMemberTypes :
- *   - = `|`? NamedType
- *   - UnionMemberTypes | NamedType
- */
-
-
-function parseUnionMemberTypes(lexer) {
-  var types = [];
-
-  if (expectOptionalToken(lexer, _lexer.TokenKind.EQUALS)) {
-    // Optional leading pipe
-    expectOptionalToken(lexer, _lexer.TokenKind.PIPE);
-
-    do {
-      types.push(parseNamedType(lexer));
-    } while (expectOptionalToken(lexer, _lexer.TokenKind.PIPE));
-  }
-
-  return types;
-}
-/**
- * EnumTypeDefinition :
- *   - Description? enum Name Directives[Const]? EnumValuesDefinition?
- */
-
-
-function parseEnumTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'enum');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var values = parseEnumValuesDefinition(lexer);
-  return {
-    kind: _kinds.Kind.ENUM_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    values: values,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * EnumValuesDefinition : { EnumValueDefinition+ }
- */
-
-
-function parseEnumValuesDefinition(lexer) {
-  return peek(lexer, _lexer.TokenKind.BRACE_L) ? many(lexer, _lexer.TokenKind.BRACE_L, parseEnumValueDefinition, _lexer.TokenKind.BRACE_R) : [];
-}
-/**
- * EnumValueDefinition : Description? EnumValue Directives[Const]?
- *
- * EnumValue : Name
- */
-
-
-function parseEnumValueDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  return {
-    kind: _kinds.Kind.ENUM_VALUE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InputObjectTypeDefinition :
- *   - Description? input Name Directives[Const]? InputFieldsDefinition?
- */
-
-
-function parseInputObjectTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'input');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseInputFieldsDefinition(lexer);
-  return {
-    kind: _kinds.Kind.INPUT_OBJECT_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InputFieldsDefinition : { InputValueDefinition+ }
- */
-
-
-function parseInputFieldsDefinition(lexer) {
-  return peek(lexer, _lexer.TokenKind.BRACE_L) ? many(lexer, _lexer.TokenKind.BRACE_L, parseInputValueDef, _lexer.TokenKind.BRACE_R) : [];
-}
-/**
- * TypeSystemExtension :
- *   - SchemaExtension
- *   - TypeExtension
- *
- * TypeExtension :
- *   - ScalarTypeExtension
- *   - ObjectTypeExtension
- *   - InterfaceTypeExtension
- *   - UnionTypeExtension
- *   - EnumTypeExtension
- *   - InputObjectTypeDefinition
- */
-
-
-function parseTypeSystemExtension(lexer) {
-  var keywordToken = lexer.lookahead();
-
-  if (keywordToken.kind === _lexer.TokenKind.NAME) {
-    switch (keywordToken.value) {
-      case 'schema':
-        return parseSchemaExtension(lexer);
-
-      case 'scalar':
-        return parseScalarTypeExtension(lexer);
-
-      case 'type':
-        return parseObjectTypeExtension(lexer);
-
-      case 'interface':
-        return parseInterfaceTypeExtension(lexer);
-
-      case 'union':
-        return parseUnionTypeExtension(lexer);
-
-      case 'enum':
-        return parseEnumTypeExtension(lexer);
-
-      case 'input':
-        return parseInputObjectTypeExtension(lexer);
-    }
-  }
-
-  throw unexpected(lexer, keywordToken);
-}
-/**
- * SchemaExtension :
- *  - extend schema Directives[Const]? { OperationTypeDefinition+ }
- *  - extend schema Directives[Const]
- */
-
-
-function parseSchemaExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'schema');
-  var directives = parseDirectives(lexer, true);
-  var operationTypes = peek(lexer, _lexer.TokenKind.BRACE_L) ? many(lexer, _lexer.TokenKind.BRACE_L, parseOperationTypeDefinition, _lexer.TokenKind.BRACE_R) : [];
-
-  if (directives.length === 0 && operationTypes.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds.Kind.SCHEMA_EXTENSION,
-    directives: directives,
-    operationTypes: operationTypes,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ScalarTypeExtension :
- *   - extend scalar Name Directives[Const]
- */
-
-
-function parseScalarTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'scalar');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-
-  if (directives.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds.Kind.SCALAR_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ObjectTypeExtension :
- *  - extend type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition
- *  - extend type Name ImplementsInterfaces? Directives[Const]
- *  - extend type Name ImplementsInterfaces
- */
-
-
-function parseObjectTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'type');
-  var name = parseName(lexer);
-  var interfaces = parseImplementsInterfaces(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseFieldsDefinition(lexer);
-
-  if (interfaces.length === 0 && directives.length === 0 && fields.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds.Kind.OBJECT_TYPE_EXTENSION,
-    name: name,
-    interfaces: interfaces,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InterfaceTypeExtension :
- *   - extend interface Name Directives[Const]? FieldsDefinition
- *   - extend interface Name Directives[Const]
- */
-
-
-function parseInterfaceTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'interface');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseFieldsDefinition(lexer);
-
-  if (directives.length === 0 && fields.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds.Kind.INTERFACE_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * UnionTypeExtension :
- *   - extend union Name Directives[Const]? UnionMemberTypes
- *   - extend union Name Directives[Const]
- */
-
-
-function parseUnionTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'union');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var types = parseUnionMemberTypes(lexer);
-
-  if (directives.length === 0 && types.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds.Kind.UNION_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    types: types,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * EnumTypeExtension :
- *   - extend enum Name Directives[Const]? EnumValuesDefinition
- *   - extend enum Name Directives[Const]
- */
-
-
-function parseEnumTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'enum');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var values = parseEnumValuesDefinition(lexer);
-
-  if (directives.length === 0 && values.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds.Kind.ENUM_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    values: values,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InputObjectTypeExtension :
- *   - extend input Name Directives[Const]? InputFieldsDefinition
- *   - extend input Name Directives[Const]
- */
-
-
-function parseInputObjectTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'input');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseInputFieldsDefinition(lexer);
-
-  if (directives.length === 0 && fields.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds.Kind.INPUT_OBJECT_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * DirectiveDefinition :
- *   - Description? directive @ Name ArgumentsDefinition? on DirectiveLocations
- */
-
-
-function parseDirectiveDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'directive');
-  expectToken(lexer, _lexer.TokenKind.AT);
-  var name = parseName(lexer);
-  var args = parseArgumentDefs(lexer);
-  expectKeyword(lexer, 'on');
-  var locations = parseDirectiveLocations(lexer);
-  return {
-    kind: _kinds.Kind.DIRECTIVE_DEFINITION,
-    description: description,
-    name: name,
-    arguments: args,
-    locations: locations,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * DirectiveLocations :
- *   - `|`? DirectiveLocation
- *   - DirectiveLocations | DirectiveLocation
- */
-
-
-function parseDirectiveLocations(lexer) {
-  // Optional leading pipe
-  expectOptionalToken(lexer, _lexer.TokenKind.PIPE);
-  var locations = [];
-
-  do {
-    locations.push(parseDirectiveLocation(lexer));
-  } while (expectOptionalToken(lexer, _lexer.TokenKind.PIPE));
-
-  return locations;
-}
-/*
- * DirectiveLocation :
- *   - ExecutableDirectiveLocation
- *   - TypeSystemDirectiveLocation
- *
- * ExecutableDirectiveLocation : one of
- *   `QUERY`
- *   `MUTATION`
- *   `SUBSCRIPTION`
- *   `FIELD`
- *   `FRAGMENT_DEFINITION`
- *   `FRAGMENT_SPREAD`
- *   `INLINE_FRAGMENT`
- *
- * TypeSystemDirectiveLocation : one of
- *   `SCHEMA`
- *   `SCALAR`
- *   `OBJECT`
- *   `FIELD_DEFINITION`
- *   `ARGUMENT_DEFINITION`
- *   `INTERFACE`
- *   `UNION`
- *   `ENUM`
- *   `ENUM_VALUE`
- *   `INPUT_OBJECT`
- *   `INPUT_FIELD_DEFINITION`
- */
-
-
-function parseDirectiveLocation(lexer) {
-  var start = lexer.token;
-  var name = parseName(lexer);
-
-  if (_directiveLocation.DirectiveLocation.hasOwnProperty(name.value)) {
-    return name;
-  }
-
-  throw unexpected(lexer, start);
-} // Core parsing utility functions
-
-/**
- * Returns a location object, used to identify the place in
- * the source that created a given parsed object.
- */
-
-
-function loc(lexer, startToken) {
-  if (!lexer.options.noLocation) {
-    return new Loc(startToken, lexer.lastToken, lexer.source);
-  }
-}
-
-function Loc(startToken, endToken, source) {
-  this.start = startToken.start;
-  this.end = endToken.end;
-  this.startToken = startToken;
-  this.endToken = endToken;
-  this.source = source;
-} // Print a simplified form when appearing in JSON/util.inspect.
-
-
-(0, _defineToJSON.default)(Loc, function () {
-  return {
-    start: this.start,
-    end: this.end
-  };
-});
-/**
- * Determines if the next token is of a given kind
- */
-
-function peek(lexer, kind) {
-  return lexer.token.kind === kind;
-}
-/**
- * If the next token is of the given kind, return that token after advancing
- * the lexer. Otherwise, do not change the parser state and throw an error.
- */
-
-
-function expectToken(lexer, kind) {
-  var token = lexer.token;
-
-  if (token.kind === kind) {
-    lexer.advance();
-    return token;
-  }
-
-  throw (0, _error.syntaxError)(lexer.source, token.start, "Expected ".concat(kind, ", found ").concat((0, _lexer.getTokenDesc)(token)));
-}
-/**
- * If the next token is of the given kind, return that token after advancing
- * the lexer. Otherwise, do not change the parser state and return undefined.
- */
-
-
-function expectOptionalToken(lexer, kind) {
-  var token = lexer.token;
-
-  if (token.kind === kind) {
-    lexer.advance();
-    return token;
-  }
-
-  return undefined;
-}
-/**
- * If the next token is a given keyword, return that token after advancing
- * the lexer. Otherwise, do not change the parser state and throw an error.
- */
-
-
-function expectKeyword(lexer, value) {
-  var token = lexer.token;
-
-  if (token.kind === _lexer.TokenKind.NAME && token.value === value) {
-    lexer.advance();
-    return token;
-  }
-
-  throw (0, _error.syntaxError)(lexer.source, token.start, "Expected \"".concat(value, "\", found ").concat((0, _lexer.getTokenDesc)(token)));
-}
-/**
- * If the next token is a given keyword, return that token after advancing
- * the lexer. Otherwise, do not change the parser state and return undefined.
- */
-
-
-function expectOptionalKeyword(lexer, value) {
-  var token = lexer.token;
-
-  if (token.kind === _lexer.TokenKind.NAME && token.value === value) {
-    lexer.advance();
-    return token;
-  }
-
-  return undefined;
-}
-/**
- * Helper function for creating an error when an unexpected lexed token
- * is encountered.
- */
-
-
-function unexpected(lexer, atToken) {
-  var token = atToken || lexer.token;
-  return (0, _error.syntaxError)(lexer.source, token.start, "Unexpected ".concat((0, _lexer.getTokenDesc)(token)));
-}
-/**
- * Returns a possibly empty list of parse nodes, determined by
- * the parseFn. This list begins with a lex token of openKind
- * and ends with a lex token of closeKind. Advances the parser
- * to the next lex token after the closing token.
- */
-
-
-function any(lexer, openKind, parseFn, closeKind) {
-  expectToken(lexer, openKind);
-  var nodes = [];
-
-  while (!expectOptionalToken(lexer, closeKind)) {
-    nodes.push(parseFn(lexer));
-  }
-
-  return nodes;
-}
-/**
- * Returns a non-empty list of parse nodes, determined by
- * the parseFn. This list begins with a lex token of openKind
- * and ends with a lex token of closeKind. Advances the parser
- * to the next lex token after the closing token.
- */
-
-
-function many(lexer, openKind, parseFn, closeKind) {
-  expectToken(lexer, openKind);
-  var nodes = [parseFn(lexer)];
-
-  while (!expectOptionalToken(lexer, closeKind)) {
-    nodes.push(parseFn(lexer));
-  }
-
-  return nodes;
-}
-},{"../jsutils/inspect":"../../node_modules/graphql/jsutils/inspect.js","../jsutils/defineToJSON":"../../node_modules/graphql/jsutils/defineToJSON.js","./source":"../../node_modules/graphql/language/source.js","../error":"../../node_modules/graphql/error/index.js","./lexer":"../../node_modules/graphql/language/lexer.js","./kinds":"../../node_modules/graphql/language/kinds.js","./directiveLocation":"../../node_modules/graphql/language/directiveLocation.js"}],"../../node_modules/graphql-tag/src/index.js":[function(require,module,exports) {
-var parser = require('graphql/language/parser');
-
-var parse = parser.parse;
-
-// Strip insignificant whitespace
-// Note that this could do a lot more, such as reorder fields etc.
-function normalize(string) {
-  return string.replace(/[\s,]+/g, ' ').trim();
-}
-
-// A map docString -> graphql document
-var docCache = {};
-
-// A map fragmentName -> [normalized source]
-var fragmentSourceMap = {};
-
-function cacheKeyFromLoc(loc) {
-  return normalize(loc.source.body.substring(loc.start, loc.end));
-}
-
-// For testing.
-function resetCaches() {
-  docCache = {};
-  fragmentSourceMap = {};
-}
-
-// Take a unstripped parsed document (query/mutation or even fragment), and
-// check all fragment definitions, checking for name->source uniqueness.
-// We also want to make sure only unique fragments exist in the document.
-var printFragmentWarnings = true;
-function processFragments(ast) {
-  var astFragmentMap = {};
-  var definitions = [];
-
-  for (var i = 0; i < ast.definitions.length; i++) {
-    var fragmentDefinition = ast.definitions[i];
-
-    if (fragmentDefinition.kind === 'FragmentDefinition') {
-      var fragmentName = fragmentDefinition.name.value;
-      var sourceKey = cacheKeyFromLoc(fragmentDefinition.loc);
-
-      // We know something about this fragment
-      if (fragmentSourceMap.hasOwnProperty(fragmentName) && !fragmentSourceMap[fragmentName][sourceKey]) {
-
-        // this is a problem because the app developer is trying to register another fragment with
-        // the same name as one previously registered. So, we tell them about it.
-        if (printFragmentWarnings) {
-          console.warn("Warning: fragment with name " + fragmentName + " already exists.\n"
-            + "graphql-tag enforces all fragment names across your application to be unique; read more about\n"
-            + "this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names");
-        }
-
-        fragmentSourceMap[fragmentName][sourceKey] = true;
-
-      } else if (!fragmentSourceMap.hasOwnProperty(fragmentName)) {
-        fragmentSourceMap[fragmentName] = {};
-        fragmentSourceMap[fragmentName][sourceKey] = true;
-      }
-
-      if (!astFragmentMap[sourceKey]) {
-        astFragmentMap[sourceKey] = true;
-        definitions.push(fragmentDefinition);
-      }
-    } else {
-      definitions.push(fragmentDefinition);
-    }
-  }
-
-  ast.definitions = definitions;
-  return ast;
-}
-
-function disableFragmentWarnings() {
-  printFragmentWarnings = false;
-}
-
-function stripLoc(doc, removeLocAtThisLevel) {
-  var docType = Object.prototype.toString.call(doc);
-
-  if (docType === '[object Array]') {
-    return doc.map(function (d) {
-      return stripLoc(d, removeLocAtThisLevel);
-    });
-  }
-
-  if (docType !== '[object Object]') {
-    throw new Error('Unexpected input.');
-  }
-
-  // We don't want to remove the root loc field so we can use it
-  // for fragment substitution (see below)
-  if (removeLocAtThisLevel && doc.loc) {
-    delete doc.loc;
-  }
-
-  // https://github.com/apollographql/graphql-tag/issues/40
-  if (doc.loc) {
-    delete doc.loc.startToken;
-    delete doc.loc.endToken;
-  }
-
-  var keys = Object.keys(doc);
-  var key;
-  var value;
-  var valueType;
-
-  for (key in keys) {
-    if (keys.hasOwnProperty(key)) {
-      value = doc[keys[key]];
-      valueType = Object.prototype.toString.call(value);
-
-      if (valueType === '[object Object]' || valueType === '[object Array]') {
-        doc[keys[key]] = stripLoc(value, true);
-      }
-    }
-  }
-
-  return doc;
-}
-
-var experimentalFragmentVariables = false;
-function parseDocument(doc) {
-  var cacheKey = normalize(doc);
-
-  if (docCache[cacheKey]) {
-    return docCache[cacheKey];
-  }
-
-  var parsed = parse(doc, { experimentalFragmentVariables: experimentalFragmentVariables });
-  if (!parsed || parsed.kind !== 'Document') {
-    throw new Error('Not a valid GraphQL document.');
-  }
-
-  // check that all "new" fragments inside the documents are consistent with
-  // existing fragments of the same name
-  parsed = processFragments(parsed);
-  parsed = stripLoc(parsed, false);
-  docCache[cacheKey] = parsed;
-
-  return parsed;
-}
-
-function enableExperimentalFragmentVariables() {
-  experimentalFragmentVariables = true;
-}
-
-function disableExperimentalFragmentVariables() {
-  experimentalFragmentVariables = false;
-}
-
-// XXX This should eventually disallow arbitrary string interpolation, like Relay does
-function gql(/* arguments */) {
-  var args = Array.prototype.slice.call(arguments);
-
-  var literals = args[0];
-
-  // We always get literals[0] and then matching post literals for each arg given
-  var result = (typeof(literals) === "string") ? literals : literals[0];
-
-  for (var i = 1; i < args.length; i++) {
-    if (args[i] && args[i].kind && args[i].kind === 'Document') {
-      result += args[i].loc.source.body;
-    } else {
-      result += args[i];
-    }
-
-    result += literals[i];
-  }
-
-  return parseDocument(result);
-}
-
-// Support typescript, which isn't as nice as Babel about default exports
-gql.default = gql;
-gql.resetCaches = resetCaches;
-gql.disableFragmentWarnings = disableFragmentWarnings;
-gql.enableExperimentalFragmentVariables = enableExperimentalFragmentVariables;
-gql.disableExperimentalFragmentVariables = disableExperimentalFragmentVariables;
-
-module.exports = gql;
-
-},{"graphql/language/parser":"../../node_modules/graphql/language/parser.js"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29610,7 +26194,180 @@ function __importDefault(mod) {
     default: mod
   };
 }
-},{}],"../../node_modules/graphql/language/visitor.js":[function(require,module,exports) {
+},{}],"../../node_modules/graphql/jsutils/nodejsCustomInspectSymbol.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+var nodejsCustomInspectSymbol = typeof Symbol === 'function' ? Symbol.for('nodejs.util.inspect.custom') : undefined;
+var _default = nodejsCustomInspectSymbol;
+exports.default = _default;
+},{}],"../../node_modules/graphql/jsutils/inspect.js":[function(require,module,exports) {
+"use strict";
+
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function (obj) { return typeof obj; }; } else { _typeof2 = function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = inspect;
+
+var _nodejsCustomInspectSymbol = _interopRequireDefault(require("./nodejsCustomInspectSymbol"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+var MAX_ARRAY_LENGTH = 10;
+var MAX_RECURSIVE_DEPTH = 2;
+/**
+ * Used to print values in error messages.
+ */
+
+function inspect(value) {
+  return formatValue(value, []);
+}
+
+function formatValue(value, seenValues) {
+  switch (_typeof(value)) {
+    case 'string':
+      return JSON.stringify(value);
+
+    case 'function':
+      return value.name ? "[function ".concat(value.name, "]") : '[function]';
+
+    case 'object':
+      return formatObjectValue(value, seenValues);
+
+    default:
+      return String(value);
+  }
+}
+
+function formatObjectValue(value, previouslySeenValues) {
+  if (previouslySeenValues.indexOf(value) !== -1) {
+    return '[Circular]';
+  }
+
+  var seenValues = [].concat(previouslySeenValues, [value]);
+
+  if (value) {
+    var customInspectFn = getCustomFn(value);
+
+    if (customInspectFn !== undefined) {
+      // $FlowFixMe(>=0.90.0)
+      var customValue = customInspectFn.call(value); // check for infinite recursion
+
+      if (customValue !== value) {
+        return typeof customValue === 'string' ? customValue : formatValue(customValue, seenValues);
+      }
+    } else if (Array.isArray(value)) {
+      return formatArray(value, seenValues);
+    }
+
+    return formatObject(value, seenValues);
+  }
+
+  return String(value);
+}
+
+function formatObject(object, seenValues) {
+  var keys = Object.keys(object);
+
+  if (keys.length === 0) {
+    return '{}';
+  }
+
+  if (seenValues.length > MAX_RECURSIVE_DEPTH) {
+    return '[' + getObjectTag(object) + ']';
+  }
+
+  var properties = keys.map(function (key) {
+    var value = formatValue(object[key], seenValues);
+    return key + ': ' + value;
+  });
+  return '{ ' + properties.join(', ') + ' }';
+}
+
+function formatArray(array, seenValues) {
+  if (array.length === 0) {
+    return '[]';
+  }
+
+  if (seenValues.length > MAX_RECURSIVE_DEPTH) {
+    return '[Array]';
+  }
+
+  var len = Math.min(MAX_ARRAY_LENGTH, array.length);
+  var remaining = array.length - len;
+  var items = [];
+
+  for (var i = 0; i < len; ++i) {
+    items.push(formatValue(array[i], seenValues));
+  }
+
+  if (remaining === 1) {
+    items.push('... 1 more item');
+  } else if (remaining > 1) {
+    items.push("... ".concat(remaining, " more items"));
+  }
+
+  return '[' + items.join(', ') + ']';
+}
+
+function getCustomFn(object) {
+  var customInspectFn = object[String(_nodejsCustomInspectSymbol.default)];
+
+  if (typeof customInspectFn === 'function') {
+    return customInspectFn;
+  }
+
+  if (typeof object.inspect === 'function') {
+    return object.inspect;
+  }
+}
+
+function getObjectTag(object) {
+  var tag = Object.prototype.toString.call(object).replace(/^\[object /, '').replace(/]$/, '');
+
+  if (tag === 'Object' && typeof object.constructor === 'function') {
+    var name = object.constructor.name;
+
+    if (typeof name === 'string') {
+      return name;
+    }
+  }
+
+  return tag;
+}
+},{"./nodejsCustomInspectSymbol":"../../node_modules/graphql/jsutils/nodejsCustomInspectSymbol.js"}],"../../node_modules/graphql/language/visitor.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32281,7 +29038,122 @@ exports.process = processStub;
 var invariant$1 = invariant;
 var _default = invariant$1;
 exports.default = _default;
-},{"tslib":"../../node_modules/tslib/tslib.es6.js","process":"../../node_modules/process/browser.js"}],"../../node_modules/graphql/language/printer.js":[function(require,module,exports) {
+},{"tslib":"../../node_modules/tslib/tslib.es6.js","process":"../../node_modules/process/browser.js"}],"../../node_modules/graphql/language/blockString.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.dedentBlockStringValue = dedentBlockStringValue;
+exports.getBlockStringIndentation = getBlockStringIndentation;
+exports.printBlockString = printBlockString;
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Produces the value of a block string from its parsed raw value, similar to
+ * CoffeeScript's block string, Python's docstring trim or Ruby's strip_heredoc.
+ *
+ * This implements the GraphQL spec's BlockStringValue() static algorithm.
+ */
+
+function dedentBlockStringValue(rawString) {
+  // Expand a block string's raw value into independent lines.
+  var lines = rawString.split(/\r\n|[\n\r]/g); // Remove common indentation from all lines but first.
+
+  var commonIndent = getBlockStringIndentation(lines);
+
+  if (commonIndent !== 0) {
+    for (var i = 1; i < lines.length; i++) {
+      lines[i] = lines[i].slice(commonIndent);
+    }
+  } // Remove leading and trailing blank lines.
+
+
+  while (lines.length > 0 && isBlank(lines[0])) {
+    lines.shift();
+  }
+
+  while (lines.length > 0 && isBlank(lines[lines.length - 1])) {
+    lines.pop();
+  } // Return a string of the lines joined with U+000A.
+
+
+  return lines.join('\n');
+} // @internal
+
+
+function getBlockStringIndentation(lines) {
+  var commonIndent = null;
+
+  for (var i = 1; i < lines.length; i++) {
+    var line = lines[i];
+    var indent = leadingWhitespace(line);
+
+    if (indent === line.length) {
+      continue; // skip empty lines
+    }
+
+    if (commonIndent === null || indent < commonIndent) {
+      commonIndent = indent;
+
+      if (commonIndent === 0) {
+        break;
+      }
+    }
+  }
+
+  return commonIndent === null ? 0 : commonIndent;
+}
+
+function leadingWhitespace(str) {
+  var i = 0;
+
+  while (i < str.length && (str[i] === ' ' || str[i] === '\t')) {
+    i++;
+  }
+
+  return i;
+}
+
+function isBlank(str) {
+  return leadingWhitespace(str) === str.length;
+}
+/**
+ * Print a block string in the indented block form by adding a leading and
+ * trailing blank line. However, if a block string starts with whitespace and is
+ * a single-line, adding a leading blank line would strip that whitespace.
+ */
+
+
+function printBlockString(value) {
+  var indentation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var preferMultipleLines = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var isSingleLine = value.indexOf('\n') === -1;
+  var hasLeadingSpace = value[0] === ' ' || value[0] === '\t';
+  var hasTrailingQuote = value[value.length - 1] === '"';
+  var printAsMultipleLines = !isSingleLine || hasTrailingQuote || preferMultipleLines;
+  var result = ''; // Format a multi-line block quote to account for leading space.
+
+  if (printAsMultipleLines && !(isSingleLine && hasLeadingSpace)) {
+    result += '\n' + indentation;
+  }
+
+  result += indentation ? value.replace(/\n/g, '\n' + indentation) : value;
+
+  if (printAsMultipleLines) {
+    result += '\n';
+  }
+
+  return '"""' + result.replace(/"""/g, '\\"""') + '"""';
+}
+},{}],"../../node_modules/graphql/language/printer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36893,42 +33765,3189 @@ Object.keys(_useSubscription).forEach(function (key) {
     }
   });
 });
-},{"./useQuery":"../../node_modules/react-apollo-hooks/es/useQuery.js","./useMutation":"../../node_modules/react-apollo-hooks/es/useMutation.js","./ApolloContext":"../../node_modules/react-apollo-hooks/es/ApolloContext.js","./SuspenseSSR":"../../node_modules/react-apollo-hooks/es/SuspenseSSR.js","./getMarkupFromTree":"../../node_modules/react-apollo-hooks/es/getMarkupFromTree.js","./useSubscription":"../../node_modules/react-apollo-hooks/es/useSubscription.js"}],"components/header.js":[function(require,module,exports) {
+},{"./useQuery":"../../node_modules/react-apollo-hooks/es/useQuery.js","./useMutation":"../../node_modules/react-apollo-hooks/es/useMutation.js","./ApolloContext":"../../node_modules/react-apollo-hooks/es/ApolloContext.js","./SuspenseSSR":"../../node_modules/react-apollo-hooks/es/SuspenseSSR.js","./getMarkupFromTree":"../../node_modules/react-apollo-hooks/es/getMarkupFromTree.js","./useSubscription":"../../node_modules/react-apollo-hooks/es/useSubscription.js"}],"../../node_modules/graphql/jsutils/defineToJSON.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = defineToJSON;
 
-var _react = _interopRequireDefault(require("react"));
+var _nodejsCustomInspectSymbol = _interopRequireDefault(require("./nodejsCustomInspectSymbol"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
 
-var Header = function Header() {
-  return _react.default.createElement("header", {
-    className: "o-header"
-  }, _react.default.createElement("div", {
-    className: "o-header__wrapper"
-  }, _react.default.createElement("div", {
-    className: "o-header__search"
-  }, _react.default.createElement("div", {
-    className: "c-search__input-wrap"
-  }, _react.default.createElement("form", {
-    action: "",
-    id: "search-form"
-  }, _react.default.createElement("span", {
-    className: "c-search__btn"
-  }), _react.default.createElement("input", {
-    type: "text",
-    className: "c-search__input",
-    placeholder: "go away"
-  }))))));
-};
+/**
+ * The `defineToJSON()` function defines toJSON() and inspect() prototype
+ * methods, if no function provided they become aliases for toString().
+ */
 
-var _default = Header;
-exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"graphql/queries.js":[function(require,module,exports) {
+
+function defineToJSON( // eslint-disable-next-line flowtype/no-weak-types
+classObject) {
+  var fn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : classObject.prototype.toString;
+  classObject.prototype.toJSON = fn;
+  classObject.prototype.inspect = fn;
+
+  if (_nodejsCustomInspectSymbol.default) {
+    classObject.prototype[_nodejsCustomInspectSymbol.default] = fn;
+  }
+}
+},{"./nodejsCustomInspectSymbol":"../../node_modules/graphql/jsutils/nodejsCustomInspectSymbol.js"}],"../../node_modules/graphql/jsutils/invariant.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = invariant;
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function invariant(condition, message) {
+  var booleanCondition = Boolean(condition);
+  /* istanbul ignore else */
+
+  if (!booleanCondition) {
+    throw new Error(message);
+  }
+}
+},{}],"../../node_modules/graphql/jsutils/defineToStringTag.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = defineToStringTag;
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * The `defineToStringTag()` function checks first to see if the runtime
+ * supports the `Symbol` class and then if the `Symbol.toStringTag` constant
+ * is defined as a `Symbol` instance. If both conditions are met, the
+ * Symbol.toStringTag property is defined as a getter that returns the
+ * supplied class constructor's name.
+ *
+ * @method defineToStringTag
+ *
+ * @param {Class<any>} classObject a class such as Object, String, Number but
+ * typically one of your own creation through the class keyword; `class A {}`,
+ * for example.
+ */
+
+function defineToStringTag(classObject) {
+  if (typeof Symbol === 'function' && Symbol.toStringTag) {
+    Object.defineProperty(classObject.prototype, Symbol.toStringTag, {
+      get: function get() {
+        return this.constructor.name;
+      }
+    });
+  }
+}
+},{}],"../../node_modules/graphql/language/source.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Source = void 0;
+
+var _invariant = _interopRequireDefault(require("../jsutils/invariant"));
+
+var _defineToStringTag = _interopRequireDefault(require("../jsutils/defineToStringTag"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * A representation of source input to GraphQL.
+ * `name` and `locationOffset` are optional. They are useful for clients who
+ * store GraphQL documents in source files; for example, if the GraphQL input
+ * starts at line 40 in a file named Foo.graphql, it might be useful for name to
+ * be "Foo.graphql" and location to be `{ line: 40, column: 0 }`.
+ * line and column in locationOffset are 1-indexed
+ */
+
+
+var Source = function Source(body, name, locationOffset) {
+  this.body = body;
+  this.name = name || 'GraphQL request';
+  this.locationOffset = locationOffset || {
+    line: 1,
+    column: 1
+  };
+  !(this.locationOffset.line > 0) ? (0, _invariant.default)(0, 'line in locationOffset is 1-indexed and must be positive') : void 0;
+  !(this.locationOffset.column > 0) ? (0, _invariant.default)(0, 'column in locationOffset is 1-indexed and must be positive') : void 0;
+}; // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
+
+
+exports.Source = Source;
+(0, _defineToStringTag.default)(Source);
+},{"../jsutils/invariant":"../../node_modules/graphql/jsutils/invariant.js","../jsutils/defineToStringTag":"../../node_modules/graphql/jsutils/defineToStringTag.js"}],"../../node_modules/graphql/language/location.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getLocation = getLocation;
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Represents a location in a Source.
+ */
+
+/**
+ * Takes a Source and a UTF-8 character offset, and returns the corresponding
+ * line and column as a SourceLocation.
+ */
+
+function getLocation(source, position) {
+  var lineRegexp = /\r\n|[\n\r]/g;
+  var line = 1;
+  var column = position + 1;
+  var match;
+
+  while ((match = lineRegexp.exec(source.body)) && match.index < position) {
+    line += 1;
+    column = position + 1 - (match.index + match[0].length);
+  }
+
+  return {
+    line: line,
+    column: column
+  };
+}
+},{}],"../../node_modules/graphql/error/printError.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.printError = printError;
+
+var _location = require("../language/location");
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Prints a GraphQLError to a string, representing useful location information
+ * about the error's position in the source.
+ */
+
+
+function printError(error) {
+  var printedLocations = [];
+
+  if (error.nodes) {
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = error.nodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var node = _step.value;
+
+        if (node.loc) {
+          printedLocations.push(highlightSourceAtLocation(node.loc.source, (0, _location.getLocation)(node.loc.source, node.loc.start)));
+        }
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+  } else if (error.source && error.locations) {
+    var source = error.source;
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      for (var _iterator2 = error.locations[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var location = _step2.value;
+        printedLocations.push(highlightSourceAtLocation(source, location));
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+          _iterator2.return();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
+        }
+      }
+    }
+  }
+
+  return printedLocations.length === 0 ? error.message : [error.message].concat(printedLocations).join('\n\n') + '\n';
+}
+/**
+ * Render a helpful description of the location of the error in the GraphQL
+ * Source document.
+ */
+
+
+function highlightSourceAtLocation(source, location) {
+  var firstLineColumnOffset = source.locationOffset.column - 1;
+  var body = whitespace(firstLineColumnOffset) + source.body;
+  var lineIndex = location.line - 1;
+  var lineOffset = source.locationOffset.line - 1;
+  var lineNum = location.line + lineOffset;
+  var columnOffset = location.line === 1 ? firstLineColumnOffset : 0;
+  var columnNum = location.column + columnOffset;
+  var lines = body.split(/\r\n|[\n\r]/g);
+  return "".concat(source.name, " (").concat(lineNum, ":").concat(columnNum, ")\n") + printPrefixedLines([// Lines specified like this: ["prefix", "string"],
+  ["".concat(lineNum - 1, ": "), lines[lineIndex - 1]], ["".concat(lineNum, ": "), lines[lineIndex]], ['', whitespace(columnNum - 1) + '^'], ["".concat(lineNum + 1, ": "), lines[lineIndex + 1]]]);
+}
+
+function printPrefixedLines(lines) {
+  var existingLines = lines.filter(function (_ref) {
+    var _ = _ref[0],
+        line = _ref[1];
+    return line !== undefined;
+  });
+  var padLen = 0;
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = existingLines[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var _ref4 = _step3.value;
+      var prefix = _ref4[0];
+      padLen = Math.max(padLen, prefix.length);
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+        _iterator3.return();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+
+  return existingLines.map(function (_ref3) {
+    var prefix = _ref3[0],
+        line = _ref3[1];
+    return lpad(padLen, prefix) + line;
+  }).join('\n');
+}
+
+function whitespace(len) {
+  return Array(len + 1).join(' ');
+}
+
+function lpad(len, str) {
+  return whitespace(len - str.length) + str;
+}
+},{"../language/location":"../../node_modules/graphql/language/location.js"}],"../../node_modules/graphql/error/GraphQLError.js":[function(require,module,exports) {
+"use strict";
+
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function (obj) { return typeof obj; }; } else { _typeof2 = function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GraphQLError = GraphQLError;
+
+var _printError = require("./printError");
+
+var _location = require("../language/location");
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function GraphQLError( // eslint-disable-line no-redeclare
+message, nodes, source, positions, path, originalError, extensions) {
+  // Compute list of blame nodes.
+  var _nodes = Array.isArray(nodes) ? nodes.length !== 0 ? nodes : undefined : nodes ? [nodes] : undefined; // Compute locations in the source for the given nodes/positions.
+
+
+  var _source = source;
+
+  if (!_source && _nodes) {
+    var node = _nodes[0];
+    _source = node && node.loc && node.loc.source;
+  }
+
+  var _positions = positions;
+
+  if (!_positions && _nodes) {
+    _positions = _nodes.reduce(function (list, node) {
+      if (node.loc) {
+        list.push(node.loc.start);
+      }
+
+      return list;
+    }, []);
+  }
+
+  if (_positions && _positions.length === 0) {
+    _positions = undefined;
+  }
+
+  var _locations;
+
+  if (positions && source) {
+    _locations = positions.map(function (pos) {
+      return (0, _location.getLocation)(source, pos);
+    });
+  } else if (_nodes) {
+    _locations = _nodes.reduce(function (list, node) {
+      if (node.loc) {
+        list.push((0, _location.getLocation)(node.loc.source, node.loc.start));
+      }
+
+      return list;
+    }, []);
+  }
+
+  var _extensions = extensions;
+
+  if (_extensions == null && originalError != null) {
+    var originalExtensions = originalError.extensions;
+
+    if (originalExtensions != null && _typeof(originalExtensions) === 'object') {
+      _extensions = originalExtensions;
+    }
+  }
+
+  Object.defineProperties(this, {
+    message: {
+      value: message,
+      // By being enumerable, JSON.stringify will include `message` in the
+      // resulting output. This ensures that the simplest possible GraphQL
+      // service adheres to the spec.
+      enumerable: true,
+      writable: true
+    },
+    locations: {
+      // Coercing falsey values to undefined ensures they will not be included
+      // in JSON.stringify() when not provided.
+      value: _locations || undefined,
+      // By being enumerable, JSON.stringify will include `locations` in the
+      // resulting output. This ensures that the simplest possible GraphQL
+      // service adheres to the spec.
+      enumerable: Boolean(_locations)
+    },
+    path: {
+      // Coercing falsey values to undefined ensures they will not be included
+      // in JSON.stringify() when not provided.
+      value: path || undefined,
+      // By being enumerable, JSON.stringify will include `path` in the
+      // resulting output. This ensures that the simplest possible GraphQL
+      // service adheres to the spec.
+      enumerable: Boolean(path)
+    },
+    nodes: {
+      value: _nodes || undefined
+    },
+    source: {
+      value: _source || undefined
+    },
+    positions: {
+      value: _positions || undefined
+    },
+    originalError: {
+      value: originalError
+    },
+    extensions: {
+      // Coercing falsey values to undefined ensures they will not be included
+      // in JSON.stringify() when not provided.
+      value: _extensions || undefined,
+      // By being enumerable, JSON.stringify will include `path` in the
+      // resulting output. This ensures that the simplest possible GraphQL
+      // service adheres to the spec.
+      enumerable: Boolean(_extensions)
+    }
+  }); // Include (non-enumerable) stack trace.
+
+  if (originalError && originalError.stack) {
+    Object.defineProperty(this, 'stack', {
+      value: originalError.stack,
+      writable: true,
+      configurable: true
+    });
+  } else if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, GraphQLError);
+  } else {
+    Object.defineProperty(this, 'stack', {
+      value: Error().stack,
+      writable: true,
+      configurable: true
+    });
+  }
+}
+
+GraphQLError.prototype = Object.create(Error.prototype, {
+  constructor: {
+    value: GraphQLError
+  },
+  name: {
+    value: 'GraphQLError'
+  },
+  toString: {
+    value: function toString() {
+      return (0, _printError.printError)(this);
+    }
+  }
+});
+},{"./printError":"../../node_modules/graphql/error/printError.js","../language/location":"../../node_modules/graphql/language/location.js"}],"../../node_modules/graphql/error/syntaxError.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.syntaxError = syntaxError;
+
+var _GraphQLError = require("./GraphQLError");
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Produces a GraphQLError representing a syntax error, containing useful
+ * descriptive information about the syntax error's position in the source.
+ */
+
+
+function syntaxError(source, position, description) {
+  return new _GraphQLError.GraphQLError("Syntax Error: ".concat(description), undefined, source, [position]);
+}
+},{"./GraphQLError":"../../node_modules/graphql/error/GraphQLError.js"}],"../../node_modules/graphql/error/locatedError.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.locatedError = locatedError;
+
+var _GraphQLError = require("./GraphQLError");
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Given an arbitrary Error, presumably thrown while attempting to execute a
+ * GraphQL operation, produce a new GraphQLError aware of the location in the
+ * document responsible for the original Error.
+ */
+
+
+function locatedError(originalError, nodes, path) {
+  // Note: this uses a brand-check to support GraphQL errors originating from
+  // other contexts.
+  if (originalError && Array.isArray(originalError.path)) {
+    return originalError;
+  }
+
+  return new _GraphQLError.GraphQLError(originalError && originalError.message, originalError && originalError.nodes || nodes, originalError && originalError.source, originalError && originalError.positions, path, originalError);
+}
+},{"./GraphQLError":"../../node_modules/graphql/error/GraphQLError.js"}],"../../node_modules/graphql/error/formatError.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.formatError = formatError;
+
+var _invariant = _interopRequireDefault(require("../jsutils/invariant"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Given a GraphQLError, format it according to the rules described by the
+ * Response Format, Errors section of the GraphQL Specification.
+ */
+
+
+function formatError(error) {
+  !error ? (0, _invariant.default)(0, 'Received null or undefined error.') : void 0;
+  var message = error.message || 'An unknown error occurred.';
+  var locations = error.locations;
+  var path = error.path;
+  var extensions = error.extensions;
+  return extensions ? {
+    message: message,
+    locations: locations,
+    path: path,
+    extensions: extensions
+  } : {
+    message: message,
+    locations: locations,
+    path: path
+  };
+}
+},{"../jsutils/invariant":"../../node_modules/graphql/jsutils/invariant.js"}],"../../node_modules/graphql/error/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "GraphQLError", {
+  enumerable: true,
+  get: function get() {
+    return _GraphQLError.GraphQLError;
+  }
+});
+Object.defineProperty(exports, "syntaxError", {
+  enumerable: true,
+  get: function get() {
+    return _syntaxError.syntaxError;
+  }
+});
+Object.defineProperty(exports, "locatedError", {
+  enumerable: true,
+  get: function get() {
+    return _locatedError.locatedError;
+  }
+});
+Object.defineProperty(exports, "printError", {
+  enumerable: true,
+  get: function get() {
+    return _printError.printError;
+  }
+});
+Object.defineProperty(exports, "formatError", {
+  enumerable: true,
+  get: function get() {
+    return _formatError.formatError;
+  }
+});
+
+var _GraphQLError = require("./GraphQLError");
+
+var _syntaxError = require("./syntaxError");
+
+var _locatedError = require("./locatedError");
+
+var _printError = require("./printError");
+
+var _formatError = require("./formatError");
+},{"./GraphQLError":"../../node_modules/graphql/error/GraphQLError.js","./syntaxError":"../../node_modules/graphql/error/syntaxError.js","./locatedError":"../../node_modules/graphql/error/locatedError.js","./printError":"../../node_modules/graphql/error/printError.js","./formatError":"../../node_modules/graphql/error/formatError.js"}],"../../node_modules/graphql/language/lexer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createLexer = createLexer;
+exports.isPunctuatorToken = isPunctuatorToken;
+exports.getTokenDesc = getTokenDesc;
+exports.TokenKind = void 0;
+
+var _defineToJSON = _interopRequireDefault(require("../jsutils/defineToJSON"));
+
+var _error = require("../error");
+
+var _blockString = require("./blockString");
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Given a Source object, this returns a Lexer for that source.
+ * A Lexer is a stateful stream generator in that every time
+ * it is advanced, it returns the next token in the Source. Assuming the
+ * source lexes, the final Token emitted by the lexer will be of kind
+ * EOF, after which the lexer will repeatedly return the same EOF token
+ * whenever called.
+ */
+
+
+function createLexer(source, options) {
+  var startOfFileToken = new Tok(TokenKind.SOF, 0, 0, 0, 0, null);
+  var lexer = {
+    source: source,
+    options: options,
+    lastToken: startOfFileToken,
+    token: startOfFileToken,
+    line: 1,
+    lineStart: 0,
+    advance: advanceLexer,
+    lookahead: lookahead
+  };
+  return lexer;
+}
+
+function advanceLexer() {
+  this.lastToken = this.token;
+  var token = this.token = this.lookahead();
+  return token;
+}
+
+function lookahead() {
+  var token = this.token;
+
+  if (token.kind !== TokenKind.EOF) {
+    do {
+      // Note: next is only mutable during parsing, so we cast to allow this.
+      token = token.next || (token.next = readToken(this, token));
+    } while (token.kind === TokenKind.COMMENT);
+  }
+
+  return token;
+}
+/**
+ * The return type of createLexer.
+ */
+
+/**
+ * An exported enum describing the different kinds of tokens that the
+ * lexer emits.
+ */
+
+
+var TokenKind = Object.freeze({
+  SOF: '<SOF>',
+  EOF: '<EOF>',
+  BANG: '!',
+  DOLLAR: '$',
+  AMP: '&',
+  PAREN_L: '(',
+  PAREN_R: ')',
+  SPREAD: '...',
+  COLON: ':',
+  EQUALS: '=',
+  AT: '@',
+  BRACKET_L: '[',
+  BRACKET_R: ']',
+  BRACE_L: '{',
+  PIPE: '|',
+  BRACE_R: '}',
+  NAME: 'Name',
+  INT: 'Int',
+  FLOAT: 'Float',
+  STRING: 'String',
+  BLOCK_STRING: 'BlockString',
+  COMMENT: 'Comment'
+});
+/**
+ * The enum type representing the token kinds values.
+ */
+
+exports.TokenKind = TokenKind; // @internal
+
+function isPunctuatorToken(token) {
+  var kind = token.kind;
+  return kind === TokenKind.BANG || kind === TokenKind.DOLLAR || kind === TokenKind.AMP || kind === TokenKind.PAREN_L || kind === TokenKind.PAREN_R || kind === TokenKind.SPREAD || kind === TokenKind.COLON || kind === TokenKind.EQUALS || kind === TokenKind.AT || kind === TokenKind.BRACKET_L || kind === TokenKind.BRACKET_R || kind === TokenKind.BRACE_L || kind === TokenKind.PIPE || kind === TokenKind.BRACE_R;
+}
+/**
+ * A helper function to describe a token as a string for debugging
+ */
+
+
+function getTokenDesc(token) {
+  var value = token.value;
+  return value ? "".concat(token.kind, " \"").concat(value, "\"") : token.kind;
+}
+/**
+ * Helper function for constructing the Token object.
+ */
+
+
+function Tok(kind, start, end, line, column, prev, value) {
+  this.kind = kind;
+  this.start = start;
+  this.end = end;
+  this.line = line;
+  this.column = column;
+  this.value = value;
+  this.prev = prev;
+  this.next = null;
+} // Print a simplified form when appearing in JSON/util.inspect.
+
+
+(0, _defineToJSON.default)(Tok, function () {
+  return {
+    kind: this.kind,
+    value: this.value,
+    line: this.line,
+    column: this.column
+  };
+});
+
+function printCharCode(code) {
+  return (// NaN/undefined represents access beyond the end of the file.
+    isNaN(code) ? TokenKind.EOF : // Trust JSON for ASCII.
+    code < 0x007f ? JSON.stringify(String.fromCharCode(code)) : // Otherwise print the escaped form.
+    "\"\\u".concat(('00' + code.toString(16).toUpperCase()).slice(-4), "\"")
+  );
+}
+/**
+ * Gets the next token from the source starting at the given position.
+ *
+ * This skips over whitespace until it finds the next lexable token, then lexes
+ * punctuators immediately or calls the appropriate helper function for more
+ * complicated tokens.
+ */
+
+
+function readToken(lexer, prev) {
+  var source = lexer.source;
+  var body = source.body;
+  var bodyLength = body.length;
+  var pos = positionAfterWhitespace(body, prev.end, lexer);
+  var line = lexer.line;
+  var col = 1 + pos - lexer.lineStart;
+
+  if (pos >= bodyLength) {
+    return new Tok(TokenKind.EOF, bodyLength, bodyLength, line, col, prev);
+  }
+
+  var code = body.charCodeAt(pos); // SourceCharacter
+
+  switch (code) {
+    // !
+    case 33:
+      return new Tok(TokenKind.BANG, pos, pos + 1, line, col, prev);
+    // #
+
+    case 35:
+      return readComment(source, pos, line, col, prev);
+    // $
+
+    case 36:
+      return new Tok(TokenKind.DOLLAR, pos, pos + 1, line, col, prev);
+    // &
+
+    case 38:
+      return new Tok(TokenKind.AMP, pos, pos + 1, line, col, prev);
+    // (
+
+    case 40:
+      return new Tok(TokenKind.PAREN_L, pos, pos + 1, line, col, prev);
+    // )
+
+    case 41:
+      return new Tok(TokenKind.PAREN_R, pos, pos + 1, line, col, prev);
+    // .
+
+    case 46:
+      if (body.charCodeAt(pos + 1) === 46 && body.charCodeAt(pos + 2) === 46) {
+        return new Tok(TokenKind.SPREAD, pos, pos + 3, line, col, prev);
+      }
+
+      break;
+    // :
+
+    case 58:
+      return new Tok(TokenKind.COLON, pos, pos + 1, line, col, prev);
+    // =
+
+    case 61:
+      return new Tok(TokenKind.EQUALS, pos, pos + 1, line, col, prev);
+    // @
+
+    case 64:
+      return new Tok(TokenKind.AT, pos, pos + 1, line, col, prev);
+    // [
+
+    case 91:
+      return new Tok(TokenKind.BRACKET_L, pos, pos + 1, line, col, prev);
+    // ]
+
+    case 93:
+      return new Tok(TokenKind.BRACKET_R, pos, pos + 1, line, col, prev);
+    // {
+
+    case 123:
+      return new Tok(TokenKind.BRACE_L, pos, pos + 1, line, col, prev);
+    // |
+
+    case 124:
+      return new Tok(TokenKind.PIPE, pos, pos + 1, line, col, prev);
+    // }
+
+    case 125:
+      return new Tok(TokenKind.BRACE_R, pos, pos + 1, line, col, prev);
+    // A-Z _ a-z
+
+    case 65:
+    case 66:
+    case 67:
+    case 68:
+    case 69:
+    case 70:
+    case 71:
+    case 72:
+    case 73:
+    case 74:
+    case 75:
+    case 76:
+    case 77:
+    case 78:
+    case 79:
+    case 80:
+    case 81:
+    case 82:
+    case 83:
+    case 84:
+    case 85:
+    case 86:
+    case 87:
+    case 88:
+    case 89:
+    case 90:
+    case 95:
+    case 97:
+    case 98:
+    case 99:
+    case 100:
+    case 101:
+    case 102:
+    case 103:
+    case 104:
+    case 105:
+    case 106:
+    case 107:
+    case 108:
+    case 109:
+    case 110:
+    case 111:
+    case 112:
+    case 113:
+    case 114:
+    case 115:
+    case 116:
+    case 117:
+    case 118:
+    case 119:
+    case 120:
+    case 121:
+    case 122:
+      return readName(source, pos, line, col, prev);
+    // - 0-9
+
+    case 45:
+    case 48:
+    case 49:
+    case 50:
+    case 51:
+    case 52:
+    case 53:
+    case 54:
+    case 55:
+    case 56:
+    case 57:
+      return readNumber(source, pos, code, line, col, prev);
+    // "
+
+    case 34:
+      if (body.charCodeAt(pos + 1) === 34 && body.charCodeAt(pos + 2) === 34) {
+        return readBlockString(source, pos, line, col, prev, lexer);
+      }
+
+      return readString(source, pos, line, col, prev);
+  }
+
+  throw (0, _error.syntaxError)(source, pos, unexpectedCharacterMessage(code));
+}
+/**
+ * Report a message that an unexpected character was encountered.
+ */
+
+
+function unexpectedCharacterMessage(code) {
+  if (code < 0x0020 && code !== 0x0009 && code !== 0x000a && code !== 0x000d) {
+    return "Cannot contain the invalid character ".concat(printCharCode(code), ".");
+  }
+
+  if (code === 39) {
+    // '
+    return "Unexpected single quote character ('), did you mean to use " + 'a double quote (")?';
+  }
+
+  return "Cannot parse the unexpected character ".concat(printCharCode(code), ".");
+}
+/**
+ * Reads from body starting at startPosition until it finds a non-whitespace
+ * character, then returns the position of that character for lexing.
+ */
+
+
+function positionAfterWhitespace(body, startPosition, lexer) {
+  var bodyLength = body.length;
+  var position = startPosition;
+
+  while (position < bodyLength) {
+    var code = body.charCodeAt(position); // tab | space | comma | BOM
+
+    if (code === 9 || code === 32 || code === 44 || code === 0xfeff) {
+      ++position;
+    } else if (code === 10) {
+      // new line
+      ++position;
+      ++lexer.line;
+      lexer.lineStart = position;
+    } else if (code === 13) {
+      // carriage return
+      if (body.charCodeAt(position + 1) === 10) {
+        position += 2;
+      } else {
+        ++position;
+      }
+
+      ++lexer.line;
+      lexer.lineStart = position;
+    } else {
+      break;
+    }
+  }
+
+  return position;
+}
+/**
+ * Reads a comment token from the source file.
+ *
+ * #[\u0009\u0020-\uFFFF]*
+ */
+
+
+function readComment(source, start, line, col, prev) {
+  var body = source.body;
+  var code;
+  var position = start;
+
+  do {
+    code = body.charCodeAt(++position);
+  } while (!isNaN(code) && ( // SourceCharacter but not LineTerminator
+  code > 0x001f || code === 0x0009));
+
+  return new Tok(TokenKind.COMMENT, start, position, line, col, prev, body.slice(start + 1, position));
+}
+/**
+ * Reads a number token from the source file, either a float
+ * or an int depending on whether a decimal point appears.
+ *
+ * Int:   -?(0|[1-9][0-9]*)
+ * Float: -?(0|[1-9][0-9]*)(\.[0-9]+)?((E|e)(+|-)?[0-9]+)?
+ */
+
+
+function readNumber(source, start, firstCode, line, col, prev) {
+  var body = source.body;
+  var code = firstCode;
+  var position = start;
+  var isFloat = false;
+
+  if (code === 45) {
+    // -
+    code = body.charCodeAt(++position);
+  }
+
+  if (code === 48) {
+    // 0
+    code = body.charCodeAt(++position);
+
+    if (code >= 48 && code <= 57) {
+      throw (0, _error.syntaxError)(source, position, "Invalid number, unexpected digit after 0: ".concat(printCharCode(code), "."));
+    }
+  } else {
+    position = readDigits(source, position, code);
+    code = body.charCodeAt(position);
+  }
+
+  if (code === 46) {
+    // .
+    isFloat = true;
+    code = body.charCodeAt(++position);
+    position = readDigits(source, position, code);
+    code = body.charCodeAt(position);
+  }
+
+  if (code === 69 || code === 101) {
+    // E e
+    isFloat = true;
+    code = body.charCodeAt(++position);
+
+    if (code === 43 || code === 45) {
+      // + -
+      code = body.charCodeAt(++position);
+    }
+
+    position = readDigits(source, position, code);
+  }
+
+  return new Tok(isFloat ? TokenKind.FLOAT : TokenKind.INT, start, position, line, col, prev, body.slice(start, position));
+}
+/**
+ * Returns the new position in the source after reading digits.
+ */
+
+
+function readDigits(source, start, firstCode) {
+  var body = source.body;
+  var position = start;
+  var code = firstCode;
+
+  if (code >= 48 && code <= 57) {
+    // 0 - 9
+    do {
+      code = body.charCodeAt(++position);
+    } while (code >= 48 && code <= 57); // 0 - 9
+
+
+    return position;
+  }
+
+  throw (0, _error.syntaxError)(source, position, "Invalid number, expected digit but got: ".concat(printCharCode(code), "."));
+}
+/**
+ * Reads a string token from the source file.
+ *
+ * "([^"\\\u000A\u000D]|(\\(u[0-9a-fA-F]{4}|["\\/bfnrt])))*"
+ */
+
+
+function readString(source, start, line, col, prev) {
+  var body = source.body;
+  var position = start + 1;
+  var chunkStart = position;
+  var code = 0;
+  var value = '';
+
+  while (position < body.length && !isNaN(code = body.charCodeAt(position)) && // not LineTerminator
+  code !== 0x000a && code !== 0x000d) {
+    // Closing Quote (")
+    if (code === 34) {
+      value += body.slice(chunkStart, position);
+      return new Tok(TokenKind.STRING, start, position + 1, line, col, prev, value);
+    } // SourceCharacter
+
+
+    if (code < 0x0020 && code !== 0x0009) {
+      throw (0, _error.syntaxError)(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
+    }
+
+    ++position;
+
+    if (code === 92) {
+      // \
+      value += body.slice(chunkStart, position - 1);
+      code = body.charCodeAt(position);
+
+      switch (code) {
+        case 34:
+          value += '"';
+          break;
+
+        case 47:
+          value += '/';
+          break;
+
+        case 92:
+          value += '\\';
+          break;
+
+        case 98:
+          value += '\b';
+          break;
+
+        case 102:
+          value += '\f';
+          break;
+
+        case 110:
+          value += '\n';
+          break;
+
+        case 114:
+          value += '\r';
+          break;
+
+        case 116:
+          value += '\t';
+          break;
+
+        case 117:
+          {
+            // uXXXX
+            var charCode = uniCharCode(body.charCodeAt(position + 1), body.charCodeAt(position + 2), body.charCodeAt(position + 3), body.charCodeAt(position + 4));
+
+            if (charCode < 0) {
+              throw (0, _error.syntaxError)(source, position, 'Invalid character escape sequence: ' + "\\u".concat(body.slice(position + 1, position + 5), "."));
+            }
+
+            value += String.fromCharCode(charCode);
+            position += 4;
+            break;
+          }
+
+        default:
+          throw (0, _error.syntaxError)(source, position, "Invalid character escape sequence: \\".concat(String.fromCharCode(code), "."));
+      }
+
+      ++position;
+      chunkStart = position;
+    }
+  }
+
+  throw (0, _error.syntaxError)(source, position, 'Unterminated string.');
+}
+/**
+ * Reads a block string token from the source file.
+ *
+ * """("?"?(\\"""|\\(?!=""")|[^"\\]))*"""
+ */
+
+
+function readBlockString(source, start, line, col, prev, lexer) {
+  var body = source.body;
+  var position = start + 3;
+  var chunkStart = position;
+  var code = 0;
+  var rawValue = '';
+
+  while (position < body.length && !isNaN(code = body.charCodeAt(position))) {
+    // Closing Triple-Quote (""")
+    if (code === 34 && body.charCodeAt(position + 1) === 34 && body.charCodeAt(position + 2) === 34) {
+      rawValue += body.slice(chunkStart, position);
+      return new Tok(TokenKind.BLOCK_STRING, start, position + 3, line, col, prev, (0, _blockString.dedentBlockStringValue)(rawValue));
+    } // SourceCharacter
+
+
+    if (code < 0x0020 && code !== 0x0009 && code !== 0x000a && code !== 0x000d) {
+      throw (0, _error.syntaxError)(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
+    }
+
+    if (code === 10) {
+      // new line
+      ++position;
+      ++lexer.line;
+      lexer.lineStart = position;
+    } else if (code === 13) {
+      // carriage return
+      if (body.charCodeAt(position + 1) === 10) {
+        position += 2;
+      } else {
+        ++position;
+      }
+
+      ++lexer.line;
+      lexer.lineStart = position;
+    } else if ( // Escape Triple-Quote (\""")
+    code === 92 && body.charCodeAt(position + 1) === 34 && body.charCodeAt(position + 2) === 34 && body.charCodeAt(position + 3) === 34) {
+      rawValue += body.slice(chunkStart, position) + '"""';
+      position += 4;
+      chunkStart = position;
+    } else {
+      ++position;
+    }
+  }
+
+  throw (0, _error.syntaxError)(source, position, 'Unterminated string.');
+}
+/**
+ * Converts four hexadecimal chars to the integer that the
+ * string represents. For example, uniCharCode('0','0','0','f')
+ * will return 15, and uniCharCode('0','0','f','f') returns 255.
+ *
+ * Returns a negative number on error, if a char was invalid.
+ *
+ * This is implemented by noting that char2hex() returns -1 on error,
+ * which means the result of ORing the char2hex() will also be negative.
+ */
+
+
+function uniCharCode(a, b, c, d) {
+  return char2hex(a) << 12 | char2hex(b) << 8 | char2hex(c) << 4 | char2hex(d);
+}
+/**
+ * Converts a hex character to its integer value.
+ * '0' becomes 0, '9' becomes 9
+ * 'A' becomes 10, 'F' becomes 15
+ * 'a' becomes 10, 'f' becomes 15
+ *
+ * Returns -1 on error.
+ */
+
+
+function char2hex(a) {
+  return a >= 48 && a <= 57 ? a - 48 // 0-9
+  : a >= 65 && a <= 70 ? a - 55 // A-F
+  : a >= 97 && a <= 102 ? a - 87 // a-f
+  : -1;
+}
+/**
+ * Reads an alphanumeric + underscore name from the source.
+ *
+ * [_A-Za-z][_0-9A-Za-z]*
+ */
+
+
+function readName(source, start, line, col, prev) {
+  var body = source.body;
+  var bodyLength = body.length;
+  var position = start + 1;
+  var code = 0;
+
+  while (position !== bodyLength && !isNaN(code = body.charCodeAt(position)) && (code === 95 || // _
+  code >= 48 && code <= 57 || // 0-9
+  code >= 65 && code <= 90 || // A-Z
+  code >= 97 && code <= 122) // a-z
+  ) {
+    ++position;
+  }
+
+  return new Tok(TokenKind.NAME, start, position, line, col, prev, body.slice(start, position));
+}
+},{"../jsutils/defineToJSON":"../../node_modules/graphql/jsutils/defineToJSON.js","../error":"../../node_modules/graphql/error/index.js","./blockString":"../../node_modules/graphql/language/blockString.js"}],"../../node_modules/graphql/language/kinds.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Kind = void 0;
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * The set of allowed kind values for AST nodes.
+ */
+
+var Kind = Object.freeze({
+  // Name
+  NAME: 'Name',
+  // Document
+  DOCUMENT: 'Document',
+  OPERATION_DEFINITION: 'OperationDefinition',
+  VARIABLE_DEFINITION: 'VariableDefinition',
+  SELECTION_SET: 'SelectionSet',
+  FIELD: 'Field',
+  ARGUMENT: 'Argument',
+  // Fragments
+  FRAGMENT_SPREAD: 'FragmentSpread',
+  INLINE_FRAGMENT: 'InlineFragment',
+  FRAGMENT_DEFINITION: 'FragmentDefinition',
+  // Values
+  VARIABLE: 'Variable',
+  INT: 'IntValue',
+  FLOAT: 'FloatValue',
+  STRING: 'StringValue',
+  BOOLEAN: 'BooleanValue',
+  NULL: 'NullValue',
+  ENUM: 'EnumValue',
+  LIST: 'ListValue',
+  OBJECT: 'ObjectValue',
+  OBJECT_FIELD: 'ObjectField',
+  // Directives
+  DIRECTIVE: 'Directive',
+  // Types
+  NAMED_TYPE: 'NamedType',
+  LIST_TYPE: 'ListType',
+  NON_NULL_TYPE: 'NonNullType',
+  // Type System Definitions
+  SCHEMA_DEFINITION: 'SchemaDefinition',
+  OPERATION_TYPE_DEFINITION: 'OperationTypeDefinition',
+  // Type Definitions
+  SCALAR_TYPE_DEFINITION: 'ScalarTypeDefinition',
+  OBJECT_TYPE_DEFINITION: 'ObjectTypeDefinition',
+  FIELD_DEFINITION: 'FieldDefinition',
+  INPUT_VALUE_DEFINITION: 'InputValueDefinition',
+  INTERFACE_TYPE_DEFINITION: 'InterfaceTypeDefinition',
+  UNION_TYPE_DEFINITION: 'UnionTypeDefinition',
+  ENUM_TYPE_DEFINITION: 'EnumTypeDefinition',
+  ENUM_VALUE_DEFINITION: 'EnumValueDefinition',
+  INPUT_OBJECT_TYPE_DEFINITION: 'InputObjectTypeDefinition',
+  // Directive Definitions
+  DIRECTIVE_DEFINITION: 'DirectiveDefinition',
+  // Type System Extensions
+  SCHEMA_EXTENSION: 'SchemaExtension',
+  // Type Extensions
+  SCALAR_TYPE_EXTENSION: 'ScalarTypeExtension',
+  OBJECT_TYPE_EXTENSION: 'ObjectTypeExtension',
+  INTERFACE_TYPE_EXTENSION: 'InterfaceTypeExtension',
+  UNION_TYPE_EXTENSION: 'UnionTypeExtension',
+  ENUM_TYPE_EXTENSION: 'EnumTypeExtension',
+  INPUT_OBJECT_TYPE_EXTENSION: 'InputObjectTypeExtension'
+});
+/**
+ * The enum type representing the possible kind values of AST nodes.
+ */
+
+exports.Kind = Kind;
+},{}],"../../node_modules/graphql/language/directiveLocation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DirectiveLocation = void 0;
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * The set of allowed directive location values.
+ */
+
+var DirectiveLocation = Object.freeze({
+  // Request Definitions
+  QUERY: 'QUERY',
+  MUTATION: 'MUTATION',
+  SUBSCRIPTION: 'SUBSCRIPTION',
+  FIELD: 'FIELD',
+  FRAGMENT_DEFINITION: 'FRAGMENT_DEFINITION',
+  FRAGMENT_SPREAD: 'FRAGMENT_SPREAD',
+  INLINE_FRAGMENT: 'INLINE_FRAGMENT',
+  VARIABLE_DEFINITION: 'VARIABLE_DEFINITION',
+  // Type System Definitions
+  SCHEMA: 'SCHEMA',
+  SCALAR: 'SCALAR',
+  OBJECT: 'OBJECT',
+  FIELD_DEFINITION: 'FIELD_DEFINITION',
+  ARGUMENT_DEFINITION: 'ARGUMENT_DEFINITION',
+  INTERFACE: 'INTERFACE',
+  UNION: 'UNION',
+  ENUM: 'ENUM',
+  ENUM_VALUE: 'ENUM_VALUE',
+  INPUT_OBJECT: 'INPUT_OBJECT',
+  INPUT_FIELD_DEFINITION: 'INPUT_FIELD_DEFINITION'
+});
+/**
+ * The enum type representing the directive location values.
+ */
+
+exports.DirectiveLocation = DirectiveLocation;
+},{}],"../../node_modules/graphql/language/parser.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parse = parse;
+exports.parseValue = parseValue;
+exports.parseType = parseType;
+exports.parseConstValue = parseConstValue;
+exports.parseTypeReference = parseTypeReference;
+exports.parseNamedType = parseNamedType;
+
+var _inspect = _interopRequireDefault(require("../jsutils/inspect"));
+
+var _defineToJSON = _interopRequireDefault(require("../jsutils/defineToJSON"));
+
+var _source = require("./source");
+
+var _error = require("../error");
+
+var _lexer = require("./lexer");
+
+var _kinds = require("./kinds");
+
+var _directiveLocation = require("./directiveLocation");
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Given a GraphQL source, parses it into a Document.
+ * Throws GraphQLError if a syntax error is encountered.
+ */
+
+
+function parse(source, options) {
+  var sourceObj = typeof source === 'string' ? new _source.Source(source) : source;
+
+  if (!(sourceObj instanceof _source.Source)) {
+    throw new TypeError("Must provide Source. Received: ".concat((0, _inspect.default)(sourceObj)));
+  }
+
+  var lexer = (0, _lexer.createLexer)(sourceObj, options || {});
+  return parseDocument(lexer);
+}
+/**
+ * Given a string containing a GraphQL value (ex. `[42]`), parse the AST for
+ * that value.
+ * Throws GraphQLError if a syntax error is encountered.
+ *
+ * This is useful within tools that operate upon GraphQL Values directly and
+ * in isolation of complete GraphQL documents.
+ *
+ * Consider providing the results to the utility function: valueFromAST().
+ */
+
+
+function parseValue(source, options) {
+  var sourceObj = typeof source === 'string' ? new _source.Source(source) : source;
+  var lexer = (0, _lexer.createLexer)(sourceObj, options || {});
+  expectToken(lexer, _lexer.TokenKind.SOF);
+  var value = parseValueLiteral(lexer, false);
+  expectToken(lexer, _lexer.TokenKind.EOF);
+  return value;
+}
+/**
+ * Given a string containing a GraphQL Type (ex. `[Int!]`), parse the AST for
+ * that type.
+ * Throws GraphQLError if a syntax error is encountered.
+ *
+ * This is useful within tools that operate upon GraphQL Types directly and
+ * in isolation of complete GraphQL documents.
+ *
+ * Consider providing the results to the utility function: typeFromAST().
+ */
+
+
+function parseType(source, options) {
+  var sourceObj = typeof source === 'string' ? new _source.Source(source) : source;
+  var lexer = (0, _lexer.createLexer)(sourceObj, options || {});
+  expectToken(lexer, _lexer.TokenKind.SOF);
+  var type = parseTypeReference(lexer);
+  expectToken(lexer, _lexer.TokenKind.EOF);
+  return type;
+}
+/**
+ * Converts a name lex token into a name parse node.
+ */
+
+
+function parseName(lexer) {
+  var token = expectToken(lexer, _lexer.TokenKind.NAME);
+  return {
+    kind: _kinds.Kind.NAME,
+    value: token.value,
+    loc: loc(lexer, token)
+  };
+} // Implements the parsing rules in the Document section.
+
+/**
+ * Document : Definition+
+ */
+
+
+function parseDocument(lexer) {
+  var start = lexer.token;
+  return {
+    kind: _kinds.Kind.DOCUMENT,
+    definitions: many(lexer, _lexer.TokenKind.SOF, parseDefinition, _lexer.TokenKind.EOF),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * Definition :
+ *   - ExecutableDefinition
+ *   - TypeSystemDefinition
+ *   - TypeSystemExtension
+ */
+
+
+function parseDefinition(lexer) {
+  if (peek(lexer, _lexer.TokenKind.NAME)) {
+    switch (lexer.token.value) {
+      case 'query':
+      case 'mutation':
+      case 'subscription':
+      case 'fragment':
+        return parseExecutableDefinition(lexer);
+
+      case 'schema':
+      case 'scalar':
+      case 'type':
+      case 'interface':
+      case 'union':
+      case 'enum':
+      case 'input':
+      case 'directive':
+        return parseTypeSystemDefinition(lexer);
+
+      case 'extend':
+        return parseTypeSystemExtension(lexer);
+    }
+  } else if (peek(lexer, _lexer.TokenKind.BRACE_L)) {
+    return parseExecutableDefinition(lexer);
+  } else if (peekDescription(lexer)) {
+    return parseTypeSystemDefinition(lexer);
+  }
+
+  throw unexpected(lexer);
+}
+/**
+ * ExecutableDefinition :
+ *   - OperationDefinition
+ *   - FragmentDefinition
+ */
+
+
+function parseExecutableDefinition(lexer) {
+  if (peek(lexer, _lexer.TokenKind.NAME)) {
+    switch (lexer.token.value) {
+      case 'query':
+      case 'mutation':
+      case 'subscription':
+        return parseOperationDefinition(lexer);
+
+      case 'fragment':
+        return parseFragmentDefinition(lexer);
+    }
+  } else if (peek(lexer, _lexer.TokenKind.BRACE_L)) {
+    return parseOperationDefinition(lexer);
+  }
+
+  throw unexpected(lexer);
+} // Implements the parsing rules in the Operations section.
+
+/**
+ * OperationDefinition :
+ *  - SelectionSet
+ *  - OperationType Name? VariableDefinitions? Directives? SelectionSet
+ */
+
+
+function parseOperationDefinition(lexer) {
+  var start = lexer.token;
+
+  if (peek(lexer, _lexer.TokenKind.BRACE_L)) {
+    return {
+      kind: _kinds.Kind.OPERATION_DEFINITION,
+      operation: 'query',
+      name: undefined,
+      variableDefinitions: [],
+      directives: [],
+      selectionSet: parseSelectionSet(lexer),
+      loc: loc(lexer, start)
+    };
+  }
+
+  var operation = parseOperationType(lexer);
+  var name;
+
+  if (peek(lexer, _lexer.TokenKind.NAME)) {
+    name = parseName(lexer);
+  }
+
+  return {
+    kind: _kinds.Kind.OPERATION_DEFINITION,
+    operation: operation,
+    name: name,
+    variableDefinitions: parseVariableDefinitions(lexer),
+    directives: parseDirectives(lexer, false),
+    selectionSet: parseSelectionSet(lexer),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * OperationType : one of query mutation subscription
+ */
+
+
+function parseOperationType(lexer) {
+  var operationToken = expectToken(lexer, _lexer.TokenKind.NAME);
+
+  switch (operationToken.value) {
+    case 'query':
+      return 'query';
+
+    case 'mutation':
+      return 'mutation';
+
+    case 'subscription':
+      return 'subscription';
+  }
+
+  throw unexpected(lexer, operationToken);
+}
+/**
+ * VariableDefinitions : ( VariableDefinition+ )
+ */
+
+
+function parseVariableDefinitions(lexer) {
+  return peek(lexer, _lexer.TokenKind.PAREN_L) ? many(lexer, _lexer.TokenKind.PAREN_L, parseVariableDefinition, _lexer.TokenKind.PAREN_R) : [];
+}
+/**
+ * VariableDefinition : Variable : Type DefaultValue? Directives[Const]?
+ */
+
+
+function parseVariableDefinition(lexer) {
+  var start = lexer.token;
+  return {
+    kind: _kinds.Kind.VARIABLE_DEFINITION,
+    variable: parseVariable(lexer),
+    type: (expectToken(lexer, _lexer.TokenKind.COLON), parseTypeReference(lexer)),
+    defaultValue: expectOptionalToken(lexer, _lexer.TokenKind.EQUALS) ? parseValueLiteral(lexer, true) : undefined,
+    directives: parseDirectives(lexer, true),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * Variable : $ Name
+ */
+
+
+function parseVariable(lexer) {
+  var start = lexer.token;
+  expectToken(lexer, _lexer.TokenKind.DOLLAR);
+  return {
+    kind: _kinds.Kind.VARIABLE,
+    name: parseName(lexer),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * SelectionSet : { Selection+ }
+ */
+
+
+function parseSelectionSet(lexer) {
+  var start = lexer.token;
+  return {
+    kind: _kinds.Kind.SELECTION_SET,
+    selections: many(lexer, _lexer.TokenKind.BRACE_L, parseSelection, _lexer.TokenKind.BRACE_R),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * Selection :
+ *   - Field
+ *   - FragmentSpread
+ *   - InlineFragment
+ */
+
+
+function parseSelection(lexer) {
+  return peek(lexer, _lexer.TokenKind.SPREAD) ? parseFragment(lexer) : parseField(lexer);
+}
+/**
+ * Field : Alias? Name Arguments? Directives? SelectionSet?
+ *
+ * Alias : Name :
+ */
+
+
+function parseField(lexer) {
+  var start = lexer.token;
+  var nameOrAlias = parseName(lexer);
+  var alias;
+  var name;
+
+  if (expectOptionalToken(lexer, _lexer.TokenKind.COLON)) {
+    alias = nameOrAlias;
+    name = parseName(lexer);
+  } else {
+    name = nameOrAlias;
+  }
+
+  return {
+    kind: _kinds.Kind.FIELD,
+    alias: alias,
+    name: name,
+    arguments: parseArguments(lexer, false),
+    directives: parseDirectives(lexer, false),
+    selectionSet: peek(lexer, _lexer.TokenKind.BRACE_L) ? parseSelectionSet(lexer) : undefined,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * Arguments[Const] : ( Argument[?Const]+ )
+ */
+
+
+function parseArguments(lexer, isConst) {
+  var item = isConst ? parseConstArgument : parseArgument;
+  return peek(lexer, _lexer.TokenKind.PAREN_L) ? many(lexer, _lexer.TokenKind.PAREN_L, item, _lexer.TokenKind.PAREN_R) : [];
+}
+/**
+ * Argument[Const] : Name : Value[?Const]
+ */
+
+
+function parseArgument(lexer) {
+  var start = lexer.token;
+  var name = parseName(lexer);
+  expectToken(lexer, _lexer.TokenKind.COLON);
+  return {
+    kind: _kinds.Kind.ARGUMENT,
+    name: name,
+    value: parseValueLiteral(lexer, false),
+    loc: loc(lexer, start)
+  };
+}
+
+function parseConstArgument(lexer) {
+  var start = lexer.token;
+  return {
+    kind: _kinds.Kind.ARGUMENT,
+    name: parseName(lexer),
+    value: (expectToken(lexer, _lexer.TokenKind.COLON), parseConstValue(lexer)),
+    loc: loc(lexer, start)
+  };
+} // Implements the parsing rules in the Fragments section.
+
+/**
+ * Corresponds to both FragmentSpread and InlineFragment in the spec.
+ *
+ * FragmentSpread : ... FragmentName Directives?
+ *
+ * InlineFragment : ... TypeCondition? Directives? SelectionSet
+ */
+
+
+function parseFragment(lexer) {
+  var start = lexer.token;
+  expectToken(lexer, _lexer.TokenKind.SPREAD);
+  var hasTypeCondition = expectOptionalKeyword(lexer, 'on');
+
+  if (!hasTypeCondition && peek(lexer, _lexer.TokenKind.NAME)) {
+    return {
+      kind: _kinds.Kind.FRAGMENT_SPREAD,
+      name: parseFragmentName(lexer),
+      directives: parseDirectives(lexer, false),
+      loc: loc(lexer, start)
+    };
+  }
+
+  return {
+    kind: _kinds.Kind.INLINE_FRAGMENT,
+    typeCondition: hasTypeCondition ? parseNamedType(lexer) : undefined,
+    directives: parseDirectives(lexer, false),
+    selectionSet: parseSelectionSet(lexer),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * FragmentDefinition :
+ *   - fragment FragmentName on TypeCondition Directives? SelectionSet
+ *
+ * TypeCondition : NamedType
+ */
+
+
+function parseFragmentDefinition(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'fragment'); // Experimental support for defining variables within fragments changes
+  // the grammar of FragmentDefinition:
+  //   - fragment FragmentName VariableDefinitions? on TypeCondition Directives? SelectionSet
+
+  if (lexer.options.experimentalFragmentVariables) {
+    return {
+      kind: _kinds.Kind.FRAGMENT_DEFINITION,
+      name: parseFragmentName(lexer),
+      variableDefinitions: parseVariableDefinitions(lexer),
+      typeCondition: (expectKeyword(lexer, 'on'), parseNamedType(lexer)),
+      directives: parseDirectives(lexer, false),
+      selectionSet: parseSelectionSet(lexer),
+      loc: loc(lexer, start)
+    };
+  }
+
+  return {
+    kind: _kinds.Kind.FRAGMENT_DEFINITION,
+    name: parseFragmentName(lexer),
+    typeCondition: (expectKeyword(lexer, 'on'), parseNamedType(lexer)),
+    directives: parseDirectives(lexer, false),
+    selectionSet: parseSelectionSet(lexer),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * FragmentName : Name but not `on`
+ */
+
+
+function parseFragmentName(lexer) {
+  if (lexer.token.value === 'on') {
+    throw unexpected(lexer);
+  }
+
+  return parseName(lexer);
+} // Implements the parsing rules in the Values section.
+
+/**
+ * Value[Const] :
+ *   - [~Const] Variable
+ *   - IntValue
+ *   - FloatValue
+ *   - StringValue
+ *   - BooleanValue
+ *   - NullValue
+ *   - EnumValue
+ *   - ListValue[?Const]
+ *   - ObjectValue[?Const]
+ *
+ * BooleanValue : one of `true` `false`
+ *
+ * NullValue : `null`
+ *
+ * EnumValue : Name but not `true`, `false` or `null`
+ */
+
+
+function parseValueLiteral(lexer, isConst) {
+  var token = lexer.token;
+
+  switch (token.kind) {
+    case _lexer.TokenKind.BRACKET_L:
+      return parseList(lexer, isConst);
+
+    case _lexer.TokenKind.BRACE_L:
+      return parseObject(lexer, isConst);
+
+    case _lexer.TokenKind.INT:
+      lexer.advance();
+      return {
+        kind: _kinds.Kind.INT,
+        value: token.value,
+        loc: loc(lexer, token)
+      };
+
+    case _lexer.TokenKind.FLOAT:
+      lexer.advance();
+      return {
+        kind: _kinds.Kind.FLOAT,
+        value: token.value,
+        loc: loc(lexer, token)
+      };
+
+    case _lexer.TokenKind.STRING:
+    case _lexer.TokenKind.BLOCK_STRING:
+      return parseStringLiteral(lexer);
+
+    case _lexer.TokenKind.NAME:
+      if (token.value === 'true' || token.value === 'false') {
+        lexer.advance();
+        return {
+          kind: _kinds.Kind.BOOLEAN,
+          value: token.value === 'true',
+          loc: loc(lexer, token)
+        };
+      } else if (token.value === 'null') {
+        lexer.advance();
+        return {
+          kind: _kinds.Kind.NULL,
+          loc: loc(lexer, token)
+        };
+      }
+
+      lexer.advance();
+      return {
+        kind: _kinds.Kind.ENUM,
+        value: token.value,
+        loc: loc(lexer, token)
+      };
+
+    case _lexer.TokenKind.DOLLAR:
+      if (!isConst) {
+        return parseVariable(lexer);
+      }
+
+      break;
+  }
+
+  throw unexpected(lexer);
+}
+
+function parseStringLiteral(lexer) {
+  var token = lexer.token;
+  lexer.advance();
+  return {
+    kind: _kinds.Kind.STRING,
+    value: token.value,
+    block: token.kind === _lexer.TokenKind.BLOCK_STRING,
+    loc: loc(lexer, token)
+  };
+}
+
+function parseConstValue(lexer) {
+  return parseValueLiteral(lexer, true);
+}
+
+function parseValueValue(lexer) {
+  return parseValueLiteral(lexer, false);
+}
+/**
+ * ListValue[Const] :
+ *   - [ ]
+ *   - [ Value[?Const]+ ]
+ */
+
+
+function parseList(lexer, isConst) {
+  var start = lexer.token;
+  var item = isConst ? parseConstValue : parseValueValue;
+  return {
+    kind: _kinds.Kind.LIST,
+    values: any(lexer, _lexer.TokenKind.BRACKET_L, item, _lexer.TokenKind.BRACKET_R),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * ObjectValue[Const] :
+ *   - { }
+ *   - { ObjectField[?Const]+ }
+ */
+
+
+function parseObject(lexer, isConst) {
+  var start = lexer.token;
+
+  var item = function item() {
+    return parseObjectField(lexer, isConst);
+  };
+
+  return {
+    kind: _kinds.Kind.OBJECT,
+    fields: any(lexer, _lexer.TokenKind.BRACE_L, item, _lexer.TokenKind.BRACE_R),
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * ObjectField[Const] : Name : Value[?Const]
+ */
+
+
+function parseObjectField(lexer, isConst) {
+  var start = lexer.token;
+  var name = parseName(lexer);
+  expectToken(lexer, _lexer.TokenKind.COLON);
+  return {
+    kind: _kinds.Kind.OBJECT_FIELD,
+    name: name,
+    value: parseValueLiteral(lexer, isConst),
+    loc: loc(lexer, start)
+  };
+} // Implements the parsing rules in the Directives section.
+
+/**
+ * Directives[Const] : Directive[?Const]+
+ */
+
+
+function parseDirectives(lexer, isConst) {
+  var directives = [];
+
+  while (peek(lexer, _lexer.TokenKind.AT)) {
+    directives.push(parseDirective(lexer, isConst));
+  }
+
+  return directives;
+}
+/**
+ * Directive[Const] : @ Name Arguments[?Const]?
+ */
+
+
+function parseDirective(lexer, isConst) {
+  var start = lexer.token;
+  expectToken(lexer, _lexer.TokenKind.AT);
+  return {
+    kind: _kinds.Kind.DIRECTIVE,
+    name: parseName(lexer),
+    arguments: parseArguments(lexer, isConst),
+    loc: loc(lexer, start)
+  };
+} // Implements the parsing rules in the Types section.
+
+/**
+ * Type :
+ *   - NamedType
+ *   - ListType
+ *   - NonNullType
+ */
+
+
+function parseTypeReference(lexer) {
+  var start = lexer.token;
+  var type;
+
+  if (expectOptionalToken(lexer, _lexer.TokenKind.BRACKET_L)) {
+    type = parseTypeReference(lexer);
+    expectToken(lexer, _lexer.TokenKind.BRACKET_R);
+    type = {
+      kind: _kinds.Kind.LIST_TYPE,
+      type: type,
+      loc: loc(lexer, start)
+    };
+  } else {
+    type = parseNamedType(lexer);
+  }
+
+  if (expectOptionalToken(lexer, _lexer.TokenKind.BANG)) {
+    return {
+      kind: _kinds.Kind.NON_NULL_TYPE,
+      type: type,
+      loc: loc(lexer, start)
+    };
+  }
+
+  return type;
+}
+/**
+ * NamedType : Name
+ */
+
+
+function parseNamedType(lexer) {
+  var start = lexer.token;
+  return {
+    kind: _kinds.Kind.NAMED_TYPE,
+    name: parseName(lexer),
+    loc: loc(lexer, start)
+  };
+} // Implements the parsing rules in the Type Definition section.
+
+/**
+ * TypeSystemDefinition :
+ *   - SchemaDefinition
+ *   - TypeDefinition
+ *   - DirectiveDefinition
+ *
+ * TypeDefinition :
+ *   - ScalarTypeDefinition
+ *   - ObjectTypeDefinition
+ *   - InterfaceTypeDefinition
+ *   - UnionTypeDefinition
+ *   - EnumTypeDefinition
+ *   - InputObjectTypeDefinition
+ */
+
+
+function parseTypeSystemDefinition(lexer) {
+  // Many definitions begin with a description and require a lookahead.
+  var keywordToken = peekDescription(lexer) ? lexer.lookahead() : lexer.token;
+
+  if (keywordToken.kind === _lexer.TokenKind.NAME) {
+    switch (keywordToken.value) {
+      case 'schema':
+        return parseSchemaDefinition(lexer);
+
+      case 'scalar':
+        return parseScalarTypeDefinition(lexer);
+
+      case 'type':
+        return parseObjectTypeDefinition(lexer);
+
+      case 'interface':
+        return parseInterfaceTypeDefinition(lexer);
+
+      case 'union':
+        return parseUnionTypeDefinition(lexer);
+
+      case 'enum':
+        return parseEnumTypeDefinition(lexer);
+
+      case 'input':
+        return parseInputObjectTypeDefinition(lexer);
+
+      case 'directive':
+        return parseDirectiveDefinition(lexer);
+    }
+  }
+
+  throw unexpected(lexer, keywordToken);
+}
+
+function peekDescription(lexer) {
+  return peek(lexer, _lexer.TokenKind.STRING) || peek(lexer, _lexer.TokenKind.BLOCK_STRING);
+}
+/**
+ * Description : StringValue
+ */
+
+
+function parseDescription(lexer) {
+  if (peekDescription(lexer)) {
+    return parseStringLiteral(lexer);
+  }
+}
+/**
+ * SchemaDefinition : schema Directives[Const]? { OperationTypeDefinition+ }
+ */
+
+
+function parseSchemaDefinition(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'schema');
+  var directives = parseDirectives(lexer, true);
+  var operationTypes = many(lexer, _lexer.TokenKind.BRACE_L, parseOperationTypeDefinition, _lexer.TokenKind.BRACE_R);
+  return {
+    kind: _kinds.Kind.SCHEMA_DEFINITION,
+    directives: directives,
+    operationTypes: operationTypes,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * OperationTypeDefinition : OperationType : NamedType
+ */
+
+
+function parseOperationTypeDefinition(lexer) {
+  var start = lexer.token;
+  var operation = parseOperationType(lexer);
+  expectToken(lexer, _lexer.TokenKind.COLON);
+  var type = parseNamedType(lexer);
+  return {
+    kind: _kinds.Kind.OPERATION_TYPE_DEFINITION,
+    operation: operation,
+    type: type,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * ScalarTypeDefinition : Description? scalar Name Directives[Const]?
+ */
+
+
+function parseScalarTypeDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  expectKeyword(lexer, 'scalar');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  return {
+    kind: _kinds.Kind.SCALAR_TYPE_DEFINITION,
+    description: description,
+    name: name,
+    directives: directives,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * ObjectTypeDefinition :
+ *   Description?
+ *   type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition?
+ */
+
+
+function parseObjectTypeDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  expectKeyword(lexer, 'type');
+  var name = parseName(lexer);
+  var interfaces = parseImplementsInterfaces(lexer);
+  var directives = parseDirectives(lexer, true);
+  var fields = parseFieldsDefinition(lexer);
+  return {
+    kind: _kinds.Kind.OBJECT_TYPE_DEFINITION,
+    description: description,
+    name: name,
+    interfaces: interfaces,
+    directives: directives,
+    fields: fields,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * ImplementsInterfaces :
+ *   - implements `&`? NamedType
+ *   - ImplementsInterfaces & NamedType
+ */
+
+
+function parseImplementsInterfaces(lexer) {
+  var types = [];
+
+  if (expectOptionalKeyword(lexer, 'implements')) {
+    // Optional leading ampersand
+    expectOptionalToken(lexer, _lexer.TokenKind.AMP);
+
+    do {
+      types.push(parseNamedType(lexer));
+    } while (expectOptionalToken(lexer, _lexer.TokenKind.AMP) || // Legacy support for the SDL?
+    lexer.options.allowLegacySDLImplementsInterfaces && peek(lexer, _lexer.TokenKind.NAME));
+  }
+
+  return types;
+}
+/**
+ * FieldsDefinition : { FieldDefinition+ }
+ */
+
+
+function parseFieldsDefinition(lexer) {
+  // Legacy support for the SDL?
+  if (lexer.options.allowLegacySDLEmptyFields && peek(lexer, _lexer.TokenKind.BRACE_L) && lexer.lookahead().kind === _lexer.TokenKind.BRACE_R) {
+    lexer.advance();
+    lexer.advance();
+    return [];
+  }
+
+  return peek(lexer, _lexer.TokenKind.BRACE_L) ? many(lexer, _lexer.TokenKind.BRACE_L, parseFieldDefinition, _lexer.TokenKind.BRACE_R) : [];
+}
+/**
+ * FieldDefinition :
+ *   - Description? Name ArgumentsDefinition? : Type Directives[Const]?
+ */
+
+
+function parseFieldDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  var name = parseName(lexer);
+  var args = parseArgumentDefs(lexer);
+  expectToken(lexer, _lexer.TokenKind.COLON);
+  var type = parseTypeReference(lexer);
+  var directives = parseDirectives(lexer, true);
+  return {
+    kind: _kinds.Kind.FIELD_DEFINITION,
+    description: description,
+    name: name,
+    arguments: args,
+    type: type,
+    directives: directives,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * ArgumentsDefinition : ( InputValueDefinition+ )
+ */
+
+
+function parseArgumentDefs(lexer) {
+  if (!peek(lexer, _lexer.TokenKind.PAREN_L)) {
+    return [];
+  }
+
+  return many(lexer, _lexer.TokenKind.PAREN_L, parseInputValueDef, _lexer.TokenKind.PAREN_R);
+}
+/**
+ * InputValueDefinition :
+ *   - Description? Name : Type DefaultValue? Directives[Const]?
+ */
+
+
+function parseInputValueDef(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  var name = parseName(lexer);
+  expectToken(lexer, _lexer.TokenKind.COLON);
+  var type = parseTypeReference(lexer);
+  var defaultValue;
+
+  if (expectOptionalToken(lexer, _lexer.TokenKind.EQUALS)) {
+    defaultValue = parseConstValue(lexer);
+  }
+
+  var directives = parseDirectives(lexer, true);
+  return {
+    kind: _kinds.Kind.INPUT_VALUE_DEFINITION,
+    description: description,
+    name: name,
+    type: type,
+    defaultValue: defaultValue,
+    directives: directives,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * InterfaceTypeDefinition :
+ *   - Description? interface Name Directives[Const]? FieldsDefinition?
+ */
+
+
+function parseInterfaceTypeDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  expectKeyword(lexer, 'interface');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  var fields = parseFieldsDefinition(lexer);
+  return {
+    kind: _kinds.Kind.INTERFACE_TYPE_DEFINITION,
+    description: description,
+    name: name,
+    directives: directives,
+    fields: fields,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * UnionTypeDefinition :
+ *   - Description? union Name Directives[Const]? UnionMemberTypes?
+ */
+
+
+function parseUnionTypeDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  expectKeyword(lexer, 'union');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  var types = parseUnionMemberTypes(lexer);
+  return {
+    kind: _kinds.Kind.UNION_TYPE_DEFINITION,
+    description: description,
+    name: name,
+    directives: directives,
+    types: types,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * UnionMemberTypes :
+ *   - = `|`? NamedType
+ *   - UnionMemberTypes | NamedType
+ */
+
+
+function parseUnionMemberTypes(lexer) {
+  var types = [];
+
+  if (expectOptionalToken(lexer, _lexer.TokenKind.EQUALS)) {
+    // Optional leading pipe
+    expectOptionalToken(lexer, _lexer.TokenKind.PIPE);
+
+    do {
+      types.push(parseNamedType(lexer));
+    } while (expectOptionalToken(lexer, _lexer.TokenKind.PIPE));
+  }
+
+  return types;
+}
+/**
+ * EnumTypeDefinition :
+ *   - Description? enum Name Directives[Const]? EnumValuesDefinition?
+ */
+
+
+function parseEnumTypeDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  expectKeyword(lexer, 'enum');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  var values = parseEnumValuesDefinition(lexer);
+  return {
+    kind: _kinds.Kind.ENUM_TYPE_DEFINITION,
+    description: description,
+    name: name,
+    directives: directives,
+    values: values,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * EnumValuesDefinition : { EnumValueDefinition+ }
+ */
+
+
+function parseEnumValuesDefinition(lexer) {
+  return peek(lexer, _lexer.TokenKind.BRACE_L) ? many(lexer, _lexer.TokenKind.BRACE_L, parseEnumValueDefinition, _lexer.TokenKind.BRACE_R) : [];
+}
+/**
+ * EnumValueDefinition : Description? EnumValue Directives[Const]?
+ *
+ * EnumValue : Name
+ */
+
+
+function parseEnumValueDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  return {
+    kind: _kinds.Kind.ENUM_VALUE_DEFINITION,
+    description: description,
+    name: name,
+    directives: directives,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * InputObjectTypeDefinition :
+ *   - Description? input Name Directives[Const]? InputFieldsDefinition?
+ */
+
+
+function parseInputObjectTypeDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  expectKeyword(lexer, 'input');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  var fields = parseInputFieldsDefinition(lexer);
+  return {
+    kind: _kinds.Kind.INPUT_OBJECT_TYPE_DEFINITION,
+    description: description,
+    name: name,
+    directives: directives,
+    fields: fields,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * InputFieldsDefinition : { InputValueDefinition+ }
+ */
+
+
+function parseInputFieldsDefinition(lexer) {
+  return peek(lexer, _lexer.TokenKind.BRACE_L) ? many(lexer, _lexer.TokenKind.BRACE_L, parseInputValueDef, _lexer.TokenKind.BRACE_R) : [];
+}
+/**
+ * TypeSystemExtension :
+ *   - SchemaExtension
+ *   - TypeExtension
+ *
+ * TypeExtension :
+ *   - ScalarTypeExtension
+ *   - ObjectTypeExtension
+ *   - InterfaceTypeExtension
+ *   - UnionTypeExtension
+ *   - EnumTypeExtension
+ *   - InputObjectTypeDefinition
+ */
+
+
+function parseTypeSystemExtension(lexer) {
+  var keywordToken = lexer.lookahead();
+
+  if (keywordToken.kind === _lexer.TokenKind.NAME) {
+    switch (keywordToken.value) {
+      case 'schema':
+        return parseSchemaExtension(lexer);
+
+      case 'scalar':
+        return parseScalarTypeExtension(lexer);
+
+      case 'type':
+        return parseObjectTypeExtension(lexer);
+
+      case 'interface':
+        return parseInterfaceTypeExtension(lexer);
+
+      case 'union':
+        return parseUnionTypeExtension(lexer);
+
+      case 'enum':
+        return parseEnumTypeExtension(lexer);
+
+      case 'input':
+        return parseInputObjectTypeExtension(lexer);
+    }
+  }
+
+  throw unexpected(lexer, keywordToken);
+}
+/**
+ * SchemaExtension :
+ *  - extend schema Directives[Const]? { OperationTypeDefinition+ }
+ *  - extend schema Directives[Const]
+ */
+
+
+function parseSchemaExtension(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'extend');
+  expectKeyword(lexer, 'schema');
+  var directives = parseDirectives(lexer, true);
+  var operationTypes = peek(lexer, _lexer.TokenKind.BRACE_L) ? many(lexer, _lexer.TokenKind.BRACE_L, parseOperationTypeDefinition, _lexer.TokenKind.BRACE_R) : [];
+
+  if (directives.length === 0 && operationTypes.length === 0) {
+    throw unexpected(lexer);
+  }
+
+  return {
+    kind: _kinds.Kind.SCHEMA_EXTENSION,
+    directives: directives,
+    operationTypes: operationTypes,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * ScalarTypeExtension :
+ *   - extend scalar Name Directives[Const]
+ */
+
+
+function parseScalarTypeExtension(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'extend');
+  expectKeyword(lexer, 'scalar');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+
+  if (directives.length === 0) {
+    throw unexpected(lexer);
+  }
+
+  return {
+    kind: _kinds.Kind.SCALAR_TYPE_EXTENSION,
+    name: name,
+    directives: directives,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * ObjectTypeExtension :
+ *  - extend type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition
+ *  - extend type Name ImplementsInterfaces? Directives[Const]
+ *  - extend type Name ImplementsInterfaces
+ */
+
+
+function parseObjectTypeExtension(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'extend');
+  expectKeyword(lexer, 'type');
+  var name = parseName(lexer);
+  var interfaces = parseImplementsInterfaces(lexer);
+  var directives = parseDirectives(lexer, true);
+  var fields = parseFieldsDefinition(lexer);
+
+  if (interfaces.length === 0 && directives.length === 0 && fields.length === 0) {
+    throw unexpected(lexer);
+  }
+
+  return {
+    kind: _kinds.Kind.OBJECT_TYPE_EXTENSION,
+    name: name,
+    interfaces: interfaces,
+    directives: directives,
+    fields: fields,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * InterfaceTypeExtension :
+ *   - extend interface Name Directives[Const]? FieldsDefinition
+ *   - extend interface Name Directives[Const]
+ */
+
+
+function parseInterfaceTypeExtension(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'extend');
+  expectKeyword(lexer, 'interface');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  var fields = parseFieldsDefinition(lexer);
+
+  if (directives.length === 0 && fields.length === 0) {
+    throw unexpected(lexer);
+  }
+
+  return {
+    kind: _kinds.Kind.INTERFACE_TYPE_EXTENSION,
+    name: name,
+    directives: directives,
+    fields: fields,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * UnionTypeExtension :
+ *   - extend union Name Directives[Const]? UnionMemberTypes
+ *   - extend union Name Directives[Const]
+ */
+
+
+function parseUnionTypeExtension(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'extend');
+  expectKeyword(lexer, 'union');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  var types = parseUnionMemberTypes(lexer);
+
+  if (directives.length === 0 && types.length === 0) {
+    throw unexpected(lexer);
+  }
+
+  return {
+    kind: _kinds.Kind.UNION_TYPE_EXTENSION,
+    name: name,
+    directives: directives,
+    types: types,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * EnumTypeExtension :
+ *   - extend enum Name Directives[Const]? EnumValuesDefinition
+ *   - extend enum Name Directives[Const]
+ */
+
+
+function parseEnumTypeExtension(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'extend');
+  expectKeyword(lexer, 'enum');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  var values = parseEnumValuesDefinition(lexer);
+
+  if (directives.length === 0 && values.length === 0) {
+    throw unexpected(lexer);
+  }
+
+  return {
+    kind: _kinds.Kind.ENUM_TYPE_EXTENSION,
+    name: name,
+    directives: directives,
+    values: values,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * InputObjectTypeExtension :
+ *   - extend input Name Directives[Const]? InputFieldsDefinition
+ *   - extend input Name Directives[Const]
+ */
+
+
+function parseInputObjectTypeExtension(lexer) {
+  var start = lexer.token;
+  expectKeyword(lexer, 'extend');
+  expectKeyword(lexer, 'input');
+  var name = parseName(lexer);
+  var directives = parseDirectives(lexer, true);
+  var fields = parseInputFieldsDefinition(lexer);
+
+  if (directives.length === 0 && fields.length === 0) {
+    throw unexpected(lexer);
+  }
+
+  return {
+    kind: _kinds.Kind.INPUT_OBJECT_TYPE_EXTENSION,
+    name: name,
+    directives: directives,
+    fields: fields,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * DirectiveDefinition :
+ *   - Description? directive @ Name ArgumentsDefinition? on DirectiveLocations
+ */
+
+
+function parseDirectiveDefinition(lexer) {
+  var start = lexer.token;
+  var description = parseDescription(lexer);
+  expectKeyword(lexer, 'directive');
+  expectToken(lexer, _lexer.TokenKind.AT);
+  var name = parseName(lexer);
+  var args = parseArgumentDefs(lexer);
+  expectKeyword(lexer, 'on');
+  var locations = parseDirectiveLocations(lexer);
+  return {
+    kind: _kinds.Kind.DIRECTIVE_DEFINITION,
+    description: description,
+    name: name,
+    arguments: args,
+    locations: locations,
+    loc: loc(lexer, start)
+  };
+}
+/**
+ * DirectiveLocations :
+ *   - `|`? DirectiveLocation
+ *   - DirectiveLocations | DirectiveLocation
+ */
+
+
+function parseDirectiveLocations(lexer) {
+  // Optional leading pipe
+  expectOptionalToken(lexer, _lexer.TokenKind.PIPE);
+  var locations = [];
+
+  do {
+    locations.push(parseDirectiveLocation(lexer));
+  } while (expectOptionalToken(lexer, _lexer.TokenKind.PIPE));
+
+  return locations;
+}
+/*
+ * DirectiveLocation :
+ *   - ExecutableDirectiveLocation
+ *   - TypeSystemDirectiveLocation
+ *
+ * ExecutableDirectiveLocation : one of
+ *   `QUERY`
+ *   `MUTATION`
+ *   `SUBSCRIPTION`
+ *   `FIELD`
+ *   `FRAGMENT_DEFINITION`
+ *   `FRAGMENT_SPREAD`
+ *   `INLINE_FRAGMENT`
+ *
+ * TypeSystemDirectiveLocation : one of
+ *   `SCHEMA`
+ *   `SCALAR`
+ *   `OBJECT`
+ *   `FIELD_DEFINITION`
+ *   `ARGUMENT_DEFINITION`
+ *   `INTERFACE`
+ *   `UNION`
+ *   `ENUM`
+ *   `ENUM_VALUE`
+ *   `INPUT_OBJECT`
+ *   `INPUT_FIELD_DEFINITION`
+ */
+
+
+function parseDirectiveLocation(lexer) {
+  var start = lexer.token;
+  var name = parseName(lexer);
+
+  if (_directiveLocation.DirectiveLocation[name.value] !== undefined) {
+    return name;
+  }
+
+  throw unexpected(lexer, start);
+} // Core parsing utility functions
+
+/**
+ * Returns a location object, used to identify the place in
+ * the source that created a given parsed object.
+ */
+
+
+function loc(lexer, startToken) {
+  if (!lexer.options.noLocation) {
+    return new Loc(startToken, lexer.lastToken, lexer.source);
+  }
+}
+
+function Loc(startToken, endToken, source) {
+  this.start = startToken.start;
+  this.end = endToken.end;
+  this.startToken = startToken;
+  this.endToken = endToken;
+  this.source = source;
+} // Print a simplified form when appearing in JSON/util.inspect.
+
+
+(0, _defineToJSON.default)(Loc, function () {
+  return {
+    start: this.start,
+    end: this.end
+  };
+});
+/**
+ * Determines if the next token is of a given kind
+ */
+
+function peek(lexer, kind) {
+  return lexer.token.kind === kind;
+}
+/**
+ * If the next token is of the given kind, return that token after advancing
+ * the lexer. Otherwise, do not change the parser state and throw an error.
+ */
+
+
+function expectToken(lexer, kind) {
+  var token = lexer.token;
+
+  if (token.kind === kind) {
+    lexer.advance();
+    return token;
+  }
+
+  throw (0, _error.syntaxError)(lexer.source, token.start, "Expected ".concat(kind, ", found ").concat((0, _lexer.getTokenDesc)(token)));
+}
+/**
+ * If the next token is of the given kind, return that token after advancing
+ * the lexer. Otherwise, do not change the parser state and return undefined.
+ */
+
+
+function expectOptionalToken(lexer, kind) {
+  var token = lexer.token;
+
+  if (token.kind === kind) {
+    lexer.advance();
+    return token;
+  }
+
+  return undefined;
+}
+/**
+ * If the next token is a given keyword, return that token after advancing
+ * the lexer. Otherwise, do not change the parser state and throw an error.
+ */
+
+
+function expectKeyword(lexer, value) {
+  var token = lexer.token;
+
+  if (token.kind === _lexer.TokenKind.NAME && token.value === value) {
+    lexer.advance();
+    return token;
+  }
+
+  throw (0, _error.syntaxError)(lexer.source, token.start, "Expected \"".concat(value, "\", found ").concat((0, _lexer.getTokenDesc)(token)));
+}
+/**
+ * If the next token is a given keyword, return that token after advancing
+ * the lexer. Otherwise, do not change the parser state and return undefined.
+ */
+
+
+function expectOptionalKeyword(lexer, value) {
+  var token = lexer.token;
+
+  if (token.kind === _lexer.TokenKind.NAME && token.value === value) {
+    lexer.advance();
+    return token;
+  }
+
+  return undefined;
+}
+/**
+ * Helper function for creating an error when an unexpected lexed token
+ * is encountered.
+ */
+
+
+function unexpected(lexer, atToken) {
+  var token = atToken || lexer.token;
+  return (0, _error.syntaxError)(lexer.source, token.start, "Unexpected ".concat((0, _lexer.getTokenDesc)(token)));
+}
+/**
+ * Returns a possibly empty list of parse nodes, determined by
+ * the parseFn. This list begins with a lex token of openKind
+ * and ends with a lex token of closeKind. Advances the parser
+ * to the next lex token after the closing token.
+ */
+
+
+function any(lexer, openKind, parseFn, closeKind) {
+  expectToken(lexer, openKind);
+  var nodes = [];
+
+  while (!expectOptionalToken(lexer, closeKind)) {
+    nodes.push(parseFn(lexer));
+  }
+
+  return nodes;
+}
+/**
+ * Returns a non-empty list of parse nodes, determined by
+ * the parseFn. This list begins with a lex token of openKind
+ * and ends with a lex token of closeKind. Advances the parser
+ * to the next lex token after the closing token.
+ */
+
+
+function many(lexer, openKind, parseFn, closeKind) {
+  expectToken(lexer, openKind);
+  var nodes = [parseFn(lexer)];
+
+  while (!expectOptionalToken(lexer, closeKind)) {
+    nodes.push(parseFn(lexer));
+  }
+
+  return nodes;
+}
+},{"../jsutils/inspect":"../../node_modules/graphql/jsutils/inspect.js","../jsutils/defineToJSON":"../../node_modules/graphql/jsutils/defineToJSON.js","./source":"../../node_modules/graphql/language/source.js","../error":"../../node_modules/graphql/error/index.js","./lexer":"../../node_modules/graphql/language/lexer.js","./kinds":"../../node_modules/graphql/language/kinds.js","./directiveLocation":"../../node_modules/graphql/language/directiveLocation.js"}],"../../node_modules/graphql-tag/src/index.js":[function(require,module,exports) {
+var parser = require('graphql/language/parser');
+
+var parse = parser.parse;
+
+// Strip insignificant whitespace
+// Note that this could do a lot more, such as reorder fields etc.
+function normalize(string) {
+  return string.replace(/[\s,]+/g, ' ').trim();
+}
+
+// A map docString -> graphql document
+var docCache = {};
+
+// A map fragmentName -> [normalized source]
+var fragmentSourceMap = {};
+
+function cacheKeyFromLoc(loc) {
+  return normalize(loc.source.body.substring(loc.start, loc.end));
+}
+
+// For testing.
+function resetCaches() {
+  docCache = {};
+  fragmentSourceMap = {};
+}
+
+// Take a unstripped parsed document (query/mutation or even fragment), and
+// check all fragment definitions, checking for name->source uniqueness.
+// We also want to make sure only unique fragments exist in the document.
+var printFragmentWarnings = true;
+function processFragments(ast) {
+  var astFragmentMap = {};
+  var definitions = [];
+
+  for (var i = 0; i < ast.definitions.length; i++) {
+    var fragmentDefinition = ast.definitions[i];
+
+    if (fragmentDefinition.kind === 'FragmentDefinition') {
+      var fragmentName = fragmentDefinition.name.value;
+      var sourceKey = cacheKeyFromLoc(fragmentDefinition.loc);
+
+      // We know something about this fragment
+      if (fragmentSourceMap.hasOwnProperty(fragmentName) && !fragmentSourceMap[fragmentName][sourceKey]) {
+
+        // this is a problem because the app developer is trying to register another fragment with
+        // the same name as one previously registered. So, we tell them about it.
+        if (printFragmentWarnings) {
+          console.warn("Warning: fragment with name " + fragmentName + " already exists.\n"
+            + "graphql-tag enforces all fragment names across your application to be unique; read more about\n"
+            + "this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names");
+        }
+
+        fragmentSourceMap[fragmentName][sourceKey] = true;
+
+      } else if (!fragmentSourceMap.hasOwnProperty(fragmentName)) {
+        fragmentSourceMap[fragmentName] = {};
+        fragmentSourceMap[fragmentName][sourceKey] = true;
+      }
+
+      if (!astFragmentMap[sourceKey]) {
+        astFragmentMap[sourceKey] = true;
+        definitions.push(fragmentDefinition);
+      }
+    } else {
+      definitions.push(fragmentDefinition);
+    }
+  }
+
+  ast.definitions = definitions;
+  return ast;
+}
+
+function disableFragmentWarnings() {
+  printFragmentWarnings = false;
+}
+
+function stripLoc(doc, removeLocAtThisLevel) {
+  var docType = Object.prototype.toString.call(doc);
+
+  if (docType === '[object Array]') {
+    return doc.map(function (d) {
+      return stripLoc(d, removeLocAtThisLevel);
+    });
+  }
+
+  if (docType !== '[object Object]') {
+    throw new Error('Unexpected input.');
+  }
+
+  // We don't want to remove the root loc field so we can use it
+  // for fragment substitution (see below)
+  if (removeLocAtThisLevel && doc.loc) {
+    delete doc.loc;
+  }
+
+  // https://github.com/apollographql/graphql-tag/issues/40
+  if (doc.loc) {
+    delete doc.loc.startToken;
+    delete doc.loc.endToken;
+  }
+
+  var keys = Object.keys(doc);
+  var key;
+  var value;
+  var valueType;
+
+  for (key in keys) {
+    if (keys.hasOwnProperty(key)) {
+      value = doc[keys[key]];
+      valueType = Object.prototype.toString.call(value);
+
+      if (valueType === '[object Object]' || valueType === '[object Array]') {
+        doc[keys[key]] = stripLoc(value, true);
+      }
+    }
+  }
+
+  return doc;
+}
+
+var experimentalFragmentVariables = false;
+function parseDocument(doc) {
+  var cacheKey = normalize(doc);
+
+  if (docCache[cacheKey]) {
+    return docCache[cacheKey];
+  }
+
+  var parsed = parse(doc, { experimentalFragmentVariables: experimentalFragmentVariables });
+  if (!parsed || parsed.kind !== 'Document') {
+    throw new Error('Not a valid GraphQL document.');
+  }
+
+  // check that all "new" fragments inside the documents are consistent with
+  // existing fragments of the same name
+  parsed = processFragments(parsed);
+  parsed = stripLoc(parsed, false);
+  docCache[cacheKey] = parsed;
+
+  return parsed;
+}
+
+function enableExperimentalFragmentVariables() {
+  experimentalFragmentVariables = true;
+}
+
+function disableExperimentalFragmentVariables() {
+  experimentalFragmentVariables = false;
+}
+
+// XXX This should eventually disallow arbitrary string interpolation, like Relay does
+function gql(/* arguments */) {
+  var args = Array.prototype.slice.call(arguments);
+
+  var literals = args[0];
+
+  // We always get literals[0] and then matching post literals for each arg given
+  var result = (typeof(literals) === "string") ? literals : literals[0];
+
+  for (var i = 1; i < args.length; i++) {
+    if (args[i] && args[i].kind && args[i].kind === 'Document') {
+      result += args[i].loc.source.body;
+    } else {
+      result += args[i];
+    }
+
+    result += literals[i];
+  }
+
+  return parseDocument(result);
+}
+
+// Support typescript, which isn't as nice as Babel about default exports
+gql.default = gql;
+gql.resetCaches = resetCaches;
+gql.disableFragmentWarnings = disableFragmentWarnings;
+gql.enableExperimentalFragmentVariables = enableExperimentalFragmentVariables;
+gql.disableExperimentalFragmentVariables = disableExperimentalFragmentVariables;
+
+module.exports = gql;
+
+},{"graphql/language/parser":"../../node_modules/graphql/language/parser.js"}],"graphql/queries.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36982,7 +37001,7 @@ var numberWithCommas = function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-var TripDetails = function TripDetails() {
+var TripDetails = function TripDetails(props) {
   var _useQuery = (0, _reactApolloHooks.useQuery)(_queries.GET_TOUR_DETAILS, {
     variables: {
       id: 3
@@ -37050,7 +37069,8 @@ var TripDetails = function TripDetails() {
   }, "/mo"))))), _react.default.createElement("div", {
     className: "c-trip-detail-info-middle__left"
   }, _react.default.createElement("div", {
-    className: "c-trip-detail-info__style c-trip-detail-info__value-prop-modal-btn link-modal-iframe"
+    className: "c-trip-detail-info__style c-trip-detail-info__value-prop-modal-btn link-modal-iframe",
+    onClick: props.handleShow
   }, "Discoverer"), _react.default.createElement("div", {
     className: "c-trip-detail-info__reviews"
   }, _react.default.createElement("div", {
@@ -37098,7 +37118,4548 @@ var TripDetails = function TripDetails() {
 
 var _default = TripDetails;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","../graphql/queries":"graphql/queries.js"}],"components/content.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","../graphql/queries":"graphql/queries.js"}],"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js":[function(require,module,exports) {
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+},{}],"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+module.exports = _objectWithoutPropertiesLoose;
+},{}],"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js":[function(require,module,exports) {
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
+},{}],"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/inheritsLoose.js":[function(require,module,exports) {
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+module.exports = _inheritsLoose;
+},{}],"../../node_modules/classnames/index.js":[function(require,module,exports) {
+var define;
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+		// register as 'classnames', consistent with npm package name
+		define('classnames', [], function () {
+			return classNames;
+		});
+	} else {
+		window.classNames = classNames;
+	}
+}());
+
+},{}],"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js":[function(require,module,exports) {
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+},{}],"../../node_modules/dom-helpers/util/inDOM.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _default = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+exports.default = _default;
+module.exports = exports["default"];
+},{}],"../../node_modules/dom-helpers/events/on.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _inDOM = _interopRequireDefault(require("../util/inDOM"));
+
+var on = function on() {};
+
+if (_inDOM.default) {
+  on = function () {
+    if (document.addEventListener) return function (node, eventName, handler, capture) {
+      return node.addEventListener(eventName, handler, capture || false);
+    };else if (document.attachEvent) return function (node, eventName, handler) {
+      return node.attachEvent('on' + eventName, function (e) {
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        e.currentTarget = node;
+        handler.call(node, e);
+      });
+    };
+  }();
+}
+
+var _default = on;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","../util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js"}],"../../node_modules/dom-helpers/events/off.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _inDOM = _interopRequireDefault(require("../util/inDOM"));
+
+var off = function off() {};
+
+if (_inDOM.default) {
+  off = function () {
+    if (document.addEventListener) return function (node, eventName, handler, capture) {
+      return node.removeEventListener(eventName, handler, capture || false);
+    };else if (document.attachEvent) return function (node, eventName, handler) {
+      return node.detachEvent('on' + eventName, handler);
+    };
+  }();
+}
+
+var _default = off;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","../util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js"}],"../../node_modules/dom-helpers/query/contains.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _inDOM = _interopRequireDefault(require("../util/inDOM"));
+
+var _default = function () {
+  // HTML DOM and SVG DOM may have different support levels,
+  // so we need to check on context instead of a document root element.
+  return _inDOM.default ? function (context, node) {
+    if (context.contains) {
+      return context.contains(node);
+    } else if (context.compareDocumentPosition) {
+      return context === node || !!(context.compareDocumentPosition(node) & 16);
+    } else {
+      return fallback(context, node);
+    }
+  } : fallback;
+}();
+
+exports.default = _default;
+
+function fallback(context, node) {
+  if (node) do {
+    if (node === context) return true;
+  } while (node = node.parentNode);
+  return false;
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","../util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js"}],"../../node_modules/dom-helpers/query/querySelectorAll.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = qsa;
+// Zepto.js
+// (c) 2010-2015 Thomas Fuchs
+// Zepto.js may be freely distributed under the MIT license.
+var simpleSelectorRE = /^[\w-]*$/;
+var toArray = Function.prototype.bind.call(Function.prototype.call, [].slice);
+
+function qsa(element, selector) {
+  var maybeID = selector[0] === '#',
+      maybeClass = selector[0] === '.',
+      nameOnly = maybeID || maybeClass ? selector.slice(1) : selector,
+      isSimple = simpleSelectorRE.test(nameOnly),
+      found;
+
+  if (isSimple) {
+    if (maybeID) {
+      element = element.getElementById ? element : document;
+      return (found = element.getElementById(nameOnly)) ? [found] : [];
+    }
+
+    if (element.getElementsByClassName && maybeClass) return toArray(element.getElementsByClassName(nameOnly));
+    return toArray(element.getElementsByTagName(selector));
+  }
+
+  return toArray(element.querySelectorAll(selector));
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/dom-helpers/events/filter.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = filterEvents;
+
+var _contains = _interopRequireDefault(require("../query/contains"));
+
+var _querySelectorAll = _interopRequireDefault(require("../query/querySelectorAll"));
+
+function filterEvents(selector, handler) {
+  return function filterHandler(e) {
+    var top = e.currentTarget,
+        target = e.target,
+        matches = (0, _querySelectorAll.default)(top, selector);
+    if (matches.some(function (match) {
+      return (0, _contains.default)(match, target);
+    })) handler.call(this, e);
+  };
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","../query/contains":"../../node_modules/dom-helpers/query/contains.js","../query/querySelectorAll":"../../node_modules/dom-helpers/query/querySelectorAll.js"}],"../../node_modules/dom-helpers/events/listen.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _inDOM = _interopRequireDefault(require("../util/inDOM"));
+
+var _on = _interopRequireDefault(require("./on"));
+
+var _off = _interopRequireDefault(require("./off"));
+
+var listen = function listen() {};
+
+if (_inDOM.default) {
+  listen = function listen(node, eventName, handler, capture) {
+    (0, _on.default)(node, eventName, handler, capture);
+    return function () {
+      (0, _off.default)(node, eventName, handler, capture);
+    };
+  };
+}
+
+var _default = listen;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","../util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js","./on":"../../node_modules/dom-helpers/events/on.js","./off":"../../node_modules/dom-helpers/events/off.js"}],"../../node_modules/dom-helpers/events/index.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _on = _interopRequireDefault(require("./on"));
+
+exports.on = _on.default;
+
+var _off = _interopRequireDefault(require("./off"));
+
+exports.off = _off.default;
+
+var _filter = _interopRequireDefault(require("./filter"));
+
+exports.filter = _filter.default;
+
+var _listen = _interopRequireDefault(require("./listen"));
+
+exports.listen = _listen.default;
+var _default = {
+  on: _on.default,
+  off: _off.default,
+  filter: _filter.default,
+  listen: _listen.default
+};
+exports.default = _default;
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./on":"../../node_modules/dom-helpers/events/on.js","./off":"../../node_modules/dom-helpers/events/off.js","./filter":"../../node_modules/dom-helpers/events/filter.js","./listen":"../../node_modules/dom-helpers/events/listen.js"}],"../../node_modules/dom-helpers/ownerDocument.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = ownerDocument;
+
+function ownerDocument(node) {
+  return node && node.ownerDocument || document;
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/dom-helpers/util/scrollbarSize.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = scrollbarSize;
+
+var _inDOM = _interopRequireDefault(require("./inDOM"));
+
+var size;
+
+function scrollbarSize(recalc) {
+  if (!size && size !== 0 || recalc) {
+    if (_inDOM.default) {
+      var scrollDiv = document.createElement('div');
+      scrollDiv.style.position = 'absolute';
+      scrollDiv.style.top = '-9999px';
+      scrollDiv.style.width = '50px';
+      scrollDiv.style.height = '50px';
+      scrollDiv.style.overflow = 'scroll';
+      document.body.appendChild(scrollDiv);
+      size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+      document.body.removeChild(scrollDiv);
+    }
+  }
+
+  return size;
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./inDOM":"../../node_modules/dom-helpers/util/inDOM.js"}],"../../node_modules/dom-helpers/activeElement.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = activeElement;
+
+var _ownerDocument = _interopRequireDefault(require("./ownerDocument"));
+
+function activeElement(doc) {
+  if (doc === void 0) {
+    doc = (0, _ownerDocument.default)();
+  }
+
+  try {
+    return doc.activeElement;
+  } catch (e) {
+    /* ie throws if no active element */
+  }
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./ownerDocument":"../../node_modules/dom-helpers/ownerDocument.js"}],"../../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+/** @license React v16.8.6
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+'use strict';
+
+if ("development" !== "production") {
+  (function () {
+    'use strict';
+
+    Object.defineProperty(exports, '__esModule', {
+      value: true
+    }); // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+    // nor polyfill, then a plain number is used for performance.
+
+    var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+    var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+    var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+    var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+    var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+    var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+    var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+    var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
+    var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+    var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+    var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+    var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+    var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+    var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+
+    function isValidElementType(type) {
+      return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+      type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
+    }
+    /**
+     * Forked from fbjs/warning:
+     * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+     *
+     * Only change is we use console.warn instead of console.error,
+     * and do nothing when 'console' is not supported.
+     * This really simplifies the code.
+     * ---
+     * Similar to invariant but only logs a warning if the condition is not met.
+     * This can be used to log issues in development environments in critical
+     * paths. Removing the logging code for production environments will keep the
+     * same logic and follow the same code paths.
+     */
+
+
+    var lowPriorityWarning = function () {};
+
+    {
+      var printWarning = function (format) {
+        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          args[_key - 1] = arguments[_key];
+        }
+
+        var argIndex = 0;
+        var message = 'Warning: ' + format.replace(/%s/g, function () {
+          return args[argIndex++];
+        });
+
+        if (typeof console !== 'undefined') {
+          console.warn(message);
+        }
+
+        try {
+          // --- Welcome to debugging React ---
+          // This error was thrown as a convenience so that you can use this stack
+          // to find the callsite that caused this warning to fire.
+          throw new Error(message);
+        } catch (x) {}
+      };
+
+      lowPriorityWarning = function (condition, format) {
+        if (format === undefined) {
+          throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
+        }
+
+        if (!condition) {
+          for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+            args[_key2 - 2] = arguments[_key2];
+          }
+
+          printWarning.apply(undefined, [format].concat(args));
+        }
+      };
+    }
+    var lowPriorityWarning$1 = lowPriorityWarning;
+
+    function typeOf(object) {
+      if (typeof object === 'object' && object !== null) {
+        var $$typeof = object.$$typeof;
+
+        switch ($$typeof) {
+          case REACT_ELEMENT_TYPE:
+            var type = object.type;
+
+            switch (type) {
+              case REACT_ASYNC_MODE_TYPE:
+              case REACT_CONCURRENT_MODE_TYPE:
+              case REACT_FRAGMENT_TYPE:
+              case REACT_PROFILER_TYPE:
+              case REACT_STRICT_MODE_TYPE:
+              case REACT_SUSPENSE_TYPE:
+                return type;
+
+              default:
+                var $$typeofType = type && type.$$typeof;
+
+                switch ($$typeofType) {
+                  case REACT_CONTEXT_TYPE:
+                  case REACT_FORWARD_REF_TYPE:
+                  case REACT_PROVIDER_TYPE:
+                    return $$typeofType;
+
+                  default:
+                    return $$typeof;
+                }
+
+            }
+
+          case REACT_LAZY_TYPE:
+          case REACT_MEMO_TYPE:
+          case REACT_PORTAL_TYPE:
+            return $$typeof;
+        }
+      }
+
+      return undefined;
+    } // AsyncMode is deprecated along with isAsyncMode
+
+
+    var AsyncMode = REACT_ASYNC_MODE_TYPE;
+    var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+    var ContextConsumer = REACT_CONTEXT_TYPE;
+    var ContextProvider = REACT_PROVIDER_TYPE;
+    var Element = REACT_ELEMENT_TYPE;
+    var ForwardRef = REACT_FORWARD_REF_TYPE;
+    var Fragment = REACT_FRAGMENT_TYPE;
+    var Lazy = REACT_LAZY_TYPE;
+    var Memo = REACT_MEMO_TYPE;
+    var Portal = REACT_PORTAL_TYPE;
+    var Profiler = REACT_PROFILER_TYPE;
+    var StrictMode = REACT_STRICT_MODE_TYPE;
+    var Suspense = REACT_SUSPENSE_TYPE;
+    var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+    function isAsyncMode(object) {
+      {
+        if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+          hasWarnedAboutDeprecatedIsAsyncMode = true;
+          lowPriorityWarning$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+        }
+      }
+      return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+    }
+
+    function isConcurrentMode(object) {
+      return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+    }
+
+    function isContextConsumer(object) {
+      return typeOf(object) === REACT_CONTEXT_TYPE;
+    }
+
+    function isContextProvider(object) {
+      return typeOf(object) === REACT_PROVIDER_TYPE;
+    }
+
+    function isElement(object) {
+      return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+    }
+
+    function isForwardRef(object) {
+      return typeOf(object) === REACT_FORWARD_REF_TYPE;
+    }
+
+    function isFragment(object) {
+      return typeOf(object) === REACT_FRAGMENT_TYPE;
+    }
+
+    function isLazy(object) {
+      return typeOf(object) === REACT_LAZY_TYPE;
+    }
+
+    function isMemo(object) {
+      return typeOf(object) === REACT_MEMO_TYPE;
+    }
+
+    function isPortal(object) {
+      return typeOf(object) === REACT_PORTAL_TYPE;
+    }
+
+    function isProfiler(object) {
+      return typeOf(object) === REACT_PROFILER_TYPE;
+    }
+
+    function isStrictMode(object) {
+      return typeOf(object) === REACT_STRICT_MODE_TYPE;
+    }
+
+    function isSuspense(object) {
+      return typeOf(object) === REACT_SUSPENSE_TYPE;
+    }
+
+    exports.typeOf = typeOf;
+    exports.AsyncMode = AsyncMode;
+    exports.ConcurrentMode = ConcurrentMode;
+    exports.ContextConsumer = ContextConsumer;
+    exports.ContextProvider = ContextProvider;
+    exports.Element = Element;
+    exports.ForwardRef = ForwardRef;
+    exports.Fragment = Fragment;
+    exports.Lazy = Lazy;
+    exports.Memo = Memo;
+    exports.Portal = Portal;
+    exports.Profiler = Profiler;
+    exports.StrictMode = StrictMode;
+    exports.Suspense = Suspense;
+    exports.isValidElementType = isValidElementType;
+    exports.isAsyncMode = isAsyncMode;
+    exports.isConcurrentMode = isConcurrentMode;
+    exports.isContextConsumer = isContextConsumer;
+    exports.isContextProvider = isContextProvider;
+    exports.isElement = isElement;
+    exports.isForwardRef = isForwardRef;
+    exports.isFragment = isFragment;
+    exports.isLazy = isLazy;
+    exports.isMemo = isMemo;
+    exports.isPortal = isPortal;
+    exports.isProfiler = isProfiler;
+    exports.isStrictMode = isStrictMode;
+    exports.isSuspense = isSuspense;
+  })();
+}
+},{}],"../../node_modules/react-is/index.js":[function(require,module,exports) {
+'use strict';
+
+if ("development" === 'production') {
+  module.exports = require('./cjs/react-is.production.min.js');
+} else {
+  module.exports = require('./cjs/react-is.development.js');
+}
+},{"./cjs/react-is.development.js":"../../node_modules/react-is/cjs/react-is.development.js"}],"../../node_modules/prop-types/factoryWithTypeCheckers.js":[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+'use strict';
+
+var ReactIs = require('react-is');
+
+var assign = require('object-assign');
+
+var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+
+var checkPropTypes = require('./checkPropTypes');
+
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+var printWarning = function () {};
+
+if ("development" !== 'production') {
+  printWarning = function (text) {
+    var message = 'Warning: ' + text;
+
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function (isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+
+  var ANONYMOUS = '<<anonymous>>'; // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker
+  };
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+
+  /*eslint-disable no-self-compare*/
+
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+
+
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  } // Make `instanceof Error` still work for returned errors.
+
+
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if ("development" !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ("development" !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+
+          if (!manualPropTypeCallCache[cacheKey] && // Avoid spamming the console because they are often not actionable except for lib authors
+          manualPropTypeWarningCount < 3) {
+            printWarning('You are manually calling a React.PropTypes validation ' + 'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.');
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+
+      var propValue = props[propName];
+
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if ("development" !== 'production') {
+        if (arguments.length > 1) {
+          printWarning('Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' + 'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).');
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+
+        if (type === 'symbol') {
+          return String(value);
+        }
+
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      "development" !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+
+      if (typeof checker !== 'function') {
+        printWarning('Invalid argument supplied to oneOfType. Expected an array of check functions, but ' + 'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.');
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+
+        if (!checker) {
+          continue;
+        }
+
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+
+        if (error) {
+          return error;
+        }
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      } // We need to check all keys in case some are required but missing from
+      // props.
+
+
+      var allKeys = assign({}, props[propName], shapeTypes);
+
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+
+        if (!checker) {
+          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
+        }
+
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+
+        if (error) {
+          return error;
+        }
+      }
+
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+
+      case 'boolean':
+        return !propValue;
+
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    } // falsy value can't be a Symbol
+
+
+    if (!propValue) {
+      return false;
+    } // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+
+
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    } // Fallback for non-spec compliant Symbols which are polyfilled.
+
+
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  } // Equivalent of `typeof` but with special handling for array and regexp.
+
+
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+
+    return propType;
+  } // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+
+
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+
+    var propType = getPropType(propValue);
+
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+
+    return propType;
+  } // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+
+
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+
+      default:
+        return type;
+    }
+  } // Returns class name of the object, if any.
+
+
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+  return ReactPropTypes;
+};
+},{"react-is":"../../node_modules/react-is/index.js","object-assign":"../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+if ("development" !== 'production') {
+  var ReactIs = require('react-is'); // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+
+
+  var throwOnDirectAccess = true;
+  module.exports = require('./factoryWithTypeCheckers')(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = require('./factoryWithThrowingShims')();
+}
+},{"react-is":"../../node_modules/react-is/index.js","./factoryWithTypeCheckers":"../../node_modules/prop-types/factoryWithTypeCheckers.js"}],"../../node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js":[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createChainableTypeChecker;
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+// Mostly taken from ReactPropTypes.
+
+function createChainableTypeChecker(validate) {
+  function checkType(isRequired, props, propName, componentName, location, propFullName) {
+    var componentNameSafe = componentName || '<<anonymous>>';
+    var propFullNameSafe = propFullName || propName;
+
+    if (props[propName] == null) {
+      if (isRequired) {
+        return new Error('Required ' + location + ' `' + propFullNameSafe + '` was not specified ' + ('in `' + componentNameSafe + '`.'));
+      }
+
+      return null;
+    }
+
+    for (var _len = arguments.length, args = Array(_len > 6 ? _len - 6 : 0), _key = 6; _key < _len; _key++) {
+      args[_key - 6] = arguments[_key];
+    }
+
+    return validate.apply(undefined, [props, propName, componentNameSafe, location, propFullNameSafe].concat(args));
+  }
+
+  var chainedCheckType = checkType.bind(null, false);
+  chainedCheckType.isRequired = checkType.bind(null, true);
+
+  return chainedCheckType;
+}
+module.exports = exports['default'];
+},{}],"../../node_modules/prop-types-extra/lib/componentOrElement.js":[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _createChainableTypeChecker = require('./utils/createChainableTypeChecker');
+
+var _createChainableTypeChecker2 = _interopRequireDefault(_createChainableTypeChecker);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function validate(props, propName, componentName, location, propFullName) {
+  var propValue = props[propName];
+  var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue);
+
+  if (_react2.default.isValidElement(propValue)) {
+    return new Error('Invalid ' + location + ' `' + propFullName + '` of type ReactElement ' + ('supplied to `' + componentName + '`, expected a ReactComponent or a ') + 'DOMElement. You can usually obtain a ReactComponent or DOMElement ' + 'from a ReactElement by attaching a ref to it.');
+  }
+
+  if ((propType !== 'object' || typeof propValue.render !== 'function') && propValue.nodeType !== 1) {
+    return new Error('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected a ReactComponent or a ') + 'DOMElement.');
+  }
+
+  return null;
+}
+
+exports.default = (0, _createChainableTypeChecker2.default)(validate);
+module.exports = exports['default'];
+},{"react":"../../node_modules/react/index.js","./utils/createChainableTypeChecker":"../../node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js"}],"../../node_modules/prop-types-extra/lib/elementType.js":[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIs = require('react-is');
+
+var _createChainableTypeChecker = require('./utils/createChainableTypeChecker');
+
+var _createChainableTypeChecker2 = _interopRequireDefault(_createChainableTypeChecker);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function elementType(props, propName, componentName, location, propFullName) {
+  var propValue = props[propName];
+
+  if (_react2.default.isValidElement(propValue)) {
+    return new Error('Invalid ' + location + ' `' + propFullName + '` of type ReactElement ' + ('supplied to `' + componentName + '`,expected an element type (a string ') + ', component class, or function component).');
+  }
+
+  if (!(0, _reactIs.isValidElementType)(propValue)) {
+    return new Error('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected an element type (a string ') + ', component class, or function component).');
+  }
+
+  return null;
+}
+
+exports.default = (0, _createChainableTypeChecker2.default)(elementType);
+module.exports = exports['default'];
+},{"react":"../../node_modules/react/index.js","react-is":"../../node_modules/react-is/index.js","./utils/createChainableTypeChecker":"../../node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js"}],"../../node_modules/dom-helpers/class/hasClass.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = hasClass;
+
+function hasClass(element, className) {
+  if (element.classList) return !!className && element.classList.contains(className);else return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/dom-helpers/class/addClass.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = addClass;
+
+var _hasClass = _interopRequireDefault(require("./hasClass"));
+
+function addClass(element, className) {
+  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./hasClass":"../../node_modules/dom-helpers/class/hasClass.js"}],"../../node_modules/dom-helpers/class/removeClass.js":[function(require,module,exports) {
+'use strict';
+
+function replaceClassName(origClass, classToRemove) {
+  return origClass.replace(new RegExp('(^|\\s)' + classToRemove + '(?:\\s|$)', 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
+}
+
+module.exports = function removeClass(element, className) {
+  if (element.classList) element.classList.remove(className);else if (typeof element.className === 'string') element.className = replaceClassName(element.className, className);else element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className));
+};
+},{}],"../../node_modules/dom-helpers/class/index.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _addClass = _interopRequireDefault(require("./addClass"));
+
+exports.addClass = _addClass.default;
+
+var _removeClass = _interopRequireDefault(require("./removeClass"));
+
+exports.removeClass = _removeClass.default;
+
+var _hasClass = _interopRequireDefault(require("./hasClass"));
+
+exports.hasClass = _hasClass.default;
+var _default = {
+  addClass: _addClass.default,
+  removeClass: _removeClass.default,
+  hasClass: _hasClass.default
+};
+exports.default = _default;
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./addClass":"../../node_modules/dom-helpers/class/addClass.js","./removeClass":"../../node_modules/dom-helpers/class/removeClass.js","./hasClass":"../../node_modules/dom-helpers/class/hasClass.js"}],"../../node_modules/dom-helpers/util/camelize.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = camelize;
+var rHyphen = /-(.)/g;
+
+function camelize(string) {
+  return string.replace(rHyphen, function (_, chr) {
+    return chr.toUpperCase();
+  });
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/dom-helpers/util/camelizeStyle.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = camelizeStyleName;
+
+var _camelize = _interopRequireDefault(require("./camelize"));
+
+/**
+ * Copyright 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/camelizeStyleName.js
+ */
+var msPattern = /^-ms-/;
+
+function camelizeStyleName(string) {
+  return (0, _camelize.default)(string.replace(msPattern, 'ms-'));
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./camelize":"../../node_modules/dom-helpers/util/camelize.js"}],"../../node_modules/dom-helpers/util/hyphenate.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = hyphenate;
+var rUpper = /([A-Z])/g;
+
+function hyphenate(string) {
+  return string.replace(rUpper, '-$1').toLowerCase();
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/dom-helpers/util/hyphenateStyle.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = hyphenateStyleName;
+
+var _hyphenate = _interopRequireDefault(require("./hyphenate"));
+
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/hyphenateStyleName.js
+ */
+var msPattern = /^ms-/;
+
+function hyphenateStyleName(string) {
+  return (0, _hyphenate.default)(string).replace(msPattern, '-ms-');
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./hyphenate":"../../node_modules/dom-helpers/util/hyphenate.js"}],"../../node_modules/dom-helpers/style/getComputedStyle.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = _getComputedStyle;
+
+var _camelizeStyle = _interopRequireDefault(require("../util/camelizeStyle"));
+
+var rposition = /^(top|right|bottom|left)$/;
+var rnumnonpx = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(?!px)[a-z%]+$/i;
+
+function _getComputedStyle(node) {
+  if (!node) throw new TypeError('No Element passed to `getComputedStyle()`');
+  var doc = node.ownerDocument;
+  return 'defaultView' in doc ? doc.defaultView.opener ? node.ownerDocument.defaultView.getComputedStyle(node, null) : window.getComputedStyle(node, null) : {
+    //ie 8 "magic" from: https://github.com/jquery/jquery/blob/1.11-stable/src/css/curCSS.js#L72
+    getPropertyValue: function getPropertyValue(prop) {
+      var style = node.style;
+      prop = (0, _camelizeStyle.default)(prop);
+      if (prop == 'float') prop = 'styleFloat';
+      var current = node.currentStyle[prop] || null;
+      if (current == null && style && style[prop]) current = style[prop];
+
+      if (rnumnonpx.test(current) && !rposition.test(prop)) {
+        // Remember the original values
+        var left = style.left;
+        var runStyle = node.runtimeStyle;
+        var rsLeft = runStyle && runStyle.left; // Put in the new values to get a computed value out
+
+        if (rsLeft) runStyle.left = node.currentStyle.left;
+        style.left = prop === 'fontSize' ? '1em' : current;
+        current = style.pixelLeft + 'px'; // Revert the changed values
+
+        style.left = left;
+        if (rsLeft) runStyle.left = rsLeft;
+      }
+
+      return current;
+    }
+  };
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","../util/camelizeStyle":"../../node_modules/dom-helpers/util/camelizeStyle.js"}],"../../node_modules/dom-helpers/style/removeStyle.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = removeStyle;
+
+function removeStyle(node, key) {
+  return 'removeProperty' in node.style ? node.style.removeProperty(key) : node.style.removeAttribute(key);
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/dom-helpers/transition/properties.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = exports.animationEnd = exports.animationDelay = exports.animationTiming = exports.animationDuration = exports.animationName = exports.transitionEnd = exports.transitionDuration = exports.transitionDelay = exports.transitionTiming = exports.transitionProperty = exports.transform = void 0;
+
+var _inDOM = _interopRequireDefault(require("../util/inDOM"));
+
+var transform = 'transform';
+exports.transform = transform;
+var prefix, transitionEnd, animationEnd;
+exports.animationEnd = animationEnd;
+exports.transitionEnd = transitionEnd;
+var transitionProperty, transitionDuration, transitionTiming, transitionDelay;
+exports.transitionDelay = transitionDelay;
+exports.transitionTiming = transitionTiming;
+exports.transitionDuration = transitionDuration;
+exports.transitionProperty = transitionProperty;
+var animationName, animationDuration, animationTiming, animationDelay;
+exports.animationDelay = animationDelay;
+exports.animationTiming = animationTiming;
+exports.animationDuration = animationDuration;
+exports.animationName = animationName;
+
+if (_inDOM.default) {
+  var _getTransitionPropert = getTransitionProperties();
+
+  prefix = _getTransitionPropert.prefix;
+  exports.transitionEnd = transitionEnd = _getTransitionPropert.transitionEnd;
+  exports.animationEnd = animationEnd = _getTransitionPropert.animationEnd;
+  exports.transform = transform = prefix + "-" + transform;
+  exports.transitionProperty = transitionProperty = prefix + "-transition-property";
+  exports.transitionDuration = transitionDuration = prefix + "-transition-duration";
+  exports.transitionDelay = transitionDelay = prefix + "-transition-delay";
+  exports.transitionTiming = transitionTiming = prefix + "-transition-timing-function";
+  exports.animationName = animationName = prefix + "-animation-name";
+  exports.animationDuration = animationDuration = prefix + "-animation-duration";
+  exports.animationTiming = animationTiming = prefix + "-animation-delay";
+  exports.animationDelay = animationDelay = prefix + "-animation-timing-function";
+}
+
+var _default = {
+  transform: transform,
+  end: transitionEnd,
+  property: transitionProperty,
+  timing: transitionTiming,
+  delay: transitionDelay,
+  duration: transitionDuration
+};
+exports.default = _default;
+
+function getTransitionProperties() {
+  var style = document.createElement('div').style;
+  var vendorMap = {
+    O: function O(e) {
+      return "o" + e.toLowerCase();
+    },
+    Moz: function Moz(e) {
+      return e.toLowerCase();
+    },
+    Webkit: function Webkit(e) {
+      return "webkit" + e;
+    },
+    ms: function ms(e) {
+      return "MS" + e;
+    }
+  };
+  var vendors = Object.keys(vendorMap);
+  var transitionEnd, animationEnd;
+  var prefix = '';
+
+  for (var i = 0; i < vendors.length; i++) {
+    var vendor = vendors[i];
+
+    if (vendor + "TransitionProperty" in style) {
+      prefix = "-" + vendor.toLowerCase();
+      transitionEnd = vendorMap[vendor]('TransitionEnd');
+      animationEnd = vendorMap[vendor]('AnimationEnd');
+      break;
+    }
+  }
+
+  if (!transitionEnd && 'transitionProperty' in style) transitionEnd = 'transitionend';
+  if (!animationEnd && 'animationName' in style) animationEnd = 'animationend';
+  style = null;
+  return {
+    animationEnd: animationEnd,
+    transitionEnd: transitionEnd,
+    prefix: prefix
+  };
+}
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","../util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js"}],"../../node_modules/dom-helpers/transition/isTransform.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = isTransform;
+var supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i;
+
+function isTransform(property) {
+  return !!(property && supportedTransforms.test(property));
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/dom-helpers/style/index.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = style;
+
+var _camelizeStyle = _interopRequireDefault(require("../util/camelizeStyle"));
+
+var _hyphenateStyle = _interopRequireDefault(require("../util/hyphenateStyle"));
+
+var _getComputedStyle2 = _interopRequireDefault(require("./getComputedStyle"));
+
+var _removeStyle = _interopRequireDefault(require("./removeStyle"));
+
+var _properties = require("../transition/properties");
+
+var _isTransform = _interopRequireDefault(require("../transition/isTransform"));
+
+function style(node, property, value) {
+  var css = '';
+  var transforms = '';
+  var props = property;
+
+  if (typeof property === 'string') {
+    if (value === undefined) {
+      return node.style[(0, _camelizeStyle.default)(property)] || (0, _getComputedStyle2.default)(node).getPropertyValue((0, _hyphenateStyle.default)(property));
+    } else {
+      (props = {})[property] = value;
+    }
+  }
+
+  Object.keys(props).forEach(function (key) {
+    var value = props[key];
+
+    if (!value && value !== 0) {
+      (0, _removeStyle.default)(node, (0, _hyphenateStyle.default)(key));
+    } else if ((0, _isTransform.default)(key)) {
+      transforms += key + "(" + value + ") ";
+    } else {
+      css += (0, _hyphenateStyle.default)(key) + ": " + value + ";";
+    }
+  });
+
+  if (transforms) {
+    css += _properties.transform + ": " + transforms + ";";
+  }
+
+  node.style.cssText += ';' + css;
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","../util/camelizeStyle":"../../node_modules/dom-helpers/util/camelizeStyle.js","../util/hyphenateStyle":"../../node_modules/dom-helpers/util/hyphenateStyle.js","./getComputedStyle":"../../node_modules/dom-helpers/style/getComputedStyle.js","./removeStyle":"../../node_modules/dom-helpers/style/removeStyle.js","../transition/properties":"../../node_modules/dom-helpers/transition/properties.js","../transition/isTransform":"../../node_modules/dom-helpers/transition/isTransform.js"}],"../../node_modules/dom-helpers/query/isWindow.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = getWindow;
+
+function getWindow(node) {
+  return node === node.window ? node : node.nodeType === 9 ? node.defaultView || node.parentWindow : false;
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/react-overlays/utils/isOverflowing.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = isOverflowing;
+
+var _isWindow = _interopRequireDefault(require("dom-helpers/query/isWindow"));
+
+var _ownerDocument = _interopRequireDefault(require("dom-helpers/ownerDocument"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function isBody(node) {
+  return node && node.tagName.toLowerCase() === 'body';
+}
+
+function bodyIsOverflowing(node) {
+  var doc = (0, _ownerDocument.default)(node);
+  var win = (0, _isWindow.default)(doc);
+  return doc.body.clientWidth < win.innerWidth;
+}
+
+function isOverflowing(container) {
+  var win = (0, _isWindow.default)(container);
+  return win || isBody(container) ? bodyIsOverflowing(container) : container.scrollHeight > container.clientHeight;
+}
+
+module.exports = exports.default;
+},{"dom-helpers/query/isWindow":"../../node_modules/dom-helpers/query/isWindow.js","dom-helpers/ownerDocument":"../../node_modules/dom-helpers/ownerDocument.js"}],"../../node_modules/react-overlays/utils/manageAriaHidden.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.ariaHidden = ariaHidden;
+exports.hideSiblings = hideSiblings;
+exports.showSiblings = showSiblings;
+var BLACKLIST = ['template', 'script', 'style'];
+
+var isHidable = function isHidable(_ref) {
+  var nodeType = _ref.nodeType,
+      tagName = _ref.tagName;
+  return nodeType === 1 && BLACKLIST.indexOf(tagName.toLowerCase()) === -1;
+};
+
+var siblings = function siblings(container, exclude, cb) {
+  exclude = [].concat(exclude);
+  [].forEach.call(container.children, function (node) {
+    if (exclude.indexOf(node) === -1 && isHidable(node)) {
+      cb(node);
+    }
+  });
+};
+
+function ariaHidden(show, node) {
+  if (!node) return;
+
+  if (show) {
+    node.setAttribute('aria-hidden', 'true');
+  } else {
+    node.removeAttribute('aria-hidden');
+  }
+}
+
+function hideSiblings(container, _ref2) {
+  var root = _ref2.root,
+      backdrop = _ref2.backdrop;
+  siblings(container, [root, backdrop], function (node) {
+    return ariaHidden(true, node);
+  });
+}
+
+function showSiblings(container, _ref3) {
+  var root = _ref3.root,
+      backdrop = _ref3.backdrop;
+  siblings(container, [root, backdrop], function (node) {
+    return ariaHidden(false, node);
+  });
+}
+},{}],"../../node_modules/react-overlays/ModalManager.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _class = _interopRequireDefault(require("dom-helpers/class"));
+
+var _style = _interopRequireDefault(require("dom-helpers/style"));
+
+var _scrollbarSize = _interopRequireDefault(require("dom-helpers/util/scrollbarSize"));
+
+var _isOverflowing = _interopRequireDefault(require("./utils/isOverflowing"));
+
+var _manageAriaHidden = require("./utils/manageAriaHidden");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function findIndexOf(arr, cb) {
+  var idx = -1;
+  arr.some(function (d, i) {
+    if (cb(d, i)) {
+      idx = i;
+      return true;
+    }
+  });
+  return idx;
+}
+/**
+ * Proper state managment for containers and the modals in those containers.
+ *
+ * @internal Used by the Modal to ensure proper styling of containers.
+ */
+
+
+var ModalManager =
+/*#__PURE__*/
+function () {
+  function ModalManager(_temp) {
+    var _ref = _temp === void 0 ? {} : _temp,
+        _ref$hideSiblingNodes = _ref.hideSiblingNodes,
+        hideSiblingNodes = _ref$hideSiblingNodes === void 0 ? true : _ref$hideSiblingNodes,
+        _ref$handleContainerO = _ref.handleContainerOverflow,
+        handleContainerOverflow = _ref$handleContainerO === void 0 ? true : _ref$handleContainerO;
+
+    this.hideSiblingNodes = hideSiblingNodes;
+    this.handleContainerOverflow = handleContainerOverflow;
+    this.modals = [];
+    this.containers = [];
+    this.data = [];
+    this.scrollbarSize = (0, _scrollbarSize.default)();
+  }
+
+  var _proto = ModalManager.prototype;
+
+  _proto.isContainerOverflowing = function isContainerOverflowing(modal) {
+    var data = this.data[this.containerIndexFromModal(modal)];
+    return data && data.overflowing;
+  };
+
+  _proto.containerIndexFromModal = function containerIndexFromModal(modal) {
+    return findIndexOf(this.data, function (d) {
+      return d.modals.indexOf(modal) !== -1;
+    });
+  };
+
+  _proto.setContainerStyle = function setContainerStyle(containerState, container) {
+    var style = {
+      overflow: 'hidden' // we are only interested in the actual `style` here
+      // becasue we will override it
+
+    };
+    containerState.style = {
+      overflow: container.style.overflow,
+      paddingRight: container.style.paddingRight
+    };
+
+    if (containerState.overflowing) {
+      // use computed style, here to get the real padding
+      // to add our scrollbar width
+      style.paddingRight = parseInt((0, _style.default)(container, 'paddingRight') || 0, 10) + this.scrollbarSize + "px";
+    }
+
+    (0, _style.default)(container, style);
+  };
+
+  _proto.removeContainerStyle = function removeContainerStyle(containerState, container) {
+    var style = containerState.style;
+    Object.keys(style).forEach(function (key) {
+      container.style[key] = style[key];
+    });
+  };
+
+  _proto.add = function add(modal, container, className) {
+    var modalIdx = this.modals.indexOf(modal);
+    var containerIdx = this.containers.indexOf(container);
+
+    if (modalIdx !== -1) {
+      return modalIdx;
+    }
+
+    modalIdx = this.modals.length;
+    this.modals.push(modal);
+
+    if (this.hideSiblingNodes) {
+      (0, _manageAriaHidden.hideSiblings)(container, modal);
+    }
+
+    if (containerIdx !== -1) {
+      this.data[containerIdx].modals.push(modal);
+      return modalIdx;
+    }
+
+    var data = {
+      modals: [modal],
+      //right now only the first modal of a container will have its classes applied
+      classes: className ? className.split(/\s+/) : [],
+      overflowing: (0, _isOverflowing.default)(container)
+    };
+
+    if (this.handleContainerOverflow) {
+      this.setContainerStyle(data, container);
+    }
+
+    data.classes.forEach(_class.default.addClass.bind(null, container));
+    this.containers.push(container);
+    this.data.push(data);
+    return modalIdx;
+  };
+
+  _proto.remove = function remove(modal) {
+    var modalIdx = this.modals.indexOf(modal);
+
+    if (modalIdx === -1) {
+      return;
+    }
+
+    var containerIdx = this.containerIndexFromModal(modal);
+    var data = this.data[containerIdx];
+    var container = this.containers[containerIdx];
+    data.modals.splice(data.modals.indexOf(modal), 1);
+    this.modals.splice(modalIdx, 1); // if that was the last modal in a container,
+    // clean up the container
+
+    if (data.modals.length === 0) {
+      data.classes.forEach(_class.default.removeClass.bind(null, container));
+
+      if (this.handleContainerOverflow) {
+        this.removeContainerStyle(data, container);
+      }
+
+      if (this.hideSiblingNodes) {
+        (0, _manageAriaHidden.showSiblings)(container, modal);
+      }
+
+      this.containers.splice(containerIdx, 1);
+      this.data.splice(containerIdx, 1);
+    } else if (this.hideSiblingNodes) {
+      //otherwise make sure the next top modal is visible to a SR
+      var _data$modals = data.modals[data.modals.length - 1],
+          backdrop = _data$modals.backdrop,
+          dialog = _data$modals.dialog;
+      (0, _manageAriaHidden.ariaHidden)(false, dialog);
+      (0, _manageAriaHidden.ariaHidden)(false, backdrop);
+    }
+  };
+
+  _proto.isTopModal = function isTopModal(modal) {
+    return !!this.modals.length && this.modals[this.modals.length - 1] === modal;
+  };
+
+  return ModalManager;
+}();
+
+var _default = ModalManager;
+exports.default = _default;
+module.exports = exports.default;
+},{"dom-helpers/class":"../../node_modules/dom-helpers/class/index.js","dom-helpers/style":"../../node_modules/dom-helpers/style/index.js","dom-helpers/util/scrollbarSize":"../../node_modules/dom-helpers/util/scrollbarSize.js","./utils/isOverflowing":"../../node_modules/react-overlays/utils/isOverflowing.js","./utils/manageAriaHidden":"../../node_modules/react-overlays/utils/manageAriaHidden.js"}],"../../node_modules/react-overlays/utils/getContainer.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = getContainer;
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getContainer(container, defaultContainer) {
+  if (container == null) return defaultContainer;
+  container = typeof container === 'function' ? container() : container;
+  return _reactDom.default.findDOMNode(container) || null;
+}
+
+module.exports = exports.default;
+},{"react-dom":"../../node_modules/react-dom/index.js"}],"../../node_modules/react-overlays/WaitForContainer.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _componentOrElement = _interopRequireDefault(require("prop-types-extra/lib/componentOrElement"));
+
+var _inDOM = _interopRequireDefault(require("dom-helpers/util/inDOM"));
+
+var _ownerDocument = _interopRequireDefault(require("dom-helpers/ownerDocument"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _getContainer = _interopRequireDefault(require("./utils/getContainer"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var propTypes = {
+  /**
+   * A Node, Component instance, or function that returns either. The `container` will have the Portal children
+   * appended to it.
+   */
+  container: _propTypes.default.oneOfType([_componentOrElement.default, _propTypes.default.func]),
+  onContainerResolved: _propTypes.default.func
+};
+
+var WaitForContainer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(WaitForContainer, _React$Component);
+
+  function WaitForContainer() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    if (!_inDOM.default) return _assertThisInitialized(_this);
+    var container = _this.props.container;
+    if (typeof container === 'function') container = container();
+
+    if (container && !_reactDom.default.findDOMNode(container)) {
+      // The container is a React component that has not yet been rendered.
+      // Don't set the container node yet.
+      return _assertThisInitialized(_this);
+    }
+
+    _this.setContainer(container);
+
+    return _this;
+  }
+
+  var _proto = WaitForContainer.prototype;
+
+  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.container !== this.props.container) {
+      this.setContainer(nextProps.container);
+    }
+  };
+
+  _proto.componentDidMount = function componentDidMount() {
+    if (!this._container) {
+      this.setContainer(this.props.container);
+      this.forceUpdate(this.props.onContainerResolved);
+    } else if (this.props.onContainerResolved) {
+      this.props.onContainerResolved();
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this._container = null;
+  };
+
+  _proto.setContainer = function setContainer(container) {
+    this._container = (0, _getContainer.default)(container, (0, _ownerDocument.default)().body);
+  };
+
+  _proto.render = function render() {
+    return this._container ? this.props.children(this._container) : null;
+  };
+
+  return WaitForContainer;
+}(_react.default.Component);
+
+WaitForContainer.propTypes = propTypes;
+var _default = WaitForContainer;
+exports.default = _default;
+module.exports = exports.default;
+},{"prop-types":"../../node_modules/prop-types/index.js","prop-types-extra/lib/componentOrElement":"../../node_modules/prop-types-extra/lib/componentOrElement.js","dom-helpers/util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js","dom-helpers/ownerDocument":"../../node_modules/dom-helpers/ownerDocument.js","react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","./utils/getContainer":"../../node_modules/react-overlays/utils/getContainer.js"}],"../../node_modules/react-overlays/Portal.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _componentOrElement = _interopRequireDefault(require("prop-types-extra/lib/componentOrElement"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _WaitForContainer = _interopRequireDefault(require("./WaitForContainer"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+/**
+ * The `<Portal/>` component renders its children into a new "subtree" outside of current component hierarchy.
+ * You can think of it as a declarative `appendChild()`, or jQuery's `$.fn.appendTo()`.
+ * The children of `<Portal/>` component will be appended to the `container` specified.
+ */
+var Portal =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Portal, _React$Component);
+
+  function Portal() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Portal.prototype;
+
+  _proto.render = function render() {
+    var _this = this;
+
+    return this.props.children ? _react.default.createElement(_WaitForContainer.default, {
+      container: this.props.container,
+      onContainerResolved: this.props.onRendered
+    }, function (container) {
+      return _reactDom.default.createPortal(_this.props.children, container);
+    }) : null;
+  };
+
+  return Portal;
+}(_react.default.Component);
+
+Portal.displayName = 'Portal';
+Portal.propTypes = {
+  /**
+   * A Node, Component instance, or function that returns either. The `container` will have the Portal children
+   * appended to it.
+   */
+  container: _propTypes.default.oneOfType([_componentOrElement.default, _propTypes.default.func]),
+  onRendered: _propTypes.default.func
+};
+var _default = Portal;
+exports.default = _default;
+module.exports = exports.default;
+},{"prop-types":"../../node_modules/prop-types/index.js","prop-types-extra/lib/componentOrElement":"../../node_modules/prop-types-extra/lib/componentOrElement.js","react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","./WaitForContainer":"../../node_modules/react-overlays/WaitForContainer.js"}],"../../node_modules/react-overlays/utils/ownerDocument.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = _default;
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _ownerDocument = _interopRequireDefault(require("dom-helpers/ownerDocument"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _default(componentOrElement) {
+  return (0, _ownerDocument.default)(_reactDom.default.findDOMNode(componentOrElement));
+}
+
+module.exports = exports.default;
+},{"react-dom":"../../node_modules/react-dom/index.js","dom-helpers/ownerDocument":"../../node_modules/dom-helpers/ownerDocument.js"}],"../../node_modules/react-overlays/Modal.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _activeElement = _interopRequireDefault(require("dom-helpers/activeElement"));
+
+var _contains = _interopRequireDefault(require("dom-helpers/query/contains"));
+
+var _inDOM = _interopRequireDefault(require("dom-helpers/util/inDOM"));
+
+var _listen = _interopRequireDefault(require("dom-helpers/events/listen"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _componentOrElement = _interopRequireDefault(require("prop-types-extra/lib/componentOrElement"));
+
+var _elementType = _interopRequireDefault(require("prop-types-extra/lib/elementType"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _ModalManager = _interopRequireDefault(require("./ModalManager"));
+
+var _Portal = _interopRequireDefault(require("./Portal"));
+
+var _getContainer = _interopRequireDefault(require("./utils/getContainer"));
+
+var _ownerDocument = _interopRequireDefault(require("./utils/ownerDocument"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var modalManager = new _ModalManager.default();
+
+function omitProps(props, propTypes) {
+  var keys = Object.keys(props);
+  var newProps = {};
+  keys.map(function (prop) {
+    if (!Object.prototype.hasOwnProperty.call(propTypes, prop)) {
+      newProps[prop] = props[prop];
+    }
+  });
+  return newProps;
+}
+/**
+ * Love them or hate them, `<Modal />` provides a solid foundation for creating dialogs, lightboxes, or whatever else.
+ * The Modal component renders its `children` node in front of a backdrop component.
+ *
+ * The Modal offers a few helpful features over using just a `<Portal/>` component and some styles:
+ *
+ * - Manages dialog stacking when one-at-a-time just isn't enough.
+ * - Creates a backdrop, for disabling interaction below the modal.
+ * - It properly manages focus; moving to the modal content, and keeping it there until the modal is closed.
+ * - It disables scrolling of the page content while open.
+ * - Adds the appropriate ARIA roles are automatically.
+ * - Easily pluggable animations via a `<Transition/>` component.
+ *
+ * Note that, in the same way the backdrop element prevents users from clicking or interacting
+ * with the page content underneath the Modal, Screen readers also need to be signaled to not to
+ * interact with page content while the Modal is open. To do this, we use a common technique of applying
+ * the `aria-hidden='true'` attribute to the non-Modal elements in the Modal `container`. This means that for
+ * a Modal to be truly modal, it should have a `container` that is _outside_ your app's
+ * React hierarchy (such as the default: document.body).
+ */
+
+
+var Modal =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Modal, _React$Component);
+
+  function Modal() {
+    var _this;
+
+    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+      _args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(_args)) || this;
+    _this.state = {
+      exited: !_this.props.show
+    };
+
+    _this.onPortalRendered = function () {
+      if (_this.props.onShow) {
+        _this.props.onShow();
+      } // autofocus after onShow, to not trigger a focus event for previous
+      // modals before this one is shown.
+
+
+      _this.autoFocus();
+    };
+
+    _this.onShow = function () {
+      var doc = (0, _ownerDocument.default)(_assertThisInitialized(_assertThisInitialized(_this)));
+      var container = (0, _getContainer.default)(_this.props.container, doc.body);
+
+      _this.props.manager.add(_assertThisInitialized(_assertThisInitialized(_this)), container, _this.props.containerClassName);
+
+      _this.removeKeydownListener = (0, _listen.default)(doc, 'keydown', _this.handleDocumentKeyDown);
+      _this.removeFocusListener = (0, _listen.default)(doc, 'focus', // the timeout is necessary b/c this will run before the new modal is mounted
+      // and so steals focus from it
+      function () {
+        return setTimeout(_this.enforceFocus);
+      }, true);
+    };
+
+    _this.onHide = function () {
+      _this.props.manager.remove(_assertThisInitialized(_assertThisInitialized(_this)));
+
+      _this.removeKeydownListener();
+
+      _this.removeFocusListener();
+
+      if (_this.props.restoreFocus) {
+        _this.restoreLastFocus();
+      }
+    };
+
+    _this.setDialogRef = function (ref) {
+      _this.dialog = ref;
+    };
+
+    _this.setBackdropRef = function (ref) {
+      _this.backdrop = ref && _reactDom.default.findDOMNode(ref);
+    };
+
+    _this.handleHidden = function () {
+      _this.setState({
+        exited: true
+      });
+
+      _this.onHide();
+
+      if (_this.props.onExited) {
+        var _this$props;
+
+        (_this$props = _this.props).onExited.apply(_this$props, arguments);
+      }
+    };
+
+    _this.handleBackdropClick = function (e) {
+      if (e.target !== e.currentTarget) {
+        return;
+      }
+
+      if (_this.props.onBackdropClick) {
+        _this.props.onBackdropClick(e);
+      }
+
+      if (_this.props.backdrop === true) {
+        _this.props.onHide();
+      }
+    };
+
+    _this.handleDocumentKeyDown = function (e) {
+      if (_this.props.keyboard && e.keyCode === 27 && _this.isTopModal()) {
+        if (_this.props.onEscapeKeyDown) {
+          _this.props.onEscapeKeyDown(e);
+        }
+
+        _this.props.onHide();
+      }
+    };
+
+    _this.enforceFocus = function () {
+      if (!_this.props.enforceFocus || !_this._isMounted || !_this.isTopModal()) {
+        return;
+      }
+
+      var currentActiveElement = (0, _activeElement.default)((0, _ownerDocument.default)(_assertThisInitialized(_assertThisInitialized(_this))));
+
+      if (_this.dialog && !(0, _contains.default)(_this.dialog, currentActiveElement)) {
+        _this.dialog.focus();
+      }
+    };
+
+    _this.renderBackdrop = function () {
+      var _this$props2 = _this.props,
+          renderBackdrop = _this$props2.renderBackdrop,
+          Transition = _this$props2.backdropTransition;
+      var backdrop = renderBackdrop({
+        ref: _this.setBackdropRef,
+        onClick: _this.handleBackdropClick
+      });
+
+      if (Transition) {
+        backdrop = _react.default.createElement(Transition, {
+          appear: true,
+          in: _this.props.show
+        }, backdrop);
+      }
+
+      return backdrop;
+    };
+
+    return _this;
+  }
+
+  Modal.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps) {
+    if (nextProps.show) {
+      return {
+        exited: false
+      };
+    } else if (!nextProps.transition) {
+      // Otherwise let handleHidden take care of marking exited.
+      return {
+        exited: true
+      };
+    }
+
+    return null;
+  };
+
+  var _proto = Modal.prototype;
+
+  _proto.getSnapshotBeforeUpdate = function getSnapshotBeforeUpdate(prevProps) {
+    if (_inDOM.default && !prevProps.show && this.props.show) {
+      this.lastFocus = (0, _activeElement.default)();
+    }
+
+    return null;
+  };
+
+  _proto.componentDidMount = function componentDidMount() {
+    this._isMounted = true;
+
+    if (this.props.show) {
+      this.onShow();
+    }
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var transition = this.props.transition;
+
+    if (prevProps.show && !this.props.show && !transition) {
+      // Otherwise handleHidden will call this.
+      this.onHide();
+    } else if (!prevProps.show && this.props.show) {
+      this.onShow();
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    var _this$props3 = this.props,
+        show = _this$props3.show,
+        transition = _this$props3.transition;
+    this._isMounted = false;
+
+    if (show || transition && !this.state.exited) {
+      this.onHide();
+    }
+  };
+
+  _proto.autoFocus = function autoFocus() {
+    if (!this.props.autoFocus) return;
+    var currentActiveElement = (0, _activeElement.default)((0, _ownerDocument.default)(this));
+
+    if (this.dialog && !(0, _contains.default)(this.dialog, currentActiveElement)) {
+      this.lastFocus = currentActiveElement;
+      this.dialog.focus();
+    }
+  };
+
+  _proto.restoreLastFocus = function restoreLastFocus() {
+    // Support: <=IE11 doesn't support `focus()` on svg elements (RB: #917)
+    if (this.lastFocus && this.lastFocus.focus) {
+      this.lastFocus.focus();
+      this.lastFocus = null;
+    }
+  };
+
+  _proto.isTopModal = function isTopModal() {
+    return this.props.manager.isTopModal(this);
+  };
+
+  _proto.render = function render() {
+    var _this$props4 = this.props,
+        show = _this$props4.show,
+        container = _this$props4.container,
+        children = _this$props4.children,
+        renderDialog = _this$props4.renderDialog,
+        _this$props4$role = _this$props4.role,
+        role = _this$props4$role === void 0 ? 'dialog' : _this$props4$role,
+        Transition = _this$props4.transition,
+        backdrop = _this$props4.backdrop,
+        className = _this$props4.className,
+        style = _this$props4.style,
+        onExit = _this$props4.onExit,
+        onExiting = _this$props4.onExiting,
+        onEnter = _this$props4.onEnter,
+        onEntering = _this$props4.onEntering,
+        onEntered = _this$props4.onEntered,
+        props = _objectWithoutPropertiesLoose(_this$props4, ["show", "container", "children", "renderDialog", "role", "transition", "backdrop", "className", "style", "onExit", "onExiting", "onEnter", "onEntering", "onEntered"]);
+
+    if (!(show || Transition && !this.state.exited)) {
+      return null;
+    }
+
+    var dialogProps = _extends({
+      role: role,
+      ref: this.setDialogRef,
+      // apparently only works on the dialog role element
+      'aria-modal': role === 'dialog' ? true : undefined
+    }, omitProps(props, Modal.propTypes), {
+      style: style,
+      className: className,
+      tabIndex: '-1'
+    });
+
+    var dialog = renderDialog ? renderDialog(dialogProps) : _react.default.createElement("div", dialogProps, _react.default.cloneElement(children, {
+      role: 'document'
+    }));
+
+    if (Transition) {
+      dialog = _react.default.createElement(Transition, {
+        appear: true,
+        unmountOnExit: true,
+        in: show,
+        onExit: onExit,
+        onExiting: onExiting,
+        onExited: this.handleHidden,
+        onEnter: onEnter,
+        onEntering: onEntering,
+        onEntered: onEntered
+      }, dialog);
+    }
+
+    return _react.default.createElement(_Portal.default, {
+      container: container,
+      onRendered: this.onPortalRendered
+    }, _react.default.createElement(_react.default.Fragment, null, backdrop && this.renderBackdrop(), dialog));
+  };
+
+  return Modal;
+}(_react.default.Component);
+
+Modal.propTypes = {
+  /**
+   * Set the visibility of the Modal
+   */
+  show: _propTypes.default.bool,
+
+  /**
+   * A Node, Component instance, or function that returns either. The Modal is appended to it's container element.
+   *
+   * For the sake of assistive technologies, the container should usually be the document body, so that the rest of the
+   * page content can be placed behind a virtual backdrop as well as a visual one.
+   */
+  container: _propTypes.default.oneOfType([_componentOrElement.default, _propTypes.default.func]),
+
+  /**
+   * A callback fired when the Modal is opening.
+   */
+  onShow: _propTypes.default.func,
+
+  /**
+   * A callback fired when either the backdrop is clicked, or the escape key is pressed.
+   *
+   * The `onHide` callback only signals intent from the Modal,
+   * you must actually set the `show` prop to `false` for the Modal to close.
+   */
+  onHide: _propTypes.default.func,
+
+  /**
+   * Include a backdrop component.
+   */
+  backdrop: _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.oneOf(['static'])]),
+
+  /**
+   * A function that returns the dialog component. Useful for custom
+   * rendering. **Note:** the component should make sure to apply the provided ref.
+   *
+   * ```js
+   *  renderDialog={props => <MyDialog {...props} />}
+   * ```
+   */
+  renderDialog: _propTypes.default.func,
+
+  /**
+   * A function that returns a backdrop component. Useful for custom
+   * backdrop rendering.
+   *
+   * ```js
+   *  renderBackdrop={props => <MyBackdrop {...props} />}
+   * ```
+   */
+  renderBackdrop: _propTypes.default.func,
+
+  /**
+   * A callback fired when the escape key, if specified in `keyboard`, is pressed.
+   */
+  onEscapeKeyDown: _propTypes.default.func,
+
+  /**
+   * A callback fired when the backdrop, if specified, is clicked.
+   */
+  onBackdropClick: _propTypes.default.func,
+
+  /**
+   * A css class or set of classes applied to the modal container when the modal is open,
+   * and removed when it is closed.
+   */
+  containerClassName: _propTypes.default.string,
+
+  /**
+   * Close the modal when escape key is pressed
+   */
+  keyboard: _propTypes.default.bool,
+
+  /**
+   * A `react-transition-group@2.0.0` `<Transition/>` component used
+   * to control animations for the dialog component.
+   */
+  transition: _elementType.default,
+
+  /**
+   * A `react-transition-group@2.0.0` `<Transition/>` component used
+   * to control animations for the backdrop components.
+   */
+  backdropTransition: _elementType.default,
+
+  /**
+   * When `true` The modal will automatically shift focus to itself when it opens, and
+   * replace it to the last focused element when it closes. This also
+   * works correctly with any Modal children that have the `autoFocus` prop.
+   *
+   * Generally this should never be set to `false` as it makes the Modal less
+   * accessible to assistive technologies, like screen readers.
+   */
+  autoFocus: _propTypes.default.bool,
+
+  /**
+   * When `true` The modal will prevent focus from leaving the Modal while open.
+   *
+   * Generally this should never be set to `false` as it makes the Modal less
+   * accessible to assistive technologies, like screen readers.
+   */
+  enforceFocus: _propTypes.default.bool,
+
+  /**
+   * When `true` The modal will restore focus to previously focused element once
+   * modal is hidden
+   */
+  restoreFocus: _propTypes.default.bool,
+
+  /**
+   * Callback fired before the Modal transitions in
+   */
+  onEnter: _propTypes.default.func,
+
+  /**
+   * Callback fired as the Modal begins to transition in
+   */
+  onEntering: _propTypes.default.func,
+
+  /**
+   * Callback fired after the Modal finishes transitioning in
+   */
+  onEntered: _propTypes.default.func,
+
+  /**
+   * Callback fired right before the Modal transitions out
+   */
+  onExit: _propTypes.default.func,
+
+  /**
+   * Callback fired as the Modal begins to transition out
+   */
+  onExiting: _propTypes.default.func,
+
+  /**
+   * Callback fired after the Modal finishes transitioning out
+   */
+  onExited: _propTypes.default.func,
+
+  /**
+   * A ModalManager instance used to track and manage the state of open
+   * Modals. Useful when customizing how modals interact within a container
+   */
+  manager: _propTypes.default.object.isRequired
+};
+Modal.defaultProps = {
+  show: false,
+  role: 'dialog',
+  backdrop: true,
+  keyboard: true,
+  autoFocus: true,
+  enforceFocus: true,
+  restoreFocus: true,
+  onHide: function onHide() {},
+  manager: modalManager,
+  renderBackdrop: function renderBackdrop(props) {
+    return _react.default.createElement("div", props);
+  }
+};
+Modal.Manager = _ModalManager.default;
+var _default = Modal;
+exports.default = _default;
+module.exports = exports.default;
+},{"dom-helpers/activeElement":"../../node_modules/dom-helpers/activeElement.js","dom-helpers/query/contains":"../../node_modules/dom-helpers/query/contains.js","dom-helpers/util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js","dom-helpers/events/listen":"../../node_modules/dom-helpers/events/listen.js","prop-types":"../../node_modules/prop-types/index.js","prop-types-extra/lib/componentOrElement":"../../node_modules/prop-types-extra/lib/componentOrElement.js","prop-types-extra/lib/elementType":"../../node_modules/prop-types-extra/lib/elementType.js","react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","./ModalManager":"../../node_modules/react-overlays/ModalManager.js","./Portal":"../../node_modules/react-overlays/Portal.js","./utils/getContainer":"../../node_modules/react-overlays/utils/getContainer.js","./utils/ownerDocument":"../../node_modules/react-overlays/utils/ownerDocument.js"}],"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireWildcard.js":[function(require,module,exports) {
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};
+
+    if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
+
+          if (desc.get || desc.set) {
+            Object.defineProperty(newObj, key, desc);
+          } else {
+            newObj[key] = obj[key];
+          }
+        }
+      }
+    }
+
+    newObj["default"] = obj;
+    return newObj;
+  }
+}
+
+module.exports = _interopRequireWildcard;
+},{}],"../../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.polyfill = polyfill;
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+function componentWillMount() {
+  // Call this.constructor.gDSFP to support sub-classes.
+  var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+
+  if (state !== null && state !== undefined) {
+    this.setState(state);
+  }
+}
+
+function componentWillReceiveProps(nextProps) {
+  // Call this.constructor.gDSFP to support sub-classes.
+  // Use the setState() updater to ensure state isn't stale in certain edge cases.
+  function updater(prevState) {
+    var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+    return state !== null && state !== undefined ? state : null;
+  } // Binding "this" is important for shallow renderer support.
+
+
+  this.setState(updater.bind(this));
+}
+
+function componentWillUpdate(nextProps, nextState) {
+  try {
+    var prevProps = this.props;
+    var prevState = this.state;
+    this.props = nextProps;
+    this.state = nextState;
+    this.__reactInternalSnapshotFlag = true;
+    this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(prevProps, prevState);
+  } finally {
+    this.props = prevProps;
+    this.state = prevState;
+  }
+} // React may warn about cWM/cWRP/cWU methods being deprecated.
+// Add a flag to suppress these warnings for this special case.
+
+
+componentWillMount.__suppressDeprecationWarning = true;
+componentWillReceiveProps.__suppressDeprecationWarning = true;
+componentWillUpdate.__suppressDeprecationWarning = true;
+
+function polyfill(Component) {
+  var prototype = Component.prototype;
+
+  if (!prototype || !prototype.isReactComponent) {
+    throw new Error('Can only polyfill class components');
+  }
+
+  if (typeof Component.getDerivedStateFromProps !== 'function' && typeof prototype.getSnapshotBeforeUpdate !== 'function') {
+    return Component;
+  } // If new component APIs are defined, "unsafe" lifecycles won't be called.
+  // Error if any of these lifecycles are present,
+  // Because they would work differently between older and newer (16.3+) versions of React.
+
+
+  var foundWillMountName = null;
+  var foundWillReceivePropsName = null;
+  var foundWillUpdateName = null;
+
+  if (typeof prototype.componentWillMount === 'function') {
+    foundWillMountName = 'componentWillMount';
+  } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
+    foundWillMountName = 'UNSAFE_componentWillMount';
+  }
+
+  if (typeof prototype.componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'componentWillReceiveProps';
+  } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
+  }
+
+  if (typeof prototype.componentWillUpdate === 'function') {
+    foundWillUpdateName = 'componentWillUpdate';
+  } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
+    foundWillUpdateName = 'UNSAFE_componentWillUpdate';
+  }
+
+  if (foundWillMountName !== null || foundWillReceivePropsName !== null || foundWillUpdateName !== null) {
+    var componentName = Component.displayName || Component.name;
+    var newApiName = typeof Component.getDerivedStateFromProps === 'function' ? 'getDerivedStateFromProps()' : 'getSnapshotBeforeUpdate()';
+    throw Error('Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' + componentName + ' uses ' + newApiName + ' but also contains the following legacy lifecycles:' + (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') + (foundWillReceivePropsName !== null ? '\n  ' + foundWillReceivePropsName : '') + (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') + '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' + 'https://fb.me/react-async-component-lifecycle-hooks');
+  } // React <= 16.2 does not support static getDerivedStateFromProps.
+  // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
+  // Newer versions of React will ignore these lifecycles if gDSFP exists.
+
+
+  if (typeof Component.getDerivedStateFromProps === 'function') {
+    prototype.componentWillMount = componentWillMount;
+    prototype.componentWillReceiveProps = componentWillReceiveProps;
+  } // React <= 16.2 does not support getSnapshotBeforeUpdate.
+  // As a workaround, use cWU to invoke the new lifecycle.
+  // Newer versions of React will ignore that lifecycle if gSBU exists.
+
+
+  if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
+    if (typeof prototype.componentDidUpdate !== 'function') {
+      throw new Error('Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype');
+    }
+
+    prototype.componentWillUpdate = componentWillUpdate;
+    var componentDidUpdate = prototype.componentDidUpdate;
+
+    prototype.componentDidUpdate = function componentDidUpdatePolyfill(prevProps, prevState, maybeSnapshot) {
+      // 16.3+ will not execute our will-update method;
+      // It will pass a snapshot value to did-update though.
+      // Older versions will require our polyfilled will-update value.
+      // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
+      // Because for <= 15.x versions this might be a "prevContext" object.
+      // We also can't just check "__reactInternalSnapshot",
+      // Because get-snapshot might return a falsy value.
+      // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
+      var snapshot = this.__reactInternalSnapshotFlag ? this.__reactInternalSnapshot : maybeSnapshot;
+      componentDidUpdate.call(this, prevProps, prevState, snapshot);
+    };
+  }
+
+  return Component;
+}
+},{}],"../../node_modules/react-transition-group/utils/PropTypes.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.classNamesShape = exports.timeoutsShape = void 0;
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+var timeoutsShape = "development" !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+  enter: _propTypes.default.number,
+  exit: _propTypes.default.number,
+  appear: _propTypes.default.number
+}).isRequired]) : null;
+exports.timeoutsShape = timeoutsShape;
+var classNamesShape = "development" !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.shape({
+  enter: _propTypes.default.string,
+  exit: _propTypes.default.string,
+  active: _propTypes.default.string
+}), _propTypes.default.shape({
+  enter: _propTypes.default.string,
+  enterDone: _propTypes.default.string,
+  enterActive: _propTypes.default.string,
+  exit: _propTypes.default.string,
+  exitDone: _propTypes.default.string,
+  exitActive: _propTypes.default.string
+})]) : null;
+exports.classNamesShape = classNamesShape;
+},{"prop-types":"../../node_modules/prop-types/index.js"}],"../../node_modules/react-transition-group/Transition.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
+
+var PropTypes = _interopRequireWildcard(require("prop-types"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _reactLifecyclesCompat = require("react-lifecycles-compat");
+
+var _PropTypes = require("./utils/PropTypes");
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};
+
+    if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
+
+          if (desc.get || desc.set) {
+            Object.defineProperty(newObj, key, desc);
+          } else {
+            newObj[key] = obj[key];
+          }
+        }
+      }
+    }
+
+    newObj.default = obj;
+    return newObj;
+  }
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+var UNMOUNTED = 'unmounted';
+exports.UNMOUNTED = UNMOUNTED;
+var EXITED = 'exited';
+exports.EXITED = EXITED;
+var ENTERING = 'entering';
+exports.ENTERING = ENTERING;
+var ENTERED = 'entered';
+exports.ENTERED = ENTERED;
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 0 },
+ *   entered:  { opacity: 1 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+exports.EXITING = EXITING;
+
+var Transition =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context.transitionGroup; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  var _proto = Transition.prototype;
+
+  _proto.getChildContext = function getChildContext() {
+    return {
+      transitionGroup: null // allows for nested Transitions
+
+    };
+  };
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  }; // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      var node = _reactDom.default.findDOMNode(this);
+
+      if (nextStatus === ENTERING) {
+        this.performEnter(node, mounting);
+      } else {
+        this.performExit(node);
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(node, mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context.transitionGroup ? this.context.transitionGroup.isMounting : mounting;
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(node);
+      });
+      return;
+    }
+
+    this.props.onEnter(node, appearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(node, appearing);
+
+      _this2.onTransitionEnd(node, enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(node, appearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit(node) {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts(); // no exit animation skip right to EXITED
+
+    if (!exit) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(node);
+      });
+      return;
+    }
+
+    this.props.onExit(node);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(node);
+
+      _this3.onTransitionEnd(node, timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(node);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(node, timeout, handler) {
+    this.setNextCallback(handler);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      this.props.addEndListener(node, this.nextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        childProps = _objectWithoutPropertiesLoose(_this$props, ["children"]); // filter props for Transtition
+
+
+    delete childProps.in;
+    delete childProps.mountOnEnter;
+    delete childProps.unmountOnExit;
+    delete childProps.appear;
+    delete childProps.enter;
+    delete childProps.exit;
+    delete childProps.timeout;
+    delete childProps.addEndListener;
+    delete childProps.onEnter;
+    delete childProps.onEntering;
+    delete childProps.onEntered;
+    delete childProps.onExit;
+    delete childProps.onExiting;
+    delete childProps.onExited;
+
+    if (typeof children === 'function') {
+      return children(status, childProps);
+    }
+
+    var child = _react.default.Children.only(children);
+
+    return _react.default.cloneElement(child, childProps);
+  };
+
+  return Transition;
+}(_react.default.Component);
+
+Transition.contextTypes = {
+  transitionGroup: PropTypes.object
+};
+Transition.childContextTypes = {
+  transitionGroup: function transitionGroup() {}
+};
+Transition.propTypes = "development" !== "production" ? {
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.element.isRequired]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: PropTypes.bool,
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: PropTypes.bool,
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: PropTypes.bool,
+
+  /**
+   * Normally a component is not transitioned if it is shown when the `<Transition>` component mounts.
+   * If you want to transition on the first mount set `appear` to `true`, and the
+   * component will transition in as soon as the `<Transition>` mounts.
+   *
+   * > Note: there are no specific "appear" states. `appear` only adds an additional `enter` transition.
+   */
+  appear: PropTypes.bool,
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: PropTypes.bool,
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: PropTypes.bool,
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _PropTypes.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. **Note:** Timeouts are still used as a fallback if provided.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: PropTypes.func,
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: PropTypes.func,
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: PropTypes.func,
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: PropTypes.func,
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: PropTypes.func,
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: PropTypes.func,
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: PropTypes.func // Name the function so it is clearer in the documentation
+
+} : {};
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = 0;
+Transition.EXITED = 1;
+Transition.ENTERING = 2;
+Transition.ENTERED = 3;
+Transition.EXITING = 4;
+
+var _default = (0, _reactLifecyclesCompat.polyfill)(Transition);
+
+exports.default = _default;
+},{"prop-types":"../../node_modules/prop-types/index.js","react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-lifecycles-compat":"../../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","./utils/PropTypes":"../../node_modules/react-transition-group/utils/PropTypes.js"}],"../../node_modules/dom-helpers/transition/end.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _properties = _interopRequireDefault(require("./properties"));
+
+var _style = _interopRequireDefault(require("../style"));
+
+function onEnd(node, handler, duration) {
+  var fakeEvent = {
+    target: node,
+    currentTarget: node
+  },
+      backup;
+  if (!_properties.default.end) duration = 0;else if (duration == null) duration = parseDuration(node) || 0;
+
+  if (_properties.default.end) {
+    node.addEventListener(_properties.default.end, done, false);
+    backup = setTimeout(function () {
+      return done(fakeEvent);
+    }, (duration || 100) * 1.5);
+  } else setTimeout(done.bind(null, fakeEvent), 0);
+
+  function done(event) {
+    if (event.target !== event.currentTarget) return;
+    clearTimeout(backup);
+    event.target.removeEventListener(_properties.default.end, done);
+    handler.call(this);
+  }
+}
+
+onEnd._parseDuration = parseDuration;
+var _default = onEnd;
+exports.default = _default;
+
+function parseDuration(node) {
+  var str = (0, _style.default)(node, _properties.default.duration),
+      mult = str.indexOf('ms') === -1 ? 1000 : 1;
+  return parseFloat(str) * mult;
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./properties":"../../node_modules/dom-helpers/transition/properties.js","../style":"../../node_modules/dom-helpers/style/index.js"}],"../../node_modules/react-bootstrap/utils/triggerBrowserReflow.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = triggerBrowserReflow;
+
+// reading a dimension prop will cause the browser to recalculate,
+// which will let our animations work
+function triggerBrowserReflow(node) {
+  node.offsetHeight; // eslint-disable-line no-unused-expressions
+}
+
+module.exports = exports["default"];
+},{}],"../../node_modules/react-bootstrap/Fade.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Transition = _interopRequireWildcard(require("react-transition-group/Transition"));
+
+var _end = _interopRequireDefault(require("dom-helpers/transition/end"));
+
+var _triggerBrowserReflow = _interopRequireDefault(require("./utils/triggerBrowserReflow"));
+
+var _fadeStyles;
+
+var defaultProps = {
+  in: false,
+  timeout: 300,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false
+};
+var fadeStyles = (_fadeStyles = {}, _fadeStyles[_Transition.ENTERING] = 'show', _fadeStyles[_Transition.ENTERED] = 'show', _fadeStyles);
+
+var Fade =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inheritsLoose2.default)(Fade, _React$Component);
+
+  function Fade() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+
+    _this.handleEnter = function (node) {
+      (0, _triggerBrowserReflow.default)(node);
+      if (_this.props.onEnter) _this.props.onEnter(node);
+    };
+
+    return _this;
+  }
+
+  var _proto = Fade.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        className = _this$props.className,
+        children = _this$props.children,
+        props = (0, _objectWithoutPropertiesLoose2.default)(_this$props, ["className", "children"]);
+    return _react.default.createElement(_Transition.default, (0, _extends2.default)({
+      addEndListener: _end.default
+    }, props, {
+      onEnter: this.handleEnter
+    }), function (status, innerProps) {
+      return _react.default.cloneElement(children, (0, _extends2.default)({}, innerProps, {
+        className: (0, _classnames.default)('fade', className, children.props.className, fadeStyles[status])
+      }));
+    });
+  };
+
+  return Fade;
+}(_react.default.Component);
+
+Fade.defaultProps = defaultProps;
+var _default = Fade;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/interopRequireWildcard":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireWildcard.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/objectWithoutPropertiesLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/inheritsLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/inheritsLoose.js","classnames":"../../node_modules/classnames/index.js","react":"../../node_modules/react/index.js","react-transition-group/Transition":"../../node_modules/react-transition-group/Transition.js","dom-helpers/transition/end":"../../node_modules/dom-helpers/transition/end.js","./utils/triggerBrowserReflow":"../../node_modules/react-bootstrap/utils/triggerBrowserReflow.js"}],"../../node_modules/@restart/context/forwardRef.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = forwardRef;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function forwardRef(renderFn, _temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      propTypes = _ref.propTypes,
+      defaultProps = _ref.defaultProps,
+      _ref$allowFallback = _ref.allowFallback,
+      allowFallback = _ref$allowFallback === void 0 ? false : _ref$allowFallback,
+      _ref$displayName = _ref.displayName,
+      displayName = _ref$displayName === void 0 ? renderFn.name || renderFn.displayName : _ref$displayName;
+
+  var render = function render(props, ref) {
+    return renderFn(props, ref);
+  };
+
+  return Object.assign(_react.default.forwardRef || !allowFallback ? _react.default.forwardRef(render) : function (props) {
+    return render(props, null);
+  }, {
+    displayName: displayName,
+    propTypes: propTypes,
+    defaultProps: defaultProps
+  });
+}
+},{"react":"../../node_modules/react/index.js"}],"../../node_modules/react-bootstrap/ThemeProvider.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.useBootstrapPrefix = useBootstrapPrefix;
+exports.createBootstrapComponent = createBootstrapComponent;
+exports.default = exports.ThemeConsumer = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+
+var _forwardRef = _interopRequireDefault(require("@restart/context/forwardRef"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var ThemeContext = _react.default.createContext(new Map());
+
+var Consumer = ThemeContext.Consumer,
+    Provider = ThemeContext.Provider;
+exports.ThemeConsumer = Consumer;
+
+var ThemeProvider =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inheritsLoose2.default)(ThemeProvider, _React$Component);
+
+  function ThemeProvider() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.prefixes = new Map();
+    Object.keys(_this.props.prefixes).forEach(function (key) {
+      _this.prefixes.set(key, _this.props.prefixes[key]);
+    });
+    return _this;
+  }
+
+  var _proto = ThemeProvider.prototype;
+
+  _proto.render = function render() {
+    return _react.default.createElement(Provider, {
+      value: this.prefixes
+    }, this.props.children);
+  };
+
+  return ThemeProvider;
+}(_react.default.Component);
+
+function useBootstrapPrefix(prefix, defaultPrefix) {
+  var prefixes = (0, _react.useContext)(ThemeContext);
+  return prefix || prefixes.get(defaultPrefix) || defaultPrefix;
+}
+
+function createBootstrapComponent(Component, opts) {
+  if (typeof opts === 'string') opts = {
+    prefix: opts
+  };
+  var isClassy = Component.prototype && Component.prototype.isReactComponent; // If it's a functional component make sure we don't break it with a ref
+
+  var _opts = opts,
+      prefix = _opts.prefix,
+      _opts$forwardRefAs = _opts.forwardRefAs,
+      forwardRefAs = _opts$forwardRefAs === void 0 ? isClassy ? 'ref' : 'innerRef' : _opts$forwardRefAs;
+  return (0, _forwardRef.default)(function (_ref, ref) {
+    var props = (0, _extends2.default)({}, _ref);
+    props[forwardRefAs] = ref;
+    var prefixes = (0, _react.useContext)(ThemeContext);
+    return _react.default.createElement(Component, (0, _extends2.default)({}, props, {
+      // eslint-disable-next-line react/prop-types
+      bsPrefix: props.bsPrefix || prefixes.get(prefix) || prefix
+    }));
+  }, {
+    displayName: "Bootstrap(" + (Component.displayName || Component.name) + ")"
+  });
+}
+
+var _default = ThemeProvider;
+exports.default = _default;
+},{"@babel/runtime/helpers/interopRequireWildcard":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireWildcard.js","@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/inheritsLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/inheritsLoose.js","@restart/context/forwardRef":"../../node_modules/@restart/context/forwardRef.js","react":"../../node_modules/react/index.js"}],"../../node_modules/react-bootstrap/utils/createWithBsPrefix.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = createWithBsPrefix;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _camelize = _interopRequireDefault(require("dom-helpers/util/camelize"));
+
+var _ThemeProvider = require("../ThemeProvider");
+
+var pascalCase = function pascalCase(str) {
+  return str[0].toUpperCase() + (0, _camelize.default)(str).slice(1);
+};
+
+function createWithBsPrefix(prefix, _temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$displayName = _ref.displayName,
+      displayName = _ref$displayName === void 0 ? pascalCase(prefix) : _ref$displayName,
+      _ref$Component = _ref.Component,
+      Component = _ref$Component === void 0 ? 'div' : _ref$Component,
+      defaultProps = _ref.defaultProps;
+
+  var BsComponent = _react.default.forwardRef( // eslint-disable-next-line react/prop-types
+  function (_ref2, ref) {
+    var className = _ref2.className,
+        bsPrefix = _ref2.bsPrefix,
+        _ref2$as = _ref2.as,
+        Tag = _ref2$as === void 0 ? Component : _ref2$as,
+        props = (0, _objectWithoutPropertiesLoose2.default)(_ref2, ["className", "bsPrefix", "as"]);
+    var resolvedPrefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, prefix);
+    return _react.default.createElement(Tag, (0, _extends2.default)({
+      ref: ref,
+      className: (0, _classnames.default)(className, resolvedPrefix)
+    }, props));
+  });
+
+  BsComponent.defaultProps = defaultProps;
+  BsComponent.displayName = displayName;
+  return BsComponent;
+}
+
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/objectWithoutPropertiesLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js","classnames":"../../node_modules/classnames/index.js","react":"../../node_modules/react/index.js","dom-helpers/util/camelize":"../../node_modules/dom-helpers/util/camelize.js","../ThemeProvider":"../../node_modules/react-bootstrap/ThemeProvider.js"}],"../../node_modules/react-bootstrap/ModalBody.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _createWithBsPrefix = _interopRequireDefault(require("./utils/createWithBsPrefix"));
+
+var _default = (0, _createWithBsPrefix.default)('modal-body');
+
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","./utils/createWithBsPrefix":"../../node_modules/react-bootstrap/utils/createWithBsPrefix.js"}],"../../node_modules/react-bootstrap/ModalDialog.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _ThemeProvider = require("./ThemeProvider");
+
+var ModalDialog = _react.default.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      centered = _ref.centered,
+      size = _ref.size,
+      children = _ref.children,
+      scrollable = _ref.scrollable,
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "className", "centered", "size", "children", "scrollable"]);
+  bsPrefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'modal');
+  var dialogClass = bsPrefix + "-dialog";
+  return _react.default.createElement("div", (0, _extends2.default)({}, props, {
+    ref: ref,
+    className: (0, _classnames.default)(dialogClass, className, size && bsPrefix + "-" + size, centered && dialogClass + "-centered", scrollable && dialogClass + "-scrollable")
+  }), _react.default.createElement("div", {
+    className: (0, _classnames.default)(bsPrefix + "-content")
+  }, children));
+});
+
+ModalDialog.displayName = 'ModalDialog';
+var _default = ModalDialog;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/objectWithoutPropertiesLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js","classnames":"../../node_modules/classnames/index.js","react":"../../node_modules/react/index.js","./ThemeProvider":"../../node_modules/react-bootstrap/ThemeProvider.js"}],"../../node_modules/react-bootstrap/ModalFooter.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _createWithBsPrefix = _interopRequireDefault(require("./utils/createWithBsPrefix"));
+
+var _default = (0, _createWithBsPrefix.default)('modal-footer');
+
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","./utils/createWithBsPrefix":"../../node_modules/react-bootstrap/utils/createWithBsPrefix.js"}],"../../node_modules/@restart/hooks/useCommittedRef.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _react = require("react");
+
+/**
+ * Creates a `Ref` whose value is updated in an effect, ensuring the most recent
+ * value is the one rendered with. Generally only required for Concurrent mode usage
+ * where previous work in `render()` may be discarded befor being used.
+ *
+ * This is safe to access in an event handler.
+ *
+ * @param value The `Ref` value
+ */
+function useCommittedRef(value) {
+  var ref = (0, _react.useRef)(value);
+  (0, _react.useEffect)(function () {
+    ref.current = value;
+  }, [value]);
+  return ref;
+}
+
+var _default = useCommittedRef;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"../../node_modules/@restart/hooks/useEventCallback.js":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.default = useEventCallback;
+
+var _react = require("react");
+
+var _useCommittedRef = _interopRequireDefault(require("./useCommittedRef"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function useEventCallback(fn) {
+  var ref = (0, _useCommittedRef.default)(fn);
+  return (0, _react.useCallback)(function () {
+    return ref.current && ref.current.apply(ref, arguments);
+  }, [ref]);
+}
+},{"react":"../../node_modules/react/index.js","./useCommittedRef":"../../node_modules/@restart/hooks/useCommittedRef.js"}],"../../node_modules/react-bootstrap/CloseButton.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var propTypes = {
+  label: _propTypes.default.string.isRequired,
+  onClick: _propTypes.default.func
+};
+var defaultProps = {
+  label: 'Close'
+};
+
+var CloseButton = _react.default.forwardRef(function (_ref, ref) {
+  var label = _ref.label,
+      onClick = _ref.onClick;
+  return _react.default.createElement("button", {
+    ref: ref,
+    type: "button",
+    className: "close",
+    onClick: onClick
+  }, _react.default.createElement("span", {
+    "aria-hidden": "true"
+  }, "\xD7"), _react.default.createElement("span", {
+    className: "sr-only"
+  }, label));
+});
+
+CloseButton.displayName = 'CloseButton';
+CloseButton.propTypes = propTypes;
+CloseButton.defaultProps = defaultProps;
+var _default = CloseButton;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","prop-types":"../../node_modules/prop-types/index.js","react":"../../node_modules/react/index.js"}],"../../node_modules/react-bootstrap/ModalContext.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var ModalContext = _react.default.createContext({
+  onHide: function onHide() {}
+});
+
+var _default = ModalContext;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../../node_modules/react/index.js"}],"../../node_modules/react-bootstrap/ModalHeader.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _useEventCallback = _interopRequireDefault(require("@restart/hooks/useEventCallback"));
+
+var _ThemeProvider = require("./ThemeProvider");
+
+var _CloseButton = _interopRequireDefault(require("./CloseButton"));
+
+var _ModalContext = _interopRequireDefault(require("./ModalContext"));
+
+var defaultProps = {
+  closeLabel: 'Close',
+  closeButton: false
+};
+
+var ModalHeader = _react.default.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      closeLabel = _ref.closeLabel,
+      closeButton = _ref.closeButton,
+      onHide = _ref.onHide,
+      className = _ref.className,
+      children = _ref.children,
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "closeLabel", "closeButton", "onHide", "className", "children"]);
+  bsPrefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'modal-header');
+  var context = (0, _react.useContext)(_ModalContext.default);
+  var handleClick = (0, _useEventCallback.default)(function () {
+    if (context) context.onHide();
+    if (onHide) onHide();
+  });
+  return _react.default.createElement("div", (0, _extends2.default)({
+    ref: ref
+  }, props, {
+    className: (0, _classnames.default)(className, bsPrefix)
+  }), children, closeButton && _react.default.createElement(_CloseButton.default, {
+    label: closeLabel,
+    onClick: handleClick
+  }));
+});
+
+ModalHeader.displayName = 'ModalHeader';
+ModalHeader.defaultProps = defaultProps;
+var _default = ModalHeader;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireWildcard":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireWildcard.js","@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/objectWithoutPropertiesLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js","classnames":"../../node_modules/classnames/index.js","react":"../../node_modules/react/index.js","@restart/hooks/useEventCallback":"../../node_modules/@restart/hooks/useEventCallback.js","./ThemeProvider":"../../node_modules/react-bootstrap/ThemeProvider.js","./CloseButton":"../../node_modules/react-bootstrap/CloseButton.js","./ModalContext":"../../node_modules/react-bootstrap/ModalContext.js"}],"../../node_modules/react-bootstrap/utils/divWithClassName.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _default = function _default(className) {
+  return _react.default.forwardRef(function (p, ref) {
+    return _react.default.createElement("div", (0, _extends2.default)({}, p, {
+      ref: ref,
+      className: (0, _classnames.default)(p.className, className)
+    }));
+  });
+};
+
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","react":"../../node_modules/react/index.js","classnames":"../../node_modules/classnames/index.js"}],"../../node_modules/react-bootstrap/ModalTitle.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _createWithBsPrefix = _interopRequireDefault(require("./utils/createWithBsPrefix"));
+
+var _divWithClassName = _interopRequireDefault(require("./utils/divWithClassName"));
+
+var DivStyledAsH4 = (0, _divWithClassName.default)('h4');
+
+var _default = (0, _createWithBsPrefix.default)('modal-title', {
+  Component: DivStyledAsH4
+});
+
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","./utils/createWithBsPrefix":"../../node_modules/react-bootstrap/utils/createWithBsPrefix.js","./utils/divWithClassName":"../../node_modules/react-bootstrap/utils/divWithClassName.js"}],"../../node_modules/react-bootstrap/utils/BootstrapModalManager.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+
+var _querySelectorAll = _interopRequireDefault(require("dom-helpers/query/querySelectorAll"));
+
+var _style = _interopRequireDefault(require("dom-helpers/style"));
+
+var _scrollbarSize = _interopRequireDefault(require("dom-helpers/util/scrollbarSize"));
+
+var _ModalManager2 = _interopRequireDefault(require("react-overlays/ModalManager"));
+
+var Selector = {
+  FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+  STICKY_CONTENT: '.sticky-top',
+  NAVBAR_TOGGLER: '.navbar-toggler'
+};
+
+var BootstrapModalManager =
+/*#__PURE__*/
+function (_ModalManager) {
+  (0, _inheritsLoose2.default)(BootstrapModalManager, _ModalManager);
+
+  function BootstrapModalManager() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _ModalManager.call.apply(_ModalManager, [this].concat(args)) || this;
+
+    _this.adjustAndStore = function (prop, element, adjust) {
+      var actual = element.style[prop];
+      element.dataset[prop] = actual;
+      (0, _style.default)(element, prop, parseFloat((0, _style.default)(element, prop)) + adjust + "px");
+    };
+
+    _this.restore = function (prop, element) {
+      var value = element.dataset[prop];
+
+      if (value !== undefined) {
+        delete element.dataset[prop];
+        (0, _style.default)(element, prop, value);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = BootstrapModalManager.prototype;
+
+  _proto.setContainerStyle = function setContainerStyle(containerState, container) {
+    var _this2 = this;
+
+    _ModalManager.prototype.setContainerStyle.call(this, containerState, container);
+
+    if (!containerState.overflowing) return;
+    var size = (0, _scrollbarSize.default)();
+    (0, _querySelectorAll.default)(container, Selector.FIXED_CONTENT).forEach(function (el) {
+      return _this2.adjustAndStore('paddingRight', el, size);
+    });
+    (0, _querySelectorAll.default)(container, Selector.STICKY_CONTENT).forEach(function (el) {
+      return _this2.adjustAndStore('margingRight', el, -size);
+    });
+    (0, _querySelectorAll.default)(container, Selector.NAVBAR_TOGGLER).forEach(function (el) {
+      return _this2.adjustAndStore('margingRight', el, size);
+    });
+  };
+
+  _proto.removeContainerStyle = function removeContainerStyle(containerState, container) {
+    var _this3 = this;
+
+    _ModalManager.prototype.removeContainerStyle.call(this, containerState, container);
+
+    (0, _querySelectorAll.default)(container, Selector.FIXED_CONTENT).forEach(function (el) {
+      return _this3.restore('paddingRight', el);
+    });
+    (0, _querySelectorAll.default)(container, Selector.STICKY_CONTENT).forEach(function (el) {
+      return _this3.restore('margingRight', el);
+    });
+    (0, _querySelectorAll.default)(container, Selector.NAVBAR_TOGGLER).forEach(function (el) {
+      return _this3.restore('margingRight', el);
+    });
+  };
+
+  return BootstrapModalManager;
+}(_ModalManager2.default);
+
+exports.default = BootstrapModalManager;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/inheritsLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/inheritsLoose.js","dom-helpers/query/querySelectorAll":"../../node_modules/dom-helpers/query/querySelectorAll.js","dom-helpers/style":"../../node_modules/dom-helpers/style/index.js","dom-helpers/util/scrollbarSize":"../../node_modules/dom-helpers/util/scrollbarSize.js","react-overlays/ModalManager":"../../node_modules/react-overlays/ModalManager.js"}],"../../node_modules/react-bootstrap/Modal.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _events = _interopRequireDefault(require("dom-helpers/events"));
+
+var _ownerDocument = _interopRequireDefault(require("dom-helpers/ownerDocument"));
+
+var _inDOM = _interopRequireDefault(require("dom-helpers/util/inDOM"));
+
+var _scrollbarSize = _interopRequireDefault(require("dom-helpers/util/scrollbarSize"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Modal = _interopRequireDefault(require("react-overlays/Modal"));
+
+var _Fade = _interopRequireDefault(require("./Fade"));
+
+var _ModalBody = _interopRequireDefault(require("./ModalBody"));
+
+var _ModalDialog = _interopRequireDefault(require("./ModalDialog"));
+
+var _ModalFooter = _interopRequireDefault(require("./ModalFooter"));
+
+var _ModalHeader = _interopRequireDefault(require("./ModalHeader"));
+
+var _ModalTitle = _interopRequireDefault(require("./ModalTitle"));
+
+var _BootstrapModalManager = _interopRequireDefault(require("./utils/BootstrapModalManager"));
+
+var _ThemeProvider = require("./ThemeProvider");
+
+var _ModalContext = _interopRequireDefault(require("./ModalContext"));
+
+var defaultProps = {
+  show: false,
+  backdrop: true,
+  keyboard: true,
+  autoFocus: true,
+  enforceFocus: true,
+  restoreFocus: true,
+  animation: true,
+  dialogAs: _ModalDialog.default,
+  manager: new _BootstrapModalManager.default()
+};
+/* eslint-disable no-use-before-define, react/no-multi-comp */
+
+function DialogTransition(props) {
+  return _react.default.createElement(_Fade.default, props);
+}
+
+function BackdropTransition(props) {
+  return _react.default.createElement(_Fade.default, props);
+}
+/* eslint-enable no-use-before-define */
+
+
+var Modal =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inheritsLoose2.default)(Modal, _React$Component);
+
+  function Modal(_props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, _props, context) || this;
+
+    _this.setModalRef = function (ref) {
+      _this._modal = ref;
+    };
+
+    _this.handleDialogMouseDown = function () {
+      _this._waitingForMouseUp = true;
+    };
+
+    _this.handleMouseUp = function (e) {
+      if (_this._waitingForMouseUp && e.target === _this._modal.dialog) {
+        _this._ignoreBackdropClick = true;
+      }
+
+      _this._waitingForMouseUp = false;
+    };
+
+    _this.handleClick = function (e) {
+      if (_this._ignoreBackdropClick || e.target !== e.currentTarget) {
+        _this._ignoreBackdropClick = false;
+        return;
+      }
+
+      _this.props.onHide();
+    };
+
+    _this.handleEnter = function (node) {
+      var _this$props;
+
+      if (node) {
+        node.style.display = 'block';
+
+        _this.updateDialogStyle(node);
+      }
+
+      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      if (_this.props.onEnter) (_this$props = _this.props).onEnter.apply(_this$props, [node].concat(args));
+    };
+
+    _this.handleEntering = function (node) {
+      var _this$props2;
+
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
+      }
+
+      if (_this.props.onEntering) (_this$props2 = _this.props).onEntering.apply(_this$props2, [node].concat(args)); // FIXME: This should work even when animation is disabled.
+
+      _events.default.on(window, 'resize', _this.handleWindowResize);
+    };
+
+    _this.handleExited = function (node) {
+      var _this$props3;
+
+      if (node) node.style.display = ''; // RHL removes it sometimes
+
+      for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+        args[_key3 - 1] = arguments[_key3];
+      }
+
+      if (_this.props.onExited) (_this$props3 = _this.props).onExited.apply(_this$props3, args); // FIXME: This should work even when animation is disabled.
+
+      _events.default.off(window, 'resize', _this.handleWindowResize);
+    };
+
+    _this.handleWindowResize = function () {
+      _this.updateDialogStyle(_this._modal.dialog);
+    };
+
+    _this.renderBackdrop = function (props) {
+      var _this$props4 = _this.props,
+          bsPrefix = _this$props4.bsPrefix,
+          backdropClassName = _this$props4.backdropClassName;
+      return _react.default.createElement("div", (0, _extends2.default)({}, props, {
+        className: (0, _classnames.default)(bsPrefix + "-backdrop", backdropClassName)
+      }));
+    };
+
+    _this.state = {
+      style: {}
+    };
+    _this.modalContext = {
+      onHide: function onHide() {
+        return _this.props.onHide();
+      }
+    };
+    return _this;
+  }
+
+  var _proto = Modal.prototype;
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    // Clean up the listener if we need to.
+    _events.default.off(window, 'resize', this.handleWindowResize);
+  };
+
+  _proto.updateDialogStyle = function updateDialogStyle(node) {
+    if (!_inDOM.default) return;
+    var manager = this.props.manager;
+    var containerIsOverflowing = manager.isContainerOverflowing(this._modal);
+    var modalIsOverflowing = node.scrollHeight > (0, _ownerDocument.default)(node).documentElement.clientHeight;
+    this.setState({
+      style: {
+        paddingRight: containerIsOverflowing && !modalIsOverflowing ? (0, _scrollbarSize.default)() : undefined,
+        paddingLeft: !containerIsOverflowing && modalIsOverflowing ? (0, _scrollbarSize.default)() : undefined
+      }
+    });
+  };
+
+  _proto.render = function render() {
+    var _this$props5 = this.props,
+        bsPrefix = _this$props5.bsPrefix,
+        className = _this$props5.className,
+        style = _this$props5.style,
+        dialogClassName = _this$props5.dialogClassName,
+        children = _this$props5.children,
+        Dialog = _this$props5.dialogAs,
+        show = _this$props5.show,
+        animation = _this$props5.animation,
+        backdrop = _this$props5.backdrop,
+        keyboard = _this$props5.keyboard,
+        manager = _this$props5.manager,
+        onEscapeKeyDown = _this$props5.onEscapeKeyDown,
+        onShow = _this$props5.onShow,
+        onHide = _this$props5.onHide,
+        container = _this$props5.container,
+        autoFocus = _this$props5.autoFocus,
+        enforceFocus = _this$props5.enforceFocus,
+        restoreFocus = _this$props5.restoreFocus,
+        onEntered = _this$props5.onEntered,
+        onExit = _this$props5.onExit,
+        onExiting = _this$props5.onExiting,
+        _ = _this$props5.onExited,
+        _1 = _this$props5.onEntering,
+        _6 = _this$props5.onEnter,
+        _4 = _this$props5.onEntering,
+        _2 = _this$props5.backdropClassName,
+        props = (0, _objectWithoutPropertiesLoose2.default)(_this$props5, ["bsPrefix", "className", "style", "dialogClassName", "children", "dialogAs", "show", "animation", "backdrop", "keyboard", "manager", "onEscapeKeyDown", "onShow", "onHide", "container", "autoFocus", "enforceFocus", "restoreFocus", "onEntered", "onExit", "onExiting", "onExited", "onEntering", "onEnter", "onEntering", "backdropClassName"]);
+    var clickHandler = backdrop === true ? this.handleClick : null;
+    var baseModalStyle = (0, _extends2.default)({}, style, this.state.style); // Sets `display` always block when `animation` is false
+
+    if (!animation) baseModalStyle.display = 'block';
+    return _react.default.createElement(_ModalContext.default.Provider, {
+      value: this.modalContext
+    }, _react.default.createElement(_Modal.default, {
+      show: show,
+      backdrop: backdrop,
+      container: container,
+      keyboard: keyboard,
+      autoFocus: autoFocus,
+      enforceFocus: enforceFocus,
+      restoreFocus: restoreFocus,
+      onEscapeKeyDown: onEscapeKeyDown,
+      onShow: onShow,
+      onHide: onHide,
+      onEntered: onEntered,
+      onExit: onExit,
+      onExiting: onExiting,
+      manager: manager,
+      ref: this.setModalRef,
+      style: baseModalStyle,
+      className: (0, _classnames.default)(className, bsPrefix),
+      containerClassName: bsPrefix + "-open",
+      transition: animation ? DialogTransition : undefined,
+      backdropTransition: animation ? BackdropTransition : undefined,
+      renderBackdrop: this.renderBackdrop,
+      onClick: clickHandler,
+      onMouseUp: this.handleMouseUp,
+      onEnter: this.handleEnter,
+      onEntering: this.handleEntering,
+      onExited: this.handleExited
+    }, _react.default.createElement(Dialog, (0, _extends2.default)({}, props, {
+      onMouseDown: this.handleDialogMouseDown,
+      className: dialogClassName
+    }), children)));
+  };
+
+  return Modal;
+}(_react.default.Component);
+
+Modal.defaultProps = defaultProps;
+var DecoratedModal = (0, _ThemeProvider.createBootstrapComponent)(Modal, 'modal');
+DecoratedModal.Body = _ModalBody.default;
+DecoratedModal.Header = _ModalHeader.default;
+DecoratedModal.Title = _ModalTitle.default;
+DecoratedModal.Footer = _ModalFooter.default;
+DecoratedModal.Dialog = _ModalDialog.default;
+DecoratedModal.TRANSITION_DURATION = 300;
+DecoratedModal.BACKDROP_TRANSITION_DURATION = 150;
+var _default = DecoratedModal;
+exports.default = _default;
+module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/objectWithoutPropertiesLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/inheritsLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/inheritsLoose.js","classnames":"../../node_modules/classnames/index.js","dom-helpers/events":"../../node_modules/dom-helpers/events/index.js","dom-helpers/ownerDocument":"../../node_modules/dom-helpers/ownerDocument.js","dom-helpers/util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js","dom-helpers/util/scrollbarSize":"../../node_modules/dom-helpers/util/scrollbarSize.js","react":"../../node_modules/react/index.js","react-overlays/Modal":"../../node_modules/react-overlays/Modal.js","./Fade":"../../node_modules/react-bootstrap/Fade.js","./ModalBody":"../../node_modules/react-bootstrap/ModalBody.js","./ModalDialog":"../../node_modules/react-bootstrap/ModalDialog.js","./ModalFooter":"../../node_modules/react-bootstrap/ModalFooter.js","./ModalHeader":"../../node_modules/react-bootstrap/ModalHeader.js","./ModalTitle":"../../node_modules/react-bootstrap/ModalTitle.js","./utils/BootstrapModalManager":"../../node_modules/react-bootstrap/utils/BootstrapModalManager.js","./ThemeProvider":"../../node_modules/react-bootstrap/ThemeProvider.js","./ModalContext":"../../node_modules/react-bootstrap/ModalContext.js"}],"components/calendar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37108,11 +41669,283 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _tripdetails = _interopRequireDefault(require("./tripdetails"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Calendar = function Calendar() {
+  var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  var headerRow = weekdays.map(function (day) {
+    return _react.default.createElement("th", {
+      scope: "col",
+      key: day
+    }, _react.default.createElement("span", {
+      title: day
+    }, day.substring(0, 2)));
+  });
+
+  var daysInMonth = function daysInMonth(month, year) {
+    return 32 - new Date(year, month, 32).getDate();
+  };
+
+  var generateCalendar = function generateCalendar(month, year) {
+    var firstDay = new Date(year, month).getDay();
+    var calendarRows = [];
+    var date = 1;
+
+    for (var row = 0; row < 6; row++) {
+      var currentRow = [];
+
+      for (var col = 0; col < 7; col++) {
+        if (row === 0 && col < firstDay) {
+          currentRow.push(_react.default.createElement("td", {
+            className: "ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled"
+          }));
+        } else if (date > daysInMonth(month, year)) {
+          break;
+        } else {
+          currentRow.push(_react.default.createElement("td", {
+            className: "ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled undefined"
+          }, _react.default.createElement("span", {
+            className: "ui-state-default"
+          }, date)));
+          date++;
+        }
+      }
+
+      calendarRows.push(_react.default.createElement("tr", null, currentRow));
+    }
+
+    return calendarRows;
+  };
+
+  return _react.default.createElement("table", {
+    className: "ui-datepicker-calendar",
+    style: {
+      opacity: '1'
+    }
+  }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, headerRow)), _react.default.createElement("tbody", null, generateCalendar(5, 2019)));
+};
+
+var _default = Calendar;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/datePicker.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _calendar = _interopRequireDefault(require("./calendar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var DatePicker = function DatePicker() {
+  return _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-outer"
+  }, _react.default.createElement("div", {
+    id: "c-trip-detail-calendar-booking__calendar-from",
+    className: "datepicker c-trip-detail-calendar-booking__calendar js-filter-item hasDatepicker"
+  }, _react.default.createElement("div", {
+    className: "ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-datepicker-multi ui-datepicker-multi-2",
+    style: {
+      display: 'block',
+      width: '100%',
+      height: '454px'
+    }
+  }, _react.default.createElement("div", {
+    className: "ui-datepicker-group ui-datepicker-group-first"
+  }, _react.default.createElement("div", {
+    className: "ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-left"
+  }, _react.default.createElement("div", {
+    className: "ui-datepicker-title"
+  }, _react.default.createElement("span", {
+    className: "ui-datepicker-month"
+  }, "May "), _react.default.createElement("span", {
+    className: "ui-datepicker-year"
+  }, "2019"))), _react.default.createElement("a", {
+    className: "ui-datepicker-prev ui-corner-all ui-state-disabled"
+  }, _react.default.createElement("span", {
+    className: "ui-icon ui-icon-circle-triangle-w"
+  })), _react.default.createElement(_calendar.default, null)))));
+};
+
+var _default = DatePicker;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./calendar":"components/calendar.js"}],"components/calendarBody.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _datePicker = _interopRequireDefault(require("./datePicker"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CalendarBody = function CalendarBody() {
+  return _react.default.createElement("div", {
+    className: "c-trip-detail-calendar prop-has-dicount prop-currency-dollar"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar__outer"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking-outer"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking-inner"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__body-top-text"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__body-title"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking-step"
+  }, "step 1"), _react.default.createElement("h4", {
+    className: "c-trip-detail-calendar-booking-title"
+  }, "CHOOSE DEPARTURE DATE"), _react.default.createElement("div", {
+    className: "c-trip-detail-top-notification-box"
+  }, _react.default.createElement("p", {
+    className: "c-trip-detail-calendar-booking-notice"
+  }), _react.default.createElement("p", null, "Can't find the date you are looking for? Check out the Winter version of this trip"), _react.default.createElement("br", null), _react.default.createElement("p", null))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking-title-outer"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__body-top-icons"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__body-top-icons-calendar c-trip-detail-calendar-booking__body-top-icons-selected"
+  }), _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__body-top-icons-list"
+  })), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-icons clearfix"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-outer"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-ph"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-da  prop-currency-dollar"
+  }), "Deals Available")), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-outer"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-ph fr"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-af"
+  }), "Almost Full")), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-outer"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-ph fr"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__calendar-icons-dd"
+  }), "Definite Departure"))))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__body"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__calendar-wrapper"
+  }, _react.default.createElement(_datePicker.default, null))))))));
+};
+
+var _default = CalendarBody;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./datePicker":"components/datePicker.js"}],"components/modal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Modal = _interopRequireDefault(require("react-bootstrap/Modal"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _calendarBody = _interopRequireDefault(require("./calendarBody"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ModalContainer = function ModalContainer(props) {
+  var showModal = props.showModal,
+      handleHide = props.handleHide;
+  return _react.default.createElement(_Modal.default, {
+    show: showModal,
+    onHide: handleHide,
+    dialogClassName: "c-modal",
+    "aria-labelledby": "example-custom-modal-styling-title"
+  }, _react.default.createElement("div", {
+    className: "c-modal__inner"
+  }, _react.default.createElement("div", {
+    className: "c-modal__header-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-modal__header-cell"
+  }, _react.default.createElement("div", {
+    className: "c-modal__header"
+  }, _react.default.createElement("span", {
+    className: "c-modal__header-close",
+    onClick: handleHide
+  }), _react.default.createElement("span", {
+    className: "c-modal__header-title"
+  }, "TRAVEL STYLE")))), _react.default.createElement("div", {
+    className: "c-modal__body-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-modal__body"
+  }, _react.default.createElement("div", {
+    className: "c-modal__body-content-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-modal__body-content"
+  }, _react.default.createElement(_calendarBody.default, null)))))));
+};
+
+var _default = ModalContainer; // <Modal.Body>
+// <p>
+//   Ipsum molestiae natus adipisci modi eligendi? Debitis amet quae unde commodi aspernatur enim,
+//   consectetur. Cumque deleniti temporibus ipsam atque a dolores quisquam quisquam adipisci
+//   possimus laboriosam. Quibusdam facilis doloribus debitis! Sit quasi quod accusamus eos quod. Ab
+//   quos consequuntur eaque quo rem! Mollitia reiciendis porro quo magni incidunt dolore amet atque
+//   facilis ipsum deleniti rem!
+// </p>
+// </Modal.Body>
+
+exports.default = _default;
+},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./calendarBody":"components/calendarBody.js"}],"components/content.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _tripdetails = _interopRequireDefault(require("./tripdetails"));
+
+var _modal = _interopRequireDefault(require("./modal"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var Content = function Content() {
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showModal = _useState2[0],
+      setModal = _useState2[1];
+
+  var handleShow = function handleShow() {
+    setModal(true);
+  };
+
+  var handleHide = function handleHide() {
+    setModal(false);
+  };
+
   return _react.default.createElement("div", {
     className: "o-content"
   }, _react.default.createElement("div", {
@@ -37123,12 +41956,17 @@ var Content = function Content() {
     className: "js-prevent-no-content"
   }, _react.default.createElement("div", {
     className: "c-trip-detail js-main-content prop-is-affiliate"
-  }, _react.default.createElement(_tripdetails.default, null))))));
+  }, _react.default.createElement(_tripdetails.default, {
+    handleShow: handleShow
+  }))))), _react.default.createElement(_modal.default, {
+    showModal: showModal,
+    handleHide: handleHide
+  }));
 };
 
 var _default = Content;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./tripdetails":"components/tripdetails.js"}],"components/sidebar.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./tripdetails":"components/tripdetails.js","./modal":"components/modal.js"}],"components/sidebar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37158,10 +41996,6 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _reactApolloHooks = require("react-apollo-hooks");
-
 var _header = _interopRequireDefault(require("./components/header"));
 
 var _content = _interopRequireDefault(require("./components/content"));
@@ -37170,45 +42004,23 @@ var _sidebar = _interopRequireDefault(require("./components/sidebar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// const GET_TOUR_DETAILS = gql`
-// 	{
-// 		getTour(id: 4) {
-// 			name
-// 			duration
-// 			description
-// 		}
-// 	}
-// `;
 var App = function App() {
-  // const { data, error, loading } = useQuery(GET_TOUR_DETAILS);
-  // if (loading) {
-  // 	return <div>loading</div>;
-  // }
-  // if (error) {
-  // 	return <div>Got an error: {error.message}</div>;
-  // }
-  return (// <div>
-    // 	<h1>Name: {data.getTour.name}</h1>
-    // 	<h2>Duration: {data.getTour.duration}</h2>
-    // 	<h2>Description: {data.getTour.description}</h2>
-    // </div>
-    _react.default.createElement("div", {
-      className: "o-layout__wrap"
-    }, _react.default.createElement("div", {
-      className: "o-layout"
-    }, _react.default.createElement("div", {
-      className: "o-layout__row"
-    }, _react.default.createElement(_sidebar.default, null), _react.default.createElement("div", {
-      className: "o-canvas"
-    }, _react.default.createElement("div", {
-      className: "o-canvas__table"
-    }, _react.default.createElement(_header.default, null), _react.default.createElement(_content.default, null))))))
-  );
+  return _react.default.createElement("div", {
+    className: "o-layout__wrap"
+  }, _react.default.createElement("div", {
+    className: "o-layout"
+  }, _react.default.createElement("div", {
+    className: "o-layout__row"
+  }, _react.default.createElement(_sidebar.default, null), _react.default.createElement("div", {
+    className: "o-canvas"
+  }, _react.default.createElement("div", {
+    className: "o-canvas__table"
+  }, _react.default.createElement(_header.default, null), _react.default.createElement(_content.default, null))))));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","graphql-tag":"../../node_modules/graphql-tag/src/index.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","./components/header":"components/header.js","./components/content":"components/content.js","./components/sidebar":"components/sidebar.js"}],"../../node_modules/apollo-link-http-common/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./components/header":"components/header.js","./components/content":"components/content.js","./components/sidebar":"components/sidebar.js"}],"../../node_modules/apollo-link-http-common/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40151,7 +44963,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49644" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55105" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
