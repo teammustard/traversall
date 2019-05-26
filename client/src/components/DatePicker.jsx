@@ -16,11 +16,15 @@ const DatePicker = (props) => {
 						position={0}
 						setTripHover={props.setTripHover}
 						setTripHoverData={props.setTripHoverData}
+						setBookingMessage={props.setBookingMessage}
+						setSelectedTrip={props.setSelectedTrip}
 					/>
 					<Calendar
 						position={1}
 						setTripHover={props.setTripHover}
 						setTripHoverData={props.setTripHoverData}
+						setBookingMessage={props.setBookingMessage}
+						setSelectedTrip={props.setSelectedTrip}
 					/>
 					<div className="ui-datepicker-row-break" />
 				</div>

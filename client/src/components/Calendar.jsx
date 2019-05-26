@@ -45,7 +45,7 @@ const Calendar = (props) => {
 		);
 	};
 
-	const { setTripHover, setTripHoverData } = props;
+	const { setTripHover, setTripHoverData, setBookingMessage, setSelectedTrip } = props;
 	const handleTripHover = (trip, col, row) => {
 		const topOffset = 105 + 53 * row;
 		const leftOffset = 430 + 48 * col;
@@ -64,6 +64,11 @@ const Calendar = (props) => {
 
 	const handleTripUnhover = () => {
 		setTripHover(false);
+	};
+
+	const handleTripClick = (trip) => {
+		setSelectedTrip(trip);
+		setBookingMessage(true);
 	};
 
 	const generateCalendar = (month, year) => {
@@ -100,6 +105,9 @@ const Calendar = (props) => {
 								handleTripHover(tripForThisDate, col, row);
 							}}
 							onMouseLeave={handleTripUnhover}
+							onClick={() => {
+								handleTripClick(tripForThisDate);
+							}}
 						>
 							<div className="c-trip-detail-calendar-booking__calendar-span" />
 							<a href="#" className="ui-state-default">

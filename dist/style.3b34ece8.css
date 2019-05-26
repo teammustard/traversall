@@ -2350,5 +2350,73 @@ input {
 	z-index: 99999999;
 }
 
+.c-trip-detail-calendar-booking__calendar-warning {
+	clear: left;
+	display: block;
+}
+
+.c-trip-detail-calendar-booking__calendar-warning-mobile {
+	font-size: 12px;
+	font-size: .75rem;
+	clear: left;
+}
+
+.c-trip-detail-calendar-booking__calendar-warning-mobile {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+}
+
+.c-trip-detail-calendar-booking__calendar-warning-mobile p {
+	display: inline;
+}
+
+.c-trip-detail-calendar-booking__calendar-messages-outer {
+	font-size: 12px;
+	font-size: .75rem;
+	display: none;
+	font-weight: 700;
+	text-align: center;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-main-messages.c-trip-detail-calendar-messages::before {
+	border-bottom: solid 12px #7be6c8;
+	border-left: solid 12px transparent;
+	border-right: solid 12px transparent;
+	content: "";
+	left: 50%;
+	margin: 0 auto;
+	position: absolute;
+	top: -7px;
+}
+
+.c-trip-detail-calendar-main-messages.c-trip-detail-calendar-messages {
+	padding: 10px 0;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons-calendar:before,
+.c-trip-detail-calendar-booking__calendar-warning-mobile::before,
+.form-group.c-form__select-dates:before {
+	content: "\e93e";
+}
+
+.c-trip-detail-calendar-booking__calendar-warning-mobile::before {
+	font-size: 13px;
+	font-size: .8125rem;
+	display: inline-block;
+	font-weight: 600;
+	line-height: 1px;
+	margin: 0 4px;
+	position: relative;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar-booking__calendar-ending {
+	font-size: 12px;
+	font-size: .75rem;
+	font-weight: 700;
+	text-align: center
+}
 
 /*# sourceMappingURL=/style.3b34ece8.css.map */
