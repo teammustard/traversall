@@ -45,8 +45,29 @@ const Calendar = (props) => {
 		);
 	};
 
+	const { setTripHover, setTripHoverData } = props;
+	const handleTripHover = (trip, col, row) => {
+		const topOffset = 105 + 53 * row;
+		const leftOffset = 430 + 48 * col;
+		const listPrice = tour.listed_price;
+		const discountAmount = listPrice - Math.round(listPrice * ((100 - trip.discount) / 100));
+		if (trip.discount > 0) {
+			setTripHover(true);
+			setTripHoverData({
+				top: `${topOffset}px`,
+				left: `${leftOffset}px`,
+				listPrice,
+				discountAmount
+			});
+		}
+	};
+
+	const handleTripUnhover = () => {
+		setTripHover(false);
+	};
+
 	const generateCalendar = (month, year) => {
-		const firstDay = new Date(year, month).getDay();
+		const firstDay = new Date(year, month).getDay() - 1;
 		const calendarRows = [];
 
 		let date = 1;
@@ -72,7 +93,14 @@ const Calendar = (props) => {
 					break;
 				} else if (tripForThisDate && calendarDate >= currentDate) {
 					currentRow.push(
-						<td key={row + ' ' + col} className="depart definite">
+						<td
+							key={row + ' ' + col}
+							className={'depart definite' + (tripForThisDate.discount > 0 ? ' has_discount' : '')}
+							onMouseEnter={() => {
+								handleTripHover(tripForThisDate, col, row);
+							}}
+							onMouseLeave={handleTripUnhover}
+						>
 							<div className="c-trip-detail-calendar-booking__calendar-span" />
 							<a href="#" className="ui-state-default">
 								{date}

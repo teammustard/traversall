@@ -1,6 +1,6 @@
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
-import CalendarBody from './calendarBody';
+import CalendarBody from './CalendarBody';
 
 const ModalContainer = (props) => {
 	const { showModal, handleHide } = props;

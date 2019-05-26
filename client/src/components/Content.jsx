@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import TripDetails from './tripDetails';
-import ModalContainer from './modalContainer';
+import TripDetails from './TripDetails';
+import ModalContainer from './ModalContainer';
 import { TourContext } from './tourContext';
 import { useQuery } from 'react-apollo-hooks';
 import { GET_TOUR_DETAILS } from '../graphql/queries';

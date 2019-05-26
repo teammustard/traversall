@@ -1,7 +1,7 @@
 import React from 'react';
-import Calendar from './calendar';
+import Calendar from './Calendar';
 
-const DatePicker = () => {
+const DatePicker = (props) => {
 	return (
 		<div className="c-trip-detail-calendar-booking__calendar-outer">
 			<div
@@ -12,8 +12,16 @@ const DatePicker = () => {
 					className="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-datepicker-multi ui-datepicker-multi-2"
 					style={{ display: 'block', width: '100%' }}
 				>
-					<Calendar position={0} />
-					<Calendar position={1} />
+					<Calendar
+						position={0}
+						setTripHover={props.setTripHover}
+						setTripHoverData={props.setTripHoverData}
+					/>
+					<Calendar
+						position={1}
+						setTripHover={props.setTripHover}
+						setTripHoverData={props.setTripHoverData}
+					/>
 					<div className="ui-datepicker-row-break" />
 				</div>
 			</div>

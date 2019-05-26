@@ -25748,7 +25748,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../../node_modules/react-dom/cjs/react-dom.development.js"}],"components/header.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../../node_modules/react-dom/cjs/react-dom.development.js"}],"components/Header.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25811,7 +25811,7 @@ var numberWithCommas = function numberWithCommas(x) {
 };
 
 exports.numberWithCommas = numberWithCommas;
-},{}],"components/tripDetails.js":[function(require,module,exports) {
+},{}],"components/TripDetails.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30478,7 +30478,7 @@ DecoratedModal.BACKDROP_TRANSITION_DURATION = 150;
 var _default = DecoratedModal;
 exports.default = _default;
 module.exports = exports["default"];
-},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/objectWithoutPropertiesLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/inheritsLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/inheritsLoose.js","classnames":"../../node_modules/classnames/index.js","dom-helpers/events":"../../node_modules/dom-helpers/events/index.js","dom-helpers/ownerDocument":"../../node_modules/dom-helpers/ownerDocument.js","dom-helpers/util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js","dom-helpers/util/scrollbarSize":"../../node_modules/dom-helpers/util/scrollbarSize.js","react":"../../node_modules/react/index.js","react-overlays/Modal":"../../node_modules/react-overlays/Modal.js","./Fade":"../../node_modules/react-bootstrap/Fade.js","./ModalBody":"../../node_modules/react-bootstrap/ModalBody.js","./ModalDialog":"../../node_modules/react-bootstrap/ModalDialog.js","./ModalFooter":"../../node_modules/react-bootstrap/ModalFooter.js","./ModalHeader":"../../node_modules/react-bootstrap/ModalHeader.js","./ModalTitle":"../../node_modules/react-bootstrap/ModalTitle.js","./utils/BootstrapModalManager":"../../node_modules/react-bootstrap/utils/BootstrapModalManager.js","./ThemeProvider":"../../node_modules/react-bootstrap/ThemeProvider.js","./ModalContext":"../../node_modules/react-bootstrap/ModalContext.js"}],"components/calendar.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/objectWithoutPropertiesLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/extends":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/extends.js","@babel/runtime/helpers/inheritsLoose":"../../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/inheritsLoose.js","classnames":"../../node_modules/classnames/index.js","dom-helpers/events":"../../node_modules/dom-helpers/events/index.js","dom-helpers/ownerDocument":"../../node_modules/dom-helpers/ownerDocument.js","dom-helpers/util/inDOM":"../../node_modules/dom-helpers/util/inDOM.js","dom-helpers/util/scrollbarSize":"../../node_modules/dom-helpers/util/scrollbarSize.js","react":"../../node_modules/react/index.js","react-overlays/Modal":"../../node_modules/react-overlays/Modal.js","./Fade":"../../node_modules/react-bootstrap/Fade.js","./ModalBody":"../../node_modules/react-bootstrap/ModalBody.js","./ModalDialog":"../../node_modules/react-bootstrap/ModalDialog.js","./ModalFooter":"../../node_modules/react-bootstrap/ModalFooter.js","./ModalHeader":"../../node_modules/react-bootstrap/ModalHeader.js","./ModalTitle":"../../node_modules/react-bootstrap/ModalTitle.js","./utils/BootstrapModalManager":"../../node_modules/react-bootstrap/utils/BootstrapModalManager.js","./ThemeProvider":"../../node_modules/react-bootstrap/ThemeProvider.js","./ModalContext":"../../node_modules/react-bootstrap/ModalContext.js"}],"components/Calendar.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30520,15 +30520,39 @@ var Calendar = function Calendar(props) {
     }, "$", (0, _util.numberWithCommas)(discountedPrice));
   };
 
+  var setTripHover = props.setTripHover,
+      setTripHoverData = props.setTripHoverData;
+
+  var handleTripHover = function handleTripHover(trip, col, row) {
+    var topOffset = 105 + 53 * row;
+    var leftOffset = 430 + 48 * col;
+    var listPrice = tour.listed_price;
+    var discountAmount = listPrice - Math.round(listPrice * ((100 - trip.discount) / 100));
+
+    if (trip.discount > 0) {
+      setTripHover(true);
+      setTripHoverData({
+        top: "".concat(topOffset, "px"),
+        left: "".concat(leftOffset, "px"),
+        listPrice: listPrice,
+        discountAmount: discountAmount
+      });
+    }
+  };
+
+  var handleTripUnhover = function handleTripUnhover() {
+    setTripHover(false);
+  };
+
   var generateCalendar = function generateCalendar(month, year) {
-    var firstDay = new Date(year, month).getDay();
+    var firstDay = new Date(year, month).getDay() - 1;
     var calendarRows = [];
     var date = 1;
 
-    for (var row = 0; row < 6; row++) {
+    var _loop = function _loop(row) {
       var currentRow = [];
 
-      var _loop = function _loop(col) {
+      var _loop2 = function _loop2(col) {
         var calendarDate = new Date(year, month, date);
         var tripForThisDate = tour.trips.filter(function (trip) {
           var tripDate = new Date(trip.start_time);
@@ -30545,7 +30569,11 @@ var Calendar = function Calendar(props) {
         } else if (tripForThisDate && calendarDate >= currentDate) {
           currentRow.push(_react.default.createElement("td", {
             key: row + ' ' + col,
-            className: "depart definite"
+            className: 'depart definite' + (tripForThisDate.discount > 0 ? ' has_discount' : ''),
+            onMouseEnter: function onMouseEnter() {
+              handleTripHover(tripForThisDate, col, row);
+            },
+            onMouseLeave: handleTripUnhover
           }, _react.default.createElement("div", {
             className: "c-trip-detail-calendar-booking__calendar-span"
           }), _react.default.createElement("a", {
@@ -30565,7 +30593,7 @@ var Calendar = function Calendar(props) {
       };
 
       for (var col = 0; col < 7; col++) {
-        var _ret = _loop(col);
+        var _ret = _loop2(col);
 
         if (_ret === "break") break;
       }
@@ -30573,6 +30601,10 @@ var Calendar = function Calendar(props) {
       calendarRows.push(_react.default.createElement("tr", {
         key: calendarRows.length
       }, currentRow));
+    };
+
+    for (var row = 0; row < 6; row++) {
+      _loop(row);
     }
 
     return calendarRows;
@@ -30606,7 +30638,7 @@ var Calendar = function Calendar(props) {
 
 var _default = Calendar;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./tourContext":"components/tourContext.js","./util":"components/util.js"}],"components/datePicker.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./tourContext":"components/tourContext.js","./util":"components/util.js"}],"components/DatePicker.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30616,11 +30648,11 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _calendar = _interopRequireDefault(require("./calendar"));
+var _Calendar = _interopRequireDefault(require("./Calendar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DatePicker = function DatePicker() {
+var DatePicker = function DatePicker(props) {
   return _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__calendar-outer"
   }, _react.default.createElement("div", {
@@ -30632,10 +30664,14 @@ var DatePicker = function DatePicker() {
       display: 'block',
       width: '100%'
     }
-  }, _react.default.createElement(_calendar.default, {
-    position: 0
-  }), _react.default.createElement(_calendar.default, {
-    position: 1
+  }, _react.default.createElement(_Calendar.default, {
+    position: 0,
+    setTripHover: props.setTripHover,
+    setTripHoverData: props.setTripHoverData
+  }), _react.default.createElement(_Calendar.default, {
+    position: 1,
+    setTripHover: props.setTripHover,
+    setTripHoverData: props.setTripHoverData
   }), _react.default.createElement("div", {
     className: "ui-datepicker-row-break"
   }))));
@@ -30643,7 +30679,7 @@ var DatePicker = function DatePicker() {
 
 var _default = DatePicker;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./calendar":"components/calendar.js"}],"components/calendarBody.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Calendar":"components/Calendar.jsx"}],"components/BookingMessage.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30653,11 +30689,125 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _datePicker = _interopRequireDefault(require("./datePicker"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BookingMessage = function BookingMessage() {
+  return _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-main-messages"
+  }, "Hello");
+};
+
+var _default = BookingMessage;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/TripHover.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _util = require("./util");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var TripHover = function TripHover(props) {
+  var tripHoverData = props.tripHoverData;
+  var tripHoverPosition = {
+    top: tripHoverData.top,
+    left: tripHoverData.left
+  };
+  var tripOverlaySize = {
+    width: '48px',
+    height: '48px'
+  };
+  return _react.default.createElement("div", {
+    className: 'c-trip-hover-discount' + (props.showTripHover ? ' prop-is-visible' : ''),
+    style: tripHoverPosition
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__cont"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__background"
+  }), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__left",
+    style: tripOverlaySize
+  }), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-background"
+  }), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-top"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-top-title"
+  }, "Last Minute Deal")), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-left"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-left-label"
+  }, "WAS"), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-left-text"
+  }, "$", (0, _util.numberWithCommas)(tripHoverData.listPrice))), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-right"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-right-label"
+  }, "SAVE"), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-right-text"
+  }, "$", (0, _util.numberWithCommas)(tripHoverData.discountAmount)))))))));
+};
+
+var _default = TripHover;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./util":"components/util.js"}],"components/CalendarBody.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _DatePicker = _interopRequireDefault(require("./DatePicker"));
+
+var _BookingMessage = _interopRequireDefault(require("./BookingMessage"));
+
+var _TripHover = _interopRequireDefault(require("./TripHover"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var CalendarBody = function CalendarBody() {
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showTripHover = _useState2[0],
+      setTripHover = _useState2[1];
+
+  var _useState3 = (0, _react.useState)({
+    top: '0px',
+    left: '0px',
+    listPrice: '0',
+    discountAmount: '0'
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      tripHoverData = _useState4[0],
+      setTripHoverData = _useState4[1];
+
   return _react.default.createElement("div", {
     className: "c-trip-detail-calendar prop-has-dicount prop-currency-dollar"
   }, _react.default.createElement("div", {
@@ -30712,12 +30862,20 @@ var CalendarBody = function CalendarBody() {
     className: "c-trip-detail-calendar-booking__body"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__calendar-wrapper"
-  }, _react.default.createElement(_datePicker.default, null))))))));
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking-overlay"
+  }), _react.default.createElement(_DatePicker.default, {
+    setTripHover: setTripHover,
+    setTripHoverData: setTripHoverData
+  }), _react.default.createElement(_BookingMessage.default, null), _react.default.createElement(_TripHover.default, {
+    showTripHover: showTripHover,
+    tripHoverData: tripHoverData
+  }))))))));
 };
 
 var _default = CalendarBody;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./datePicker":"components/datePicker.js"}],"components/modalContainer.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./DatePicker":"components/DatePicker.jsx","./BookingMessage":"components/BookingMessage.jsx","./TripHover":"components/TripHover.jsx"}],"components/ModalContainer.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30729,7 +30887,7 @@ var _Modal = _interopRequireDefault(require("react-bootstrap/Modal"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _calendarBody = _interopRequireDefault(require("./calendarBody"));
+var _CalendarBody = _interopRequireDefault(require("./CalendarBody"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30762,7 +30920,7 @@ var ModalContainer = function ModalContainer(props) {
     className: "c-modal__body-content-wrapper"
   }, _react.default.createElement("div", {
     className: "c-modal__body-content"
-  }, _react.default.createElement(_calendarBody.default, null)))))));
+  }, _react.default.createElement(_CalendarBody.default, null)))))));
 };
 
 var _default = ModalContainer; // <Modal.Body>
@@ -30776,7 +30934,7 @@ var _default = ModalContainer; // <Modal.Body>
 // </Modal.Body>
 
 exports.default = _default;
-},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./calendarBody":"components/calendarBody.js"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
+},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./CalendarBody":"components/CalendarBody.jsx"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41966,7 +42124,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var GET_TOUR_DETAILS = (0, _graphqlTag.default)(_templateObject());
 exports.GET_TOUR_DETAILS = GET_TOUR_DETAILS;
-},{"graphql-tag":"../../node_modules/graphql-tag/src/index.js"}],"components/content.js":[function(require,module,exports) {
+},{"graphql-tag":"../../node_modules/graphql-tag/src/index.js"}],"components/Content.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41976,9 +42134,9 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _tripDetails = _interopRequireDefault(require("./tripDetails"));
+var _TripDetails = _interopRequireDefault(require("./TripDetails"));
 
-var _modalContainer = _interopRequireDefault(require("./modalContainer"));
+var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 
 var _tourContext = require("./tourContext");
 
@@ -42044,9 +42202,9 @@ var Content = function Content(props) {
     className: "js-prevent-no-content"
   }, _react.default.createElement("div", {
     className: "c-trip-detail js-main-content prop-is-affiliate"
-  }, _react.default.createElement(_tripDetails.default, {
+  }, _react.default.createElement(_TripDetails.default, {
     handleShow: handleShow
-  }))))), _react.default.createElement(_modalContainer.default, {
+  }))))), _react.default.createElement(_ModalContainer.default, {
     showModal: showModal,
     handleHide: handleHide
   })));
@@ -42054,7 +42212,7 @@ var Content = function Content(props) {
 
 var _default = Content;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./tripDetails":"components/tripDetails.js","./modalContainer":"components/modalContainer.js","./tourContext":"components/tourContext.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","../graphql/queries":"graphql/queries.js"}],"components/sidebar.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./TripDetails":"components/TripDetails.jsx","./ModalContainer":"components/ModalContainer.jsx","./tourContext":"components/tourContext.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","../graphql/queries":"graphql/queries.js"}],"components/Sidebar.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45169,7 +45327,7 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"@babel/runtime/helpers/esm/inheritsLoose":"../../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../../node_modules/react/index.js","react-router":"../../node_modules/react-router/esm/react-router.js","history":"../../node_modules/history/esm/history.js","prop-types":"../../node_modules/prop-types/index.js","tiny-warning":"../../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"app.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/inheritsLoose":"../../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../../node_modules/react/index.js","react-router":"../../node_modules/react-router/esm/react-router.js","history":"../../node_modules/history/esm/history.js","prop-types":"../../node_modules/prop-types/index.js","tiny-warning":"../../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45179,11 +45337,11 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _header = _interopRequireDefault(require("./components/header"));
+var _Header = _interopRequireDefault(require("./components/Header"));
 
-var _content = _interopRequireDefault(require("./components/content"));
+var _Content = _interopRequireDefault(require("./components/Content"));
 
-var _sidebar = _interopRequireDefault(require("./components/sidebar"));
+var _Sidebar = _interopRequireDefault(require("./components/Sidebar"));
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -45196,11 +45354,11 @@ var App = function App() {
     className: "o-layout"
   }, _react.default.createElement("div", {
     className: "o-layout__row"
-  }, _react.default.createElement(_sidebar.default, null), _react.default.createElement("div", {
+  }, _react.default.createElement(_Sidebar.default, null), _react.default.createElement("div", {
     className: "o-canvas"
   }, _react.default.createElement("div", {
     className: "o-canvas__table"
-  }, _react.default.createElement(_header.default, null), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+  }, _react.default.createElement(_Header.default, null), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/",
     render: function render() {
@@ -45210,13 +45368,13 @@ var App = function App() {
     }
   }), _react.default.createElement(_reactRouterDom.Route, {
     path: "/tours/:tourId",
-    component: _content.default
+    component: _Content.default
   })))))));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./components/header":"components/header.js","./components/content":"components/content.js","./components/sidebar":"components/sidebar.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"../../node_modules/apollo-link-http-common/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./components/Header":"components/Header.jsx","./components/Content":"components/Content.jsx","./components/Sidebar":"components/Sidebar.jsx","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"../../node_modules/apollo-link-http-common/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48108,7 +48266,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _app = _interopRequireDefault(require("./app.js"));
+var _App = _interopRequireDefault(require("./App"));
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -48124,7 +48282,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var httpLink = (0, _apolloLinkHttp.createHttpLink)({
   uri: 'http://localhost:3000/graphql'
-});
+}); // Hello
+
 var client = new _apolloClient.ApolloClient({
   link: httpLink,
   cache: new _apolloCacheInmemory.InMemoryCache()
@@ -48132,8 +48291,8 @@ var client = new _apolloClient.ApolloClient({
 
 _reactDom.default.render(_react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactApolloHooks.ApolloProvider, {
   client: client
-}, _react.default.createElement(_app.default, null))), document.getElementById('app'));
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","./app.js":"app.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","apollo-client":"../../node_modules/apollo-client/bundle.esm.js","apollo-link-http":"../../node_modules/apollo-link-http/lib/bundle.esm.js","apollo-cache-inmemory":"../../node_modules/apollo-cache-inmemory/lib/bundle.esm.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+}, _react.default.createElement(_App.default, null))), document.getElementById('app'));
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","./App":"App.jsx","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","apollo-client":"../../node_modules/apollo-client/bundle.esm.js","apollo-link-http":"../../node_modules/apollo-link-http/lib/bundle.esm.js","apollo-cache-inmemory":"../../node_modules/apollo-cache-inmemory/lib/bundle.esm.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -48161,7 +48320,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53566" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49323" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

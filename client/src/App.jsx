@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './components/header';
-import Content from './components/content';
-import Sidebar from './components/sidebar';
+import Header from './components/Header';
+import Content from './components/Content';
+import Sidebar from './components/Sidebar';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 const App = () => {

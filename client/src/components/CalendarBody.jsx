@@ -1,7 +1,17 @@
-import React from 'react';
-import DatePicker from './datePicker';
+import React, { useState } from 'react';
+import DatePicker from './DatePicker';
+import BookingMessage from './BookingMessage';
+import TripHover from './TripHover';
 
 const CalendarBody = () => {
+	const [ showTripHover, setTripHover ] = useState(false);
+	const [ tripHoverData, setTripHoverData ] = useState({
+		top: '0px',
+		left: '0px',
+		listPrice: '0',
+		discountAmount: '0'
+	});
+
 	return (
 		<div className="c-trip-detail-calendar prop-has-dicount prop-currency-dollar">
 			<div className="c-trip-detail-calendar__outer">
@@ -53,7 +63,10 @@ const CalendarBody = () => {
 							</div>
 							<div className="c-trip-detail-calendar-booking__body">
 								<div className="c-trip-detail-calendar-booking__calendar-wrapper">
-									<DatePicker />
+									<div className="c-trip-detail-calendar-booking-overlay" />
+									<DatePicker setTripHover={setTripHover} setTripHoverData={setTripHoverData} />
+									<BookingMessage />
+									<TripHover showTripHover={showTripHover} tripHoverData={tripHoverData} />
 								</div>
 							</div>
 						</div>
