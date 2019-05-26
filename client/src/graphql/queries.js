@@ -11,6 +11,11 @@ export const GET_TOUR_DETAILS = gql`
 			}
 			trips {
 				discount
+				start_time
+				end_time
+				capacity
+				booked
+				discount
 			}
 		}
 	}

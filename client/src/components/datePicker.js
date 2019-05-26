@@ -10,20 +10,11 @@ const DatePicker = () => {
 			>
 				<div
 					className="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-datepicker-multi ui-datepicker-multi-2"
-					style={{ display: 'block', width: '100%', height: '454px' }}
+					style={{ display: 'block', width: '100%' }}
 				>
-					<div className="ui-datepicker-group ui-datepicker-group-first">
-						<div className="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-left">
-							<div className="ui-datepicker-title">
-								<span className="ui-datepicker-month">May </span>
-								<span className="ui-datepicker-year">2019</span>
-							</div>
-						</div>
-						<a className="ui-datepicker-prev ui-corner-all ui-state-disabled">
-							<span className="ui-icon ui-icon-circle-triangle-w" />
-						</a>
-						<Calendar />
-					</div>
+					<Calendar position={0} />
+					<Calendar position={1} />
+					<div className="ui-datepicker-row-break" />
 				</div>
 			</div>
 		</div>

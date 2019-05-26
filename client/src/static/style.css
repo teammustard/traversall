@@ -1772,7 +1772,7 @@ footer.o-footer--alt::after {
 	opacity: 1;
 	transition: opacity .6s;
 	width: 100%;
-	height: 454px;
+	/* height: 454px; */
 }
 
 .c-trip-detail-calendar-booking__calendar .ui-datepicker {
@@ -1889,6 +1889,13 @@ input {
 	padding-top: calc(50% - 75px);
 }
 
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-group-last .ui-datepicker-next {
+	/* height: 100%; */
+	padding-top: calc(50% - 75px);
+	text-align: right;
+	width: 35px;
+}
+
 .c-trip-detail-calendar-booking__calendar .ui-icon {
 	color: transparent;
 	cursor: pointer;
@@ -1925,6 +1932,15 @@ input {
 	content: "\e941";
 }
 
+.c-fab-chevron:before,
+.c-fab__brochure-chevron.chevron-right::after,
+.c-lightbox-olapic__next-icon:before,
+.c-paginator__navigation .js-next-action:before,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e:before,
+.c-trip-detail-reviews__next::before {
+	content: "\e942";
+}
+
 .c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e::before,
 .c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w::before {
 	font-size: 17px;
@@ -1954,6 +1970,7 @@ input {
 
 .c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar > thead th {
 	padding: 20px 0;
+	text-align: center;
 }
 
 .c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar > thead th span {
@@ -1971,6 +1988,7 @@ input {
 }
 
 .ui-datepicker-calendar td {
+	text-align: center;
 	height: 53px !important;
 }
 
@@ -2021,4 +2039,102 @@ input {
 
 .c-trip-detail-calendar-booking__calendar .ui-datepicker td span::after {
 	line-height: inherit;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart {
+	background: #fafafa;
+	outline: #e1e1e1 solid 1px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td {
+	cursor: pointer;
+	overflow-y: visible;
+	position: relative;
+	transition: background-color .3s, outline .3s;
+	vertical-align: top;
+	width: 14.28%;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart .c-trip-detail-calendar-booking__calendar-span,
+.c-trip-detail-calendar-booking__calendar .end .c-trip-detail-calendar-booking__calendar-span {
+	font-size: 10px;
+	font-size: .625rem;
+	color: #119ce4;
+	height: 33%;
+	position: absolute;
+	right: 0;
+	top: 5px;
+	width: 10%;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart a {
+	color: #000 !important;
+	display: block;
+	font-weight: bolder;
+	line-height: 14px;
+	margin-top: 12px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__calendar-span-p {
+	font-weight: 400 !important;
+	margin-bottom: 4px;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	font-size: 13px;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	display: block;
+	line-height: 14px;
+	margin-top: 4px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td.definite::after {
+	border-bottom: solid 6px transparent;
+	border-left: solid 6px #7be6c8;
+	border-right: solid 6px transparent;
+	border-top: solid 6px #7be6c8;
+	content: "";
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p.pRed,
+.c-trip-detail-calendar-booking__calendar
+	.depart[data-tooltip-discount=true]
+	.c-trip-detail-calendar-booking__calendar-span-p,
+.c-trip-detail-calendar-booking__calendar .end p.pRed,
+.c-trip-detail-calendar-booking__calendar
+	.end[data-tooltip-discount=true]
+	.c-trip-detail-calendar-booking__calendar-span-p {
+	color: #fb0051;
+	font-weight: 800 !important;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last {
+	margin-right: 0;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last {
+	position: relative;
+}
+
+.ui-datepicker-group-last table {
+	float: left;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-row-break {
+	clear: both;
 }
