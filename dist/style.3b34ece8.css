@@ -548,6 +548,7 @@ h1 {
 	font-size: 2.375rem;
 	color: #302a3d;
 	text-align: left;
+	max-width: 70%;
 }
 
 .c-trip-detail-info-top__right {
@@ -1062,6 +1063,1080 @@ span.soleil-cta-button-pink:hover {
 
 .c-trip-detail-info-middle__right-trip-statement .zip-money-text {
 	margin-top: -3px;
+}
+
+/* Modal */
+
+#main-map-cartodb .maps-legend,
+#main-map-cartodb .maps-legend.maps-more,
+#main-map-cartodb .maps-more,
+.UI_Brochure,
+.c-autocomplete__item.countries i.c-autocomplete__country-marker,
+.c-autocomplete__item:not(.countries) i.c-autocomplete__map-icon,
+.c-autocomplete__item:not(.countries) i.c-autocomplete__map-marker,
+.c-autocomplete__item[data-val=Asia] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val="New Zealand"] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val=Australia] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val=Europe] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val="Latin America"] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val="USA & Canada"] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val="Africa & the Middle East"] .c-autocomplete__region-icon,
+.c-fab-chevron,
+.c-fab__brochure-chevron,
+.c-fab__brochure-overlay p::before,
+.c-fab__brochures-selected-list li i,
+.c-fab__close-button,
+.c-fab__contact-close-btn,
+.c-fab__form .c-form__custom-arrow,
+.c-fab__form input[type=checkbox] + .c-form__custom-checkbox,
+.c-fab__grid-share .c-fab__share-btn .c-fab__link-share .c-fab__share-btn span,
+.c-fab__grid-share .c-fab__share-btn .c-fab__link-share [class*=c-fab__share__]::before,
+.c-fab__submenu.prop-name-downloadbrochurepanel .c-fab__popup-title::before,
+.c-fab__text-link.c-fab__text-link-with-icon i,
+.c-fab__wrap-submit.prop-submitted::before,
+.c-filter.prop-bars[data-type=reviewsCard] .c-filter__cell-title-icon,
+.c-filter.prop-header-popup .c-filter__cell-value.prop-type-value-stars .c-filter__cell-value-star,
+.c-filter.prop-header-popup .c-filter__filter::after,
+.c-form__custom-checkbox-wrap input[type=checkbox] + .c-form__custom-checkbox,
+.c-form__field-tooltip .c-form__icon-tooltip,
+.c-form__show-password,
+.c-form__social-btn-wrap,
+.c-lightbox-olapic__back span::before,
+.c-lightbox-olapic__close,
+.c-lightbox-olapic__next-icon,
+.c-lightbox-olapic__prev-icon,
+.c-lightbox-olapic__related-trips-arrow-icon,
+.c-lightbox-olapic__social-links a,
+.c-main-reviews .c-main-reviews__rating > div,
+.c-main-reviews__header-toggle span::before,
+.c-main-reviews__side-mobile-header-close::before,
+.c-main-reviews__side-sa-tour.prop-is-tour-visible::before,
+.c-map-itinerary__legend-close-icon,
+.c-map-itinerary__legend-item[data-type="Bus route"] .c-map-itinerary__legend-icon,
+.c-map-itinerary__legend-item[data-type="River route"] .c-map-itinerary__legend-icon,
+.c-map-itinerary__legend-item[data-type="Plane route"] .c-map-itinerary__legend-icon,
+.c-map-itinerary__legend-item[data-type="Traveller Photos"] .c-map-itinerary__legend-icon,
+.c-map-olapic__close,
+.c-map-olapic__hashtag,
+.c-modal.calendar .o-header__phone,
+.c-modal__header-close,
+.c-page-form-gaq .c-form__succes-msg .c-page-form__subtitle::before,
+.c-page-form-newsletter .c-form__succes-msg .c-page-form__subtitle::before,
+.c-paginator__navigation .js-first-action,
+.c-paginator__navigation .js-last-action,
+.c-paginator__navigation .js-next-action,
+.c-paginator__navigation .js-prev-action,
+.c-reviews-card__total-star,
+.c-trip-cover .maps-legend,
+.c-trip-cover .maps-legend.maps-more,
+.c-trip-cover .maps-more,
+.c-trip-detail-calendar-booking__body-top-icons-calendar,
+.c-trip-detail-calendar-booking__body-top-icons-list,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td.almost-full::after,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w,
+.c-trip-detail-calendar-booking__calendar-icons-af,
+.c-trip-detail-calendar-booking__calendar-icons-da,
+.c-trip-detail-calendar-booking__calendar-icons-dd,
+.c-trip-detail-calendar-booking__calendar-list-view-header .sort-by::after,
+.c-trip-detail-calendar-booking__calendar-list-view-item-description ul li span.icon,
+.c-trip-detail-calendar-booking__calendar-list-view-item-icon,
+.c-trip-detail-calendar-booking__calendar-span.aFull,
+.c-trip-detail-calendar-booking__calendar-warning-mobile span,
+.c-trip-detail-calendar-booking__calendar-warning-mobile::before,
+.c-trip-detail-calendar-booking__details-accomodation-button i,
+.c-trip-detail-calendar-booking__guarantees-item-icon,
+.c-trip-detail-calendar-booking__guarantees-item-right-body .more-icon,
+.c-trip-detail-calendar-booking__options-item-icon-accomodation,
+.c-trip-detail-calendar-booking__options-item-icon-location,
+.c-trip-detail-calendar-booking__options-item-inner.c-trip-detail-calendar-booking__options-item-inner-selected
+	.c-trip-detail-calendar-booking__options-item-inner-icon:after,
+.c-trip-detail-calendar__request-more-info .get-a-quote__request-more-info::after,
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-hashtag-icon,
+.c-trip-detail-olapic-item:not(.c-trip-detail-olapic-box)::before,
+.c-trip-detail-olapic-user-name::before,
+.c-trip-detail-reviews__next::before,
+.c-trip-detail-reviews__prev::before,
+.c-trip-itinerary .c-trip-itinerary__back-overview i,
+.c-trip-itinerary__card-body-leg-desc-opts-symbol.prop-symbol-optional,
+.c-trip-itinerary__card-body-leg-road-marker,
+.c-trip-itinerary__card-body-row .c-trip-itinerary__card-body-leg-desc-main-title .icon,
+.c-trip-itinerary__card-body-row.prop-final-row .c-trip-itinerary__card-body-leg-desc-main-title .icon,
+.c-trip-itinerary__control:first-child::before,
+.c-trip-itinerary__control:last-child::before,
+.c-trip-itinerary__list-back::before,
+.c-trip-itinerary__list-cell-name::after,
+.c-trip-itinerary__list-name::after,
+.c-trip-reviews__body-card.prop-review-card .c-trip-reviews__review-card-user-info-total-star,
+.c-trip-what-you-get__expand-cta-arrow::before,
+.form-group.c-form__select-dates::before,
+.mbt-video-close,
+.mbt-video-fullscreen,
+.media-carousel-modal-close,
+.olapic-gallery-column .olapic-wall-image-wrapper:hover::before,
+.olapic-gallery-header-info::before,
+.olapic-gallery-photoby span::after,
+.proceed-download .UI_Download,
+.prop-extra-days .c-trip-itinerary__list-cell-road-line::before,
+.trip-cover-m-review-star,
+[class*=c-trip-what-you-get__icon],
+[data-single-map=true] div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__disable-grab,
+[data-single-map=true].is-region-grab-active
+	div[data-carto-map-type=dynamicEnh]
+	.leaflet-control-zoom
+	a.c-leafleft-control__disable-grab,
+body:not(.sitecore-template-orderaprintbrochurepage) .c-fab:not(.prop-has-primary-elements):not(.expanded),
+div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__disable-grab {
+	display: inline-block;
+	font-family: contiki !important;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 1;
+	speak: none;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+	text-rendering: auto;
+}
+
+.c-modal {
+	height: 100%;
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	top: 0;
+	border-radius: 0;
+	text-rendering: optimizeLegibility;
+	text-size-adjust: 100%;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.c-modal__inner,
+.c-modal__layer,
+.c-modal__outer {
+	height: 100%;
+	width: 100%;
+	display: block;
+	position: relative;
+}
+
+.modal-content {
+	border: 0;
+	border-radius: 0;
+	display: block;
+	height: 100%;
+}
+
+.c-modal__inner > div {
+	display: table-row;
+	position: static;
+	width: 100%;
+}
+
+.c-modal__inner > div > div {
+	display: table-cell;
+	position: relative;
+	width: 100%;
+}
+
+.c-modal__inner {
+	background-color: #fff;
+	display: table;
+	table-layout: fixed;
+}
+
+.c-modal.calendar .c-modal__inner {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: linear-gradient(to right, #fb0051, #ff4983 87.5%, transparent 87.5%);
+	background-size: 8.42105%;
+	background-origin: content-box;
+	background-clip: content-box;
+	background-position: left top;
+}
+
+.c-modal__header-close,
+.c-modal__header-title {
+	color: #302a3d;
+	transition: all .3s ease;
+	overflow: hidden;
+	font-weight: 700;
+}
+
+.c-modal__header,
+.c-modal__header-cell,
+.c-modal__header-wrapper {
+	transition: height .3s ease;
+}
+
+.c-modal__header-cell,
+.ie9 .c-modal__header-wrapper {
+	height: 52px;
+}
+
+.c-modal__header {
+	height: 52px;
+	position: relative;
+	z-index: 999;
+}
+
+.c-modal__header-close {
+	font-size: 15px;
+	font-size: .9375rem;
+	-khtml-user-drag: "none";
+	-khtml-user-select: "none";
+	-webkit-touch-callout: "none";
+	user-select: "none";
+	cursor: pointer;
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+}
+
+.c-modal__header > span {
+	display: inline-block;
+	line-height: 52px;
+	position: relative;
+}
+
+.c-fab__close-button:before,
+.c-fab__contact-close-btn:before,
+.c-lightbox-olapic__close:before,
+.c-map-itinerary__legend-close-icon:before,
+.c-map-olapic__close:before,
+.c-modal__header-close:before,
+.mbt-video-close:before,
+[data-single-map=true].is-region-grab-active
+	div[data-carto-map-type=dynamicEnh]
+	.leaflet-control-zoom
+	a.c-leafleft-control__disable-grab:before,
+div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__disable-grab:before {
+	content: "\e947";
+}
+
+.c-modal__header-title {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	font-size: 21px;
+	font-size: 1.3125rem;
+	text-decoration: none;
+	float: left;
+	margin-left: 20px;
+}
+
+.c-modal__header > span {
+	display: inline-block;
+	line-height: 52px;
+	position: relative;
+}
+
+.c-modal__body-wrapper {
+	height: 100%;
+}
+
+.c-modal__body {
+	background-color: #efeef0;
+	height: 100%;
+}
+
+.c-modal__body-wrapper::after {
+	height: 52px;
+	width: 100%;
+	background: 0 0;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, .3);
+	content: "";
+	display: block;
+	left: 0;
+	overflow: hidden;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	transition: top .3s ease;
+	z-index: 100;
+}
+
+.c-modal__body-content,
+.c-modal__body-content-wrapper {
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+
+.c-modal__body-content-wrapper {
+	position: absolute;
+}
+
+.c-modal__body-content {
+	-webkit-overflow-scrolling: touch;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: relative;
+}
+
+.c-modal.calendar .c-modal__body {
+	background-color: #efeef0;
+	height: 100%;
+}
+
+.c-modal.calendar .c-modal__body-content {
+	background: #efeef0;
+}
+
+.c-trip-detail-calendar {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	background: #efeef0;
+	overflow: visible;
+	position: relative;
+	text-align: left;
+}
+
+.c-trip-detail-calendar {
+	width: 74.73684%;
+	float: none;
+	margin: 0 auto;
+}
+
+.c-trip-detail-calendar__outer {
+	margin: auto;
+	max-width: 952px;
+	padding: 0 20px;
+}
+
+.c-trip-detail-calendar-booking {
+	height: 100%;
+	width: 100%;
+	background: #efeef0;
+	/* bottom: -1000px; */
+	display: block;
+	padding-bottom: 65px;
+	text-align: left;
+	transition: bottom 2s;
+}
+
+.c-trip-detail-calendar-booking-inner {
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__body-top-text {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	margin-bottom: 0;
+	margin-top: 20px;
+	min-height: 134px;
+	padding: 0 20px;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__body-top-text {
+	margin: 11px auto 0;
+	max-width: 1285px;
+	overflow: hidden;
+	padding: 0;
+}
+
+.c-trip-detail-calendar-booking__body-title {
+	margin: auto;
+	padding-bottom: 25px;
+	text-align: center;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__body-title {
+	margin-top: 53px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking-step,
+.c-trip-detail-calendar-booking__body-title h4 {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+}
+
+.c-trip-detail-calendar-booking-step {
+	font-size: 14px;
+	font-size: .875rem;
+	color: #746d7f;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking-title,
+.c-trip-detail-calendar-booking-title-inner {
+	font-size: 31px;
+	font-size: 1.9375rem;
+	margin-bottom: 38px;
+}
+
+.c-trip-detail-calendar-booking-title {
+	font-size: 24px;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.c-trip-detail-calendar-booking-step,
+.c-trip-detail-calendar-booking__body-title h4 {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+}
+
+.c-trip-detail-top-notification-box {
+	background-color: #e5e4e6;
+	border: 20px solid #e5e4e6;
+	border-radius: 2px;
+}
+
+.c-trip-detail-calendar-booking-notice {
+	margin-bottom: -5px;
+}
+.c-trip-detail-calendar-booking__body-title p {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.c-trip-detail-calendar-booking-title-outer {
+	height: 50px;
+	width: 100%;
+	padding-top: 80px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking-title-outer {
+	display: block;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons {
+	display: block;
+	font-size: 15px;
+	margin-bottom: 25px;
+	text-align: center;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons {
+	float: right;
+	margin-bottom: 0;
+	margin-top: 12px;
+	right: 0;
+	text-align: right;
+	width: 20%;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons::before {
+	font-size: 12px;
+	font-size: .75rem;
+	content: "VIEW ";
+	margin-right: 5px;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons span {
+	height: initial;
+	width: initial;
+	font-size: 20px;
+	font-size: 1.25rem;
+	background: #fff;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .09);
+	color: #746d7f;
+	cursor: pointer;
+	font-weight: 400;
+	line-height: 12px;
+	padding: 6px 9px 8px;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons span {
+	height: 30px;
+	width: 30px;
+	line-height: 25px;
+	padding: 0 9px 10px 8px;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons span.c-trip-detail-calendar-booking__body-top-icons-selected,
+.c-trip-detail-calendar-booking__body-top-icons span:hover {
+	background-color: #736e7e;
+	color: #fff;
+	font-weight: 400;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons-calendar:before,
+.c-trip-detail-calendar-booking__calendar-warning-mobile::before,
+.form-group.c-form__select-dates:before {
+	content: "\e93e";
+}
+
+.c-trip-detail-calendar-booking__body-top-icons span::before {
+	font-size: 13px;
+	font-size: .8125rem;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons-list {
+	margin-left: -1px;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons-list:before,
+.c-trip-itinerary__control:last-child::before {
+	content: "\e96c";
+}
+
+.c-signin-page,
+.c-signup-page,
+.c-trip-detail-ugccarousel__header,
+.c-user-menu__controls,
+.c-user-menu__link-button,
+.clearfix,
+.o-footer,
+.o-footer__content,
+footer.o-footer--alt {
+	zoom: 1;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	margin-top: -10px;
+	padding-bottom: 10px;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons {
+	font-size: 13px;
+	font-size: .8125rem;
+	display: table;
+	float: left;
+	margin-top: 0;
+	padding: 15px 0;
+	width: 80%;
+}
+
+.c-signin-page::after,
+.c-signin-page::before,
+.c-signup-page::after,
+.c-signup-page::before,
+.c-trip-detail-ugccarousel__header::after,
+.c-trip-detail-ugccarousel__header::before,
+.c-user-menu__controls::after,
+.c-user-menu__controls::before,
+.c-user-menu__link-button::after,
+.c-user-menu__link-button::before,
+.clearfix::after,
+.clearfix::before,
+.o-footer::after,
+.o-footer::before,
+.o-footer__content::after,
+.o-footer__content::before,
+footer.o-footer--alt::after,
+footer.o-footer--alt::before {
+	content: " ";
+	display: table;
+}
+
+.c-signin-page::after,
+.c-signup-page::after,
+.c-trip-detail-ugccarousel__header::after,
+.c-user-menu__controls::after,
+.c-user-menu__link-button::after,
+.clearfix::after,
+.o-footer::after,
+.o-footer__content::after,
+footer.o-footer--alt::after {
+	clear: both;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-outer {
+	float: left;
+	padding-right: 16px;
+	width: auto;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-outer {
+	display: table-cell;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-ph {
+	text-align: left;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-ph {
+	float: left;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-da {
+	border-radius: initial;
+	color: #fb0051;
+	font-size: 12px;
+	height: initial;
+	padding: 0 1px;
+	width: initial;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-da::before {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+	font-size: 15px;
+	font-size: .9375rem;
+	bottom: 6px;
+	position: relative;
+}
+
+.c-trip-detail-calendar.prop-currency-dollar .c-trip-detail-calendar-booking__calendar-icons-da::before {
+	content: "$";
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-ph.fr {
+	color: #746d7f;
+	float: right;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-af {
+	border-radius: initial;
+	font-size: 12px;
+	height: initial;
+	padding: 0 1px;
+	width: initial;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td.almost-full::after,
+.c-trip-detail-calendar-booking__calendar-icons-af:before,
+.c-trip-detail-calendar-booking__calendar-span.aFull:before {
+	content: "\e938";
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-af::before {
+	bottom: 4px;
+	color: #119ce4;
+	font-weight: 400;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-dd {
+	font-size: 12px;
+	padding: 0 1px;
+}
+
+.c-filter.prop-header-popup .c-filter__filter::after,
+.c-modal.calendar .c-modal__header.phone-menu-active .o-header__phone::after,
+.c-modal.calendar .o-header__phone::after,
+.c-trip-detail-calendar-booking__calendar-icons-dd:before,
+.c-trip-detail-calendar-booking__calendar-list-view-header .sort-by::after,
+.prop-extra-days .c-trip-itinerary__list-cell-road-line::before {
+	content: "\e948";
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-dd::before {
+	color: #7be6c8;
+	font-weight: 400;
+	left: -5px;
+	position: absolute;
+	top: -11px;
+	-webkit-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);
+	transform: rotate(135deg);
+}
+
+.c-trip-detail-calendar-booking__calendar-icons span {
+	background-color: #fff;
+	border: 1px solid #e1e1e1;
+	display: block;
+	float: left;
+	height: 16px;
+	line-height: 24px;
+	margin: 4px;
+	text-align: center;
+	width: 16px;
+}
+
+.c-trip-detail-calendar-booking__calendar-wrapper {
+	margin-bottom: 20px;
+	padding: 0 0 0 20px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__calendar-wrapper {
+	margin: auto;
+	max-width: 1285px;
+	padding: 0;
+}
+
+/* Date Picker */
+.c-trip-detail-calendar-booking__calendar-outer {
+	width: 100%;
+}
+
+#c-trip-detail-calendar-booking__calendar-from {
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .09);
+	opacity: 1;
+	transition: opacity .6s;
+	width: 100%;
+	/* height: 454px; */
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker {
+	margin: 0;
+	text-align: left;
+	white-space: nowrap;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker {
+	background: #fff;
+	border: 3px solid #f7f7f7;
+	margin: 0 0 25px;
+	white-space: normal;
+	width: 40%;
+}
+
+.ui-datepicker-inline.ui-datepicker-multi {
+	display: block !important;
+	transform: translate3d(0px, 0px, 0px);
+}
+
+.ui-datepicker-group {
+	background: #fff;
+	position: relative;
+}
+
+.ui-datepicker-group {
+	display: table;
+	padding-bottom: 20px;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-first,
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last,
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-middle,
+.ui-datepicker-inline.c-trip-detail-calendar-booking__one-calendar {
+	background: #fff;
+	border: 2px solid #7be6c8;
+	display: inline-block;
+	-webkit-flex-shrink: 0;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	float: none;
+	margin-right: 10px;
+	text-align: center;
+	vertical-align: top;
+	white-space: normal;
+	width: 7.8%;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-first,
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last,
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-middle,
+.ui-datepicker-inline.c-trip-detail-calendar-booking__one-calendar {
+	border: 0;
+	float: left;
+	margin-right: 0;
+	width: 50%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-header {
+	background: #f7f7f7;
+	font-weight: 700;
+	padding: 10px;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-header {
+	width: 100.1%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-header {
+	width: 100.1%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-title span {
+	color: #000 !important;
+	font-size: 14px;
+}
+
+.c-menu__toggle:focus,
+a,
+a:active,
+a:hover,
+input {
+	outline: 0;
+}
+
+.ui-state-disabled {
+	opacity: 0;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-next,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-prev {
+	display: none;
+	font-size: 30px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-next,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-prev {
+	display: inline-block;
+}
+
+.ui-datepicker-group-first .ui-datepicker-prev {
+	display: none;
+	width: 35px;
+}
+
+.ui-datepicker-group-first .ui-datepicker-prev {
+	display: inline-block;
+	float: left;
+	/* height: 100%; */
+	margin-right: 5%;
+	padding-top: calc(50% - 75px);
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-group-last .ui-datepicker-next {
+	/* height: 100%; */
+	padding-top: calc(50% - 75px);
+	text-align: right;
+	width: 35px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-icon {
+	color: transparent;
+	cursor: pointer;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w {
+	color: #000;
+	text-align: center;
+	top: 2px;
+	width: 35px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w {
+	left: 4px;
+}
+
+.ui-datepicker-next.ui-corner-all span,
+.ui-datepicker-prev.ui-corner-all span {
+	display: table-cell;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+.c-fab__brochure-chevron.chevron-left::after,
+.c-fab__submenu.prop-name-downloadbrochurepanel .c-fab__popup-title::before,
+.c-lightbox-olapic__prev-icon:before,
+.c-main-reviews__side-mobile-header-close::before,
+.c-main-reviews__side-sa-tour.prop-is-tour-visible::before,
+.c-paginator__navigation .js-prev-action:before,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w:before,
+.c-trip-detail-reviews__prev::before,
+.c-trip-itinerary .c-trip-itinerary__back-overview i:before {
+	content: "\e941";
+}
+
+.c-fab-chevron:before,
+.c-fab__brochure-chevron.chevron-right::after,
+.c-lightbox-olapic__next-icon:before,
+.c-paginator__navigation .js-next-action:before,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e:before,
+.c-trip-detail-reviews__next::before {
+	content: "\e942";
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e::before,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w::before {
+	font-size: 17px;
+	font-size: 1.0625rem;
+	font-weight: 700;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	background: #fff;
+	margin: auto;
+	transition: opacity .6s;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar {
+	display: table;
+	margin: 0 5%;
+	opacity: 0;
+	table-layout: fixed;
+	width: calc(90% - 35px);
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar > thead {
+	border: 0;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar > thead th {
+	padding: 20px 0;
+	text-align: center;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar > thead th span {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	color: #736e7e;
+	font-weight: 400;
+}
+
+.undefined {
+	color: #746d7f;
+	display: table-cell !important;
+	opacity: 1 !important;
+}
+
+.ui-datepicker-calendar td {
+	text-align: center;
+	height: 53px !important;
+}
+
+.c-trip-detail-calendar-booking__calendar .end,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-unselectable,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-unselectable a {
+	cursor: default;
+	pointer-events: none;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-other-month,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-unselectable {
+	border: 0 !important;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td {
+	cursor: pointer;
+	overflow-y: visible;
+	position: relative;
+	transition: background-color .3s, outline .3s;
+	vertical-align: top;
+	width: 14.28%;
+}
+
+.c-trip-detail-calendar-booking__calendar span,
+.c-trip-detail-calendar-booking__calendar td > a {
+	color: #736e7e;
+}
+
+.undefined span {
+	opacity: .5;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td span,
+.ui-datepicker td a {
+	display: inline-block;
+	line-height: 14px;
+	margin-top: 12px;
+	text-align: center;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td span::after {
+	content: "\A";
+	display: block;
+	line-height: .75;
+	white-space: pre;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td span::after {
+	line-height: inherit;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart {
+	background: #fafafa;
+	outline: #e1e1e1 solid 1px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td {
+	cursor: pointer;
+	overflow-y: visible;
+	position: relative;
+	transition: background-color .3s, outline .3s;
+	vertical-align: top;
+	width: 14.28%;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart .c-trip-detail-calendar-booking__calendar-span,
+.c-trip-detail-calendar-booking__calendar .end .c-trip-detail-calendar-booking__calendar-span {
+	font-size: 10px;
+	font-size: .625rem;
+	color: #119ce4;
+	height: 33%;
+	position: absolute;
+	right: 0;
+	top: 5px;
+	width: 10%;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart a {
+	color: #000 !important;
+	display: block;
+	font-weight: bolder;
+	line-height: 14px;
+	margin-top: 12px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__calendar-span-p {
+	font-weight: 400 !important;
+	margin-bottom: 4px;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	font-size: 13px;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	display: block;
+	line-height: 14px;
+	margin-top: 4px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td.definite::after {
+	border-bottom: solid 6px transparent;
+	border-left: solid 6px #7be6c8;
+	border-right: solid 6px transparent;
+	border-top: solid 6px #7be6c8;
+	content: "";
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p.pRed,
+.c-trip-detail-calendar-booking__calendar
+	.depart[data-tooltip-discount=true]
+	.c-trip-detail-calendar-booking__calendar-span-p,
+.c-trip-detail-calendar-booking__calendar .end p.pRed,
+.c-trip-detail-calendar-booking__calendar
+	.end[data-tooltip-discount=true]
+	.c-trip-detail-calendar-booking__calendar-span-p {
+	color: #fb0051;
+	font-weight: 800 !important;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last {
+	margin-right: 0;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last {
+	position: relative;
+}
+
+.ui-datepicker-group-last table {
+	float: left;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-row-break {
+	clear: both;
 }
 
 

@@ -1,48 +1,35 @@
-import React from 'react';
-import { useQuery } from 'react-apollo-hooks';
-import { GET_TOUR_DETAILS } from '../graphql/queries';
+import React, { useContext } from 'react';
+import { TourContext } from './tourContext';
+import { numberWithCommas } from './util';
 
-const numberWithCommas = (x) => {
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
-
-const TripDetails = () => {
-	const { data, error, loading } = useQuery(GET_TOUR_DETAILS, { variables: { id: 3 } });
-
-	if (loading) {
-		return <div>loading</div>;
-	}
-	if (error) {
-		return <div>Got an error: {error.message}</div>;
-	}
+const TripDetails = (props) => {
+	const tour = useContext(TourContext);
 
 	const getDiscountedPrice = () => {
-		const highestDiscount = Math.max(...data.getTour.trips.map((trip) => trip.discount));
-		return data.getTour.listed_price * ((100 - highestDiscount) / 100);
+		const highestDiscount = Math.max(...tour.trips.map((trip) => trip.discount));
+		return Math.round(tour.listed_price * ((100 - highestDiscount) / 100));
 	};
 
 	return (
 		<div className="c-trip-detail-info">
 			<div className="c-trip-detail-info-top__left">
-				<h1>{data.getTour.name}</h1>
+				<h1>{tour.name}</h1>
 			</div>
 			<div className="c-trip-detail-info-top__right prop-has-discount prop-has-uplift">
 				<div className="c-trip-detail-info-top__right-info-col prop-name-countries">
 					<div className="c-trip-detail-info-top__right-label">COUNTRIES</div>
 					<div className="c-trip-detail-info-top__right-value prop-value-countries">
-						{data.getTour.countries.length}
+						{tour.countries.length}
 					</div>
 				</div>
 				<div className="c-trip-detail-info-top__right-info-col prop-name-duration">
 					<div className="c-trip-detail-info-top__right-label">DAYS</div>
-					<div className="c-trip-detail-info-top__right-value prop-value-duration">
-						{data.getTour.duration}
-					</div>
+					<div className="c-trip-detail-info-top__right-value prop-value-duration">{tour.duration}</div>
 				</div>
 				<div className="c-trip-detail-info-top__right-info-col prop-name-price prop-discounted">
 					<div className="c-trip-detail-info-top__right-label">WAS</div>
 					<div className="c-trip-detail-info-top__right-value prop-value-price">
-						${numberWithCommas(data.getTour.listed_price)}
+						${numberWithCommas(tour.listed_price)}
 					</div>
 				</div>
 				<div className="c-trip-detail-info-top__right-info-col prop-name-discount">
@@ -79,7 +66,10 @@ const TripDetails = () => {
 			</div>
 			<div className="c-trip-detail-info-middle__right area-up-lift">
 				<div className="c-trip-detail-info-middle__area-buttons">
-					<span className="soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift">
+					<span
+						className="soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift"
+						onClick={props.handleShow}
+					>
 						BOOK TRIP
 					</span>
 					<span className="soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe">

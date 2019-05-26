@@ -5,8 +5,9 @@ const { resolvers } = require('./resolvers.js');
 const { dbPromise } = require('../db');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require('path');
 
-app.use(express.static('./dist'));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 if (require.main === module) {
 	const server = new ApolloServer({
@@ -18,6 +19,11 @@ if (require.main === module) {
 	});
 
 	server.applyMiddleware({ app });
+
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, '../dist/index.html'));
+	});
+
 	app.listen(PORT, () => console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`));
 }
 
