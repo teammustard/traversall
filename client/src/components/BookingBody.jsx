@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import DatePicker from './DatePicker';
-import BookingMessage from './BookingMessage';
+import CalendarContainer from './CalendarContainer';
 import TripHover from './TripHover';
+import BookingMessage from './BookingMessage';
+import BookingOptions from './BookingOptions';
+import BookingDetails from './BookingDetails';
 
-const CalendarBody = () => {
+const BookingBody = () => {
 	const [ showTripHover, setTripHover ] = useState(false);
 	const [ tripHoverData, setTripHoverData ] = useState({
+		trip: {},
 		top: '0px',
 		left: '0px',
 		listPrice: '0',
 		discountAmount: '0'
 	});
+	const [ showBookingMessage, setBookingMessage ] = useState(false);
+	const [ selectedTrip, setSelectedTrip ] = useState();
+	const [ selectedTripDuration, setSelectedTripDuration ] = useState([]);
 
 	return (
 		<div className="c-trip-detail-calendar prop-has-dicount prop-currency-dollar">
@@ -64,9 +70,31 @@ const CalendarBody = () => {
 							<div className="c-trip-detail-calendar-booking__body">
 								<div className="c-trip-detail-calendar-booking__calendar-wrapper">
 									<div className="c-trip-detail-calendar-booking-overlay" />
-									<DatePicker setTripHover={setTripHover} setTripHoverData={setTripHoverData} />
-									<BookingMessage />
+									<CalendarContainer
+										setTripHover={setTripHover}
+										setTripHoverData={setTripHoverData}
+										setBookingMessage={setBookingMessage}
+										setSelectedTrip={setSelectedTrip}
+									/>
+									{showBookingMessage && <BookingMessage selectedTrip={selectedTrip} />}
 									<TripHover showTripHover={showTripHover} tripHoverData={tripHoverData} />
+								</div>
+								<div className="c-trip-detail-calendar-booking__options-wrapper">
+									<div className="c-trip-detail-calendar-booking__info">
+										<div className="c-trip-detail-calendar-booking__info-container area-up-lift prop-uplift-ready">
+											{showBookingMessage && <BookingOptions selectedTrip={selectedTrip} />}
+											<div className="c-trip-detail-calendar-booking__spotlight-title">
+												<span className="c-trip-detail-calendar-booking-step">step 2</span>
+												<h4 className="c-trip-detail-calendar-booking-title">
+													Your trip summary
+												</h4>
+											</div>
+											<BookingDetails
+												selectedTrip={selectedTrip}
+												showBookingMessage={showBookingMessage}
+											/>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -77,4 +105,4 @@ const CalendarBody = () => {
 	);
 };
 
-export default CalendarBody;
+export default BookingBody;
