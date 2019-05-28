@@ -25804,13 +25804,37 @@ exports.TourContext = TourContext;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.numberWithCommas = void 0;
+exports.getMonthlyPayment = exports.getDiscountedPrice = exports.numberWithCommas = void 0;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 var numberWithCommas = function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
 exports.numberWithCommas = numberWithCommas;
+
+var getDiscountedPrice = function getDiscountedPrice(tour) {
+  var highestDiscount = Math.max.apply(Math, _toConsumableArray(tour.trips.map(function (trip) {
+    return trip.discount;
+  })));
+  return Math.round(tour.listed_price * ((100 - highestDiscount) / 100));
+};
+
+exports.getDiscountedPrice = getDiscountedPrice;
+
+var getMonthlyPayment = function getMonthlyPayment(tour) {
+  var monthlyRate = 0.0704;
+  return Math.round(tour.listed_price / 12 * (1 + monthlyRate));
+};
+
+exports.getMonthlyPayment = getMonthlyPayment;
 },{}],"components/TripDetails.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -25827,24 +25851,8 @@ var _util = require("./util");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 var TripDetails = function TripDetails(props) {
   var tour = (0, _react.useContext)(_tourContext.TourContext);
-
-  var getDiscountedPrice = function getDiscountedPrice() {
-    var highestDiscount = Math.max.apply(Math, _toConsumableArray(tour.trips.map(function (trip) {
-      return trip.discount;
-    })));
-    return Math.round(tour.listed_price * ((100 - highestDiscount) / 100));
-  };
-
   return _react.default.createElement("div", {
     className: "c-trip-detail-info"
   }, _react.default.createElement("div", {
@@ -25875,7 +25883,7 @@ var TripDetails = function TripDetails(props) {
     className: "c-trip-detail-info-top__right-label"
   }, "NOW FROM"), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-value prop-value-discount"
-  }, "$", (0, _util.numberWithCommas)(getDiscountedPrice()))), _react.default.createElement("div", {
+  }, "$", (0, _util.numberWithCommas)((0, _util.getDiscountedPrice)(tour)))), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-info-col prop-name-uplift prop-listen-change-attr"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right-label"
@@ -25883,7 +25891,7 @@ var TripDetails = function TripDetails(props) {
     className: "c-trip-detail-info-top__right-value prop-value-uplift"
   }, _react.default.createElement("span", {
     className: "c-trip-cover__financing-amount"
-  }, "$???", _react.default.createElement("span", {
+  }, "$", (0, _util.numberWithCommas)((0, _util.getMonthlyPayment)(tour)), _react.default.createElement("span", {
     className: "c-trip-cover__financing-text uplift-more-info"
   }, "/mo"))))), _react.default.createElement("div", {
     className: "c-trip-detail-info-middle__left"
@@ -35508,11 +35516,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _tourContext = require("./tourContext");
+
+var _util = require("./util");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var BookingDetails = function BookingDetails() {
+  var tour = (0, _react.useContext)(_tourContext.TourContext);
   return _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__details"
   }, _react.default.createElement("div", {
@@ -35573,12 +35586,54 @@ var BookingDetails = function BookingDetails() {
     className: "c-trip-cover__financing-logo"
   })), _react.default.createElement("div", {
     className: "uplift-finance-message"
-  }, _react.default.createElement("span", null, "Financing available! Spread the cost of your trip over 12 months. Choose it on checkout."))))));
+  }, _react.default.createElement("span", null, "Financing available! Spread the cost of your trip over 12 months. Choose it on checkout."))))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__details-accomodation-total"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail__table-inner-wrap"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar__outer-box-price-was c-trip-detail-calendar-booking__details-accomodation-box-price-was prop-booking-box-price"
+  }, _react.default.createElement("p", null, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__total-price-copy c-trip-detail-calendar-booking__total-price-was"
+  }, "WAS"), _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__details-price-was"
+  }, "$", (0, _util.numberWithCommas)(tour.listed_price)))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__details-accomodation-box-p prop-booking-box-price"
+  }, _react.default.createElement("p", null, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__total-price-copy"
+  }, "Now from"), _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__details-accomodation-box-total-price c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted"
+  }, "$", (0, _util.numberWithCommas)((0, _util.getDiscountedPrice)(tour))))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__uplift-section discount-available"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-uplift__monthly-amount prop-listen-change-attr"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__pay-from-title"
+  }, "FINANCING FROM"), _react.default.createElement("span", null, "$"), " ", _react.default.createElement("span", {
+    "data-up-from-dollars": true
+  }, (0, _util.numberWithCommas)((0, _util.getMonthlyPayment)(tour))), _react.default.createElement("span", {
+    className: "uplift-period__message"
+  }, "For a 12 month period"))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar__outer-button booking-standard booking-buttons-processed prop-not-fab"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__details-accomodation-button disabled"
+  }, _react.default.createElement("i", null), _react.default.createElement("span", null, "Book trip")))), _react.default.createElement("div", {
+    className: "uplift-full-message uplift-is-loaded"
+  }, "Can't pay in full today? You can book your trip with", _react.default.createElement("strong", null, _react.default.createElement("strong", null, "$200"), " deposit"), ' ', "or choose to ", _react.default.createElement("span", {
+    className: "uplift-link"
+  }, "pay in installments"), " with", _react.default.createElement("span", {
+    className: "uplift-link"
+  }, " UpLift"), " financing")), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar__request-more-info"
+  }, _react.default.createElement("span", null, "HAVING "), _react.default.createElement("span", {
+    className: "questions-about-trip"
+  }, "QUESTIONS ABOUT THIS TRIP? "), "OUR TRAVEL SPECIALIST CAN HELP!", _react.default.createElement("span", {
+    className: "get-a-quote__request-more-info"
+  }, _react.default.createElement("span", null, " REQUEST MORE INFO"))));
 };
 
 var _default = BookingDetails;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"components/BookingBody.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./tourContext":"components/tourContext.js","./util":"components/util.js"}],"components/BookingBody.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35747,6 +35802,13 @@ var ModalContainer = function ModalContainer(props) {
     dialogClassName: "c-modal",
     "aria-labelledby": "example-custom-modal-styling-title"
   }, _react.default.createElement("div", {
+    className: "c-modal__layer"
+  }), _react.default.createElement("div", {
+    className: "c-modal__outer",
+    style: {
+      top: 0
+    }
+  }, _react.default.createElement("div", {
     className: "c-modal__inner"
   }, _react.default.createElement("div", {
     className: "c-modal__header-wrapper"
@@ -35767,19 +35829,14 @@ var ModalContainer = function ModalContainer(props) {
     className: "c-modal__body-content-wrapper"
   }, _react.default.createElement("div", {
     className: "c-modal__body-content"
-  }, _react.default.createElement(_BookingBody.default, null)))))));
+  }, _react.default.createElement(_BookingBody.default, null))))), _react.default.createElement("div", {
+    className: "c-modal__footer-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-modal__footer"
+  })))));
 };
 
-var _default = ModalContainer; // <Modal.Body>
-// <p>
-//   Ipsum molestiae natus adipisci modi eligendi? Debitis amet quae unde commodi aspernatur enim,
-//   consectetur. Cumque deleniti temporibus ipsam atque a dolores quisquam quisquam adipisci
-//   possimus laboriosam. Quibusdam facilis doloribus debitis! Sit quasi quod accusamus eos quod. Ab
-//   quos consequuntur eaque quo rem! Mollitia reiciendis porro quo magni incidunt dolore amet atque
-//   facilis ipsum deleniti rem!
-// </p>
-// </Modal.Body>
-
+var _default = ModalContainer;
 exports.default = _default;
 },{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./BookingBody":"components/BookingBody.jsx"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
 "use strict";

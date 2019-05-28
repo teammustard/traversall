@@ -12,23 +12,29 @@ const ModalContainer = (props) => {
 			dialogClassName="c-modal"
 			aria-labelledby="example-custom-modal-styling-title"
 		>
-			<div className="c-modal__inner">
-				<div className="c-modal__header-wrapper">
-					<div className="c-modal__header-cell">
-						<div className="c-modal__header">
-							<span className="c-modal__header-close" onClick={handleHide} />
-							<span className="c-modal__header-title">TRAVEL STYLE</span>
-						</div>
-					</div>
-				</div>
-
-				<div className="c-modal__body-wrapper">
-					<div className="c-modal__body">
-						<div className="c-modal__body-content-wrapper">
-							<div className="c-modal__body-content">
-								<BookingBody />
+			<div className="c-modal__layer" />
+			<div className="c-modal__outer" style={{ top: 0 }}>
+				<div className="c-modal__inner">
+					<div className="c-modal__header-wrapper">
+						<div className="c-modal__header-cell">
+							<div className="c-modal__header">
+								<span className="c-modal__header-close" onClick={handleHide} />
+								<span className="c-modal__header-title">TRAVEL STYLE</span>
 							</div>
 						</div>
+					</div>
+
+					<div className="c-modal__body-wrapper">
+						<div className="c-modal__body">
+							<div className="c-modal__body-content-wrapper">
+								<div className="c-modal__body-content">
+									<BookingBody />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="c-modal__footer-wrapper">
+						<div className="c-modal__footer" />
 					</div>
 				</div>
 			</div>
@@ -37,13 +43,3 @@ const ModalContainer = (props) => {
 };
 
 export default ModalContainer;
-
-// <Modal.Body>
-// <p>
-//   Ipsum molestiae natus adipisci modi eligendi? Debitis amet quae unde commodi aspernatur enim,
-//   consectetur. Cumque deleniti temporibus ipsam atque a dolores quisquam quisquam adipisci
-//   possimus laboriosam. Quibusdam facilis doloribus debitis! Sit quasi quod accusamus eos quod. Ab
-//   quos consequuntur eaque quo rem! Mollitia reiciendis porro quo magni incidunt dolore amet atque
-//   facilis ipsum deleniti rem!
-// </p>
-// </Modal.Body>

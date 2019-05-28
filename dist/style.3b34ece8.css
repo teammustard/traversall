@@ -1219,6 +1219,16 @@ div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__
 	line-height: 24px;
 }
 
+.c-modal {
+	position: absolute;
+}
+
+.c-modal {
+	top: 0;
+	z-index: 10000;
+	display: block;
+}
+
 .c-modal__inner,
 .c-modal__layer,
 .c-modal__outer {
@@ -1226,6 +1236,31 @@ div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__
 	width: 100%;
 	display: block;
 	position: relative;
+}
+
+.c-modal__layer {
+	background-color: #736e7e;
+	position: absolute;
+	filter: alpha(opacity=0);
+	opacity: 0.6;
+}
+
+.c-modal.calendar::after {
+	background-color: #efeef0;
+}
+
+.c-modal__outer {
+	padding: 0;
+}
+
+.c-modal__inner .c-modal__footer-wrapper {
+	display: none;
+}
+
+.c-modal.calendar .c-modal__inner:after {
+	content: " ";
+	display: block;
+	clear: both;
 }
 
 .modal-content {
@@ -1252,7 +1287,7 @@ div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__
 	display: table;
 	table-layout: fixed;
 }
-
+/* 
 .c-modal.calendar .c-modal__inner {
 	max-width: 100%;
 	margin-left: auto;
@@ -1262,7 +1297,7 @@ div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__
 	background-origin: content-box;
 	background-clip: content-box;
 	background-position: left top;
-}
+} */
 
 .c-modal__header-close,
 .c-modal__header-title {
@@ -2701,6 +2736,19 @@ input {
 	margin-bottom: 2px;
 }
 
+.c-trip-detail-calendar-booking__details::after {
+	height: 100px;
+	width: 100%;
+	bottom: 0;
+	content: "";
+	display: block;
+	left: 0;
+	position: absolute;
+	-webkit-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+}
+
 .c-trip-detail-calendar-booking__details-main {
 	font-family: "Soleil W02 Regular", arial, sans-serif;
 	clear: both;
@@ -2902,7 +2950,7 @@ input {
 }
 
 .c-trip-detail-calendar__uplift-finance {
-	width: 33%
+	width: 33%;
 }
 
 .c-trip-detail-calendar__uplift-finance {
@@ -2910,28 +2958,408 @@ input {
 	-ms-flex: 1;
 	flex: 1;
 	margin-left: 5px;
-	margin-right: 5px
+	margin-right: 5px;
 }
 
 .c-trip-detail-calendar__uplift-finance .uplift-logo {
-	line-height: 0
+	line-height: 0;
 }
 
 .c-trip-detail-calendar__uplift-finance .uplift-logo img {
-	height: 20px
+	height: 20px;
 }
 
 .c-trip-detail-calendar__uplift-finance .uplift-finance-message {
-	font-family: "Soleil W02 Regular",arial,sans-serif;
+	font-family: "Soleil W02 Regular", arial, sans-serif;
 	font-size: 11px;
 	font-size: .6875rem;
-	color: #736E7E;
+	color: #736e7e;
 	line-height: 14px;
-	margin-top: 6px
+	margin-top: 6px;
 }
 
 .c-trip-detail-calendar__uplift-finance .uplift-finance-message {
-	margin-top:3px
+	margin-top: 3px;
 }
+
+.c-trip-detail-calendar-booking__details-accomodation-total {
+	background: #f7f7f7;
+	clear: both;
+	padding: 15px 0 0;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-total {
+	padding: 20px 0 0;
+	width: 100%;
+	z-index: 2;
+}
+
+.c-trip-detail__table-inner-wrap {
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	position: relative;
+}
+
+.c-trip-detail__table-inner-wrap {
+	padding: 10px 6px 0;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p:first-child,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-disc,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-was,
+.c-trip-detail-calendar-booking__total-price-copy {
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	line-height: 19px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-disc,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-was,
+.c-trip-detail-calendar-booking__uplift-section {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-disc,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-was,
+.c-trip-detail-calendar-booking__uplift-section {
+	-webkit-flex: none;
+	-ms-flex: none;
+	flex: none;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p:first-child,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-disc,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-was,
+.c-trip-detail-calendar-booking__total-price-copy {
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	line-height: 19px;
+}
+
+.c-trip-detail-calendar-booking__total-price-copy {
+	font-weight: 700;
+	text-transform: uppercase;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.c-trip-detail-calendar__outer-box-price-was .c-trip-detail-calendar-booking__details-price-was {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 28px;
+	font-size: 1.75rem;
+	display: inline-block;
+	position: relative;
+}
+
+.c-trip-detail-calendar__outer-box-price-was .c-trip-detail-calendar-booking__details-price-was::before {
+	border-bottom: 2.5px solid #736e7e;
+	content: "";
+	position: absolute;
+	top: 11px;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p {
+	margin-bottom: 20px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-total-price,
+.c-trip-detail-calendar-booking__details-price-disc,
+.c-trip-detail-calendar__booking__details-total-price-save {
+	margin: 2px 0 10px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p p {
+	line-height: 19px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-total-price,
+.c-trip-detail-calendar-booking__details-price-disc,
+.c-trip-detail-calendar__booking__details-total-price-save {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+	font-size: 28px;
+	font-size: 1.75rem;
+	color: #000;
+	display: block;
+	line-height: 19px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted {
+	color: #fb0051 !important;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-total-price,
+.c-trip-detail-calendar-booking__details-price-disc {
+	display: inline;
+}
+
+.c-trip-detail-calendar-booking__uplift-section .c-trip-detail-calendar-uplift__monthly-amount {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 28px;
+	font-size: 1.75rem;
+	color: #6469da;
+	line-height: 19px;
+	opacity: 1;
+	transition: opacity .2s linear;
+	transform: scale(1, 1);
+	transform-origin: 0px 0px;
+}
+
+.c-trip-detail-calendar-booking__uplift-section
+	.c-trip-detail-calendar-uplift__monthly-amount
+	span[data-up-from-dollars] {
+	margin-left: -6px;
+	margin-right: -3px;
+}
+
+.c-trip-detail-calendar-booking__uplift-section .c-trip-detail-calendar-booking__pay-from-title {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__uplift-section .uplift-period__message {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	display: block;
+	margin-top: 0;
+}
+
+.c-fab__close-wrap,
+.c-fab__contact-menu,
+.c-fab__contact-panel,
+.c-fab__form,
+.c-fab__grid-share,
+.c-fab__submenu,
+.c-fab__submenu-intro,
+.c-form__dropdown.form-group,
+.c-form__input-wrap,
+.c-form__input.form-group,
+.c-paginator,
+.c-sso-social-buttons,
+.c-trip-detail-calendar__outer-button,
+.form-group,
+.form-submit-border {
+	zoom: 1;
+}
+
+.c-trip-detail-calendar__outer-button {
+	font-size: 16px;
+	font-size: 1rem;
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	clear: both;
+	color: #fff;
+	cursor: pointer;
+	min-width: calc(33% + 10px);
+	-webkit-order: 3;
+	-ms-flex-order: 3;
+	order: 3;
+	position: relative;
+	text-align: center;
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar__outer-button {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 0 0 10px;
+}
+
+.c-fab__close-wrap::after,
+.c-fab__close-wrap::before,
+.c-fab__contact-menu::after,
+.c-fab__contact-menu::before,
+.c-fab__contact-panel::after,
+.c-fab__contact-panel::before,
+.c-fab__form::after,
+.c-fab__form::before,
+.c-fab__grid-share::after,
+.c-fab__grid-share::before,
+.c-fab__submenu-intro::after,
+.c-fab__submenu-intro::before,
+.c-fab__submenu::after,
+.c-fab__submenu::before,
+.c-form__dropdown.form-group::after,
+.c-form__dropdown.form-group::before,
+.c-form__input-wrap::after,
+.c-form__input-wrap::before,
+.c-form__input.form-group::after,
+.c-form__input.form-group::before,
+.c-paginator::after,
+.c-paginator::before,
+.c-sso-social-buttons::after,
+.c-sso-social-buttons::before,
+.c-trip-detail-calendar__outer-button::after,
+.c-trip-detail-calendar__outer-button::before,
+.form-group::after,
+.form-group::before,
+.form-submit-border::after,
+.form-submit-border::before {
+	content: " ";
+	display: table;
+}
+
+.c-filter.prop-header-popup span.c-filter__reset,
+.c-main-reviews__side-sa-tours-button,
+.c-trip-detail-calendar-booking__details-accomodation-button,
+.c-trip-detail-st__see-all,
+.c-trip-reviews__cta,
+.c-trip-travel-style__cta {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 1.25;
+	margin: 5px 0;
+	max-width: 100%;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background-color .35s, color .35s;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button {
+	background-color: #fb0051;
+	border: 0;
+}
+
+.c-trip-detail-calendar__outer-button > * {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	max-width: inherit;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button {
+	background: #fb0051;
+	display: inline-block;
+	font-size: 13px;
+	height: auto;
+	line-height: 40px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button {
+	font-size: 16px !important;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button {
+	height: 50px;
+	line-height: 50px !important;
+	display: inline-block;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button i {
+	font-size: 16px;
+	margin-right: 5px;
+}
+
+.c-fab__text-link.c-fab__text-link-with-icon i.mdi-briefcase:before,
+.c-trip-detail-calendar-booking__details-accomodation-button i:before {
+	content: "\e93b";
+}
+
+.c-fab__close-wrap::after,
+.c-fab__contact-menu::after,
+.c-fab__contact-panel::after,
+.c-fab__form::after,
+.c-fab__grid-share::after,
+.c-fab__submenu-intro::after,
+.c-fab__submenu::after,
+.c-form__dropdown.form-group::after,
+.c-form__input-wrap::after,
+.c-form__input.form-group::after,
+.c-paginator::after,
+.c-sso-social-buttons::after,
+.c-trip-detail-calendar__outer-button::after,
+.form-group::after,
+.form-submit-border::after {
+	clear: both;
+}
+
+.uplift-full-message {
+	font-size: 10px;
+	font-size: .625rem;
+	color: #302a3d;
+	line-height: 1.3em;
+	text-align: center;
+}
+
+b,
+optgroup,
+strong {
+	font-weight: 700;
+}
+
+.uplift-link {
+	color: #0c60f0;
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.c-trip-detail-calendar__request-more-info {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	background: #f3f3f3;
+	color: #302a3d;
+	font-size: 13px;
+	line-height: 1.6em;
+	padding: 15px 20px;
+	text-align: center;
+}
+
+.c-trip-detail-calendar__request-more-info .questions-about-trip {
+	color: #6469da;
+}
+
+.c-trip-detail-calendar__request-more-info .get-a-quote__request-more-info {
+	color: #fb0051;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.c-trip-detail-calendar__request-more-info .get-a-quote__request-more-info::after {
+	font-size: 12px;
+	font-size: .75rem;
+}
+
 
 /*# sourceMappingURL=/style.3b34ece8.css.map */

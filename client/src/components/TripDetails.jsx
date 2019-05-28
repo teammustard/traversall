@@ -1,14 +1,9 @@
 import React, { useContext } from 'react';
 import { TourContext } from './tourContext';
-import { numberWithCommas } from './util';
+import { numberWithCommas, getDiscountedPrice, getMonthlyPayment } from './util';
 
 const TripDetails = (props) => {
 	const tour = useContext(TourContext);
-
-	const getDiscountedPrice = () => {
-		const highestDiscount = Math.max(...tour.trips.map((trip) => trip.discount));
-		return Math.round(tour.listed_price * ((100 - highestDiscount) / 100));
-	};
 
 	return (
 		<div className="c-trip-detail-info">
@@ -35,14 +30,14 @@ const TripDetails = (props) => {
 				<div className="c-trip-detail-info-top__right-info-col prop-name-discount">
 					<div className="c-trip-detail-info-top__right-label">NOW FROM</div>
 					<div className="c-trip-detail-info-top__right-value prop-value-discount">
-						${numberWithCommas(getDiscountedPrice())}
+						${numberWithCommas(getDiscountedPrice(tour))}
 					</div>
 				</div>
 				<div className="c-trip-detail-info-top__right-info-col prop-name-uplift prop-listen-change-attr">
 					<div className="c-trip-detail-info-top__right-label">FINANCING FROM</div>
 					<div className="c-trip-detail-info-top__right-value prop-value-uplift">
 						<span className="c-trip-cover__financing-amount">
-							$???
+							${numberWithCommas(getMonthlyPayment(tour))}
 							<span className="c-trip-cover__financing-text uplift-more-info">/mo</span>
 						</span>
 					</div>
