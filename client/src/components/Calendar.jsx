@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { TourContext } from './tourContext';
-import { numberWithCommas } from './util';
+import { numberWithCommas, sameDay } from './util';
+
+// The tripDays variable must remain outside of the function in order
+// for closure to work properly
+let tripDays = [];
 
 const Calendar = (props) => {
 	const tour = useContext(TourContext);
@@ -74,6 +78,24 @@ const Calendar = (props) => {
 	const handleTripClick = (trip) => {
 		setSelectedTrip(trip);
 		setBookingMessage(true);
+		tripDays = [];
+		for (let i = 0; i <= tour.duration; i++) {
+			let tripDay = new Date(trip.start_time);
+			tripDay.setDate(tripDay.getDate() + i);
+			tripDays.push(tripDay);
+		}
+	};
+
+	// Checks if a specific day falls within a trip's duration IF a trip has been selected
+	const checkWithinTrip = (currentDay) => {
+		if (tripDays.length > 0) {
+			for (let day of tripDays) {
+				if (sameDay(currentDay, day)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	};
 
 	const generateCalendar = (month, year) => {
@@ -96,7 +118,15 @@ const Calendar = (props) => {
 					currentRow.push(
 						<td
 							key={row + ' ' + col}
-							className="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled"
+							className={
+								'ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled' +
+									checkWithinTrip(calendarDate) ===
+								true ? (
+									' selected-trip-duration'
+								) : (
+									''
+								)
+							}
 						/>
 					);
 				} else if (date > daysInMonth(month, year)) {
@@ -105,7 +135,11 @@ const Calendar = (props) => {
 					currentRow.push(
 						<td
 							key={row + ' ' + col}
-							className={'depart definite' + (tripForThisDate.discount > 0 ? ' has_discount' : '')}
+							className={
+								'depart definite' +
+								(tripForThisDate.discount > 0 ? ' has_discount' : '') +
+								(checkWithinTrip(calendarDate) === true ? ' selected-trip-duration' : '')
+							}
 							onMouseEnter={() => {
 								handleTripHover(tripForThisDate, col, row);
 							}}
@@ -126,7 +160,14 @@ const Calendar = (props) => {
 					currentRow.push(
 						<td
 							key={row + ' ' + col}
-							className="ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled undefined"
+							className={
+								'ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled undefined' &&
+								checkWithinTrip(calendarDate) === true ? (
+									' selected-trip-duration'
+								) : (
+									''
+								)
+							}
 						>
 							<span className="ui-state-default">{date}</span>
 						</td>
@@ -163,7 +204,7 @@ const Calendar = (props) => {
 					<tr>{headerRow}</tr>
 				</thead>
 				<tbody>
-					{generateCalendar(currentDate.getMonth() + props.position + 1, currentDate.getFullYear())}
+					{generateCalendar(currentDate.getMonth() + props.position + 1, currentDate.getFullYear(), tripDays)}
 				</tbody>
 			</table>
 			{props.position === 1 && (

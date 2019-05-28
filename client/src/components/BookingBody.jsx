@@ -16,6 +16,7 @@ const BookingBody = () => {
 	});
 	const [ showBookingMessage, setBookingMessage ] = useState(false);
 	const [ selectedTrip, setSelectedTrip ] = useState();
+	const [ selectedTripDuration, setSelectedTripDuration ] = useState([]);
 
 	return (
 		<div className="c-trip-detail-calendar prop-has-dicount prop-currency-dollar">

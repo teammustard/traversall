@@ -25804,6 +25804,7 @@ exports.TourContext = TourContext;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.sameDay = sameDay;
 exports.getMonthlyPayment = exports.getDiscountedPrice = exports.numberWithCommas = void 0;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -25835,6 +25836,10 @@ var getMonthlyPayment = function getMonthlyPayment(total) {
 };
 
 exports.getMonthlyPayment = getMonthlyPayment;
+
+function sameDay(d1, d2) {
+  return d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
+}
 },{}],"components/TripDetails.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -30502,6 +30507,10 @@ var _util = require("./util");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+// The tripDays variable must remain outside of the function in order
+// for closure to work properly
+var tripDays = [];
+
 var Calendar = function Calendar(props) {
   var tour = (0, _react.useContext)(_tourContext.TourContext);
   var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -30564,6 +30573,28 @@ var Calendar = function Calendar(props) {
   var handleTripClick = function handleTripClick(trip) {
     setSelectedTrip(trip);
     setBookingMessage(true);
+    tripDays = [];
+
+    for (var i = 0; i <= tour.duration; i++) {
+      var tripDay = new Date(trip.start_time);
+      tripDay.setDate(tripDay.getDate() + i);
+      tripDays.push(tripDay);
+    }
+  }; // Checks if a specific day falls within a trip's duration IF a trip has been selected
+
+
+  var checkWithinTrip = function checkWithinTrip(currentDay) {
+    if (tripDays.length > 0) {
+      for (var _i = 0, _tripDays = tripDays; _i < _tripDays.length; _i++) {
+        var day = _tripDays[_i];
+
+        if ((0, _util.sameDay)(currentDay, day)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   };
 
   var generateCalendar = function generateCalendar(month, year) {
@@ -30584,14 +30615,14 @@ var Calendar = function Calendar(props) {
         if (row === 0 && col < firstDay) {
           currentRow.push(_react.default.createElement("td", {
             key: row + ' ' + col,
-            className: "ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled"
+            className: 'ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled' + checkWithinTrip(calendarDate) === true ? ' selected-trip-duration' : ''
           }));
         } else if (date > daysInMonth(month, year)) {
           return "break";
         } else if (tripForThisDate && calendarDate >= currentDate) {
           currentRow.push(_react.default.createElement("td", {
             key: row + ' ' + col,
-            className: 'depart definite' + (tripForThisDate.discount > 0 ? ' has_discount' : ''),
+            className: 'depart definite' + (tripForThisDate.discount > 0 ? ' has_discount' : '') + (checkWithinTrip(calendarDate) === true ? ' selected-trip-duration' : ''),
             onMouseEnter: function onMouseEnter() {
               handleTripHover(tripForThisDate, col, row);
             },
@@ -30609,7 +30640,7 @@ var Calendar = function Calendar(props) {
         } else {
           currentRow.push(_react.default.createElement("td", {
             key: row + ' ' + col,
-            className: "ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled undefined"
+            className: 'ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled undefined' && checkWithinTrip(calendarDate) === true ? ' selected-trip-duration' : ''
           }, _react.default.createElement("span", {
             className: "ui-state-default"
           }, date)));
@@ -30654,7 +30685,7 @@ var Calendar = function Calendar(props) {
     style: {
       opacity: '1'
     }
-  }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, headerRow)), _react.default.createElement("tbody", null, generateCalendar(currentDate.getMonth() + props.position + 1, currentDate.getFullYear()))), props.position === 1 && _react.default.createElement("a", {
+  }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, headerRow)), _react.default.createElement("tbody", null, generateCalendar(currentDate.getMonth() + props.position + 1, currentDate.getFullYear(), tripDays))), props.position === 1 && _react.default.createElement("a", {
     className: "ui-datepicker-next ui-corner-all"
   }, _react.default.createElement("span", {
     className: "ui-icon ui-icon-circle-triangle-e"
@@ -35721,6 +35752,11 @@ var BookingBody = function BookingBody() {
       _useState8 = _slicedToArray(_useState7, 2),
       selectedTrip = _useState8[0],
       setSelectedTrip = _useState8[1];
+
+  var _useState9 = (0, _react.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      selectedTripDuration = _useState10[0],
+      setSelectedTripDuration = _useState10[1];
 
   return _react.default.createElement("div", {
     className: "c-trip-detail-calendar prop-has-dicount prop-currency-dollar"

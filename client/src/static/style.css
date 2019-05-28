@@ -2083,18 +2083,13 @@ input {
 	line-height: inherit;
 }
 
+.selected-trip-duration {
+	background: #ACF4E2!important;
+}
+
 .c-trip-detail-calendar-booking__calendar .depart {
 	background: #fafafa;
 	outline: #e1e1e1 solid 1px;
-}
-
-.c-trip-detail-calendar-booking__calendar .ui-datepicker td {
-	cursor: pointer;
-	overflow-y: visible;
-	position: relative;
-	transition: background-color .3s, outline .3s;
-	vertical-align: top;
-	width: 14.28%;
 }
 
 .c-trip-detail-calendar-booking__calendar .depart .c-trip-detail-calendar-booking__calendar-span,
@@ -3371,9 +3366,9 @@ strong {
 }
 
 .c-trip-detail-calendar-booking__details-accomodation-box-p p:last-child {
-	font-family: "Soleil W02 Regular",arial,sans-serif;
+	font-family: "Soleil W02 Regular", arial, sans-serif;
 	font-size: 12px;
 	font-size: .75rem;
-	color: #736E7E;
-	font-weight: 300
+	color: #736e7e;
+	font-weight: 300;
 }
