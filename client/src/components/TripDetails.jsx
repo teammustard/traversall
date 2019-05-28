@@ -37,7 +37,7 @@ const TripDetails = (props) => {
 					<div className="c-trip-detail-info-top__right-label">FINANCING FROM</div>
 					<div className="c-trip-detail-info-top__right-value prop-value-uplift">
 						<span className="c-trip-cover__financing-amount">
-							${numberWithCommas(getMonthlyPayment(tour))}
+							${numberWithCommas(getMonthlyPayment(tour.listed_price))}
 							<span className="c-trip-cover__financing-text uplift-more-info">/mo</span>
 						</span>
 					</div>

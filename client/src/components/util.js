@@ -7,7 +7,7 @@ export const getDiscountedPrice = (tour) => {
 	return Math.round(tour.listed_price * ((100 - highestDiscount) / 100));
 };
 
-export const getMonthlyPayment = (tour) => {
+export const getMonthlyPayment = (total) => {
 	const monthlyRate = 0.0704;
-	return Math.round(tour.listed_price / 12 * (1 + monthlyRate));
+	return Math.round(total / 12 * (1 + monthlyRate));
 };

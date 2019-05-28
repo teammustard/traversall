@@ -3059,6 +3059,14 @@ input {
 	line-height: 19px;
 }
 
+.c-trip-detail-calendar__outer-box-price-disc {
+	text-align: left;
+}
+
+.c-trip-detail-calendar-booking__details-price-disc-discounted {
+	color: #000 !important;
+}
+
 .c-trip-detail-calendar-booking__total-price-copy {
 	font-weight: 700;
 	text-transform: uppercase;
@@ -3322,6 +3330,7 @@ input {
 	color: #302a3d;
 	line-height: 1.3em;
 	text-align: center;
+	margin-top: 10px;
 }
 
 b,
@@ -3359,6 +3368,14 @@ strong {
 .c-trip-detail-calendar__request-more-info .get-a-quote__request-more-info::after {
 	font-size: 12px;
 	font-size: .75rem;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p p:last-child {
+	font-family: "Soleil W02 Regular",arial,sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736E7E;
+	font-weight: 300
 }
 
 

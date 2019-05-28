@@ -88,7 +88,10 @@ const BookingBody = () => {
 													Your trip summary
 												</h4>
 											</div>
-											<BookingDetails />
+											<BookingDetails
+												selectedTrip={selectedTrip}
+												showBookingMessage={showBookingMessage}
+											/>
 										</div>
 									</div>
 								</div>

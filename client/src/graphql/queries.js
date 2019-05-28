@@ -17,7 +17,6 @@ export const GET_TOUR_DETAILS = gql`
 				end_time
 				capacity
 				booked
-				discount
 			}
 		}
 	}

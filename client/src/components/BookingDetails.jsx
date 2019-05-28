@@ -2,8 +2,20 @@ import React, { useContext } from 'react';
 import { TourContext } from './tourContext';
 import { numberWithCommas, getDiscountedPrice, getMonthlyPayment } from './util';
 
-const BookingDetails = () => {
+const BookingDetails = (props) => {
+	const { selectedTrip, showBookingMessage } = props;
 	const tour = useContext(TourContext);
+	const tourListPrice = tour.listed_price;
+	const maxDiscountedPrice = getDiscountedPrice(tour);
+	let monthlyPayment = getMonthlyPayment(tour.listed_price);
+	let tripDiscountedPrice;
+	let savings;
+
+	if (showBookingMessage && selectedTrip.discount > 0) {
+		tripDiscountedPrice = Math.round(tour.listed_price * ((100 - selectedTrip.discount) / 100));
+		monthlyPayment = getMonthlyPayment(tripDiscountedPrice);
+		savings = tourListPrice - tripDiscountedPrice;
+	}
 
 	return (
 		<div className="c-trip-detail-calendar-booking__details">
@@ -69,28 +81,67 @@ const BookingDetails = () => {
 
 			<div className="c-trip-detail-calendar-booking__details-accomodation-total">
 				<div className="c-trip-detail__table-inner-wrap">
-					<div className="c-trip-detail-calendar__outer-box-price-was c-trip-detail-calendar-booking__details-accomodation-box-price-was prop-booking-box-price">
-						<p>
-							<span className="c-trip-detail-calendar-booking__total-price-copy c-trip-detail-calendar-booking__total-price-was">
-								WAS
-							</span>
-							<span className="c-trip-detail-calendar-booking__details-price-was">
-								${numberWithCommas(tour.listed_price)}
-							</span>
-						</p>
-					</div>
-					<div className="c-trip-detail-calendar-booking__details-accomodation-box-p prop-booking-box-price">
-						<p>
-							<span className="c-trip-detail-calendar-booking__total-price-copy">Now from</span>
-							<span className="c-trip-detail-calendar-booking__details-accomodation-box-total-price c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted">
-								${numberWithCommas(getDiscountedPrice(tour))}
-							</span>
-						</p>
-					</div>
+					{(tripDiscountedPrice || !showBookingMessage) && (
+						<div className="c-trip-detail-calendar__outer-box-price-was c-trip-detail-calendar-booking__details-accomodation-box-price-was prop-booking-box-price">
+							<p>
+								<span className="c-trip-detail-calendar-booking__total-price-copy c-trip-detail-calendar-booking__total-price-was">
+									WAS
+								</span>
+								<span className="c-trip-detail-calendar-booking__details-price-was">
+									${numberWithCommas(tourListPrice)}
+								</span>
+							</p>
+						</div>
+					)}
+					{showBookingMessage &&
+					tripDiscountedPrice && (
+						<div className="c-trip-detail-calendar__outer-box-price-disc c-trip-detail-calendar-booking__details-accomodation-box-price-disc prop-booking-box-price">
+							<p>
+								<span className="c-trip-detail-calendar-booking__total-price-copy c-trip-detail-calendar-booking__total-price-disc">
+									SAVE
+								</span>
+								<span className="c-trip-detail-calendar-booking__details-price-disc c-trip-detail-calendar-booking__details-price-disc-discounted">
+									${numberWithCommas(savings)}
+								</span>
+							</p>
+							<p>
+								Book by
+								<span className="c-trip-detail-calendar__due-date"> May 31st 2019</span>
+							</p>
+						</div>
+					)}
+					{!showBookingMessage && (
+						<div className="c-trip-detail-calendar-booking__details-accomodation-box-p prop-booking-box-price">
+							<p>
+								<span className="c-trip-detail-calendar-booking__total-price-copy">Now from</span>
+								<span className="c-trip-detail-calendar-booking__details-accomodation-box-total-price c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted">
+									${numberWithCommas(maxDiscountedPrice)}
+								</span>
+							</p>
+						</div>
+					)}
+					{showBookingMessage && (
+						<div className="c-trip-detail-calendar-booking__details-accomodation-box-p prop-booking-box-price">
+							<p>
+								<span className="c-trip-detail-calendar-booking__total-price-copy">Total Price</span>
+								{tripDiscountedPrice && (
+									<span className="c-trip-detail-calendar-booking__details-accomodation-box-total-price c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted">
+										${tripDiscountedPrice}
+									</span>
+								)}
+								{!tripDiscountedPrice && (
+									<span className="c-trip-detail-calendar-booking__details-accomodation-box-total-price">
+										${numberWithCommas(tourListPrice)}
+									</span>
+								)}
+							</p>
+							<p>Based on twin share</p>
+						</div>
+					)}
 					<div className="c-trip-detail-calendar-booking__uplift-section discount-available">
 						<div className="c-trip-detail-calendar-uplift__monthly-amount prop-listen-change-attr">
 							<div className="c-trip-detail-calendar-booking__pay-from-title">FINANCING FROM</div>
-							<span>$</span> <span data-up-from-dollars>{numberWithCommas(getMonthlyPayment(tour))}</span>
+							<span>$</span> <span data-up-from-dollars>{numberWithCommas(monthlyPayment)}</span>
 							<span className="uplift-period__message">For a 12 month period</span>
 						</div>
 					</div>

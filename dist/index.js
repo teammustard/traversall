@@ -25829,9 +25829,9 @@ var getDiscountedPrice = function getDiscountedPrice(tour) {
 
 exports.getDiscountedPrice = getDiscountedPrice;
 
-var getMonthlyPayment = function getMonthlyPayment(tour) {
+var getMonthlyPayment = function getMonthlyPayment(total) {
   var monthlyRate = 0.0704;
-  return Math.round(tour.listed_price / 12 * (1 + monthlyRate));
+  return Math.round(total / 12 * (1 + monthlyRate));
 };
 
 exports.getMonthlyPayment = getMonthlyPayment;
@@ -25891,7 +25891,7 @@ var TripDetails = function TripDetails(props) {
     className: "c-trip-detail-info-top__right-value prop-value-uplift"
   }, _react.default.createElement("span", {
     className: "c-trip-cover__financing-amount"
-  }, "$", (0, _util.numberWithCommas)((0, _util.getMonthlyPayment)(tour)), _react.default.createElement("span", {
+  }, "$", (0, _util.numberWithCommas)((0, _util.getMonthlyPayment)(tour.listed_price)), _react.default.createElement("span", {
     className: "c-trip-cover__financing-text uplift-more-info"
   }, "/mo"))))), _react.default.createElement("div", {
     className: "c-trip-detail-info-middle__left"
@@ -35524,8 +35524,22 @@ var _util = require("./util");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-var BookingDetails = function BookingDetails() {
+var BookingDetails = function BookingDetails(props) {
+  var selectedTrip = props.selectedTrip,
+      showBookingMessage = props.showBookingMessage;
   var tour = (0, _react.useContext)(_tourContext.TourContext);
+  var tourListPrice = tour.listed_price;
+  var maxDiscountedPrice = (0, _util.getDiscountedPrice)(tour);
+  var monthlyPayment = (0, _util.getMonthlyPayment)(tour.listed_price);
+  var tripDiscountedPrice;
+  var savings;
+
+  if (showBookingMessage && selectedTrip.discount > 0) {
+    tripDiscountedPrice = Math.round(tour.listed_price * ((100 - selectedTrip.discount) / 100));
+    monthlyPayment = (0, _util.getMonthlyPayment)(tripDiscountedPrice);
+    savings = tourListPrice - tripDiscountedPrice;
+  }
+
   return _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__details"
   }, _react.default.createElement("div", {
@@ -35590,19 +35604,35 @@ var BookingDetails = function BookingDetails() {
     className: "c-trip-detail-calendar-booking__details-accomodation-total"
   }, _react.default.createElement("div", {
     className: "c-trip-detail__table-inner-wrap"
-  }, _react.default.createElement("div", {
+  }, (tripDiscountedPrice || !showBookingMessage) && _react.default.createElement("div", {
     className: "c-trip-detail-calendar__outer-box-price-was c-trip-detail-calendar-booking__details-accomodation-box-price-was prop-booking-box-price"
   }, _react.default.createElement("p", null, _react.default.createElement("span", {
     className: "c-trip-detail-calendar-booking__total-price-copy c-trip-detail-calendar-booking__total-price-was"
   }, "WAS"), _react.default.createElement("span", {
     className: "c-trip-detail-calendar-booking__details-price-was"
-  }, "$", (0, _util.numberWithCommas)(tour.listed_price)))), _react.default.createElement("div", {
+  }, "$", (0, _util.numberWithCommas)(tourListPrice)))), showBookingMessage && tripDiscountedPrice && _react.default.createElement("div", {
+    className: "c-trip-detail-calendar__outer-box-price-disc c-trip-detail-calendar-booking__details-accomodation-box-price-disc prop-booking-box-price"
+  }, _react.default.createElement("p", null, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__total-price-copy c-trip-detail-calendar-booking__total-price-disc"
+  }, "SAVE"), _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__details-price-disc c-trip-detail-calendar-booking__details-price-disc-discounted"
+  }, "$", (0, _util.numberWithCommas)(savings))), _react.default.createElement("p", null, "Book by", _react.default.createElement("span", {
+    className: "c-trip-detail-calendar__due-date"
+  }, " May 31st 2019"))), !showBookingMessage && _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__details-accomodation-box-p prop-booking-box-price"
   }, _react.default.createElement("p", null, _react.default.createElement("span", {
     className: "c-trip-detail-calendar-booking__total-price-copy"
   }, "Now from"), _react.default.createElement("span", {
     className: "c-trip-detail-calendar-booking__details-accomodation-box-total-price c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted"
-  }, "$", (0, _util.numberWithCommas)((0, _util.getDiscountedPrice)(tour))))), _react.default.createElement("div", {
+  }, "$", (0, _util.numberWithCommas)(maxDiscountedPrice)))), showBookingMessage && _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__details-accomodation-box-p prop-booking-box-price"
+  }, _react.default.createElement("p", null, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__total-price-copy"
+  }, "Total Price"), tripDiscountedPrice && _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__details-accomodation-box-total-price c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted"
+  }, "$", tripDiscountedPrice), !tripDiscountedPrice && _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__details-accomodation-box-total-price"
+  }, "$", (0, _util.numberWithCommas)(tourListPrice))), _react.default.createElement("p", null, "Based on twin share")), _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__uplift-section discount-available"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-calendar-uplift__monthly-amount prop-listen-change-attr"
@@ -35610,7 +35640,7 @@ var BookingDetails = function BookingDetails() {
     className: "c-trip-detail-calendar-booking__pay-from-title"
   }, "FINANCING FROM"), _react.default.createElement("span", null, "$"), " ", _react.default.createElement("span", {
     "data-up-from-dollars": true
-  }, (0, _util.numberWithCommas)((0, _util.getMonthlyPayment)(tour))), _react.default.createElement("span", {
+  }, (0, _util.numberWithCommas)(monthlyPayment)), _react.default.createElement("span", {
     className: "uplift-period__message"
   }, "For a 12 month period"))), _react.default.createElement("div", {
     className: "c-trip-detail-calendar__outer-button booking-standard booking-buttons-processed prop-not-fab"
@@ -35772,7 +35802,10 @@ var BookingBody = function BookingBody() {
     className: "c-trip-detail-calendar-booking-step"
   }, "step 2"), _react.default.createElement("h4", {
     className: "c-trip-detail-calendar-booking-title"
-  }, "Your trip summary")), _react.default.createElement(_BookingDetails.default, null))))))))));
+  }, "Your trip summary")), _react.default.createElement(_BookingDetails.default, {
+    selectedTrip: selectedTrip,
+    showBookingMessage: showBookingMessage
+  }))))))))));
 };
 
 var _default = BookingBody;
@@ -47015,7 +47048,7 @@ var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t\tdiscount\n\t\t\t}\n\t\t}\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t}\n\t\t}\n\t}\n"]);
 
   _templateObject = function _templateObject() {
     return data;
