@@ -30527,7 +30527,14 @@ var Calendar = function Calendar(props) {
 
   var handleTripHover = function handleTripHover(trip, col, row) {
     var topOffset = 105 + 53 * row;
-    var leftOffset = 430 + 48 * col;
+    var leftOffset;
+
+    if (props.position === 0) {
+      leftOffset = 53 + 48 * col;
+    } else {
+      leftOffset = 430 + 48 * col;
+    }
+
     var listPrice = tour.listed_price;
     var discountAmount = listPrice - Math.round(listPrice * ((100 - trip.discount) / 100));
 
@@ -30639,7 +30646,7 @@ var Calendar = function Calendar(props) {
     style: {
       opacity: '1'
     }
-  }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, headerRow)), _react.default.createElement("tbody", null, generateCalendar(currentDate.getMonth() + props.position, currentDate.getFullYear()))), props.position === 1 && _react.default.createElement("a", {
+  }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, headerRow)), _react.default.createElement("tbody", null, generateCalendar(currentDate.getMonth() + props.position + 1, currentDate.getFullYear()))), props.position === 1 && _react.default.createElement("a", {
     className: "ui-datepicker-next ui-corner-all"
   }, _react.default.createElement("span", {
     className: "ui-icon ui-icon-circle-triangle-e"
@@ -35403,7 +35410,97 @@ var TripHover = function TripHover(props) {
 
 var _default = TripHover;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./util":"components/util.js"}],"components/CalendarBody.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./util":"components/util.js"}],"components/BookingOptions.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _moment = _interopRequireDefault(require("moment"));
+
+var _tourContext = require("./tourContext");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var BookingOptions = function BookingOptions(props) {
+  var _useState = (0, _react.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      selectedOption = _useState2[0],
+      setSelectedOption = _useState2[1];
+
+  var selectedTrip = props.selectedTrip;
+  var tour = (0, _react.useContext)(_tourContext.TourContext);
+  var tripEnd = (0, _moment.default)(selectedTrip.end_time);
+  tripEnd.add(tour.duration, 'days');
+
+  var handleClickOption = function handleClickOption(option) {
+    setSelectedOption(option);
+  };
+
+  return _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options"
+  }, _react.default.createElement("h4", {
+    className: "c-trip-detail-calendar-booking-title"
+  }, "Your Options"), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-header-outer"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking__options-item-icon-location"
+  }), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-header"
+  }, _react.default.createElement("h4", null, "Ends on"), _react.default.createElement("p", null, "Pick your end location"))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-wrapper-elements"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-outer"
+  }, _react.default.createElement("div", {
+    className: 'c-trip-detail-calendar-booking__options-item-inner c-trip-detail-calendar-booking__options-item-inner-end' + (selectedOption === 0 ? ' c-trip-detail-calendar-booking__options-item-inner-selected' : ''),
+    onClick: function onClick() {
+      handleClickOption(0);
+    }
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-inner-p"
+  }, _react.default.createElement("p", null, tour.starting_loc), _react.default.createElement("p", null, "AT ", tripEnd.format('hh:mm A')), _react.default.createElement("p", {
+    className: "day"
+  }, tripEnd.format('dddd'), " ", tripEnd.format('do'))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-icon-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-inner-icon"
+  })))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-outer"
+  }, _react.default.createElement("div", {
+    className: 'c-trip-detail-calendar-booking__options-item-inner c-trip-detail-calendar-booking__options-item-inner-end' + (selectedOption === 1 ? ' c-trip-detail-calendar-booking__options-item-inner-selected' : ''),
+    onClick: function onClick() {
+      handleClickOption(1);
+    }
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-inner-p"
+  }, _react.default.createElement("p", null, tour.ending_loc), _react.default.createElement("p", null, "AT ", tripEnd.format('hh:mm A')), _react.default.createElement("p", {
+    className: "day"
+  }, tripEnd.format('dddd'), " ", tripEnd.format('do'))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-icon-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-item-inner-icon"
+  })))))));
+};
+
+var _default = BookingOptions;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","moment":"../../node_modules/moment/moment.js","./tourContext":"components/tourContext.js"}],"components/CalendarBody.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35418,6 +35515,8 @@ var _DatePicker = _interopRequireDefault(require("./DatePicker"));
 var _BookingMessage = _interopRequireDefault(require("./BookingMessage"));
 
 var _TripHover = _interopRequireDefault(require("./TripHover"));
+
+var _BookingOptions = _interopRequireDefault(require("./BookingOptions"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35524,12 +35623,20 @@ var CalendarBody = function CalendarBody() {
   }), _react.default.createElement(_TripHover.default, {
     showTripHover: showTripHover,
     tripHoverData: tripHoverData
-  }))))))));
+  })), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__options-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__info"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__info-container area-up-lift prop-uplift-ready"
+  }, showBookingMessage && _react.default.createElement(_BookingOptions.default, {
+    selectedTrip: selectedTrip
+  }))))))))));
 };
 
 var _default = CalendarBody;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./DatePicker":"components/DatePicker.jsx","./BookingMessage":"components/BookingMessage.jsx","./TripHover":"components/TripHover.jsx"}],"components/ModalContainer.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./DatePicker":"components/DatePicker.jsx","./BookingMessage":"components/BookingMessage.jsx","./TripHover":"components/TripHover.jsx","./BookingOptions":"components/BookingOptions.jsx"}],"components/ModalContainer.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46765,7 +46872,7 @@ var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t\tdiscount\n\t\t\t}\n\t\t}\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t\tdiscount\n\t\t\t}\n\t\t}\n\t}\n"]);
 
   _templateObject = function _templateObject() {
     return data;

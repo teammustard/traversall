@@ -6,6 +6,8 @@ export const GET_TOUR_DETAILS = gql`
 			name
 			duration
 			listed_price
+			starting_loc
+			ending_loc
 			countries {
 				full_name
 			}

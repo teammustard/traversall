@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DatePicker from './DatePicker';
 import BookingMessage from './BookingMessage';
 import TripHover from './TripHover';
+import BookingOptions from './BookingOptions';
 
 const CalendarBody = () => {
 	const [ showTripHover, setTripHover ] = useState(false);
@@ -75,6 +76,13 @@ const CalendarBody = () => {
 									/>
 									{showBookingMessage && <BookingMessage selectedTrip={selectedTrip} />}
 									<TripHover showTripHover={showTripHover} tripHoverData={tripHoverData} />
+								</div>
+								<div className="c-trip-detail-calendar-booking__options-wrapper">
+									<div className="c-trip-detail-calendar-booking__info">
+										<div className="c-trip-detail-calendar-booking__info-container area-up-lift prop-uplift-ready">
+											{showBookingMessage && <BookingOptions selectedTrip={selectedTrip} />}
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

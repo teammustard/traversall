@@ -48,7 +48,12 @@ const Calendar = (props) => {
 	const { setTripHover, setTripHoverData, setBookingMessage, setSelectedTrip } = props;
 	const handleTripHover = (trip, col, row) => {
 		const topOffset = 105 + 53 * row;
-		const leftOffset = 430 + 48 * col;
+		let leftOffset;
+		if (props.position === 0) {
+			leftOffset = 53 + 48 * col;
+		} else {
+			leftOffset = 430 + 48 * col;
+		}
 		const listPrice = tour.listed_price;
 		const discountAmount = listPrice - Math.round(listPrice * ((100 - trip.discount) / 100));
 		if (trip.discount > 0) {
@@ -157,7 +162,9 @@ const Calendar = (props) => {
 				<thead>
 					<tr>{headerRow}</tr>
 				</thead>
-				<tbody>{generateCalendar(currentDate.getMonth() + props.position, currentDate.getFullYear())}</tbody>
+				<tbody>
+					{generateCalendar(currentDate.getMonth() + props.position + 1, currentDate.getFullYear())}
+				</tbody>
 			</table>
 			{props.position === 1 && (
 				<a className="ui-datepicker-next ui-corner-all">

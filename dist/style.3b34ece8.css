@@ -2416,7 +2416,242 @@ input {
 	font-size: 12px;
 	font-size: .75rem;
 	font-weight: 700;
-	text-align: center
+	text-align: center;
 }
+
+.c-trip-detail-calendar-booking__options-wrapper {
+	padding: 0;
+}
+
+.c-trip-detail-calendar-booking__info {
+	background-color: #efeef0;
+	cursor: default;
+	padding: 10px 0 25px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__info {
+	margin-left: -4px;
+	width: calc(100% + 8px);
+}
+.c-trip-detail-calendar-booking__info::before {
+	border-bottom: 9px solid #efeef0;
+	border-left: 13px solid transparent;
+	border-right: 13px solid transparent;
+	content: "";
+	height: 0;
+	position: absolute;
+	right: 39px;
+	top: -9px;
+	width: 0;
+}
+
+.c-trip-detail-calendar-booking__options {
+	background: #efeef0;
+	float: left;
+	padding-top: 25px;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__options {
+	padding-top: 40px;
+}
+
+.c-trip-detail-calendar-booking-title,
+.c-trip-detail-calendar-booking-title-inner {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking-title,
+.c-trip-detail-calendar-booking-title-inner {
+	font-size: 31px;
+	font-size: 1.9375rem;
+	margin-bottom: 38px;
+}
+
+.c-trip-detail-calendar-booking__options-item {
+	clear: both;
+	float: left;
+	margin-bottom: 9px;
+	padding: 0 10px;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__options-item {
+	margin-bottom: 2px;
+}
+
+.c-trip-detail-calendar-booking__options-item-header-outer {
+	color: #fb0051;
+	margin-bottom: 10px;
+	-webkit-transform: translateY(30%);
+	-ms-transform: translateY(30%);
+	transform: translateY(30%);
+}
+
+.c-trip-detail-calendar-booking__options-item-header-outer {
+	float: left;
+	margin-bottom: 0;
+	width: 25%;
+}
+
+.c-trip-detail-calendar-booking__options-item-icon-location {
+	display: table-cell;
+	font-size: 21px;
+	left: -4px;
+	padding-top: 3px;
+	position: relative;
+	vertical-align: top;
+}
+
+.c-autocomplete__item:not(.countries) i.c-autocomplete__map-marker:before,
+.c-trip-detail-calendar-booking__calendar-list-view-item-description ul li span.icon:before,
+.c-trip-detail-calendar-booking__options-item-icon-location:before,
+.c-trip-itinerary__card-body-leg-road-marker:before {
+	content: "\e964";
+}
+
+.c-trip-detail-calendar-booking__options-item-header {
+	color: #736e7e;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar-booking__options-item-header h4 {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+	color: #000;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+.c-trip-detail-calendar-booking__options-item-header p {
+	font-size: 14px;
+	font-size: .875rem;
+	line-height: 18px;
+	width: 99%;
+}
+
+.c-trip-detail-calendar-booking__options-item-wrapper-elements {
+	width: 75%;
+}
+
+.c-trip-detail-calendar-booking__options-item-wrapper-elements {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+.c-trip-detail-calendar-booking__options-item-outer {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	float: left;
+	margin-top: 11px;
+	max-width: 180px;
+	padding: 0 5px;
+	width: 50%;
+}
+
+.c-trip-detail-calendar-booking__options-item-outer {
+	width: 33%;
+}
+
+.c-trip-detail-calendar-booking__options-item .c-trip-detail-calendar-booking__options-item-outer:nth-child(odd) {
+	padding-left: 5px;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner {
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+	cursor: pointer;
+	display: table;
+	height: 100%;
+	min-height: 75px;
+	padding: 10px;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-selected {
+	background: #fff;
+	transition: background .3s;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	display: table-cell;
+	line-height: 18px;
+	padding-right: 9px;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p {
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 18px;
+	padding: 0;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p p {
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p p:nth-child(-n + 2) {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p p.day {
+	font-size: 14px;
+	font-size: .875rem;
+	color: #736e7e;
+	line-height: 18px;
+	margin-top: 3px;
+}
+
+.c-trip-detail-calendar-booking__options-icon-wrapper {
+	display: table-cell;
+	position: relative;
+	vertical-align: middle;
+	width: 21px;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-icon {
+	display: table-cell;
+	font-size: 10px;
+	font-weight: 700;
+	line-height: 15px;
+	padding-top: 6px;
+	position: relative;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner.c-trip-detail-calendar-booking__options-item-inner-selected
+	.c-trip-detail-calendar-booking__options-item-inner-icon:before {
+	background: #fb0051;
+	border: 5px solid #fff;
+	border-radius: 16px;
+	content: "";
+	height: 21px;
+	position: absolute;
+	width: 21px;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner.c-trip-detail-calendar-booking__options-item-inner-selected
+	.c-trip-detail-calendar-booking__options-item-inner-icon:after {
+	border-radius: 14px;
+	font-size: 21px;
+	font-size: 1.3125rem;
+	border: 1px solid #fb0051;
+	content: "";
+	font-weight: 400;
+	height: 21px;
+	width: 21px;
+}
+
 
 /*# sourceMappingURL=/style.3b34ece8.css.map */
