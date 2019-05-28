@@ -1,7 +1,7 @@
 import React from 'react';
 import Calendar from './Calendar';
 
-const DatePicker = (props) => {
+const CalendarContainer = (props) => {
 	return (
 		<div className="c-trip-detail-calendar-booking__calendar-outer">
 			<div
@@ -33,4 +33,4 @@ const DatePicker = (props) => {
 	);
 };
 
-export default DatePicker;
+export default CalendarContainer;

@@ -1765,6 +1765,7 @@ footer.o-footer--alt::after {
 /* Date Picker */
 .c-trip-detail-calendar-booking__calendar-outer {
 	width: 100%;
+	min-width: 912px;
 }
 
 #c-trip-detail-calendar-booking__calendar-from {
@@ -2653,5 +2654,284 @@ input {
 	width: 21px;
 }
 
+.c-trip-detail-calendar-booking__spotlight-title {
+	background: #efeef0;
+	clear: both;
+	display: block;
+	float: left;
+	padding-top: 39px;
+	text-align: center;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__spotlight-title {
+	padding-top: 17px;
+}
+
+.c-trip-detail-calendar-booking-step,
+.c-trip-detail-calendar-booking__body-title h4 {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+}
+
+.c-trip-detail-calendar-booking-step {
+	font-size: 14px;
+	font-size: .875rem;
+	color: #746d7f;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__spotlight-title .c-trip-detail-calendar-booking-title,
+.c-trip-detail-calendar-booking__spotlight-title .c-trip-detail-calendar-booking-title-inner {
+	margin-bottom: 37px;
+}
+
+.c-trip-detail-calendar-booking__details {
+	background: #fff;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .1);
+	float: left;
+	font-size: 15px;
+	line-height: 24px;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details {
+	font-size: 16px;
+	margin-bottom: 2px;
+}
+
+.c-trip-detail-calendar-booking__details-main {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	clear: both;
+	float: left;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-main {
+	display: inline-block;
+	float: none;
+	padding: 20px 20px 0;
+}
+
+.c-trip-detail-calendar-booking__details-item-main {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	padding: 15px 10px 0;
+}
+
+.c-trip-detail-calendar-booking__details-item-main {
+	margin-bottom: 25px;
+	padding: 0;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-item-wrapper:first-child {
+	padding-right: 20px;
+}
+
+.c-trip-detail-calendar-booking-title-inner {
+	font-size: 21px;
+	font-size: 1.3125rem;
+}
+
+.c-trip-detail-calendar-booking__details-main h4 {
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__details-item-wrapper h4 {
+	margin-bottom: 12px;
+}
+
+.c-trip-detail-calendar-booking-title-overview div {
+	font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+	font-size: medium;
+	margin: 0px;
+}
+
+.c-trip-detail-calendar-booking__guarantees {
+	background: #f3f3f3;
+	display: none;
+	height: auto;
+	padding: 20px 20px 10px;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__guarantees {
+	display: block;
+	padding: 20px 0 15px;
+}
+
+.c-trip-detail-calendar-booking__guarantees-wrapper {
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: auto;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__guarantees-wrapper {
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	padding: 10px 15px 15px;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item {
+	display: block;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	height: auto;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-wrapper {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: auto;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-left {
+	cursor: pointer;
+	display: block;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: auto;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-icon {
+	font-size: 22px;
+	font-size: 1.375rem;
+	display: block;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=freedom]
+	.c-trip-detail-calendar-booking__guarantees-item-icon:before {
+	content: "\e918";
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right {
+	cursor: pointer;
+	display: block;
+	height: auto;
+	padding-left: 10px;
+	position: relative;
+	width: auto;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-title {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #746d7f;
+	display: block;
+	font-weight: 700;
+	height: auto;
+	line-height: 12px;
+	position: relative;
+	text-transform: uppercase;
+	width: auto;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-body {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 11px;
+	font-size: .6875rem;
+	color: #746d7f;
+	display: block;
+	height: auto;
+	line-height: 14px;
+	padding-top: 2px;
+	position: relative;
+	width: auto;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-body {
+	padding-top: 11px;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-body .more-icon {
+	font-size: 7px;
+	font-size: .4375rem;
+	color: #746d7f;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-body .more-icon:before {
+	content: "\e940";
+}
+
+.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=flex]
+	.c-trip-detail-calendar-booking__guarantees-item-icon:before,
+.c-trip-detail-calendar.prop-currency-pound
+	.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=flex]
+	.c-trip-detail-calendar-booking__guarantees-item-icon:before {
+	content: "\e92c";
+}
+
+.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=flex]
+	.c-trip-detail-calendar-booking__guarantees-item-icon::before {
+	position: relative;
+	top: -2px;
+}
+
+.c-trip-detail-calendar.prop-currency-dollar
+	.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=flex]
+	.c-trip-detail-calendar-booking__guarantees-item-icon:before {
+	content: "\e92a";
+}
+
+.c-trip-detail-calendar__uplift-finance {
+	width: 33%
+}
+
+.c-trip-detail-calendar__uplift-finance {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	margin-left: 5px;
+	margin-right: 5px
+}
+
+.c-trip-detail-calendar__uplift-finance .uplift-logo {
+	line-height: 0
+}
+
+.c-trip-detail-calendar__uplift-finance .uplift-logo img {
+	height: 20px
+}
+
+.c-trip-detail-calendar__uplift-finance .uplift-finance-message {
+	font-family: "Soleil W02 Regular",arial,sans-serif;
+	font-size: 11px;
+	font-size: .6875rem;
+	color: #736E7E;
+	line-height: 14px;
+	margin-top: 6px
+}
+
+.c-trip-detail-calendar__uplift-finance .uplift-finance-message {
+	margin-top:3px
+}
 
 /*# sourceMappingURL=/style.3b34ece8.css.map */

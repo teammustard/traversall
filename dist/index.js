@@ -30530,9 +30530,9 @@ var Calendar = function Calendar(props) {
     var leftOffset;
 
     if (props.position === 0) {
-      leftOffset = 53 + 48 * col;
+      leftOffset = 59 + 53 * col;
     } else {
-      leftOffset = 430 + 48 * col;
+      leftOffset = 477 + 53 * col;
     }
 
     var listPrice = tour.listed_price;
@@ -30655,7 +30655,7 @@ var Calendar = function Calendar(props) {
 
 var _default = Calendar;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./tourContext":"components/tourContext.js","./util":"components/util.js"}],"components/DatePicker.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./tourContext":"components/tourContext.js","./util":"components/util.js"}],"components/CalendarContainer.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30669,7 +30669,7 @@ var _Calendar = _interopRequireDefault(require("./Calendar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DatePicker = function DatePicker(props) {
+var CalendarContainer = function CalendarContainer(props) {
   return _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__calendar-outer"
   }, _react.default.createElement("div", {
@@ -30698,9 +30698,74 @@ var DatePicker = function DatePicker(props) {
   }))));
 };
 
-var _default = DatePicker;
+var _default = CalendarContainer;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Calendar":"components/Calendar.jsx"}],"../../node_modules/moment/moment.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Calendar":"components/Calendar.jsx"}],"components/TripHover.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _util = require("./util");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TripHover = function TripHover(props) {
+  var tripHoverData = props.tripHoverData;
+  var tripHoverPosition = {
+    top: tripHoverData.top,
+    left: tripHoverData.left
+  };
+  var tripOverlaySize = {
+    width: '48px',
+    height: '48px'
+  };
+  return _react.default.createElement("div", {
+    className: 'c-trip-hover-discount' + (props.showTripHover ? ' prop-is-visible' : ''),
+    style: tripHoverPosition
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__cont"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__background"
+  }), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__left",
+    style: tripOverlaySize
+  }), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-background"
+  }), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-top"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-top-title"
+  }, "Last Minute Deal")), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-left"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-left-label"
+  }, "WAS"), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-left-text"
+  }, "$", (0, _util.numberWithCommas)(tripHoverData.listPrice))), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-right"
+  }, _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-right-label"
+  }, "SAVE"), _react.default.createElement("div", {
+    className: "c-trip-hover-discount__right-bottom-right-text"
+  }, "$", (0, _util.numberWithCommas)(tripHoverData.discountAmount)))))))));
+};
+
+var _default = TripHover;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./util":"components/util.js"}],"../../node_modules/moment/moment.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 //! moment.js
@@ -35345,72 +35410,7 @@ var BookingMessage = function BookingMessage(props) {
 
 var _default = BookingMessage;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","moment":"../../node_modules/moment/moment.js","./tourContext":"components/tourContext.js"}],"components/TripHover.jsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _util = require("./util");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var TripHover = function TripHover(props) {
-  var tripHoverData = props.tripHoverData;
-  var tripHoverPosition = {
-    top: tripHoverData.top,
-    left: tripHoverData.left
-  };
-  var tripOverlaySize = {
-    width: '48px',
-    height: '48px'
-  };
-  return _react.default.createElement("div", {
-    className: 'c-trip-hover-discount' + (props.showTripHover ? ' prop-is-visible' : ''),
-    style: tripHoverPosition
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__cont"
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__background"
-  }), _react.default.createElement("div", {
-    className: "c-trip-hover-discount__wrapper"
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__left",
-    style: tripOverlaySize
-  }), _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right"
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-background"
-  }), _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-wrapper"
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-top"
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-top-title"
-  }, "Last Minute Deal")), _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-bottom"
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-bottom-left"
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-bottom-left-label"
-  }, "WAS"), _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-bottom-left-text"
-  }, "$", (0, _util.numberWithCommas)(tripHoverData.listPrice))), _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-bottom-right"
-  }, _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-bottom-right-label"
-  }, "SAVE"), _react.default.createElement("div", {
-    className: "c-trip-hover-discount__right-bottom-right-text"
-  }, "$", (0, _util.numberWithCommas)(tripHoverData.discountAmount)))))))));
-};
-
-var _default = TripHover;
-exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./util":"components/util.js"}],"components/BookingOptions.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","moment":"../../node_modules/moment/moment.js","./tourContext":"components/tourContext.js"}],"components/BookingOptions.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35500,7 +35500,85 @@ var BookingOptions = function BookingOptions(props) {
 
 var _default = BookingOptions;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","moment":"../../node_modules/moment/moment.js","./tourContext":"components/tourContext.js"}],"components/CalendarBody.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","moment":"../../node_modules/moment/moment.js","./tourContext":"components/tourContext.js"}],"components/BookingDetails.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BookingDetails = function BookingDetails() {
+  return _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__details"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__details-main"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__details-item-main"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__details-item-outer"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__details-item-wrapper"
+  }, _react.default.createElement("h4", {
+    className: "c-trip-detail-calendar-booking-title-inner"
+  }, "EUROPEAN DISCOVERY"), _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking-title-overview"
+  }, _react.default.createElement("div", null, "Only $200 deposit to book. ", _react.default.createElement("br", null))))))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item",
+    "data-guarantee-type": "freedom"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-left"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-icon"
+  })), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-right"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-right-title"
+  }, "FREEDOM GUARANTEE"), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-right-body prop-header-body"
+  }, "Change travel dates of trip for FREE. ", _react.default.createElement("br", null), " More ", _react.default.createElement("span", {
+    className: "more-icon"
+  }))))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-left"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-icon"
+  })), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-right"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-right-title"
+  }, "FLEX DEPOSIT"), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__guarantees-item-right-body prop-header-body"
+  }, "Can't travel? Save your deposit for later.", _react.default.createElement("br", null), "More ", _react.default.createElement("span", {
+    className: "more-icon"
+  }))))), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar__uplift-finance uplift-is-loaded"
+  }, _react.default.createElement("div", {
+    className: "uplift-logo"
+  }, _react.default.createElement("img", {
+    src: "/up-lift-logo.svg",
+    className: "c-trip-cover__financing-logo"
+  })), _react.default.createElement("div", {
+    className: "uplift-finance-message"
+  }, _react.default.createElement("span", null, "Financing available! Spread the cost of your trip over 12 months. Choose it on checkout."))))));
+};
+
+var _default = BookingDetails;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/BookingBody.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35510,13 +35588,15 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _DatePicker = _interopRequireDefault(require("./DatePicker"));
-
-var _BookingMessage = _interopRequireDefault(require("./BookingMessage"));
+var _CalendarContainer = _interopRequireDefault(require("./CalendarContainer"));
 
 var _TripHover = _interopRequireDefault(require("./TripHover"));
 
+var _BookingMessage = _interopRequireDefault(require("./BookingMessage"));
+
 var _BookingOptions = _interopRequireDefault(require("./BookingOptions"));
+
+var _BookingDetails = _interopRequireDefault(require("./BookingDetails"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35530,7 +35610,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var CalendarBody = function CalendarBody() {
+var BookingBody = function BookingBody() {
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       showTripHover = _useState2[0],
@@ -35613,7 +35693,7 @@ var CalendarBody = function CalendarBody() {
     className: "c-trip-detail-calendar-booking__calendar-wrapper"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking-overlay"
-  }), _react.default.createElement(_DatePicker.default, {
+  }), _react.default.createElement(_CalendarContainer.default, {
     setTripHover: setTripHover,
     setTripHoverData: setTripHoverData,
     setBookingMessage: setBookingMessage,
@@ -35631,12 +35711,18 @@ var CalendarBody = function CalendarBody() {
     className: "c-trip-detail-calendar-booking__info-container area-up-lift prop-uplift-ready"
   }, showBookingMessage && _react.default.createElement(_BookingOptions.default, {
     selectedTrip: selectedTrip
-  }))))))))));
+  }), _react.default.createElement("div", {
+    className: "c-trip-detail-calendar-booking__spotlight-title"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-calendar-booking-step"
+  }, "step 2"), _react.default.createElement("h4", {
+    className: "c-trip-detail-calendar-booking-title"
+  }, "Your trip summary")), _react.default.createElement(_BookingDetails.default, null))))))))));
 };
 
-var _default = CalendarBody;
+var _default = BookingBody;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./DatePicker":"components/DatePicker.jsx","./BookingMessage":"components/BookingMessage.jsx","./TripHover":"components/TripHover.jsx","./BookingOptions":"components/BookingOptions.jsx"}],"components/ModalContainer.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./CalendarContainer":"components/CalendarContainer.jsx","./TripHover":"components/TripHover.jsx","./BookingMessage":"components/BookingMessage.jsx","./BookingOptions":"components/BookingOptions.jsx","./BookingDetails":"components/BookingDetails.jsx"}],"components/ModalContainer.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35648,7 +35734,7 @@ var _Modal = _interopRequireDefault(require("react-bootstrap/Modal"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _CalendarBody = _interopRequireDefault(require("./CalendarBody"));
+var _BookingBody = _interopRequireDefault(require("./BookingBody"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35681,7 +35767,7 @@ var ModalContainer = function ModalContainer(props) {
     className: "c-modal__body-content-wrapper"
   }, _react.default.createElement("div", {
     className: "c-modal__body-content"
-  }, _react.default.createElement(_CalendarBody.default, null)))))));
+  }, _react.default.createElement(_BookingBody.default, null)))))));
 };
 
 var _default = ModalContainer; // <Modal.Body>
@@ -35695,7 +35781,7 @@ var _default = ModalContainer; // <Modal.Body>
 // </Modal.Body>
 
 exports.default = _default;
-},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./CalendarBody":"components/CalendarBody.jsx"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
+},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./BookingBody":"components/BookingBody.jsx"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53081,7 +53167,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53696" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61073" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

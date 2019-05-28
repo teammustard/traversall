@@ -1,6 +1,6 @@
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
-import CalendarBody from './CalendarBody';
+import BookingBody from './BookingBody';
 
 const ModalContainer = (props) => {
 	const { showModal, handleHide } = props;
@@ -26,7 +26,7 @@ const ModalContainer = (props) => {
 					<div className="c-modal__body">
 						<div className="c-modal__body-content-wrapper">
 							<div className="c-modal__body-content">
-								<CalendarBody />
+								<BookingBody />
 							</div>
 						</div>
 					</div>

@@ -50,9 +50,9 @@ const Calendar = (props) => {
 		const topOffset = 105 + 53 * row;
 		let leftOffset;
 		if (props.position === 0) {
-			leftOffset = 53 + 48 * col;
+			leftOffset = 59 + 53 * col;
 		} else {
-			leftOffset = 430 + 48 * col;
+			leftOffset = 477 + 53 * col;
 		}
 		const listPrice = tour.listed_price;
 		const discountAmount = listPrice - Math.round(listPrice * ((100 - trip.discount) / 100));

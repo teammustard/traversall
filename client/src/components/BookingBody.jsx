@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import DatePicker from './DatePicker';
-import BookingMessage from './BookingMessage';
+import CalendarContainer from './CalendarContainer';
 import TripHover from './TripHover';
+import BookingMessage from './BookingMessage';
 import BookingOptions from './BookingOptions';
+import BookingDetails from './BookingDetails';
 
-const CalendarBody = () => {
+const BookingBody = () => {
 	const [ showTripHover, setTripHover ] = useState(false);
 	const [ tripHoverData, setTripHoverData ] = useState({
 		trip: {},
@@ -68,7 +69,7 @@ const CalendarBody = () => {
 							<div className="c-trip-detail-calendar-booking__body">
 								<div className="c-trip-detail-calendar-booking__calendar-wrapper">
 									<div className="c-trip-detail-calendar-booking-overlay" />
-									<DatePicker
+									<CalendarContainer
 										setTripHover={setTripHover}
 										setTripHoverData={setTripHoverData}
 										setBookingMessage={setBookingMessage}
@@ -81,6 +82,13 @@ const CalendarBody = () => {
 									<div className="c-trip-detail-calendar-booking__info">
 										<div className="c-trip-detail-calendar-booking__info-container area-up-lift prop-uplift-ready">
 											{showBookingMessage && <BookingOptions selectedTrip={selectedTrip} />}
+											<div className="c-trip-detail-calendar-booking__spotlight-title">
+												<span className="c-trip-detail-calendar-booking-step">step 2</span>
+												<h4 className="c-trip-detail-calendar-booking-title">
+													Your trip summary
+												</h4>
+											</div>
+											<BookingDetails />
 										</div>
 									</div>
 								</div>
@@ -93,4 +101,4 @@ const CalendarBody = () => {
 	);
 };
 
-export default CalendarBody;
+export default BookingBody;
