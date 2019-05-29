@@ -47208,12 +47208,28 @@ var TripFeatures = function TripFeatures(_ref) {
       showExpandedList = _useState2[0],
       setShowExpandedList = _useState2[1];
 
-  var handleArrowClick = function handleArrowClick() {
+  var _useState3 = (0, _react.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showExpandAnimation = _useState4[0],
+      setShowExpandAnimation = _useState4[1];
+
+  var handleShowMoreClick = function handleShowMoreClick() {
+    setShowExpandAnimation(true);
     setShowExpandedList(true);
   };
 
+  var handleShowLessClick = function handleShowLessClick() {
+    setShowExpandAnimation(true);
+    setShowExpandedList(false);
+  };
+
+  (0, _react.useEffect)(function () {
+    if (showExpandAnimation) {
+      setTimeout(setShowExpandAnimation(true), 1000);
+    }
+  }, [showExpandAnimation]);
   return _react.default.createElement("div", {
-    className: "c-trip-what-you-get"
+    className: 'c-trip-what-you-get' + (showExpandAnimation ? ' prop-flash' : '') + (showExpandedList ? ' prop-expanded' : '')
   }, _react.default.createElement("div", {
     className: "c-trip-what-you-get__wrapper"
   }, _react.default.createElement("div", {
@@ -47230,7 +47246,9 @@ var TripFeatures = function TripFeatures(_ref) {
     className: "c-trip-what-you-get__title"
   }, tour.duration, " nights accommodation"), _react.default.createElement("div", {
     className: "c-trip-what-you-get__short-description"
-  }, tour.accommodation_summary))), _react.default.createElement("div", {
+  }, tour.accommodation_summary)), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__large-description c-free-text-box"
+  }, tour.accommodation_detail)), _react.default.createElement("div", {
     className: "c-trip-what-you-get__item c-trip-what-you-get__item--food"
   }, _react.default.createElement("div", {
     className: "c-trip-what-you-get__item-brief"
@@ -47240,7 +47258,9 @@ var TripFeatures = function TripFeatures(_ref) {
     className: "c-trip-what-you-get__title"
   }, tour.breakfast_included + tour.lunch_included + tour.dinner_included, " included meals"), _react.default.createElement("div", {
     className: "c-trip-what-you-get__short-description"
-  }, tour.dinner_included > 0 ? "".concat(tour.dinner_included, " Dinner, ") : '', tour.lunch_included > 0 ? " ".concat(tour.lunch_included, " Lunch, ") : '', tour.breakfast_included > 0 ? "".concat(tour.breakfast_included, " Breakfast") : ''))), _react.default.createElement("div", {
+  }, tour.dinner_included > 0 ? "".concat(tour.dinner_included, " Dinner, ") : '', tour.lunch_included > 0 ? " ".concat(tour.lunch_included, " Lunch, ") : '', tour.breakfast_included > 0 ? "".concat(tour.breakfast_included, " Breakfast") : '')), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__large-description c-free-text-box"
+  }, tour.meals_detail)), _react.default.createElement("div", {
     className: "c-trip-what-you-get__item c-trip-what-you-get__item--team"
   }, _react.default.createElement("div", {
     className: "c-trip-what-you-get__item-brief"
@@ -47250,7 +47270,9 @@ var TripFeatures = function TripFeatures(_ref) {
     className: "c-trip-what-you-get__title"
   }, "Team"), _react.default.createElement("div", {
     className: "c-trip-what-you-get__short-description"
-  }, tour.team_summary))), _react.default.createElement("div", {
+  }, tour.team_summary)), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__large-description c-free-text-box"
+  }, tour.team_detail)), _react.default.createElement("div", {
     className: "c-trip-what-you-get__item c-trip-what-you-get__item--transport"
   }, _react.default.createElement("div", {
     className: "c-trip-what-you-get__item-brief"
@@ -47260,7 +47282,9 @@ var TripFeatures = function TripFeatures(_ref) {
     className: "c-trip-what-you-get__title"
   }, "Transport"), _react.default.createElement("div", {
     className: "c-trip-what-you-get__short-description"
-  }, tour.transport_summary))), _react.default.createElement("div", {
+  }, tour.transport_summary)), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__large-description c-free-text-box"
+  }, tour.transport_detail)), _react.default.createElement("div", {
     className: "c-trip-what-you-get__item c-trip-what-you-get__item--group"
   }, _react.default.createElement("div", {
     className: "c-trip-what-you-get__item-brief"
@@ -47270,7 +47294,9 @@ var TripFeatures = function TripFeatures(_ref) {
     className: "c-trip-what-you-get__title"
   }, "Your group"), _react.default.createElement("div", {
     className: "c-trip-what-you-get__short-description"
-  }, "Travel with other 18-35 year olds from around the world"))), _react.default.createElement("div", {
+  }, "Travel with other 18-35 year olds from around the world")), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__large-description c-free-text-box"
+  }, "Our trips are exclusively 18-35. This means you'll be travelling with people just like you, from all over the world- laughter and friendships always guaranteed.")), _react.default.createElement("div", {
     className: "c-trip-what-you-get__item c-trip-what-you-get__item--experiences"
   }, _react.default.createElement("div", {
     className: "c-trip-what-you-get__item-brief"
@@ -47280,13 +47306,19 @@ var TripFeatures = function TripFeatures(_ref) {
     className: "c-trip-what-you-get__title"
   }, "Experiences"), _react.default.createElement("div", {
     className: "c-trip-what-you-get__short-description"
-  }, tour.experiences_included, " included, ", tour.experiences_optional, " optional that you can add")))), _react.default.createElement("div", {
+  }, tour.experiences_included, " included, ", tour.experiences_optional, " optional that you can add")), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__large-description c-free-text-box"
+  }, tour.experiences_detail))), _react.default.createElement("div", {
     className: "c-trip-what-you-get__cta-wrapper"
   }, _react.default.createElement("span", {
-    className: "c-trip-what-you-get__expand-cta"
+    className: "c-trip-what-you-get__expand-cta",
+    onClick: handleShowMoreClick
   }, _react.default.createElement("span", {
     className: "c-trip-what-you-get__expand-cta-arrow"
-  }), "Read more"))));
+  }), "Read more"), _react.default.createElement("span", {
+    className: "c-trip-what-you-get__colapsse-cta",
+    onClick: handleShowLessClick
+  }, "Read less"))));
 };
 
 var _default = TripFeatures;
