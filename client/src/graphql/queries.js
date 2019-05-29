@@ -6,8 +6,23 @@ export const GET_TOUR_DETAILS = gql`
 			name
 			duration
 			listed_price
+			tagline
+			description
 			starting_loc
 			ending_loc
+			accommodation_summary
+			accommodation_detail
+			breakfast_included
+			lunch_included
+			dinner_included
+			meals_detail
+			team_summary
+			team_detail
+			transport_summary
+			transport_detail
+			experiences_included
+			experiences_optional
+			experiences_detail
 			countries {
 				full_name
 			}
@@ -18,6 +33,15 @@ export const GET_TOUR_DETAILS = gql`
 				capacity
 				booked
 			}
+		}
+	}
+`;
+
+export const GET_ALL_COUNTRIES = gql`
+	{
+		getCountries {
+			country_code
+			full_name
 		}
 	}
 `;

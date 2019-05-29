@@ -6,7 +6,7 @@ const TripDetails = (props) => {
 	const tour = useContext(TourContext);
 
 	return (
-		<div className="c-trip-detail-info">
+		<React.Fragment>
 			<div className="c-trip-detail-info-top__left">
 				<h1>{tour.name}</h1>
 			</div>
@@ -63,11 +63,18 @@ const TripDetails = (props) => {
 				<div className="c-trip-detail-info-middle__area-buttons">
 					<span
 						className="soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift"
-						onClick={props.handleShow}
+						onClick={() => {
+							props.handleShow('booking');
+						}}
 					>
 						BOOK TRIP
 					</span>
-					<span className="soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe">
+					<span
+						className="soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe"
+						onClick={() => {
+							props.handleShow('request');
+						}}
+					>
 						REQUEST MORE INFO
 					</span>
 				</div>
@@ -83,7 +90,7 @@ const TripDetails = (props) => {
 					<div className="zip-money-text" />
 				</div>
 			</div>
-		</div>
+		</React.Fragment>
 	);
 };
 
