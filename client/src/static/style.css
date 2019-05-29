@@ -4016,93 +4016,19 @@ ul {
 	line-height: 1em;
 }
 
-
-.c-trip-what-you-get.prop-flash .c-trip-what-you-get__item {
-	-webkit-animation-delay: .1s,1s;
-	animation-delay: .1s,1s;
-	-webkit-animation-duration: .1s,1s;
-	animation-duration: .1s,1s;
-	-webkit-animation-fill-mode: forwards;
-	animation-fill-mode: forwards;
-	-webkit-animation-iteration-count: 1;
-	animation-iteration-count: 1;
-	-webkit-animation-name: fadeOutItem,fadeInItem;
-	animation-name: fadeOutItem,fadeInItem
+.expandable-enter {
+	opacity: 0;
 }
-
-.c-trip-what-you-get.prop-flash .c-trip-what-you-get__item:nth-child(1) {
-	-webkit-animation-delay: .1s,.2s;
-	animation-delay: .1s,.2s
+.expandable-enter-active {
+	opacity: 1;
+	transition: opacity 200ms;
 }
-
-.c-trip-what-you-get.prop-flash .c-trip-what-you-get__item:nth-child(2) {
-	-webkit-animation-delay: .1s,.25s;
-	animation-delay: .1s,.25s
+.expandable-exit {
+	opacity: 0;
 }
-
-.c-trip-what-you-get.prop-flash .c-trip-what-you-get__item:nth-child(3) {
-	-webkit-animation-delay: .1s,.3s;
-	animation-delay: .1s,.3s
-}
-
-.c-trip-what-you-get.prop-flash .c-trip-what-you-get__item:nth-child(4) {
-	-webkit-animation-delay: .1s,.35s;
-	animation-delay: .1s,.35s
-}
-
-.c-trip-what-you-get.prop-flash .c-trip-what-you-get__item:nth-child(5) {
-	-webkit-animation-delay: .1s,.4s;
-	animation-delay: .1s,.4s
-}
-
-.c-trip-what-you-get.prop-flash .c-trip-what-you-get__item:nth-child(6) {
-	-webkit-animation-delay: .1s,.45s;
-	animation-delay: .1s,.45s
-}
-
-.c-trip-what-you-get.prop-flash .c-trip-what-you-get__item:nth-child(7) {
-	-webkit-animation-delay: .1s,.5s;
-	animation-delay: .1s,.5s
-}
-
-@-webkit-keyframes fadeOutItem {
-	0% {
-			opacity: 1
-	}
-
-	100% {
-			opacity: 0
-	}
-}
-
-@keyframes fadeOutItem {
-	0% {
-			opacity: 1
-	}
-
-	100% {
-			opacity: 0
-	}
-}
-
-@-webkit-keyframes fadeInItem {
-	0% {
-			opacity: 0
-	}
-
-	100% {
-			opacity: 1
-	}
-}
-
-@keyframes fadeInItem {
-	0% {
-			opacity: 0
-	}
-
-	100% {
-			opacity: 1
-	}
+.expandable-exit-active {
+	opacity: 1;
+	transition: opacity 200ms;
 }
 
 .c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item .c-trip-what-you-get__short-description {
