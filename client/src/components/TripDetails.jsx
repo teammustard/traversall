@@ -6,7 +6,7 @@ const TripDetails = (props) => {
 	const tour = useContext(TourContext);
 
 	return (
-		<div className="c-trip-detail-info">
+		<React.Fragment>
 			<div className="c-trip-detail-info-top__left">
 				<h1>{tour.name}</h1>
 			</div>
@@ -83,7 +83,7 @@ const TripDetails = (props) => {
 					<div className="zip-money-text" />
 				</div>
 			</div>
-		</div>
+		</React.Fragment>
 	);
 };
 

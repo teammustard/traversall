@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import TripDetails from './TripDetails';
 import ModalContainer from './ModalContainer';
+import VideoContainer from './VideoContainer';
 import { TourContext } from './tourContext';
 import { useQuery } from 'react-apollo-hooks';
 import { GET_TOUR_DETAILS } from '../graphql/queries';
+import PhotoCarousel from './PhotoCarousel';
+import TripDescription from './TripDescription';
 
 const Content = (props) => {
 	const tourId = props.match.params.tourId;
@@ -32,7 +35,12 @@ const Content = (props) => {
 					<div className="o-content__wrapper">
 						<div className="js-prevent-no-content">
 							<div className="c-trip-detail js-main-content prop-is-affiliate">
-								<TripDetails handleShow={handleShow} />
+								<div className="c-trip-detail-info">
+									<TripDetails handleShow={handleShow} />
+									<VideoContainer />
+									<PhotoCarousel />
+								</div>
+								<TripDescription />
 							</div>
 						</div>
 					</div>

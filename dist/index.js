@@ -25858,9 +25858,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var TripDetails = function TripDetails(props) {
   var tour = (0, _react.useContext)(_tourContext.TourContext);
-  return _react.default.createElement("div", {
-    className: "c-trip-detail-info"
-  }, _react.default.createElement("div", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "c-trip-detail-info-top__left"
   }, _react.default.createElement("h1", null, tour.name)), _react.default.createElement("div", {
     className: "c-trip-detail-info-top__right prop-has-discount prop-has-uplift"
@@ -35907,7 +35905,41 @@ var ModalContainer = function ModalContainer(props) {
 
 var _default = ModalContainer;
 exports.default = _default;
-},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./BookingBody":"components/BookingBody.jsx"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
+},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./BookingBody":"components/BookingBody.jsx"}],"components/VideoContainer.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var VideoContainer = function VideoContainer() {
+  return _react.default.createElement("div", {
+    className: "c-trip-detail-info__main-image-cont"
+  }, _react.default.createElement("div", {
+    className: "mbt-video- mbt-video-overlay- mbt-video-text-false mbt-player-ready"
+  }, _react.default.createElement("div", {
+    className: "mbt-video-container mbt-video-",
+    style: {
+      maxHeight: '650px'
+    }
+  }, _react.default.createElement("iframe", {
+    src: "https://www.youtube.com/embed/hT6cSxtYv0M",
+    width: "100%",
+    height: "430px",
+    frameBorder: "0",
+    allow: "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+    allowFullScreen: true
+  }))));
+};
+
+var _default = VideoContainer;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"../../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47084,7 +47116,7 @@ var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t}\n\t\t}\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\ttagline\n\t\t\tdescription\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\taccommodation_summary\n\t\t\taccommodation_detail\n\t\t\tbreakfast_included\n\t\t\tlunch_included\n\t\t\tdinner_included\n\t\t\tmeals_detail\n\t\t\tteam_summary\n\t\t\tteam_detail\n\t\t\ttransport_summary\n\t\t\ttransport_detail\n\t\t\texperiences_included\n\t\t\texperiences_optional\n\t\t\texperiences_detail\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t}\n\t\t}\n\t}\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -47097,7 +47129,224 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var GET_TOUR_DETAILS = (0, _graphqlTag.default)(_templateObject());
 exports.GET_TOUR_DETAILS = GET_TOUR_DETAILS;
-},{"graphql-tag":"../../node_modules/graphql-tag/src/index.js"}],"components/Content.jsx":[function(require,module,exports) {
+},{"graphql-tag":"../../node_modules/graphql-tag/src/index.js"}],"components/PhotoCarousel.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PhotoCarousel = function PhotoCarousel() {
+  var generatePhotos = function generatePhotos() {
+    var photos = [];
+    var randomPhoto = 'https://loremflickr.com/213/215/travel?random=';
+
+    for (var i = 5; i--;) {
+      photos.push(_react.default.createElement("li", {
+        key: i,
+        className: "c-trip-detail-olapic-item grid-item c-trip-detail-olapic-box c-olapic-trigger-item-js",
+        style: {
+          backgroundImage: "url(".concat(randomPhoto).concat(i, ")")
+        }
+      }));
+    }
+
+    return photos;
+  };
+
+  return _react.default.createElement("div", {
+    className: "c-trip-detail-info-bottom media-carousel prop-has-ugc-images"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-ugccarousel__cover"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-body-info-images"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-body-info-images-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__olapic-wrapper"
+  }, _react.default.createElement("div", {
+    className: "olapic-widget-content-wrapper"
+  }, _react.default.createElement("ul", {
+    className: "c-trip-detail-olapic-wall-widget"
+  }, _react.default.createElement("li", {
+    className: "c-trip-detail-olapic-item grid-item c-trip-detail-olapic-box c-olapic-trigger-item-js"
+  }), generatePhotos())))))));
+};
+
+var _default = PhotoCarousel;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/TripFeatures.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var TripFeatures = function TripFeatures(_ref) {
+  var tour = _ref.tour;
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showExpandedList = _useState2[0],
+      setShowExpandedList = _useState2[1];
+
+  var handleArrowClick = function handleArrowClick() {
+    setShowExpandedList(true);
+  };
+
+  return _react.default.createElement("div", {
+    className: "c-trip-what-you-get"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__heading"
+  }, "WHAT YOU GET"), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__list"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item c-trip-what-you-get__item--accomodation"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item-brief"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__icon-accommodation"
+  }), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__title"
+  }, tour.duration, " nights accommodation"), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__short-description"
+  }, tour.accommodation_summary))), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item c-trip-what-you-get__item--food"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item-brief"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__icon-food"
+  }), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__title"
+  }, tour.breakfast_included + tour.lunch_included + tour.dinner_included, " included meals"), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__short-description"
+  }, tour.dinner_included > 0 ? "".concat(tour.dinner_included, " Dinner, ") : '', tour.lunch_included > 0 ? " ".concat(tour.lunch_included, " Lunch, ") : '', tour.breakfast_included > 0 ? "".concat(tour.breakfast_included, " Breakfast") : ''))), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item c-trip-what-you-get__item--team"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item-brief"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__icon-team"
+  }), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__title"
+  }, "Team"), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__short-description"
+  }, tour.team_summary))), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item c-trip-what-you-get__item--transport"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item-brief"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__icon-transport"
+  }), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__title"
+  }, "Transport"), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__short-description"
+  }, tour.transport_summary))), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item c-trip-what-you-get__item--group"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item-brief"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__icon-group"
+  }), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__title"
+  }, "Your group"), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__short-description"
+  }, "Travel with other 18-35 year olds from around the world"))), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item c-trip-what-you-get__item--experiences"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__item-brief"
+  }, _react.default.createElement("div", {
+    className: "c-trip-what-you-get__icon-experiences"
+  }), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__title"
+  }, "Experiences"), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__short-description"
+  }, tour.experiences_included, " included, ", tour.experiences_optional, " optional that you can add")))), _react.default.createElement("div", {
+    className: "c-trip-what-you-get__cta-wrapper"
+  }, _react.default.createElement("span", {
+    className: "c-trip-what-you-get__expand-cta"
+  }, _react.default.createElement("span", {
+    className: "c-trip-what-you-get__expand-cta-arrow"
+  }), "Read more"))));
+};
+
+var _default = TripFeatures;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/TripDescription.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _tourContext = require("./tourContext");
+
+var _TripFeatures = _interopRequireDefault(require("./TripFeatures"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+var TripDescription = function TripDescription() {
+  var tour = (0, _react.useContext)(_tourContext.TourContext);
+  var randomPhoto = 'https://loremflickr.com/320/150/travel';
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "c-trip-detail-info-bottom-description"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info-bottom-description__wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-text"
+  }, _react.default.createElement("h2", null, tour.tagline)), _react.default.createElement("div", {
+    className: "c-trip-detail-info__description-text"
+  }, tour.description))), _react.default.createElement("div", {
+    className: "c-trip-detail-info__wrapper-affiliate"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-body-affiliate"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-body-affiliate-left"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-body-affiliate-img-cont"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-info__title-body-affiliate-photo",
+    style: {
+      backgroundImage: "url(".concat(randomPhoto, ")")
+    }
+  }))), _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-body-affiliate-right"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-body-affiliate-desc-cont"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info__title-body-affiliate-desc"
+  }, "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."))))), _react.default.createElement(_TripFeatures.default, {
+    tour: tour
+  }));
+};
+
+var _default = TripDescription;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./tourContext":"components/tourContext.js","./TripFeatures":"components/TripFeatures.jsx"}],"components/Content.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47111,11 +47360,17 @@ var _TripDetails = _interopRequireDefault(require("./TripDetails"));
 
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 
+var _VideoContainer = _interopRequireDefault(require("./VideoContainer"));
+
 var _tourContext = require("./tourContext");
 
 var _reactApolloHooks = require("react-apollo-hooks");
 
 var _queries = require("../graphql/queries");
+
+var _PhotoCarousel = _interopRequireDefault(require("./PhotoCarousel"));
+
+var _TripDescription = _interopRequireDefault(require("./TripDescription"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47175,9 +47430,11 @@ var Content = function Content(props) {
     className: "js-prevent-no-content"
   }, _react.default.createElement("div", {
     className: "c-trip-detail js-main-content prop-is-affiliate"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-info"
   }, _react.default.createElement(_TripDetails.default, {
     handleShow: handleShow
-  }))))), _react.default.createElement(_ModalContainer.default, {
+  }), _react.default.createElement(_VideoContainer.default, null), _react.default.createElement(_PhotoCarousel.default, null)), _react.default.createElement(_TripDescription.default, null))))), _react.default.createElement(_ModalContainer.default, {
     showModal: showModal,
     handleHide: handleHide
   })));
@@ -47185,7 +47442,7 @@ var Content = function Content(props) {
 
 var _default = Content;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./TripDetails":"components/TripDetails.jsx","./ModalContainer":"components/ModalContainer.jsx","./tourContext":"components/tourContext.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","../graphql/queries":"graphql/queries.js"}],"components/Sidebar.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./TripDetails":"components/TripDetails.jsx","./ModalContainer":"components/ModalContainer.jsx","./VideoContainer":"components/VideoContainer.jsx","./tourContext":"components/tourContext.js","react-apollo-hooks":"../../node_modules/react-apollo-hooks/es/index.js","../graphql/queries":"graphql/queries.js","./PhotoCarousel":"components/PhotoCarousel.jsx","./TripDescription":"components/TripDescription.jsx"}],"components/Sidebar.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53293,7 +53550,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61073" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51794" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
