@@ -4102,3 +4102,1002 @@ ul {
 .c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item:last-child {
 	border-bottom: 1px solid #e7e4ee;
 }
+
+.c-page-form,
+.c-page-form .c-form__compliant-notice,
+.c-page-form .c-form__policy-links {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+}
+
+.c-page-form {
+	min-height: 600px;
+	padding: 80px 30px;
+}
+
+.c-page-form.c-page-form-gaq {
+	min-width: 690px;
+}
+
+.c-page-form.c-page-form-gaq {
+	background: #efeef0;
+	margin: auto;
+	width: 50%;
+}
+
+.c-page-form__contact-info-head,
+.c-page-form__title {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	color: #302a3d;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.c-page-form__title {
+	font-size: 22px;
+	line-height: 1em;
+}
+
+.c-page-form__title.c-page-form__first-title {
+	font-size: 28px;
+	margin-bottom: -.4em;
+	position: relative;
+	top: -30px;
+}
+
+.c-page-form.c-page-form-gaq .c-page-form__first-title {
+	font-size: 29px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.trip-cover-m {
+	background-color: #fff;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+.trip-cover-m .trip-cover-m-link {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+
+.trip-cover-raq-content {
+	box-shadow: 0 0 20px 1px rgba(0, 0, 0, .05);
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 157px;
+	margin-bottom: 20px;
+	padding: 0;
+}
+
+.trip-cover-raq-left {
+	background-position: center;
+	background-size: cover;
+	display: inline-block;
+	height: 100%;
+	min-width: 157px;
+	padding: 0 20px;
+	width: 20%;
+}
+
+.trip-cover-raq-right {
+	padding: 0 20px;
+	width: 79%;
+}
+
+.trip-cover-raq-bottom-right,
+.trip-cover-raq-top-right {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: 50%;
+}
+
+.trip-cover-raq-top-right {
+	padding-top: 20px;
+}
+
+.trip-cover-raq-bottom-right {
+	padding-top: 10px;
+}
+
+.trip-cover-m-tour-name {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	color: #302a3d;
+	display: block;
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1.3em;
+	margin-bottom: 5px;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+.trip-cover-m-tour-name {
+	font-size: 21px;
+	margin-bottom: 5px;
+}
+
+.trip-cover-m-tour-name {
+	font-size: 23px;
+}
+
+.country-days__part,
+.original-discount-price__part {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 49%;
+}
+
+.trip-cover-m-item-info {
+	margin-right: 10px;
+}
+
+.trip-cover-m-item-info {
+	width: 50%;
+}
+
+.trip-cover-m-info-details .trip-cover-m-info-country-list,
+.trip-cover-m-item-info-title,
+.trip-cover-m-review-text {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+}
+
+.trip-cover-m-item-info-title {
+	color: #736e7e;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+.trip-cover-m-item-info-title {
+	font-size: 10px;
+}
+
+.trip-cover-m-item-info-value {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	color: #302a3d;
+	display: inline;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.trip-cover-m-item-info-value {
+	font-size: 26px;
+}
+
+.trip-cover-m-discount .value-cont {
+	color: rgba(251, 0, 81, .87);
+}
+
+input {
+	-moz-osx-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: #fff;
+	background-image: none;
+	background-origin: padding-box;
+	background-size: auto;
+	border-bottom-color: rgba(0, 0, 0, .117647);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-style: inset;
+	border-bottom-width: 1px;
+	border-image-outset: 0;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	outline: 0;
+}
+
+.c-page-form__content {
+	display: table;
+	margin: auto;
+	max-width: 1280px;
+	width: 100%;
+}
+
+.c-page-form .c-page-form__content {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+.c-page-form.c-page-form-gaq .c-page-form__content {
+	background: #fff;
+	box-shadow: 0 0 20px 1px rgba(0, 0, 0, .05);
+}
+
+.c-page-form__col {
+	display: table-cell;
+	padding: 0;
+	vertical-align: text-top;
+}
+
+.c-page-form.c-page-form-gaq .c-page-form__content .c-page-form__col {
+	padding: 27px 30px 34px;
+}
+
+.c-page-form__subtitle {
+	margin: 10px 0 25px;
+}
+
+.c-page-form.c-page-form-gaq .c-page-form__subtitle,
+.c-page-form.c-page-form-newsletter .c-page-form__subtitle {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	color: #302a3d;
+	font-size: 23px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.c-fab__form {
+	white-space: normal;
+	margin: 0;
+	padding: 0;
+}
+
+.c-fab__contact-sub,
+.c-fab__form,
+.c-fab__form .c-form_dateOfBirth .c-form__dates:nth-of-type(n + 2)::before {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+}
+
+.c-fab .checkbox,
+.text-left {
+	text-align: left;
+}
+
+.c-fab__form {
+	width: 100%;
+}
+
+.c-fab__form {
+	padding-top: 0;
+}
+
+.c-fab__close-wrap::after,
+.c-fab__close-wrap::before,
+.c-fab__contact-menu::after,
+.c-fab__contact-menu::before,
+.c-fab__contact-panel::after,
+.c-fab__contact-panel::before,
+.c-fab__form::after,
+.c-fab__form::before,
+.c-fab__grid-share::after,
+.c-fab__grid-share::before,
+.c-fab__submenu-intro::after,
+.c-fab__submenu-intro::before,
+.c-fab__submenu::after,
+.c-fab__submenu::before,
+.c-form__dropdown.form-group::after,
+.c-form__dropdown.form-group::before,
+.c-form__input-wrap::after,
+.c-form__input-wrap::before,
+.c-form__input.form-group::after,
+.c-form__input.form-group::before,
+.c-paginator::after,
+.c-paginator::before,
+.c-signin-page::after,
+.c-signin-page::before,
+.c-signup-page::after,
+.c-signup-page::before,
+.c-sso-social-buttons::after,
+.c-sso-social-buttons::before,
+.c-user-menu__controls::after,
+.c-user-menu__controls::before,
+.c-user-menu__link-button::after,
+.c-user-menu__link-button::before,
+.clearfix::after,
+.clearfix::before,
+.form-group::after,
+.form-group::before,
+.form-submit-border::after,
+.form-submit-border::before,
+.o-footer::after,
+.o-footer::before,
+.o-footer__content::after,
+.o-footer__content::before,
+footer.o-footer--alt::after,
+footer.o-footer--alt::before {
+	content: " ";
+	display: table;
+}
+
+.c-fab__form fieldset {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	border: 0;
+	display: block;
+}
+.c-page-form.c-page-form-gaq fieldset {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	padding: 0;
+}
+
+.c-page-form.c-page-form-gaq fieldset.c-form__title {
+	color: #302a3d;
+}
+
+.c-page-form.c-page-form-gaq fieldset legend {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 16px;
+	padding: 0;
+}
+
+.c-page-form.c-page-form-gaq fieldset.c-form__title legend {
+	font-size: 16px;
+}
+
+.c-page-form.c-page-form-gaq fieldset.c-form__title p {
+	font-size: 14px;
+}
+
+.c-page-form.c-page-form-gaq fieldset .row {
+	margin-top: 8px;
+}
+
+.c-form__dropdown.form-group,
+.c-form__input-wrap,
+.c-form__input.form-group,
+.form-group,
+.form-submit-border {
+	line-height: 16px;
+	margin-bottom: 30px;
+	min-height: 30px;
+	position: relative;
+}
+
+.c-form__dropdown.form-group,
+.c-form__input.form-group,
+.form-group,
+.form-submit-border {
+	border-bottom: 0;
+	float: left;
+	margin-bottom: 21px;
+	width: 100%;
+}
+
+.c-fab__form .form-group {
+	clear: none !important;
+	-webkit-transform: translate3d(1px, 1px, 1px);
+	transform: translate3d(1px, 1px, 1px);
+}
+
+.c-page-form.c-page-form-gaq fieldset .c-form__select-dates {
+	margin: 12px 0 20px !important;
+}
+.c-phone-menu .call-time-date:before,
+.c-search-widget__icon-field.c-search-widget__icon-field--time:before,
+.form-group.c-form__select-dates:before,
+.ticon-ui-calendar-view:before {
+	content: "\e93e";
+}
+
+.form-group.c-form__select-dates::before {
+	bottom: 14px;
+	font-size: 16px;
+	position: absolute;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+.form-control {
+	-webkit-transform: initial;
+	-ms-transform: initial;
+	transform: initial;
+}
+
+.c-fab__form input[type=text],
+.c-fab__form input[type=email],
+.c-fab__form input[type=tel],
+.c-fab__form input[type=number],
+.c-fab__form select,
+.c-fab__form textarea,
+.c-form__dropdown,
+.c-form__input {
+	-webkit-appearance: none;
+	border-radius: 0;
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	background: 0 0;
+	border: 0;
+	border-bottom: 1px solid #d5d3da;
+	color: #302a3d;
+	line-height: 1.2em;
+	margin-bottom: 5px;
+	min-height: 30px;
+	outline: 0;
+	position: relative;
+	width: 100%;
+	z-index: 3;
+}
+
+.c-fab__form input[type=text],
+.c-fab__form input[type=email],
+.c-fab__form input[type=tel],
+.c-fab__form input[type=number],
+.c-fab__form select,
+.c-fab__form textarea,
+.c-form__dropdown,
+.c-form__input {
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.c-fab__form select {
+	padding: 6px 18px 0 0;
+	-webkit-appearance: none;
+	appearance: none;
+	color: #fff;
+}
+
+.form-group.c-form__select-dates select {
+	padding-left: 25px;
+}
+
+.c-page-form .c-fab__form input[type=text],
+.c-page-form .c-fab__form input[type=email],
+.c-page-form .c-fab__form input[type=tel],
+.c-page-form .c-fab__form input[type=number],
+.c-page-form .c-fab__form select,
+.c-page-form .c-fab__form textarea {
+	border-bottom: 1px solid #d5d3da;
+	color: #302a3d;
+}
+
+.c-fab__form select option {
+	background-color: #cf0043;
+	text-transform: capitalize;
+}
+
+.c-fab__form select option:disabled {
+	color: #767e92;
+}
+
+.c-page-form .c-fab__form select option {
+	background-color: #fff;
+	color: #302a3d;
+}
+
+.c-page-form .c-fab__form select option:disabled {
+	color: #767e92;
+}
+
+.c-form__input-bar {
+	bottom: 5px;
+	display: block;
+	height: 1px;
+	position: relative;
+	width: 100%;
+	z-index: 3;
+}
+
+.c-form__input-bar::after,
+.c-form__input-bar::before {
+	background: #0a7dbe;
+	bottom: 1px;
+	content: "";
+	height: 2px;
+	position: absolute;
+	transition: width .2s ease-in-out;
+	width: 0;
+}
+
+.c-form__input-bar::after {
+	right: 50%;
+}
+
+.c-form__input-bar::before {
+	left: 50%;
+}
+
+.c-fab__input-bar::after,
+.c-fab__input-bar::before,
+body.sitecore-template-tour .c-fab__contact-panel {
+	background: #fff;
+}
+
+.c-form__input-bar.no-animate::after,
+.c-form__input-bar.no-animate::before {
+	width: 0;
+}
+
+.c-page-form .c-fab__input-bar::after,
+.c-page-form .c-fab__input-bar::before {
+	background: #5ed3b6;
+}
+
+.c-page-form.c-page-form-gaq .form-group {
+	margin-bottom: 30px !important;
+}
+
+.c-fab__form .checkbox {
+	margin: 10px 0 14px;
+	white-space: normal;
+}
+
+.c-page-form.c-page-form-gaq .checkbox {
+	color: #302a3d;
+	font-size: 14px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.c-fab__form label,
+.c-fab__form-counter,
+.c-fab__textarea-label,
+.c-form__label {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	color: #736e7e;
+	position: absolute;
+	-webkit-transform: translate3d(0, 8px, 0);
+	transform: translate3d(0, 8px, 0);
+	transition: all .3s ease-in-out;
+	z-index: 2;
+}
+
+.c-fab__form .checkbox label {
+	display: block;
+	padding-left: 26px;
+	position: relative;
+	-webkit-transform: inherit;
+	-ms-transform: inherit;
+	transform: inherit;
+}
+
+.c-page-form.c-page-form-gaq .checkbox label {
+	margin-left: -3px;
+	color: #302a3d;
+	font-size: 14px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.c-fab__form input[type=checkbox] {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background: 0 0;
+	border: 0;
+	opacity: 0;
+	width: 0;
+}
+
+.c-page-form.c-page-form-gaq input[type=checkbox] {
+	height: 14px;
+	width: 14px;
+	cursor: pointer;
+	left: 4px;
+	position: absolute;
+	top: 2px;
+	z-index: 2;
+}
+
+.c-fab__form input[type=checkbox] + .c-form__custom-checkbox {
+	font-size: 14px;
+	font-size: .875rem;
+	cursor: pointer;
+	display: inline-block;
+	left: 4px;
+	position: absolute;
+	top: 2px;
+}
+
+.c-fab__form input[type=checkbox] + .c-form__custom-checkbox:before,
+.c-form__custom-checkbox-wrap input[type=checkbox] + .c-form__custom-checkbox:before,
+.ticon-ui-checkbox-false:before {
+	content: "\e945";
+}
+
+input[type=checkbox],
+input[type=radio] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.checkbox-ripple {
+	height: 34px;
+	width: 34px;
+	background-color: #fff;
+	border-radius: 50%;
+	content: "";
+	display: block;
+	opacity: 1;
+	position: absolute;
+	-webkit-transform: translate(-30%, -71%) scale(0, 0);
+	-ms-transform: translate(-30%, -71%) scale(0, 0);
+	transform: translate(-30%, -71%) scale(0, 0);
+	-webkit-transform-origin: center center;
+	-ms-transform-origin: center center;
+	transform-origin: center center;
+	transition: opacity .45s ease, -webkit-transform .45s cubic-bezier(0, 0, .2, 1);
+	transition: transform .45s cubic-bezier(0, 0, .2, 1), opacity .45s ease;
+	transition: transform .45s cubic-bezier(0, 0, .2, 1), opacity .45s ease,
+		-webkit-transform .45s cubic-bezier(0, 0, .2, 1);
+	z-index: 1;
+}
+
+.c-page-form .checkbox-ripple {
+	-webkit-transform: translate(-31.3%, -71%) scale(0, 0);
+	-ms-transform: translate(-31.3%, -71%) scale(0, 0);
+	transform: translate(-31.3%, -71%) scale(0, 0);
+}
+
+.c-page-form .checkbox-ripple {
+	background-color: #5ed3b6;
+}
+
+.c-fab__form .control-label::before {
+	content: "" !important;
+}
+
+.animate.c-fab__form-counter,
+.animate.c-fab__textarea-label,
+.animate.c-form__label,
+.c-fab__form label.animate {
+	font-size: 11px;
+	font-size: .6875rem;
+	-webkit-transform: translate3d(0, -13px, 0);
+	transform: translate3d(0, -13px, 0);
+}
+
+.c-page-form .c-fab__form label {
+	color: #767e92;
+}
+
+.c-form__field-tooltip input {
+	padding-right: 24px;
+}
+
+.form-flag {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	color: #302a3d;
+	font-size: 14px;
+	padding-top: 6px;
+}
+
+.c-fab__form .custom-phone-flag,
+.c-fab__form select[data-type=mobile-country-drop-list] {
+	z-index: -1;
+	opacity: 0;
+	position: absolute;
+}
+
+.c-fab__form .custom-phone-flag {
+	height: 30px;
+	width: auto;
+	white-space: nowrap;
+}
+
+.c-fab__form .form-group.country-drop-list-active .custom-phone-flag {
+	opacity: 1;
+	z-index: 4;
+}
+
+.c-fab__form .form-group.country-drop-list-active select[data-type=mobile-country-drop-list] {
+	z-index: 5;
+}
+
+.form-flag::before {
+	height: 11px;
+	width: 16px;
+	content: "";
+	display: inline-block;
+	line-height: 11px;
+	margin-right: 8px;
+	position: relative;
+	top: 1px;
+}
+
+.form-flag[data-iso=us]::before,
+.form-flag[data-iso=um]::before {
+	background-position: -16px -44px;
+}
+
+.c-fab__form input.custom-phone-input {
+	-moz-appearance: textfield;
+	position: relative;
+	z-index: 3;
+}
+
+.c-page-form .c-fab__form input[type=text],
+.c-page-form .c-fab__form input[type=email],
+.c-page-form .c-fab__form input[type=tel],
+.c-page-form .c-fab__form input[type=number],
+.c-page-form .c-fab__form select,
+.c-page-form .c-fab__form textarea {
+	border-bottom: 1px solid #d5d3da;
+	color: #302a3d;
+}
+
+.c-fab__form .c-form__departure-date,
+.c-fab__form .c-form__return-date,
+.c-fab__form .c-form_dateOfBirth,
+.c-fab__form .half,
+.c-fab__form .halfAvailableWidth,
+.c-fab__form .halfWidthLeft,
+.c-fab__form .halfWidthLeft50,
+.c-fab__form .halfWidthRight,
+.c-fab__form .halfWidthRight50 {
+	width: 45%;
+}
+
+.c-fab__form .halfWidthLeft {
+	float: left;
+}
+
+.c-fab__form .c-form__return-date,
+.c-fab__form .halfWidthRight,
+.c-fab__form .halfWidthRight50 {
+	float: right;
+}
+
+.c-page-form.c-page-form-gaq .c-form__multi-checkbox .control-label,
+.c-page-form.c-page-form-gaq .c-form__multi-checkbox-vertical .control-label {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	color: #302a3d;
+	font-size: 16px;
+	position: relative;
+}
+
+.c-page-form.c-page-form-gaq .checkbox {
+	color: #302a3d;
+	font-size: 14px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.c-page-form.c-page-form-gaq .c-form__multi-checkbox td label,
+.c-page-form.c-page-form-gaq .c-form__multi-checkbox-vertical td label {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	color: #302a3d;
+	font-size: 14px;
+	margin: 30px 21px 0 -2px;
+	padding-left: 26px;
+}
+
+.c-form__dropdown.form-group,
+.c-form__input-wrap,
+.c-form__input.form-group,
+.form-group,
+.form-submit-border {
+	line-height: 16px;
+	margin-bottom: 30px;
+	min-height: 30px;
+	position: relative;
+}
+
+.c-form__button-wrap-flex {
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+.c-form__dropdown.form-group,
+.c-form__input.form-group,
+.form-group,
+.form-submit-border {
+	border-bottom: 0;
+	float: left;
+	margin-bottom: 21px;
+	width: 100%;
+}
+
+.c-page-form-book-phone .form-submit-border,
+.c-page-form-gaq .form-submit-border {
+	text-align: left;
+}
+
+.c-page-form-book-phone .form-submit-border,
+.c-page-form-gaq .form-submit-border {
+	margin: 0;
+}
+
+.btn,
+.c-fab__btn,
+.c-form__btn {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	-webkit-appearance: none;
+	background-color: #fff;
+	border: 1px solid rgba(48, 42, 61, .5);
+	border-radius: 2px;
+	color: rgba(48, 42, 61, .5);
+	float: right;
+	height: 50px;
+	outline: 0;
+	padding: 0 21px;
+	text-transform: uppercase;
+}
+
+.btn,
+.c-fab__btn,
+.c-form__btn {
+	height: 45px;
+}
+
+.c-form__button-wrap-flex > * {
+	vertical-align: middle;
+}
+
+.btn,
+.c-fab__btn {
+	float: none;
+}
+
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+.c-page-form .btn,
+.c-page-form .btn.btn-active,
+.c-page-form .c-fab__btn,
+.c-page-form .c-fab__btn.btn-active {
+	background: 0 0;
+	border: 1px solid #302a3d;
+	color: #302a3d;
+	padding: 0 50px;
+	width: 200px;
+}
+
+.c-chat-banner__cta,
+.c-feefo--dark .c-feefo__cta-button,
+.c-feefo--light .c-feefo__cta-button,
+.c-free-text-box a.soleil-cta-button,
+.c-free-text-box a.soleil-cta-button-black,
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box a.soleil-cta-button-white,
+.c-free-text-box span.soleil-cta-button,
+.c-free-text-box span.soleil-cta-button-black,
+.c-free-text-box span.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-white,
+.c-home-map__section-button,
+.c-newsletter__body .c-form__button-wrap-flex .btn,
+.c-page-form.c-page-form-gaq .btn,
+.editorial-snippet.theme-white .editorial-link.style-button,
+.hero .c-feefo--dark .c-feefo__cta-button,
+.hero .c-feefo--light .c-feefo__cta-button,
+.style-button,
+span.soleil-cta-button-black.cta-instagram {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 1.25;
+	margin: 5px 0;
+	max-width: 100%;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background-color .35s, color .35s;
+}
+
+.c-chat-banner__cta,
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-pink,
+.c-newsletter__body .c-form__button-wrap-flex .btn,
+.c-page-form.c-page-form-gaq .btn {
+	background-color: #fb0051;
+	border: 0;
+}
+
+.c-chat-banner__cta,
+.c-feefo--dark .c-feefo__cta-button,
+.c-feefo--light .c-feefo__cta-button,
+.c-free-text-box a.soleil-cta-button,
+.c-free-text-box a.soleil-cta-button-black,
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box a.soleil-cta-button-white,
+.c-free-text-box span.soleil-cta-button,
+.c-free-text-box span.soleil-cta-button-black,
+.c-free-text-box span.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-white,
+.c-home-map__section-button,
+.c-newsletter__body .c-form__button-wrap-flex .btn,
+.c-page-form.c-page-form-gaq .btn,
+.editorial-snippet.theme-white .editorial-link.style-button,
+.hero .c-feefo--dark .c-feefo__cta-button,
+.hero .c-feefo--light .c-feefo__cta-button,
+.style-button,
+span.soleil-cta-button-black.cta-instagram {
+	padding: 15px 30px;
+}
+
+.c-page-form.c-page-form-gaq .btn {
+	background-color: #fb0051;
+	margin-right: 28px;
+	opacity: 1;
+}
+
+.c-chat-banner__cta:focus,
+.c-chat-banner__cta:hover,
+.c-free-text-box a.soleil-cta-button-pink:focus,
+.c-free-text-box a.soleil-cta-button-pink:hover,
+.c-free-text-box span.soleil-cta-button-pink:focus,
+.c-free-text-box span.soleil-cta-button-pink:hover,
+.c-newsletter__body .c-form__button-wrap-flex .btn:focus,
+.c-newsletter__body .c-form__button-wrap-flex .btn:hover,
+.c-page-form.c-page-form-gaq .btn:focus,
+.c-page-form.c-page-form-gaq .btn:hover {
+	background-color: #cf0043;
+	color: #fff;
+}
+
+.c-form__policy-links {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	line-height: 17px;
+	text-align: left;
+	width: auto;
+}
+
+.c-page-form .c-form__policy-links {
+	font-size: 12px;
+	font-size: .75rem;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	line-height: 17px;
+	text-align: left;
+	width: auto;
+}
+
+.c-page-form .c-form__policy-links a {
+	position: relative;
+}
+
+.c-page-form .c-form__compliant-notice {
+	font-size: 10px;
+	font-size: .625rem;
+	color: #736E7E;
+	line-height: 13px;
+	margin-top: 15px;
+	text-align: left
+}

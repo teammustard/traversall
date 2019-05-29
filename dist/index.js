@@ -25924,9 +25924,14 @@ var TripDetails = function TripDetails(props) {
     className: "c-trip-detail-info-middle__area-buttons"
   }, _react.default.createElement("span", {
     className: "soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift",
-    onClick: props.handleShow
+    onClick: function onClick() {
+      props.handleShow('booking');
+    }
   }, "BOOK TRIP"), _react.default.createElement("span", {
-    className: "soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe"
+    className: "soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe",
+    onClick: function onClick() {
+      props.handleShow('request');
+    }
   }, "REQUEST MORE INFO")), _react.default.createElement("div", {
     className: "c-trip-detail-info-middle__down"
   }, _react.default.createElement("div", {
@@ -35844,7 +35849,336 @@ var BookingBody = function BookingBody() {
 
 var _default = BookingBody;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./CalendarContainer":"components/CalendarContainer.jsx","./TripHover":"components/TripHover.jsx","./BookingMessage":"components/BookingMessage.jsx","./BookingOptions":"components/BookingOptions.jsx","./BookingDetails":"components/BookingDetails.jsx"}],"components/ModalContainer.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./CalendarContainer":"components/CalendarContainer.jsx","./TripHover":"components/TripHover.jsx","./BookingMessage":"components/BookingMessage.jsx","./BookingOptions":"components/BookingOptions.jsx","./BookingDetails":"components/BookingDetails.jsx"}],"components/RequestInfoHeader.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RequestInfoHeader = function RequestInfoHeader() {
+  return _react.default.createElement("div", {
+    className: "trip-cover-m theme-dark image-position-above display-style1 hide-promo-false"
+  }, _react.default.createElement("a", {
+    href: "#",
+    className: "trip-cover-m-link prop-close-iframe-modal"
+  }), _react.default.createElement("div", {
+    className: "trip-cover-raq-content"
+  }, _react.default.createElement("div", {
+    className: "trip-cover-raq-left"
+  }, "BACKGROUND HERE"), _react.default.createElement("div", {
+    className: "trip-cover-raq-right"
+  }, _react.default.createElement("div", {
+    className: "trip-cover-raq-top-right"
+  }, _react.default.createElement("a", {
+    href: "#",
+    className: "trip-cover-m-tour-name prop-close-iframe-modal"
+  }, "European Discovery")), _react.default.createElement("div", {
+    className: "trip-cover-raq-bottom-right"
+  }, _react.default.createElement("div", {
+    className: "country-days__part"
+  }, _react.default.createElement("div", {
+    className: "trip-cover-m-item-info item-countries"
+  }, _react.default.createElement("div", {
+    className: "trip-cover-m-item-info-title"
+  }, "COUNTRIES"), _react.default.createElement("div", {
+    className: "trip-cover-m-item-info-value"
+  }, "9")), _react.default.createElement("div", {
+    className: "trip-cover-m-item-info item-days"
+  }, _react.default.createElement("div", {
+    className: "trip-cover-m-item-info-title"
+  }, "DAYS"), _react.default.createElement("div", {
+    className: "trip-cover-m-item-info-value"
+  }, "13"))), _react.default.createElement("div", {
+    className: "original-discount-price__part"
+  }, _react.default.createElement("div", {
+    className: "trip-cover-m-item-info item-was-from__left item-fromtrip-cover-m-old-price"
+  }, _react.default.createElement("div", {
+    className: "trip-cover-m-item-info-title"
+  }, "WAS"), _react.default.createElement("div", {
+    className: "trip-cover-m-item-info-value",
+    style: {
+      textDecoration: 'line-through'
+    }
+  }, "$3,125")), _react.default.createElement("div", {
+    className: "trip-cover-m-item-info item-from trip-cover-m-discount"
+  }, _react.default.createElement("div", {
+    className: "trip-cover-m-item-info-title"
+  }, "FROM"), _react.default.createElement("div", {
+    className: "trip-cover-m-item-info-value"
+  }, _react.default.createElement("span", {
+    className: "value-cont"
+  }, "$2,500"))))))));
+};
+
+var _default = RequestInfoHeader;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/RequestInfoForm.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RequestInfoForm = function RequestInfoForm() {
+  return _react.default.createElement("div", {
+    className: "c-page-form__content"
+  }, _react.default.createElement("div", {
+    className: "c-page-form__col"
+  }, _react.default.createElement("div", {
+    className: "c-page-form__subtitle"
+  }, "We will contact you about European Discovery"), _react.default.createElement("div", {
+    className: "s-wffm-async-off"
+  }, _react.default.createElement("form", {
+    action: "#",
+    className: "c-fab__form text-left"
+  }, _react.default.createElement("fieldset", {
+    className: "c-form__title"
+  }, _react.default.createElement("legend", null, "When do you want to travel?"), _react.default.createElement("p", null, "If you don't know your travel dates, simply mark \"I don't know yet\""), _react.default.createElement("div", {
+    className: "row"
+  }, _react.default.createElement("div", {
+    className: "col-md-12"
+  }, _react.default.createElement("div", {
+    className: "c-form__select-dates form-group has-feedback first-field"
+  }, _react.default.createElement("select", {
+    className: "form-control prop-disabled-option",
+    defaultValue: ""
+  }, _react.default.createElement("option", {
+    disabled: "disabled",
+    value: ""
+  }, "Departure Date*"), _react.default.createElement("option", {
+    disabled: "disabled",
+    value: "2019"
+  }, "2019 -----------------"), _react.default.createElement("option", {
+    value: "07/06/2019"
+  }, "07/06/2019"))), _react.default.createElement("div", {
+    className: "form-group has-feedback"
+  }, _react.default.createElement("div", {
+    className: "checkbox"
+  }, _react.default.createElement("label", {
+    htmlFor: "WHAT"
+  }, _react.default.createElement("input", {
+    type: "checkbox"
+  }), _react.default.createElement("span", {
+    className: "c-form__custom-checkbox"
+  }, _react.default.createElement("span", {
+    className: "checkbox-ripple"
+  })), _react.default.createElement("input", {
+    type: "hidden"
+  }), "I don't know yet")))))), _react.default.createElement("fieldset", null, _react.default.createElement("legend", null, "Your details"), _react.default.createElement("div", {
+    className: "row"
+  }, _react.default.createElement("div", {
+    className: "col-md-12"
+  }, _react.default.createElement("div", {
+    className: "required-field halfWidthLeft form-group has-feedback"
+  }, _react.default.createElement("input", {
+    type: "hidden"
+  }), _react.default.createElement("label", {
+    className: "control-label"
+  }, "First name*"), _react.default.createElement("input", {
+    className: "form-control text-box single-line",
+    type: "text"
+  }), _react.default.createElement("span", {
+    className: "c-form__input-bar c-fab__input-bar no-animate"
+  })), _react.default.createElement("div", {
+    className: "required-field halfWidthRight form-group has-feedback"
+  }, _react.default.createElement("input", {
+    type: "hidden"
+  }), _react.default.createElement("label", {
+    className: "control-label"
+  }, "Last name*"), _react.default.createElement("input", {
+    className: " form-control text-box single-line",
+    type: "text"
+  }), _react.default.createElement("span", {
+    className: "c-form__input-bar c-fab__input-bar no-animate"
+  })), _react.default.createElement("div", {
+    className: "c-form__country-phone form-group has-feedback c-form__field-tooltip country-drop-list-active has-success"
+  }, _react.default.createElement("input", {
+    type: "hidden"
+  }), _react.default.createElement("label", {
+    className: "control-label animate"
+  }, "Phone"), _react.default.createElement("input", {
+    className: "custom-phone-value",
+    type: "hidden"
+  }), _react.default.createElement("select", {
+    "data-type": "mobile-country-drop-list",
+    tabIndex: "1",
+    defaultValue: "Australia",
+    style: {
+      width: '61px',
+      paddingRight: '0'
+    }
+  }, _react.default.createElement("option", {
+    value: "Australia"
+  }, "Australia (+61)"), _react.default.createElement("option", {
+    value: "Australia2"
+  }, "Australia2 (+61)")), _react.default.createElement("div", {
+    className: "custom-phone-flag form-flag",
+    "data-iso": "us"
+  }, "+1"), _react.default.createElement("input", {
+    className: "custom-phone-input",
+    type: "number",
+    tabIndex: "1",
+    style: {
+      paddingLeft: '61px'
+    }
+  }), _react.default.createElement("span", {
+    className: "c-form__input-bar c-fab__input-bar no-animate"
+  })), _react.default.createElement("div", {
+    className: "required-field  form-group has-feedback c-form__field-tooltip"
+  }, _react.default.createElement("input", {
+    type: "hidden"
+  }), _react.default.createElement("label", {
+    className: "control-label"
+  }, "Email*"), _react.default.createElement("input", {
+    className: " form-control text-box single-line",
+    type: "email",
+    tabIndex: "1"
+  }), _react.default.createElement("span", {
+    className: "c-form__input-bar c-fab__input-bar no-animate"
+  }))))), _react.default.createElement("div", {
+    className: "required-field custom-checkbox-list c-form__multi-checkbox-vertical form-group has-feedback has-success"
+  }, _react.default.createElement("input", {
+    type: "hidden"
+  }), _react.default.createElement("label", {
+    className: "control-label"
+  }, "What can a travel specialist help you with?*"), _react.default.createElement("div", {
+    className: "custom-checkbox-list c-form__multi-checkbox-vertical checkbox"
+  }, _react.default.createElement("table", null, _react.default.createElement("tbody", null, _react.default.createElement("tr", null, _react.default.createElement("td", null, _react.default.createElement("label", null, _react.default.createElement("input", {
+    type: "checkbox",
+    value: "I'd like to request a quote"
+  }), _react.default.createElement("span", {
+    className: "c-form__custom-checkbox"
+  }, _react.default.createElement("span", {
+    className: "checkbox-ripple"
+  })), "I'd like to request a quote"))), _react.default.createElement("tr", null, _react.default.createElement("td", null, _react.default.createElement("label", null, _react.default.createElement("input", {
+    type: "checkbox",
+    value: "I'd like more information from a travel specialist"
+  }), _react.default.createElement("span", {
+    className: "c-form__custom-checkbox"
+  }, _react.default.createElement("span", {
+    className: "checkbox-ripple"
+  })), "I'd like more information from a travel specialist"))))))), _react.default.createElement("div", {
+    className: "custom-checkbox-list c-form__multi-checkbox contact form-group has-feedback has-success"
+  }, _react.default.createElement("input", {
+    type: "hidden"
+  }), _react.default.createElement("label", {
+    className: "control-label"
+  }, "How would you like us to contact you?"), _react.default.createElement("div", {
+    className: "custom-checkbox-list c-form__multi-checkbox contact checkbox"
+  }, _react.default.createElement("table", null, _react.default.createElement("tbody", null, _react.default.createElement("tr", null, _react.default.createElement("td", null, _react.default.createElement("label", null, _react.default.createElement("input", {
+    type: "checkbox",
+    value: "By email"
+  }), _react.default.createElement("span", {
+    className: "c-form__custom-checkbox"
+  }, _react.default.createElement("span", {
+    className: "checkbox-ripple"
+  })), "By email")), _react.default.createElement("td", null, _react.default.createElement("label", null, _react.default.createElement("input", {
+    type: "checkbox",
+    value: "By phone"
+  }), _react.default.createElement("span", {
+    className: "c-form__custom-checkbox"
+  }, _react.default.createElement("span", {
+    className: "checkbox-ripple"
+  })), "By phone")), _react.default.createElement("td", null, _react.default.createElement("label", null, _react.default.createElement("input", {
+    type: "checkbox",
+    value: "By text"
+  }), _react.default.createElement("span", {
+    className: "c-form__custom-checkbox"
+  }, _react.default.createElement("span", {
+    className: "checkbox-ripple"
+  })), "By text"))))))), _react.default.createElement("div", {
+    className: "form-group has-feedback has-success"
+  }, _react.default.createElement("input", {
+    type: "hidden"
+  }), _react.default.createElement("div", {
+    className: "checkbox"
+  }, _react.default.createElement("label", null, _react.default.createElement("input", {
+    type: "checkbox",
+    value: "true"
+  }), _react.default.createElement("span", {
+    className: "c-form__custom-checkbox"
+  }, _react.default.createElement("span", {
+    className: "checkbox-ripple"
+  })), _react.default.createElement("input", {
+    type: "hidden",
+    value: "false"
+  }), "Keep me updated on the latest Contiki news, deals and latest trips"))), _react.default.createElement("div", {
+    className: "form-submit-border c-form__button-wrap-flex"
+  }, _react.default.createElement("input", {
+    className: "btn  btn-default c-fab__btn",
+    type: "submit"
+  }), _react.default.createElement("div", {
+    className: "c-form__policy-links",
+    style: {
+      display: 'block'
+    }
+  }, _react.default.createElement("a", {
+    href: "#"
+  }, "Privacy Policy"), " ", _react.default.createElement("span", null, "|"), " ", _react.default.createElement("a", {
+    href: "#"
+  }, "Cookie Policy")))), _react.default.createElement("div", {
+    className: "c-form__compliant-notice"
+  }, _react.default.createElement("span", null, "Please note that unless you have requested to stay updated, the information you've provided here will be used for this request only.")))));
+};
+
+var _default = RequestInfoForm;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/RequestInfoBody.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _RequestInfoHeader = _interopRequireDefault(require("./RequestInfoHeader"));
+
+var _RequestInfoForm = _interopRequireDefault(require("./RequestInfoForm"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RequestInfoBody = function RequestInfoBody() {
+  return _react.default.createElement("div", {
+    className: "o-layout__wrap prop-without-header"
+  }, _react.default.createElement("div", {
+    className: "o-layout"
+  }, _react.default.createElement("div", {
+    className: "o-layout__row"
+  }, _react.default.createElement("div", {
+    className: "o-canvas"
+  }, _react.default.createElement("div", {
+    className: "o-canvas__table"
+  }, _react.default.createElement("div", {
+    className: "o-content"
+  }, _react.default.createElement("div", {
+    className: "o-content__table"
+  }, _react.default.createElement("div", {
+    className: "o-content__wrapper"
+  }, _react.default.createElement("div", {
+    className: "js-prevent-no-content"
+  }, _react.default.createElement("div", {
+    className: "c-page-form c-page-form-gaq"
+  }, _react.default.createElement("div", {
+    className: "c-page-form__title c-page-form__first-title"
+  }, "Request More Info"), _react.default.createElement(_RequestInfoHeader.default, null), _react.default.createElement(_RequestInfoForm.default, null)))))))))));
+};
+
+var _default = RequestInfoBody;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./RequestInfoHeader":"components/RequestInfoHeader.jsx","./RequestInfoForm":"components/RequestInfoForm.jsx"}],"components/ModalContainer.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35858,11 +36192,18 @@ var _react = _interopRequireDefault(require("react"));
 
 var _BookingBody = _interopRequireDefault(require("./BookingBody"));
 
+var _RequestInfoBody = _interopRequireDefault(require("./RequestInfoBody"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ModalContainer = function ModalContainer(props) {
   var showModal = props.showModal,
-      handleHide = props.handleHide;
+      handleHide = props.handleHide,
+      modalContent = props.modalContent;
+  var headerNames = {
+    booking: 'CALENDAR',
+    request: 'REQUEST MORE INFO'
+  };
   return _react.default.createElement(_Modal.default, {
     show: showModal,
     onHide: handleHide,
@@ -35888,7 +36229,7 @@ var ModalContainer = function ModalContainer(props) {
     onClick: handleHide
   }), _react.default.createElement("span", {
     className: "c-modal__header-title"
-  }, "TRAVEL STYLE")))), _react.default.createElement("div", {
+  }, headerNames[modalContent])))), _react.default.createElement("div", {
     className: "c-modal__body-wrapper"
   }, _react.default.createElement("div", {
     className: "c-modal__body"
@@ -35896,7 +36237,7 @@ var ModalContainer = function ModalContainer(props) {
     className: "c-modal__body-content-wrapper"
   }, _react.default.createElement("div", {
     className: "c-modal__body-content"
-  }, _react.default.createElement(_BookingBody.default, null))))), _react.default.createElement("div", {
+  }, modalContent === 'booking' && _react.default.createElement(_BookingBody.default, null), modalContent === 'request' && _react.default.createElement(_RequestInfoBody.default, null))))), _react.default.createElement("div", {
     className: "c-modal__footer-wrapper"
   }, _react.default.createElement("div", {
     className: "c-modal__footer"
@@ -35905,7 +36246,7 @@ var ModalContainer = function ModalContainer(props) {
 
 var _default = ModalContainer;
 exports.default = _default;
-},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./BookingBody":"components/BookingBody.jsx"}],"components/VideoContainer.jsx":[function(require,module,exports) {
+},{"react-bootstrap/Modal":"../../node_modules/react-bootstrap/Modal.js","react":"../../node_modules/react/index.js","./BookingBody":"components/BookingBody.jsx","./RequestInfoBody":"components/RequestInfoBody.jsx"}],"components/VideoContainer.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49078,7 +49419,13 @@ var Content = function Content(props) {
       showModal = _useState2[0],
       setModal = _useState2[1];
 
-  var handleShow = function handleShow() {
+  var _useState3 = (0, _react.useState)('booking'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      modalContent = _useState4[0],
+      setModalContent = _useState4[1];
+
+  var handleShow = function handleShow(modalName) {
+    setModalContent(modalName);
     setModal(true);
   };
 
@@ -49113,7 +49460,8 @@ var Content = function Content(props) {
     handleShow: handleShow
   }), _react.default.createElement(_VideoContainer.default, null), _react.default.createElement(_PhotoCarousel.default, null)), _react.default.createElement(_TripDescription.default, null))))), _react.default.createElement(_ModalContainer.default, {
     showModal: showModal,
-    handleHide: handleHide
+    handleHide: handleHide,
+    modalContent: modalContent
   })));
 };
 

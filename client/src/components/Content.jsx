@@ -13,7 +13,9 @@ const Content = (props) => {
 	const { data, error, loading } = useQuery(GET_TOUR_DETAILS, { variables: { id: tourId } });
 
 	const [ showModal, setModal ] = useState(false);
-	const handleShow = () => {
+	const [ modalContent, setModalContent ] = useState('booking');
+	const handleShow = (modalName) => {
+		setModalContent(modalName);
 		setModal(true);
 	};
 	const handleHide = () => {
@@ -45,7 +47,7 @@ const Content = (props) => {
 						</div>
 					</div>
 				</div>
-				<ModalContainer showModal={showModal} handleHide={handleHide} />
+				<ModalContainer showModal={showModal} handleHide={handleHide} modalContent={modalContent} />
 			</div>
 		</TourContext.Provider>
 	);

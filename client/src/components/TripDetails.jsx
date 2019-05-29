@@ -63,11 +63,18 @@ const TripDetails = (props) => {
 				<div className="c-trip-detail-info-middle__area-buttons">
 					<span
 						className="soleil-cta-button-pink c-trip-detail-info-middle__calendar-btn prop-has-uplift"
-						onClick={props.handleShow}
+						onClick={() => {
+							props.handleShow('booking');
+						}}
 					>
 						BOOK TRIP
 					</span>
-					<span className="soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe">
+					<span
+						className="soleil-cta-button-black get-a-quote__request-more-info link-modal-iframe"
+						onClick={() => {
+							props.handleShow('request');
+						}}
+					>
 						REQUEST MORE INFO
 					</span>
 				</div>

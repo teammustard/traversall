@@ -1,9 +1,14 @@
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
 import BookingBody from './BookingBody';
+import RequestInfoBody from './RequestInfoBody';
 
 const ModalContainer = (props) => {
-	const { showModal, handleHide } = props;
+	const { showModal, handleHide, modalContent } = props;
+	const headerNames = {
+		booking: 'CALENDAR',
+		request: 'REQUEST MORE INFO'
+	};
 
 	return (
 		<Modal
@@ -19,7 +24,7 @@ const ModalContainer = (props) => {
 						<div className="c-modal__header-cell">
 							<div className="c-modal__header">
 								<span className="c-modal__header-close" onClick={handleHide} />
-								<span className="c-modal__header-title">TRAVEL STYLE</span>
+								<span className="c-modal__header-title">{headerNames[modalContent]}</span>
 							</div>
 						</div>
 					</div>
@@ -28,7 +33,8 @@ const ModalContainer = (props) => {
 						<div className="c-modal__body">
 							<div className="c-modal__body-content-wrapper">
 								<div className="c-modal__body-content">
-									<BookingBody />
+									{modalContent === 'booking' && <BookingBody />}
+									{modalContent === 'request' && <RequestInfoBody />}
 								</div>
 							</div>
 						</div>
