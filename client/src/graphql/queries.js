@@ -36,3 +36,12 @@ export const GET_TOUR_DETAILS = gql`
 		}
 	}
 `;
+
+export const GET_ALL_COUNTRIES = gql`
+	{
+		getCountries {
+			country_code
+			full_name
+		}
+	}
+`;

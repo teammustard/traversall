@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TourContext } from './tourContext';
+import { numberWithCommas, getDiscountedPrice } from './util';
 
 const RequestInfoHeader = () => {
+	const tour = useContext(TourContext);
+
 	return (
 		<div className="trip-cover-m theme-dark image-position-above display-style1 hide-promo-false">
 			<a href="#" className="trip-cover-m-link prop-close-iframe-modal" />
@@ -9,19 +13,19 @@ const RequestInfoHeader = () => {
 				<div className="trip-cover-raq-right">
 					<div className="trip-cover-raq-top-right">
 						<a href="#" className="trip-cover-m-tour-name prop-close-iframe-modal">
-							European Discovery
+							{tour.name}
 						</a>
 					</div>
 					<div className="trip-cover-raq-bottom-right">
 						<div className="country-days__part">
 							<div className="trip-cover-m-item-info item-countries">
 								<div className="trip-cover-m-item-info-title">COUNTRIES</div>
-								<div className="trip-cover-m-item-info-value">9</div>
+								<div className="trip-cover-m-item-info-value">{tour.countries.length}</div>
 							</div>
 
 							<div className="trip-cover-m-item-info item-days">
 								<div className="trip-cover-m-item-info-title">DAYS</div>
-								<div className="trip-cover-m-item-info-value">13</div>
+								<div className="trip-cover-m-item-info-value">{tour.duration}</div>
 							</div>
 						</div>
 
@@ -32,13 +36,13 @@ const RequestInfoHeader = () => {
 									className="trip-cover-m-item-info-value"
 									style={{ textDecoration: 'line-through' }}
 								>
-									$3,125
+									${numberWithCommas(tour.listed_price)}
 								</div>
 							</div>
 							<div className="trip-cover-m-item-info item-from trip-cover-m-discount">
 								<div className="trip-cover-m-item-info-title">FROM</div>
 								<div className="trip-cover-m-item-info-value">
-									<span className="value-cont">$2,500</span>
+									<span className="value-cont">${numberWithCommas(getDiscountedPrice(tour))}</span>
 								</div>
 							</div>
 						</div>

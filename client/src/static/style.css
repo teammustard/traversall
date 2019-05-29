@@ -4483,6 +4483,11 @@ footer.o-footer--alt::before {
 .c-page-form.c-page-form-gaq fieldset .c-form__select-dates {
 	margin: 12px 0 20px !important;
 }
+
+.c-page-form.c-page-form-gaq fieldset .disabled {
+	opacity: 0.2;
+}
+
 .c-phone-menu .call-time-date:before,
 .c-search-widget__icon-field.c-search-widget__icon-field--time:before,
 .form-group.c-form__select-dates:before,
@@ -4720,6 +4725,17 @@ input[type=checkbox],
 input[type=radio] {
 	box-sizing: border-box;
 	padding: 0;
+}
+
+.c-fab__form input[type=checkbox]:checked + .c-form__custom-checkbox:before,
+.c-form__custom-checkbox-wrap input[type=checkbox][data-selected=true] + .c-form__custom-checkbox.checked:before,
+.ticon-ui-checkbox-true:before {
+	content: "\e946";
+}
+
+.c-page-form input[type=checkbox]:checked + .c-form__custom-checkbox::before {
+	background-color: #302a3d;
+	color: #5ed3b6;
 }
 
 .checkbox-ripple {
@@ -5096,8 +5112,8 @@ span.soleil-cta-button-black.cta-instagram {
 .c-page-form .c-form__compliant-notice {
 	font-size: 10px;
 	font-size: .625rem;
-	color: #736E7E;
+	color: #736e7e;
 	line-height: 13px;
 	margin-top: 15px;
-	text-align: left
+	text-align: left;
 }

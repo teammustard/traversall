@@ -2,6 +2,7 @@ type Query {
 	info: String!
 	getTours: [Tour!]!
 	getTour(id: ID!): Tour!
+	getCountries: [Country!]!
 }
 
 type Tour {

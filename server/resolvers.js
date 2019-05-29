@@ -5,7 +5,8 @@ const resolvers = {
 		getTour: async (parent, { id }, context, info) => {
 			const tour = await context.db.get(`SELECT * FROM tours WHERE id=${+id}`);
 			return tour;
-		}
+		},
+		getCountries: async (parent, args, context, info) => await context.db.all('SELECT * FROM countries')
 	},
 
 	Tour: {

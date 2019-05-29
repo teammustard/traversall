@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import TripDetails from './TripDetails';
 import ModalContainer from './ModalContainer';
 import VideoContainer from './VideoContainer';
 import { TourContext } from './tourContext';
+import { RequestInfoFormContext, defaultRequestForm, requestFormReducer } from './requestInfoFormHelpers';
 import { useQuery } from 'react-apollo-hooks';
 import { GET_TOUR_DETAILS } from '../graphql/queries';
 import PhotoCarousel from './PhotoCarousel';
@@ -14,6 +15,9 @@ const Content = (props) => {
 
 	const [ showModal, setModal ] = useState(false);
 	const [ modalContent, setModalContent ] = useState('booking');
+
+	const [ requestForm, dispatchRequestForm ] = useReducer(requestFormReducer, defaultRequestForm);
+
 	const handleShow = (modalName) => {
 		setModalContent(modalName);
 		setModal(true);
@@ -47,7 +51,9 @@ const Content = (props) => {
 						</div>
 					</div>
 				</div>
-				<ModalContainer showModal={showModal} handleHide={handleHide} modalContent={modalContent} />
+				<RequestInfoFormContext.Provider value={{ requestForm, dispatchRequestForm }}>
+					<ModalContainer showModal={showModal} handleHide={handleHide} modalContent={modalContent} />
+				</RequestInfoFormContext.Provider>
 			</div>
 		</TourContext.Provider>
 	);
