@@ -55719,9 +55719,8 @@ var _apolloCacheInmemory = require("apollo-cache-inmemory");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var httpLink = (0, _apolloLinkHttp.createHttpLink)({
-  uri: 'http://localhost:3000/graphql'
-}); // Hello
-
+  uri: 'http://localhost:3003/graphql'
+});
 var client = new _apolloClient.ApolloClient({
   link: httpLink,
   cache: new _apolloCacheInmemory.InMemoryCache()
@@ -55758,7 +55757,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59350" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50063" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
