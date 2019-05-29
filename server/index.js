@@ -4,7 +4,7 @@ const { typeDefs } = require('./schema.js');
 const { resolvers } = require('./resolvers.js');
 const { dbPromise } = require('../db');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 const path = require('path');
 
 app.use(express.static(path.join(__dirname, '../dist')));
