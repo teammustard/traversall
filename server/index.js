@@ -10,7 +10,7 @@ const cors = require('cors');
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 if (require.main === module) {
 	const server = new ApolloServer({
@@ -24,7 +24,7 @@ if (require.main === module) {
 	server.applyMiddleware({ app });
 
 	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, '../dist/index.html'));
+		res.sendFile(path.join(__dirname, '../public/index.html'));
 	});
 
 	app.listen(PORT, () => console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`));
