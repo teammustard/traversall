@@ -40,6 +40,7 @@ const TripDescription = () => {
 			</div>
 
 			<TripFeatures tour={tour} />
+			<div id="reviews">Review Component to be rendered here</div>
 		</React.Fragment>
 	);
 };
