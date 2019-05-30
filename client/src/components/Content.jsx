@@ -36,25 +36,16 @@ const Content = (props) => {
 
 	return (
 		<TourContext.Provider value={data.getTour}>
-			<div className="o-content">
-				<div className="o-content__table">
-					<div className="o-content__wrapper">
-						<div className="js-prevent-no-content">
-							<div className="c-trip-detail js-main-content prop-is-affiliate">
-								<div className="c-trip-detail-info">
-									<TripDetails handleShow={handleShow} />
-									<VideoContainer />
-									<PhotoCarousel hashtag={data.getTour.hashtag} />
-								</div>
-								<TripDescription />
-							</div>
-						</div>
-					</div>
-				</div>
-				<RequestInfoFormContext.Provider value={{ requestForm, dispatchRequestForm }}>
-					<ModalContainer showModal={showModal} handleHide={handleHide} modalContent={modalContent} />
-				</RequestInfoFormContext.Provider>
+			<div className="c-trip-detail-info">
+				<TripDetails handleShow={handleShow} />
+				<VideoContainer />
+				<PhotoCarousel hashtag={data.getTour.hashtag} />
 			</div>
+			<TripDescription />
+
+			<RequestInfoFormContext.Provider value={{ requestForm, dispatchRequestForm }}>
+				<ModalContainer showModal={showModal} handleHide={handleHide} modalContent={modalContent} />
+			</RequestInfoFormContext.Provider>
 		</TourContext.Provider>
 	);
 };

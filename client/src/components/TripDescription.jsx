@@ -40,7 +40,6 @@ const TripDescription = () => {
 			</div>
 
 			<TripFeatures tour={tour} />
-			<div id="reviews" />
 		</React.Fragment>
 	);
 };
