@@ -23,7 +23,7 @@ const BookingDetails = (props) => {
 				<div className="c-trip-detail-calendar-booking__details-item-main">
 					<div className="c-trip-detail-calendar-booking__details-item-outer">
 						<div className="c-trip-detail-calendar-booking__details-item-wrapper">
-							<h4 className="c-trip-detail-calendar-booking-title-inner">EUROPEAN DISCOVERY</h4>
+							<h4 className="c-trip-detail-calendar-booking-title-inner">{tour.name}</h4>
 							<span className="c-trip-detail-calendar-booking-title-overview">
 								<div>
 									Only $200 deposit to book. <br />

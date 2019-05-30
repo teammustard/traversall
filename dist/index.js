@@ -35586,7 +35586,7 @@ var BookingDetails = function BookingDetails(props) {
     className: "c-trip-detail-calendar-booking__details-item-wrapper"
   }, _react.default.createElement("h4", {
     className: "c-trip-detail-calendar-booking-title-inner"
-  }, "EUROPEAN DISCOVERY"), _react.default.createElement("span", {
+  }, tour.name), _react.default.createElement("span", {
     className: "c-trip-detail-calendar-booking-title-overview"
   }, _react.default.createElement("div", null, "Only $200 deposit to book. ", _react.default.createElement("br", null))))))), _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__guarantees"
