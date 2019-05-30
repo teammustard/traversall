@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 3003;
 const path = require('path');
 const cors = require('cors');
 
+app.use(cors());
+
 app.use(express.static(path.join(__dirname, '../dist')));
 
 if (require.main === module) {
@@ -19,7 +21,6 @@ if (require.main === module) {
 		})
 	});
 
-	app.use(cors());
 	server.applyMiddleware({ app });
 
 	app.get('*', (req, res) => {
