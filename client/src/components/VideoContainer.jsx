@@ -5,12 +5,13 @@ const VideoContainer = () => {
 			<div className="mbt-video- mbt-video-overlay- mbt-video-text-false mbt-player-ready">
 				<div className="mbt-video-container mbt-video-" style={{ maxHeight: '650px' }}>
 					<iframe
-						src="https://www.youtube.com/embed/hT6cSxtYv0M"
+						src="https://www.youtube.com/embed/hT6cSxtYv0M?wmode=transparent"
 						width="100%"
 						height="430px"
 						frameBorder="0"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowFullScreen
+						wmode="Opaque"
 					/>
 				</div>
 			</div>
