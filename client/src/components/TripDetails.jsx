@@ -49,14 +49,14 @@ const TripDetails = (props) => {
 				</div>
 				<div className="c-trip-detail-info__reviews">
 					<div className="c-trip-detail-info__rating">
-						<div className="c-trip-detail-info__rating_1 is-active" />
-						<div className="c-trip-detail-info__rating_2 is-active" />
-						<div className="c-trip-detail-info__rating_3 is-active" />
-						<div className="c-trip-detail-info__rating_4 is-active" />
-						<div className="c-trip-detail-info__rating_5 is-active" />
+						<div className={'c-trip-detail-info__rating_1' + (tour.rating >= 0.5 ? ' is-active' : '')} />
+						<div className={'c-trip-detail-info__rating_2' + (tour.rating >= 1.5 ? ' is-active' : '')} />
+						<div className={'c-trip-detail-info__rating_3' + (tour.rating >= 2.5 ? ' is-active' : '')} />
+						<div className={'c-trip-detail-info__rating_4' + (tour.rating >= 3.5 ? ' is-active' : '')} />
+						<div className={'c-trip-detail-info__rating_5' + (tour.rating >= 4.5 ? ' is-active' : '')} />
 					</div>
-					<div className="c-trip-detail-info__rating-overall">4.7</div>
-					<div className="c-trip-detail-info__rating-number-reviews">441 reviews</div>
+					<div className="c-trip-detail-info__rating-overall">{tour.rating}</div>
+					<div className="c-trip-detail-info__rating-number-reviews">{tour.reviews} reviews</div>
 				</div>
 			</div>
 			<div className="c-trip-detail-info-middle__right area-up-lift">

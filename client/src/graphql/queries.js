@@ -6,6 +6,8 @@ export const GET_TOUR_DETAILS = gql`
 			name
 			duration
 			listed_price
+			reviews
+			rating
 			tagline
 			description
 			hashtag

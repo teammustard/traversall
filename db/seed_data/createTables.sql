@@ -36,7 +36,9 @@ create table tours (
 	transport_detail TEXT,
 	experiences_included INT,
 	experiences_optional INT,
-	experiences_detail TEXT
+	experiences_detail TEXT,
+	reviews INT,
+	rating DECIMAL(2,1)
 );
 
 DROP TABLE IF EXISTS travel_styles;

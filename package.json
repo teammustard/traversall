@@ -4,7 +4,8 @@
 	"description": "> Kontiki is a replication of Contiki Travel Tour's tour details page. It aims to provide the identical seamless, single-page-app based presentation of Contiki's website.",
 	"scripts": {
 		"dev": "parcel client/src/index.js client/src/index.html",
-		"test": "jest"
+		"test": "jest",
+		"build": "parcel build client/src/index.js client/src/index.html"
 	},
 	"repository": {
 		"type": "git",

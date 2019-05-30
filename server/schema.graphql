@@ -32,6 +32,8 @@ type Tour {
 	experiences_detail: String!
 	trips: [Trip!]!
 	countries: [Country!]!
+	reviews: Int!
+	rating: Float!
 }
 
 type Trip {

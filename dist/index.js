@@ -25905,20 +25905,20 @@ var TripDetails = function TripDetails(props) {
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info__rating"
   }, _react.default.createElement("div", {
-    className: "c-trip-detail-info__rating_1 is-active"
+    className: 'c-trip-detail-info__rating_1' + (tour.rating >= 0.5 ? ' is-active' : '')
   }), _react.default.createElement("div", {
-    className: "c-trip-detail-info__rating_2 is-active"
+    className: 'c-trip-detail-info__rating_2' + (tour.rating >= 1.5 ? ' is-active' : '')
   }), _react.default.createElement("div", {
-    className: "c-trip-detail-info__rating_3 is-active"
+    className: 'c-trip-detail-info__rating_3' + (tour.rating >= 2.5 ? ' is-active' : '')
   }), _react.default.createElement("div", {
-    className: "c-trip-detail-info__rating_4 is-active"
+    className: 'c-trip-detail-info__rating_4' + (tour.rating >= 3.5 ? ' is-active' : '')
   }), _react.default.createElement("div", {
-    className: "c-trip-detail-info__rating_5 is-active"
+    className: 'c-trip-detail-info__rating_5' + (tour.rating >= 4.5 ? ' is-active' : '')
   })), _react.default.createElement("div", {
     className: "c-trip-detail-info__rating-overall"
-  }, "4.7"), _react.default.createElement("div", {
+  }, tour.rating), _react.default.createElement("div", {
     className: "c-trip-detail-info__rating-number-reviews"
-  }, "441 reviews"))), _react.default.createElement("div", {
+  }, tour.reviews, " reviews"))), _react.default.createElement("div", {
     className: "c-trip-detail-info-middle__right area-up-lift"
   }, _react.default.createElement("div", {
     className: "c-trip-detail-info-middle__area-buttons"
@@ -47223,7 +47223,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\ttagline\n\t\t\tdescription\n\t\t\thashtag\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\taccommodation_summary\n\t\t\taccommodation_detail\n\t\t\tbreakfast_included\n\t\t\tlunch_included\n\t\t\tdinner_included\n\t\t\tmeals_detail\n\t\t\tteam_summary\n\t\t\tteam_detail\n\t\t\ttransport_summary\n\t\t\ttransport_detail\n\t\t\texperiences_included\n\t\t\texperiences_optional\n\t\t\texperiences_detail\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t}\n\t\t}\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\treviews\n\t\t\trating\n\t\t\ttagline\n\t\t\tdescription\n\t\t\thashtag\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\taccommodation_summary\n\t\t\taccommodation_detail\n\t\t\tbreakfast_included\n\t\t\tlunch_included\n\t\t\tdinner_included\n\t\t\tmeals_detail\n\t\t\tteam_summary\n\t\t\tteam_detail\n\t\t\ttransport_summary\n\t\t\ttransport_detail\n\t\t\texperiences_included\n\t\t\texperiences_optional\n\t\t\texperiences_detail\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t}\n\t\t}\n\t}\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -49604,7 +49604,9 @@ var TripDescription = function TripDescription() {
     className: "c-trip-detail-info__title-body-affiliate-desc"
   }, "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."))))), _react.default.createElement(_TripFeatures.default, {
     tour: tour
-  }));
+  }), _react.default.createElement("div", {
+    id: "reviews"
+  }, "Review Component to be rendered here"));
 };
 
 var _default = TripDescription;
@@ -55735,7 +55737,7 @@ var _apolloCacheInmemory = require("apollo-cache-inmemory");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var httpLink = (0, _apolloLinkHttp.createHttpLink)({
-  uri: '/graphql'
+  uri: 'http://18.222.91.6:3003/graphql'
 });
 var client = new _apolloClient.ApolloClient({
   link: httpLink,
@@ -55773,7 +55775,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52622" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62684" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

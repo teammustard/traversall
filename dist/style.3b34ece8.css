@@ -3732,7 +3732,7 @@ ul {
 }
 
 .c-trip-what-you-get {
-	height: 100%;
+	/* height: 100%; */
 	padding: 20px 17px 45px;
 	width: 100%;
 }
