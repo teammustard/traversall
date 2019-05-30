@@ -4,12 +4,13 @@ import { numberWithCommas, getDiscountedPrice } from './util';
 
 const RequestInfoHeader = () => {
 	const tour = useContext(TourContext);
+	const randomImageLink = 'https://picsum.photos/157/157';
 
 	return (
 		<div className="trip-cover-m theme-dark image-position-above display-style1 hide-promo-false">
 			<a href="#" className="trip-cover-m-link prop-close-iframe-modal" />
 			<div className="trip-cover-raq-content">
-				<div className="trip-cover-raq-left">BACKGROUND HERE</div>
+				<div className="trip-cover-raq-left" style={{ backgroundImage: `url(${randomImageLink})` }} />
 				<div className="trip-cover-raq-right">
 					<div className="trip-cover-raq-top-right">
 						<a href="#" className="trip-cover-m-tour-name prop-close-iframe-modal">

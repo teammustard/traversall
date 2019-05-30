@@ -35867,6 +35867,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var RequestInfoHeader = function RequestInfoHeader() {
   var tour = (0, _react.useContext)(_tourContext.TourContext);
+  var randomImageLink = 'https://picsum.photos/157/157';
   return _react.default.createElement("div", {
     className: "trip-cover-m theme-dark image-position-above display-style1 hide-promo-false"
   }, _react.default.createElement("a", {
@@ -35875,8 +35876,11 @@ var RequestInfoHeader = function RequestInfoHeader() {
   }), _react.default.createElement("div", {
     className: "trip-cover-raq-content"
   }, _react.default.createElement("div", {
-    className: "trip-cover-raq-left"
-  }, "BACKGROUND HERE"), _react.default.createElement("div", {
+    className: "trip-cover-raq-left",
+    style: {
+      backgroundImage: "url(".concat(randomImageLink, ")")
+    }
+  }), _react.default.createElement("div", {
     className: "trip-cover-raq-right"
   }, _react.default.createElement("div", {
     className: "trip-cover-raq-top-right"
@@ -47219,7 +47223,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\ttagline\n\t\t\tdescription\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\taccommodation_summary\n\t\t\taccommodation_detail\n\t\t\tbreakfast_included\n\t\t\tlunch_included\n\t\t\tdinner_included\n\t\t\tmeals_detail\n\t\t\tteam_summary\n\t\t\tteam_detail\n\t\t\ttransport_summary\n\t\t\ttransport_detail\n\t\t\texperiences_included\n\t\t\texperiences_optional\n\t\t\texperiences_detail\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t}\n\t\t}\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n\tquery GetTour($id: ID!) {\n\t\tgetTour(id: $id) {\n\t\t\tname\n\t\t\tduration\n\t\t\tlisted_price\n\t\t\ttagline\n\t\t\tdescription\n\t\t\thashtag\n\t\t\tstarting_loc\n\t\t\tending_loc\n\t\t\taccommodation_summary\n\t\t\taccommodation_detail\n\t\t\tbreakfast_included\n\t\t\tlunch_included\n\t\t\tdinner_included\n\t\t\tmeals_detail\n\t\t\tteam_summary\n\t\t\tteam_detail\n\t\t\ttransport_summary\n\t\t\ttransport_detail\n\t\t\texperiences_included\n\t\t\texperiences_optional\n\t\t\texperiences_detail\n\t\t\tcountries {\n\t\t\t\tfull_name\n\t\t\t}\n\t\t\ttrips {\n\t\t\t\tdiscount\n\t\t\t\tstart_time\n\t\t\t\tend_time\n\t\t\t\tcapacity\n\t\t\t\tbooked\n\t\t\t}\n\t\t}\n\t}\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -47713,7 +47717,7 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var PhotoCarousel = function PhotoCarousel() {
+var PhotoCarousel = function PhotoCarousel(props) {
   var generatePhotos = function generatePhotos() {
     var photos = [];
     var randomPhoto = 'https://loremflickr.com/213/215/travel?random=';
@@ -47747,7 +47751,17 @@ var PhotoCarousel = function PhotoCarousel() {
     className: "c-trip-detail-olapic-wall-widget"
   }, _react.default.createElement("li", {
     className: "c-trip-detail-olapic-item grid-item c-trip-detail-olapic-box c-olapic-trigger-item-js"
-  }), generatePhotos())))))));
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-olapic-cta-wrapper"
+  }, _react.default.createElement("div", {
+    className: "c-trip-detail-olapic-hashtag"
+  }, _react.default.createElement("span", {
+    className: "c-trip-detail-olapic-hashtag-icon"
+  }), _react.default.createElement("span", {
+    className: "c-trip-detail-olapic-hashtag-text"
+  }, "#", props.hashtag), _react.default.createElement("div", {
+    className: "c-trip-detail-olapic-description"
+  }, "Through the eyes of our travellers")))), generatePhotos())))))));
 };
 
 var _default = PhotoCarousel;
@@ -49696,7 +49710,9 @@ var Content = function Content(props) {
     className: "c-trip-detail-info"
   }, _react.default.createElement(_TripDetails.default, {
     handleShow: handleShow
-  }), _react.default.createElement(_VideoContainer.default, null), _react.default.createElement(_PhotoCarousel.default, null)), _react.default.createElement(_TripDescription.default, null))))), _react.default.createElement(_requestInfoFormHelpers.RequestInfoFormContext.Provider, {
+  }), _react.default.createElement(_VideoContainer.default, null), _react.default.createElement(_PhotoCarousel.default, {
+    hashtag: data.getTour.hashtag
+  })), _react.default.createElement(_TripDescription.default, null))))), _react.default.createElement(_requestInfoFormHelpers.RequestInfoFormContext.Provider, {
     value: {
       requestForm: requestForm,
       dispatchRequestForm: dispatchRequestForm

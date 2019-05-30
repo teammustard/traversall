@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PhotoCarousel = () => {
+const PhotoCarousel = (props) => {
 	const generatePhotos = () => {
 		const photos = [];
 		const randomPhoto = 'https://loremflickr.com/213/215/travel?random=';
@@ -25,7 +25,19 @@ const PhotoCarousel = () => {
 						<div className="c-trip-detail-info__olapic-wrapper">
 							<div className="olapic-widget-content-wrapper">
 								<ul className="c-trip-detail-olapic-wall-widget">
-									<li className="c-trip-detail-olapic-item grid-item c-trip-detail-olapic-box c-olapic-trigger-item-js" />
+									<li className="c-trip-detail-olapic-item grid-item c-trip-detail-olapic-box c-olapic-trigger-item-js">
+										<div className="c-trip-detail-olapic-cta-wrapper">
+											<div className="c-trip-detail-olapic-hashtag">
+												<span className="c-trip-detail-olapic-hashtag-icon" />
+												<span className="c-trip-detail-olapic-hashtag-text">
+													#{props.hashtag}
+												</span>
+												<div className="c-trip-detail-olapic-description">
+													Through the eyes of our travellers
+												</div>
+											</div>
+										</div>
+									</li>
 									{generatePhotos()}
 								</ul>
 							</div>

@@ -8,6 +8,7 @@ export const GET_TOUR_DETAILS = gql`
 			listed_price
 			tagline
 			description
+			hashtag
 			starting_loc
 			ending_loc
 			accommodation_summary

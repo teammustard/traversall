@@ -44,7 +44,7 @@ const Content = (props) => {
 								<div className="c-trip-detail-info">
 									<TripDetails handleShow={handleShow} />
 									<VideoContainer />
-									<PhotoCarousel />
+									<PhotoCarousel hashtag={data.getTour.hashtag} />
 								</div>
 								<TripDescription />
 							</div>
