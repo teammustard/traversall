@@ -126,7 +126,7 @@ const BookingDetails = (props) => {
 								<span className="c-trip-detail-calendar-booking__total-price-copy">Total Price</span>
 								{tripDiscountedPrice && (
 									<span className="c-trip-detail-calendar-booking__details-accomodation-box-total-price c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted">
-										${tripDiscountedPrice}
+										${numberWithCommas(tripDiscountedPrice)}
 									</span>
 								)}
 								{!tripDiscountedPrice && (
