@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "parcel client/src/index.js client/src/index.html",
 		"test": "jest",
-		"build": "parcel build client/src/index.js client/src/index.html --out-dir public  --no-minify --no-source-maps"
+		"build": "parcel build client/src/index.js client/src/index.html --out-dir public --no-source-maps"
 	},
 	"repository": {
 		"type": "git",
