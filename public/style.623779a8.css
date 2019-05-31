@@ -1,0 +1,5172 @@
+html {
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	letter-spacing: 0;
+	text-rendering: optimizeLegibility;
+	text-size-adjust: 100%;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+*,
+::after,
+::before {
+	box-sizing: inherit;
+}
+
+body {
+	-moz-osx-font-smoothing: antialieased;
+	-webkit-font-smoothing: antialieased;
+	font-smoothing: antialieased;
+	height: auto;
+	overflow: auto;
+	-webkit-transform: none !important;
+	-ms-transform: none !important;
+	transform: none !important;
+	transition: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+}
+
+blockquote,
+body,
+caption,
+dd,
+dl,
+fieldset,
+figure,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+legend,
+ol,
+p,
+pre,
+table,
+td,
+th,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.o-header .contact-phone-num,
+.o-header__phone-text {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+}
+
+.o-layout {
+	min-height: 100%;
+	position: relative;
+	z-index: 1000;
+}
+
+.o-layout,
+.o-layout__row {
+	display: block;
+	width: 100%;
+}
+
+.o-layout,
+.o-layout__row,
+.o-layout__wrap {
+	height: 100%;
+}
+
+.o-layout {
+	z-index: auto;
+}
+
+.o-layout__row {
+	display: table;
+	table-layout: fixed;
+}
+
+.prop-without-header .o-content__wrapper {
+	height: calc(100vh);
+	overflow-y: scroll;
+}
+
+.c-menu,
+.c-menu__wrapper {
+	height: 100%;
+	overflow: hidden;
+}
+
+.c-menu {
+	width: 100%;
+	background-color: #302a3d;
+	display: block;
+	font-size: 10px;
+	left: 0;
+	min-height: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 1001;
+}
+
+.c-menu {
+	-webkit-column-width: 200px;
+	column-width: 200px;
+	height: 100%;
+	width: 44px;
+	display: table-cell;
+	position: static;
+	transition: width .8s cubic-bezier(.645, .045, .355, 1);
+}
+
+.o-canvas,
+.o-canvas__table,
+.o-content,
+.o-content__table,
+.o-content__wrapper {
+	position: relative;
+}
+
+.o-canvas,
+.o-footer__logo-contiki {
+	-webkit-backface-visibility: hidden;
+}
+
+.o-canvas,
+.o-canvas__table {
+	height: auto;
+	width: 100%;
+}
+
+.o-canvas,
+.o-canvas__table {
+	height: 100%;
+}
+
+.o-canvas__table {
+	display: table;
+	table-layout: fixed;
+}
+
+.o-canvas {
+	backface-visibility: hidden;
+	background-color: #efeef0;
+	display: block;
+	left: 0;
+	top: 0;
+	transition: left .8s cubic-bezier(.645, .045, .355, 1);
+	vertical-align: top;
+	z-index: 1000;
+}
+
+.o-canvas {
+	-webkit-column-width: auto;
+	column-width: auto;
+	display: table-cell;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	width: auto;
+	z-index: 1;
+}
+
+.o-header {
+	height: 52px;
+	width: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	background-color: #f9f9f9;
+	display: block;
+	left: 0;
+	position: fixed;
+	top: 0;
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
+	transition: left .8s cubic-bezier(.645, .045, .355, 1), -webkit-transform .3s ease-out;
+	transition: left .8s cubic-bezier(.645, .045, .355, 1), transform .3s ease-out;
+	transition: left .8s cubic-bezier(.645, .045, .355, 1), transform .3s ease-out, -webkit-transform .3s ease-out;
+	z-index: 10000;
+}
+
+.o-header::after,
+.o-header::before {
+	height: 1px;
+	width: 100%;
+	background-color: none;
+	content: "";
+	display: block;
+	left: 0;
+	position: absolute;
+}
+
+.o-header::before {
+	bottom: 0;
+}
+
+.o-header::after {
+	bottom: 1px;
+}
+
+.o-header .contact-phone-num {
+	font-size: 16px;
+	font-size: 1rem;
+	color: #454545;
+	display: none;
+	font-weight: 800;
+	padding-top: 6px;
+	position: relative;
+	width: 100%;
+	z-index: 3;
+}
+
+.o-header .contact-phone-num:only-child {
+	padding-top: 14px;
+}
+
+.o-header .contact-phone-num.no-pd {
+	bottom: 5px;
+	padding-top: 0;
+	position: relative;
+}
+
+.o-header::before {
+	background-color: #e2e2e2;
+}
+
+.o-header::after {
+	background-color: #ebebeb;
+}
+
+.c-hidden-header .o-header,
+.o-header__wrapper .o-header__phone .form-flag::after {
+	display: none;
+}
+
+.o-header .contact-phone-num {
+	font-size: 19px;
+	font-size: 1.1875rem;
+	padding-top: 8px;
+}
+
+.o-header {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: none;
+	display: table-row;
+	position: relative;
+	width: auto;
+}
+
+.o-header {
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+
+.body-resizing-process .o-header {
+	transition: none;
+}
+
+.o-header__wrapper {
+	height: 52px;
+	width: 100%;
+	background-color: #f9f9f9;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
+	position: relative;
+	z-index: 999;
+}
+
+.o-header__wrapper {
+	display: table-cell;
+	position: absolute;
+}
+
+.o-header__wrapper {
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, .3);
+}
+
+.o-header__search {
+	height: 52px;
+	background: #f9f9f9;
+	float: left;
+	left: 45px;
+	overflow: visible;
+	position: absolute;
+	top: 0;
+	transition: left .3s ease, width .3s ease;
+	width: calc(100% - 140px);
+	z-index: 99;
+}
+
+.o-header__search {
+	background-color: #e5e4e6;
+	display: inline-block;
+	height: 35px;
+	left: 150px;
+	position: relative;
+	top: 8px;
+	width: calc(100% - 265px);
+}
+
+.o-header__search {
+	width: 44.79167%;
+	float: left;
+	margin-left: 17.1875%;
+	left: 0;
+	margin-right: 0;
+}
+
+.c-search__input-wrap {
+	font-size: 12px;
+	font-size: .75rem;
+	float: left;
+	padding: 0 7px;
+	position: relative;
+	width: 100%;
+}
+
+.c-search__input-wrap {
+	font-size: 15px;
+	font-size: .9375rem;
+	padding: 0;
+}
+
+.c-search__input-wrap {
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.c-search__btn {
+	font-size: 18px;
+	font-size: 1.125rem;
+	color: #fb0051;
+	cursor: none;
+	display: table;
+	height: 36px;
+	left: 7px;
+	position: absolute;
+	top: 9px;
+	transition: left .3s;
+	width: 30px;
+	z-index: 2;
+}
+
+.c-search__btn:before,
+.o-header__btn-search:before,
+.ticon-ui-search:before {
+	content: "\e95f";
+}
+
+.c-search__btn::before {
+	display: table-cell;
+	height: inherit;
+	text-align: center;
+	text-indent: 5px;
+	vertical-align: middle;
+	width: inherit;
+}
+
+.c-search__btn {
+	background: #fb0051;
+	border-radius: 2px 0 0 2px;
+	color: #fff;
+	cursor: pointer;
+	left: 0;
+	top: 0;
+	width: 36px;
+}
+
+.c-search__btn::before {
+	text-indent: 0;
+}
+
+.c-phone-menu .contact-phone-copy,
+.c-search__input {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+}
+
+.c-search__input {
+	height: 36px;
+	width: 100%;
+	background: #e5e4e6;
+	border: 0;
+	border-radius: 0;
+	color: #302a3d;
+	display: inline-block;
+	font-size: 15px;
+	letter-spacing: 0;
+	overflow: hidden;
+	padding-left: 35px;
+	padding-right: 12px;
+	position: relative;
+	text-overflow: ellipsis;
+	top: 9px;
+	transition: width .3s ease, -webkit-transform .3s ease;
+	transition: transform .3s ease, width .3s ease;
+	transition: transform .3s ease, width .3s ease, -webkit-transform .3s ease;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.c-search__input {
+	color: #727272;
+	display: block;
+	left: 0;
+	padding-left: 45px;
+	padding-right: 16px;
+	top: 0;
+}
+
+.o-content,
+.o-content__table,
+.o-content__wrapper {
+	height: auto;
+	width: 100%;
+	display: block;
+}
+
+.o-content {
+	background-color: #efeef0;
+	height: 100%;
+	height: calc(100% - 52px);
+	min-height: inherit;
+	z-index: 4;
+}
+
+.o-content,
+.o-content__table,
+.o-content__wrapper {
+	height: 100%;
+}
+
+.o-content {
+	display: table-row;
+	height: 100%;
+	min-height: 100%;
+}
+
+.o-content {
+	background-color: #f3f3f3;
+}
+
+.o-content__table {
+	display: table-cell;
+}
+
+.o-content__wrapper {
+	display: inline-block;
+	height: calc(100vh - 52px);
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.js-prevent-no-content {
+	height: auto;
+	width: 100%;
+	display: block;
+	min-height: calc(100vh - 52px);
+	padding-top: 52px;
+	position: relative;
+	-webkit-transform: none !important;
+	-ms-transform: none !important;
+	transform: none !important;
+}
+
+.js-prevent-no-content {
+	padding-top: 0;
+}
+
+.c-trip-detail {
+	position: relative;
+	text-align: center;
+}
+
+.c-trip-detail {
+	margin: 0 auto;
+	width: 100%;
+	background-clip: initial;
+	background-origin: initial;
+	max-width: 1280px;
+	min-height: 600px;
+}
+
+.c-trip-detail:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+.c-trip-detail-info {
+	background: #fff;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	margin: auto;
+	padding: 45px 0 0;
+	width: 100%;
+}
+
+.c-trip-detail-info {
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+.c-trip-detail-info-top__left,
+.c-trip-detail-info-top__right {
+	padding-bottom: 20px;
+	text-align: left;
+}
+
+h1 {
+	line-height: 100%;
+}
+
+.c-trip-detail-info-top__left h1 {
+	text-transform: uppercase;
+	font-weight: 700;
+	font-family: "Futura W01 ExtraBold Condensed", arial, sans-serif;
+	font-size: 38px;
+	font-size: 2.375rem;
+	color: #302a3d;
+	text-align: left;
+	max-width: 70%;
+}
+
+.c-trip-detail-info-top__right {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: flex-end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+}
+
+.c-trip-detail-info-top__right {
+	float: right;
+	width: 50%;
+}
+
+.c-trip-detail-info .c-trip-detail-info-top__left,
+.c-trip-detail-info .c-trip-detail-info-top__right {
+	max-width: 640px;
+	width: 41.25%;
+}
+
+.c-trip-detail-info-top__right-label {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	white-space: nowrap;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	text-decoration: none;
+	font-weight: 700;
+	display: block;
+	line-height: 12px;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-info-top__right-label:hover {
+	text-decoration: none;
+}
+
+.c-trip-detail-info-top__right-value {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	text-transform: uppercase;
+	line-height: 1;
+	font-size: 28px;
+	font-size: 1.75rem;
+	color: #302a3d;
+}
+
+.c-trip-detail-info-top__right > :not(:first-child) {
+	padding-left: 20px;
+}
+
+.c-trip-detail-info-top__right > :not(:first-child) {
+	margin-left: 40px;
+}
+
+.prop-discounted .c-trip-detail-info-top__right-value {
+	color: #736e7e;
+	text-decoration: line-through;
+}
+
+.c-trip-detail-info-top__right-value.prop-value-discount {
+	color: #fb0051;
+}
+
+.c-trip-detail-info-top__right-value.prop-value-uplift {
+	color: #6469da;
+}
+
+.c-trip-detail-info-top__right-value span.c-trip-cover__financing-amount {
+	color: #6469da;
+}
+
+.uplift-more-info {
+	white-space: nowrap;
+}
+
+.uplift-more-info::after {
+	content: "\e90c";
+}
+
+.uplift-more-info::after {
+	margin-left: 3px;
+}
+
+.c-trip-cover__financing-text {
+	color: #6469da;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.c-trip-detail-info-top__right-value span.c-trip-cover__financing-amount .c-trip-cover__financing-text {
+	color: #6469da;
+	text-transform: initial;
+}
+
+.c-trip-detail-info-middle__left {
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	line-height: 2.2em;
+	padding-bottom: 20px;
+}
+
+.c-trip-detail-info .c-trip-detail-info-middle__left {
+	max-width: 580px;
+	width: 32.91667%;
+}
+
+.c-trip-detail-info__style {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	white-space: nowrap;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #302a3d;
+	text-decoration: none;
+	font-weight: 700;
+	background-color: #e7e4ee;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 2em;
+	margin-right: 8px;
+	padding: 0 30px 0 7px;
+	position: relative;
+	text-transform: uppercase;
+	vertical-align: bottom;
+}
+
+.c-trip-detail-info__style::after,
+.c-trip-detail-olapic-item:not(.c-trip-detail-olapic-box):before,
+.ticon-ui-expand:before {
+	content: "\e952";
+}
+
+#cookies-form button,
+.c-booking-option__icon,
+.c-login-option__icon,
+.c-logout-option__icon,
+.c-menu__links-item--selected:hover > a::before,
+.c-menu__links-item--selected > a::before,
+.c-menu__links-item > a::before,
+.c-menu__social-link--facebook,
+.c-menu__social-link--instagram,
+.c-menu__social-link--pinterest,
+.c-menu__social-link--tumblr,
+.c-menu__social-link--twitter,
+.c-menu__social-link--youtube,
+.c-modal-uplift__adventages-note-payment::before,
+.c-my-account-option__icon,
+.c-phone-menu .c-phone-menu__contact,
+.c-phone-menu .call-time-date::before,
+.c-phone-menu .phone-call-state::before,
+.c-register-option__icon,
+.c-search__btn,
+.c-search__close,
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info::before,
+.c-trip-detail-info__rating > div,
+.c-trip-detail-info__style::after,
+.c-trip-detail-info__title-body-info-images.prop-olapic-disabled .c-trip-detail-info__instagram-hash::before,
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-hashtag-icon,
+.c-trip-detail-olapic-item:not(.c-trip-detail-olapic-box)::before,
+.c-trip-detail-olapic-user-name::before,
+.c-trip-registration-option__icon,
+.c-user-menu__back::before,
+.c-user-menu__close,
+.o-footer .c-page-form .c-form__succes-msg::before,
+.o-footer__currency-eu::before,
+.o-footer__currency-uk::before,
+.o-footer__currency-us::before,
+.o-footer__feefo-star,
+.o-footer__input-switch:checked + .o-footer__label-accordion::before,
+.o-footer__label-accordion::before,
+.o-footer__travel-agent::before,
+.o-header__btn-phone,
+.o-header__btn-pin,
+.o-header__btn-search,
+.o-header__btn-user,
+.o-header__wrapper .o-header__phone .contact-phone-num.prop-is-open::after,
+.o-header__wrapper .o-header__phone .contact-phone-num::after,
+.o-search__show-filter-swatch::after,
+.uplift-more-info::after {
+	display: inline-block;
+	font-family: contiki !important;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 1;
+	speak: none;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+	text-rendering: auto;
+}
+
+.c-trip-detail-info__style:hover {
+	text-decoration: none;
+}
+
+.c-trip-detail-info__style::after {
+	color: #fff;
+	font-size: 8px;
+	font-weight: 700;
+	position: absolute;
+	right: 7px;
+	top: 9px;
+	-webkit-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	transform: rotate(270deg);
+}
+
+.c-trip-detail-info__style::before {
+	background-color: #746d7f;
+	content: "";
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 23px;
+}
+
+.c-trip-detail-info__reviews {
+	display: inline-block;
+	position: relative;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.c-trip-detail-info__rating {
+	cursor: default;
+	display: inline-block;
+}
+
+.c-trip-detail-info__rating > div {
+	color: #a9a9a9;
+	font-size: inherit;
+	margin-left: 0;
+	position: relative;
+	top: 0;
+}
+
+.c-trip-detail-info__rating > div.is-active {
+	color: #ffc432;
+}
+
+.c-trip-detail-info__rating > div:before,
+.o-footer__feefo-star:before,
+.ticon-ui-special-stopover-empty:before {
+	content: "\e962";
+}
+
+.c-trip-detail-info__rating > div + * {
+	margin-left: 3px;
+}
+
+.c-trip-detail-info__rating > div::before {
+	font-size: 16px;
+	padding: 0;
+}
+
+.c-menu__links-text--reviews:before,
+.c-trip-detail-info__rating > div.is-active:before,
+.o-footer__feefo-star.is-active:before,
+.ticon-ui-special-stopover:before {
+	content: "\e961";
+}
+
+.c-trip-detail-info__rating-overall {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	color: #746d7f;
+	display: inline-block;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 0 5px;
+	position: relative;
+	top: -1px;
+}
+
+.c-trip-detail-info__rating-number-reviews {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	color: #fb0051;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 25px;
+	position: relative;
+	text-decoration: underline;
+	top: -2px;
+}
+
+.c-trip-detail-info__rating-number-reviews {
+	display: inline-block;
+}
+
+.c-trip-detail-info-middle__right {
+	padding-bottom: 20px;
+}
+
+.c-trip-detail-info-middle__right {
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row-reverse;
+	-ms-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+}
+
+.c-trip-detail-info .c-trip-detail-info-middle__right {
+	max-width: 700px;
+	width: 49.58333%;
+}
+
+.c-trip-detail-info-middle__area-buttons {
+	white-space: nowrap;
+}
+
+.c-trip-detail-info-middle__area-buttons {
+	text-align: right;
+}
+
+.c-faq__cta,
+.c-free-text-box a.soleil-cta-button,
+.c-free-text-box a.soleil-cta-button-black,
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box a.soleil-cta-button-white,
+.c-free-text-box span.soleil-cta-button,
+.c-free-text-box span.soleil-cta-button-black,
+.c-free-text-box span.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-white,
+.o-footer .c-page-form .btn,
+a.soleil-cta-button,
+a.soleil-cta-button-black,
+a.soleil-cta-button-pink,
+a.soleil-cta-button-red,
+a.soleil-cta-button-transparent,
+a.soleil-cta-button-white,
+span.soleil-cta-button,
+span.soleil-cta-button-black,
+span.soleil-cta-button-pink,
+span.soleil-cta-button-red,
+span.soleil-cta-button-transparent,
+span.soleil-cta-button-white {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 1.25;
+	margin: 5px 0;
+	max-width: 100%;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background-color .35s, color .35s;
+}
+
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-pink,
+.o-footer .c-page-form .btn,
+a.soleil-cta-button-pink,
+span.soleil-cta-button-pink {
+	background-color: #fb0051;
+	border: 0;
+}
+
+.c-faq__cta,
+.c-free-text-box a.soleil-cta-button,
+.c-free-text-box a.soleil-cta-button-black,
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box a.soleil-cta-button-white,
+.c-free-text-box span.soleil-cta-button,
+.c-free-text-box span.soleil-cta-button-black,
+.c-free-text-box span.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-white,
+.o-footer .c-page-form .btn,
+a.soleil-cta-button,
+a.soleil-cta-button-black,
+a.soleil-cta-button-pink,
+a.soleil-cta-button-red,
+a.soleil-cta-button-transparent,
+a.soleil-cta-button-white,
+span.soleil-cta-button,
+span.soleil-cta-button-black,
+span.soleil-cta-button-pink,
+span.soleil-cta-button-red,
+span.soleil-cta-button-transparent,
+span.soleil-cta-button-white {
+	padding: 15px 30px;
+}
+
+.c-faq__cta,
+.c-free-text-box a.soleil-cta-button-black,
+.c-free-text-box span.soleil-cta-button-black,
+a.soleil-cta-button-black,
+span.soleil-cta-button-black {
+	background-color: transparent;
+	border: 1px solid #302a3d;
+	color: #302a3d;
+}
+
+.c-trip-detail-info-middle__area-buttons .c-trip-detail-info-middle__calendar-btn,
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info {
+	min-width: 120px;
+}
+
+.c-trip-detail-info-middle__area-buttons .c-trip-detail-info-middle__calendar-btn {
+	margin: 0;
+	padding: 15px 16px;
+}
+
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info {
+	padding: 14px 16px;
+}
+
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info {
+	margin: 0 0 0 5px;
+}
+
+.c-trip-detail-info-middle__area-buttons .c-trip-detail-info-middle__calendar-btn,
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info {
+	display: inline-block;
+	font-size: 14px;
+}
+
+.c-faq__cta:hover,
+.o-footer .c-page-form .btn:hover,
+a.soleil-cta-button-black:hover,
+a.soleil-cta-button-pink:hover,
+a.soleil-cta-button-red:hover,
+a.soleil-cta-button-transparent:hover,
+a.soleil-cta-button-white:hover,
+a.soleil-cta-button:hover,
+span.soleil-cta-button-black:hover,
+span.soleil-cta-button-pink:hover,
+span.soleil-cta-button-red:hover,
+span.soleil-cta-button-transparent:hover,
+span.soleil-cta-button-white:hover,
+span.soleil-cta-button:hover {
+	background-color: rgba(255, 255, 255, .2);
+	border-color: #efeef0;
+	color: #efeef0;
+	text-decoration: none;
+}
+
+.c-faq__cta:hover,
+a.soleil-cta-button-black:hover,
+span.soleil-cta-button-black:hover {
+	background-color: rgba(48, 42, 61, .2);
+	border: 1px solid #302a3d;
+	color: #302a3d;
+}
+
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info:hover {
+	background: 0 0;
+	border-color: #cf0043;
+	color: #cf0043;
+}
+
+.o-footer .c-page-form .btn:focus,
+.o-footer .c-page-form .btn:hover,
+a.soleil-cta-button-pink:focus,
+a.soleil-cta-button-pink:hover,
+span.soleil-cta-button-pink:focus,
+span.soleil-cta-button-pink:hover {
+	background-color: #cf0043;
+	color: #fff;
+}
+
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info::before {
+	content: "\e99f";
+}
+
+.c-trip-detail-info-middle__area-buttons .get-a-quote__request-more-info::before {
+	display: inline-block;
+	font-size: 16px;
+	margin-right: 6px;
+	vertical-align: middle;
+}
+
+.c-trip-detail-info-middle__right-trip-statement {
+	line-height: 1.2em;
+	padding: 10px 0 20px;
+}
+
+.c-trip-detail-info-middle__right-trip-statement {
+	padding: 10px 10px 0;
+}
+
+.c-trip-detail-info-middle__right-trip-statement {
+	padding: 0 10px;
+}
+
+.c-trip-detail-info-middle__right-trip-statement .zip-money-text {
+	margin-top: -3px;
+}
+
+/* Modal */
+
+#main-map-cartodb .maps-legend,
+#main-map-cartodb .maps-legend.maps-more,
+#main-map-cartodb .maps-more,
+.UI_Brochure,
+.c-autocomplete__item.countries i.c-autocomplete__country-marker,
+.c-autocomplete__item:not(.countries) i.c-autocomplete__map-icon,
+.c-autocomplete__item:not(.countries) i.c-autocomplete__map-marker,
+.c-autocomplete__item[data-val=Asia] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val="New Zealand"] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val=Australia] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val=Europe] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val="Latin America"] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val="USA & Canada"] .c-autocomplete__region-icon,
+.c-autocomplete__item[data-val="Africa & the Middle East"] .c-autocomplete__region-icon,
+.c-fab-chevron,
+.c-fab__brochure-chevron,
+.c-fab__brochure-overlay p::before,
+.c-fab__brochures-selected-list li i,
+.c-fab__close-button,
+.c-fab__contact-close-btn,
+.c-fab__form .c-form__custom-arrow,
+.c-fab__form input[type=checkbox] + .c-form__custom-checkbox,
+.c-fab__grid-share .c-fab__share-btn .c-fab__link-share .c-fab__share-btn span,
+.c-fab__grid-share .c-fab__share-btn .c-fab__link-share [class*=c-fab__share__]::before,
+.c-fab__submenu.prop-name-downloadbrochurepanel .c-fab__popup-title::before,
+.c-fab__text-link.c-fab__text-link-with-icon i,
+.c-fab__wrap-submit.prop-submitted::before,
+.c-filter.prop-bars[data-type=reviewsCard] .c-filter__cell-title-icon,
+.c-filter.prop-header-popup .c-filter__cell-value.prop-type-value-stars .c-filter__cell-value-star,
+.c-filter.prop-header-popup .c-filter__filter::after,
+.c-form__custom-checkbox-wrap input[type=checkbox] + .c-form__custom-checkbox,
+.c-form__field-tooltip .c-form__icon-tooltip,
+.c-form__show-password,
+.c-form__social-btn-wrap,
+.c-lightbox-olapic__back span::before,
+.c-lightbox-olapic__close,
+.c-lightbox-olapic__next-icon,
+.c-lightbox-olapic__prev-icon,
+.c-lightbox-olapic__related-trips-arrow-icon,
+.c-lightbox-olapic__social-links a,
+.c-main-reviews .c-main-reviews__rating > div,
+.c-main-reviews__header-toggle span::before,
+.c-main-reviews__side-mobile-header-close::before,
+.c-main-reviews__side-sa-tour.prop-is-tour-visible::before,
+.c-map-itinerary__legend-close-icon,
+.c-map-itinerary__legend-item[data-type="Bus route"] .c-map-itinerary__legend-icon,
+.c-map-itinerary__legend-item[data-type="River route"] .c-map-itinerary__legend-icon,
+.c-map-itinerary__legend-item[data-type="Plane route"] .c-map-itinerary__legend-icon,
+.c-map-itinerary__legend-item[data-type="Traveller Photos"] .c-map-itinerary__legend-icon,
+.c-map-olapic__close,
+.c-map-olapic__hashtag,
+.c-modal.calendar .o-header__phone,
+.c-modal__header-close,
+.c-page-form-gaq .c-form__succes-msg .c-page-form__subtitle::before,
+.c-page-form-newsletter .c-form__succes-msg .c-page-form__subtitle::before,
+.c-paginator__navigation .js-first-action,
+.c-paginator__navigation .js-last-action,
+.c-paginator__navigation .js-next-action,
+.c-paginator__navigation .js-prev-action,
+.c-reviews-card__total-star,
+.c-trip-cover .maps-legend,
+.c-trip-cover .maps-legend.maps-more,
+.c-trip-cover .maps-more,
+.c-trip-detail-calendar-booking__body-top-icons-calendar,
+.c-trip-detail-calendar-booking__body-top-icons-list,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td.almost-full::after,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w,
+.c-trip-detail-calendar-booking__calendar-icons-af,
+.c-trip-detail-calendar-booking__calendar-icons-da,
+.c-trip-detail-calendar-booking__calendar-icons-dd,
+.c-trip-detail-calendar-booking__calendar-list-view-header .sort-by::after,
+.c-trip-detail-calendar-booking__calendar-list-view-item-description ul li span.icon,
+.c-trip-detail-calendar-booking__calendar-list-view-item-icon,
+.c-trip-detail-calendar-booking__calendar-span.aFull,
+.c-trip-detail-calendar-booking__calendar-warning-mobile span,
+.c-trip-detail-calendar-booking__calendar-warning-mobile::before,
+.c-trip-detail-calendar-booking__details-accomodation-button i,
+.c-trip-detail-calendar-booking__guarantees-item-icon,
+.c-trip-detail-calendar-booking__guarantees-item-right-body .more-icon,
+.c-trip-detail-calendar-booking__options-item-icon-accomodation,
+.c-trip-detail-calendar-booking__options-item-icon-location,
+.c-trip-detail-calendar-booking__options-item-inner.c-trip-detail-calendar-booking__options-item-inner-selected
+	.c-trip-detail-calendar-booking__options-item-inner-icon:after,
+.c-trip-detail-calendar__request-more-info .get-a-quote__request-more-info::after,
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-hashtag-icon,
+.c-trip-detail-olapic-item:not(.c-trip-detail-olapic-box)::before,
+.c-trip-detail-olapic-user-name::before,
+.c-trip-detail-reviews__next::before,
+.c-trip-detail-reviews__prev::before,
+.c-trip-itinerary .c-trip-itinerary__back-overview i,
+.c-trip-itinerary__card-body-leg-desc-opts-symbol.prop-symbol-optional,
+.c-trip-itinerary__card-body-leg-road-marker,
+.c-trip-itinerary__card-body-row .c-trip-itinerary__card-body-leg-desc-main-title .icon,
+.c-trip-itinerary__card-body-row.prop-final-row .c-trip-itinerary__card-body-leg-desc-main-title .icon,
+.c-trip-itinerary__control:first-child::before,
+.c-trip-itinerary__control:last-child::before,
+.c-trip-itinerary__list-back::before,
+.c-trip-itinerary__list-cell-name::after,
+.c-trip-itinerary__list-name::after,
+.c-trip-reviews__body-card.prop-review-card .c-trip-reviews__review-card-user-info-total-star,
+.c-trip-what-you-get__expand-cta-arrow::before,
+.form-group.c-form__select-dates::before,
+.mbt-video-close,
+.mbt-video-fullscreen,
+.media-carousel-modal-close,
+.olapic-gallery-column .olapic-wall-image-wrapper:hover::before,
+.olapic-gallery-header-info::before,
+.olapic-gallery-photoby span::after,
+.proceed-download .UI_Download,
+.prop-extra-days .c-trip-itinerary__list-cell-road-line::before,
+.trip-cover-m-review-star,
+[class*=c-trip-what-you-get__icon],
+[data-single-map=true] div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__disable-grab,
+[data-single-map=true].is-region-grab-active
+	div[data-carto-map-type=dynamicEnh]
+	.leaflet-control-zoom
+	a.c-leafleft-control__disable-grab,
+body:not(.sitecore-template-orderaprintbrochurepage) .c-fab:not(.prop-has-primary-elements):not(.expanded),
+div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__disable-grab {
+	display: inline-block;
+	font-family: contiki !important;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 1;
+	speak: none;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+	text-rendering: auto;
+}
+
+.c-modal {
+	height: 100%;
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	top: 0;
+	border-radius: 0;
+	text-rendering: optimizeLegibility;
+	text-size-adjust: 100%;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.c-modal {
+	position: absolute;
+}
+
+.c-modal {
+	top: 0;
+	z-index: 10000;
+	display: block;
+}
+
+.c-modal__inner,
+.c-modal__layer,
+.c-modal__outer {
+	height: 100%;
+	width: 100%;
+	display: block;
+	position: relative;
+}
+
+.c-modal__layer {
+	background-color: #736e7e;
+	position: absolute;
+	filter: alpha(opacity=0);
+	opacity: 0.6;
+}
+
+.c-modal.calendar::after {
+	background-color: #efeef0;
+}
+
+.c-modal__outer {
+	padding: 0;
+}
+
+.c-modal__inner .c-modal__footer-wrapper {
+	display: none;
+}
+
+.c-modal.calendar .c-modal__inner:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+.modal-content {
+	border: 0;
+	border-radius: 0;
+	display: block;
+	height: 100%;
+}
+
+.c-modal__inner > div {
+	display: table-row;
+	position: static;
+	width: 100%;
+}
+
+.c-modal__inner > div > div {
+	display: table-cell;
+	position: relative;
+	width: 100%;
+}
+
+.c-modal__inner {
+	background-color: #fff;
+	display: table;
+	table-layout: fixed;
+}
+/* 
+.c-modal.calendar .c-modal__inner {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: linear-gradient(to right, #fb0051, #ff4983 87.5%, transparent 87.5%);
+	background-size: 8.42105%;
+	background-origin: content-box;
+	background-clip: content-box;
+	background-position: left top;
+} */
+
+.c-modal__header-close,
+.c-modal__header-title {
+	color: #302a3d;
+	transition: all .3s ease;
+	overflow: hidden;
+	font-weight: 700;
+}
+
+.c-modal__header,
+.c-modal__header-cell,
+.c-modal__header-wrapper {
+	transition: height .3s ease;
+}
+
+.c-modal__header-cell,
+.ie9 .c-modal__header-wrapper {
+	height: 52px;
+}
+
+.c-modal__header {
+	height: 52px;
+	position: relative;
+	z-index: 999;
+}
+
+.c-modal__header-close {
+	font-size: 15px;
+	font-size: .9375rem;
+	-khtml-user-drag: "none";
+	-khtml-user-select: "none";
+	-webkit-touch-callout: "none";
+	user-select: "none";
+	cursor: pointer;
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+}
+
+.c-modal__header > span {
+	display: inline-block;
+	line-height: 52px;
+	position: relative;
+}
+
+.c-fab__close-button:before,
+.c-fab__contact-close-btn:before,
+.c-lightbox-olapic__close:before,
+.c-map-itinerary__legend-close-icon:before,
+.c-map-olapic__close:before,
+.c-modal__header-close:before,
+.mbt-video-close:before,
+[data-single-map=true].is-region-grab-active
+	div[data-carto-map-type=dynamicEnh]
+	.leaflet-control-zoom
+	a.c-leafleft-control__disable-grab:before,
+div[data-carto-map-type=dynamicEnh] .leaflet-control-zoom a.c-leafleft-control__disable-grab:before {
+	content: "\e947";
+}
+
+.c-modal__header-title {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	font-size: 21px;
+	font-size: 1.3125rem;
+	text-decoration: none;
+	float: left;
+	margin-left: 20px;
+}
+
+.c-modal__header > span {
+	display: inline-block;
+	line-height: 52px;
+	position: relative;
+}
+
+.c-modal__body-wrapper {
+	height: 100%;
+}
+
+.c-modal__body {
+	background-color: #efeef0;
+	height: 100%;
+}
+
+.c-modal__body-wrapper::after {
+	height: 52px;
+	width: 100%;
+	background: 0 0;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, .3);
+	content: "";
+	display: block;
+	left: 0;
+	overflow: hidden;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	transition: top .3s ease;
+	z-index: 100;
+}
+
+.c-modal__body-content,
+.c-modal__body-content-wrapper {
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+
+.c-modal__body-content-wrapper {
+	position: absolute;
+}
+
+.c-modal__body-content {
+	-webkit-overflow-scrolling: touch;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: relative;
+}
+
+.c-modal.calendar .c-modal__body {
+	background-color: #efeef0;
+	height: 100%;
+}
+
+.c-modal.calendar .c-modal__body-content {
+	background: #efeef0;
+}
+
+.c-trip-detail-calendar {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	background: #efeef0;
+	overflow: visible;
+	position: relative;
+	text-align: left;
+}
+
+.c-trip-detail-calendar {
+	width: 74.73684%;
+	float: none;
+	margin: 0 auto;
+}
+
+.c-trip-detail-calendar__outer {
+	margin: auto;
+	max-width: 952px;
+	padding: 0 20px;
+}
+
+.c-trip-detail-calendar-booking {
+	height: 100%;
+	width: 100%;
+	background: #efeef0;
+	/* bottom: -1000px; */
+	display: block;
+	padding-bottom: 65px;
+	text-align: left;
+	transition: bottom 2s;
+}
+
+.c-trip-detail-calendar-booking-inner {
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__body-top-text {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	margin-bottom: 0;
+	margin-top: 20px;
+	min-height: 134px;
+	padding: 0 20px;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__body-top-text {
+	margin: 11px auto 0;
+	max-width: 1285px;
+	overflow: hidden;
+	padding: 0;
+}
+
+.c-trip-detail-calendar-booking__body-title {
+	margin: auto;
+	padding-bottom: 25px;
+	text-align: center;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__body-title {
+	margin-top: 53px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking-step,
+.c-trip-detail-calendar-booking__body-title h4 {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+}
+
+.c-trip-detail-calendar-booking-step {
+	font-size: 14px;
+	font-size: .875rem;
+	color: #746d7f;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking-title,
+.c-trip-detail-calendar-booking-title-inner {
+	font-size: 31px;
+	font-size: 1.9375rem;
+	margin-bottom: 38px;
+}
+
+.c-trip-detail-calendar-booking-title {
+	font-size: 24px;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.c-trip-detail-calendar-booking-step,
+.c-trip-detail-calendar-booking__body-title h4 {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+}
+
+.c-trip-detail-top-notification-box {
+	background-color: #e5e4e6;
+	border: 20px solid #e5e4e6;
+	border-radius: 2px;
+}
+
+.c-trip-detail-calendar-booking-notice {
+	margin-bottom: -5px;
+}
+.c-trip-detail-calendar-booking__body-title p {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.c-trip-detail-calendar-booking-title-outer {
+	height: 50px;
+	width: 100%;
+	padding-top: 80px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking-title-outer {
+	display: block;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons {
+	display: block;
+	font-size: 15px;
+	margin-bottom: 25px;
+	text-align: center;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons {
+	float: right;
+	margin-bottom: 0;
+	margin-top: 12px;
+	right: 0;
+	text-align: right;
+	width: 20%;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons::before {
+	font-size: 12px;
+	font-size: .75rem;
+	content: "VIEW ";
+	margin-right: 5px;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons span {
+	height: initial;
+	width: initial;
+	font-size: 20px;
+	font-size: 1.25rem;
+	background: #fff;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .09);
+	color: #746d7f;
+	cursor: pointer;
+	font-weight: 400;
+	line-height: 12px;
+	padding: 6px 9px 8px;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons span {
+	height: 30px;
+	width: 30px;
+	line-height: 25px;
+	padding: 0 9px 10px 8px;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons span.c-trip-detail-calendar-booking__body-top-icons-selected,
+.c-trip-detail-calendar-booking__body-top-icons span:hover {
+	background-color: #736e7e;
+	color: #fff;
+	font-weight: 400;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons-calendar:before,
+.c-trip-detail-calendar-booking__calendar-warning-mobile::before,
+.form-group.c-form__select-dates:before {
+	content: "\e93e";
+}
+
+.c-trip-detail-calendar-booking__body-top-icons span::before {
+	font-size: 13px;
+	font-size: .8125rem;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons-list {
+	margin-left: -1px;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons-list:before,
+.c-trip-itinerary__control:last-child::before {
+	content: "\e96c";
+}
+
+.c-signin-page,
+.c-signup-page,
+.c-trip-detail-ugccarousel__header,
+.c-user-menu__controls,
+.c-user-menu__link-button,
+.clearfix,
+.o-footer,
+.o-footer__content,
+footer.o-footer--alt {
+	zoom: 1;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	margin-top: -10px;
+	padding-bottom: 10px;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons {
+	font-size: 13px;
+	font-size: .8125rem;
+	display: table;
+	float: left;
+	margin-top: 0;
+	padding: 15px 0;
+	width: 80%;
+}
+
+.c-signin-page::after,
+.c-signin-page::before,
+.c-signup-page::after,
+.c-signup-page::before,
+.c-trip-detail-ugccarousel__header::after,
+.c-trip-detail-ugccarousel__header::before,
+.c-user-menu__controls::after,
+.c-user-menu__controls::before,
+.c-user-menu__link-button::after,
+.c-user-menu__link-button::before,
+.clearfix::after,
+.clearfix::before,
+.o-footer::after,
+.o-footer::before,
+.o-footer__content::after,
+.o-footer__content::before,
+footer.o-footer--alt::after,
+footer.o-footer--alt::before {
+	content: " ";
+	display: table;
+}
+
+.c-signin-page::after,
+.c-signup-page::after,
+.c-trip-detail-ugccarousel__header::after,
+.c-user-menu__controls::after,
+.c-user-menu__link-button::after,
+.clearfix::after,
+.o-footer::after,
+.o-footer__content::after,
+footer.o-footer--alt::after {
+	clear: both;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-outer {
+	float: left;
+	padding-right: 16px;
+	width: auto;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-outer {
+	display: table-cell;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-ph {
+	text-align: left;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-ph {
+	float: left;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-da {
+	border-radius: initial;
+	color: #fb0051;
+	font-size: 12px;
+	height: initial;
+	padding: 0 1px;
+	width: initial;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-da::before {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+	font-size: 15px;
+	font-size: .9375rem;
+	bottom: 6px;
+	position: relative;
+}
+
+.c-trip-detail-calendar.prop-currency-dollar .c-trip-detail-calendar-booking__calendar-icons-da::before {
+	content: "$";
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-ph.fr {
+	color: #746d7f;
+	float: right;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-af {
+	border-radius: initial;
+	font-size: 12px;
+	height: initial;
+	padding: 0 1px;
+	width: initial;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td.almost-full::after,
+.c-trip-detail-calendar-booking__calendar-icons-af:before,
+.c-trip-detail-calendar-booking__calendar-span.aFull:before {
+	content: "\e938";
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-af::before {
+	bottom: 4px;
+	color: #119ce4;
+	font-weight: 400;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-dd {
+	font-size: 12px;
+	padding: 0 1px;
+}
+
+.c-filter.prop-header-popup .c-filter__filter::after,
+.c-modal.calendar .c-modal__header.phone-menu-active .o-header__phone::after,
+.c-modal.calendar .o-header__phone::after,
+.c-trip-detail-calendar-booking__calendar-icons-dd:before,
+.c-trip-detail-calendar-booking__calendar-list-view-header .sort-by::after,
+.prop-extra-days .c-trip-itinerary__list-cell-road-line::before {
+	content: "\e948";
+}
+
+.c-trip-detail-calendar-booking__calendar-icons-dd::before {
+	color: #7be6c8;
+	font-weight: 400;
+	left: -5px;
+	position: absolute;
+	top: -11px;
+	-webkit-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);
+	transform: rotate(135deg);
+}
+
+.c-trip-detail-calendar-booking__calendar-icons span {
+	background-color: #fff;
+	border: 1px solid #e1e1e1;
+	display: block;
+	float: left;
+	height: 16px;
+	line-height: 24px;
+	margin: 4px;
+	text-align: center;
+	width: 16px;
+}
+
+.c-trip-detail-calendar-booking__calendar-wrapper {
+	margin-bottom: 20px;
+	padding: 0 0 0 20px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__calendar-wrapper {
+	margin: auto;
+	max-width: 1285px;
+	padding: 0;
+}
+
+/* Date Picker */
+.c-trip-detail-calendar-booking__calendar-outer {
+	width: 100%;
+	min-width: 912px;
+}
+
+#c-trip-detail-calendar-booking__calendar-from {
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .09);
+	opacity: 1;
+	transition: opacity .6s;
+	width: 100%;
+	/* height: 454px; */
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker {
+	margin: 0;
+	text-align: left;
+	white-space: nowrap;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker {
+	background: #fff;
+	border: 3px solid #f7f7f7;
+	margin: 0 0 25px;
+	white-space: normal;
+	width: 40%;
+}
+
+.ui-datepicker-inline.ui-datepicker-multi {
+	display: block !important;
+	transform: translate3d(0px, 0px, 0px);
+}
+
+.ui-datepicker-group {
+	background: #fff;
+	position: relative;
+}
+
+.ui-datepicker-group {
+	display: table;
+	padding-bottom: 20px;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-first,
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last,
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-middle,
+.ui-datepicker-inline.c-trip-detail-calendar-booking__one-calendar {
+	background: #fff;
+	border: 2px solid #7be6c8;
+	display: inline-block;
+	-webkit-flex-shrink: 0;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	float: none;
+	margin-right: 10px;
+	text-align: center;
+	vertical-align: top;
+	white-space: normal;
+	width: 7.8%;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-first,
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last,
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-middle,
+.ui-datepicker-inline.c-trip-detail-calendar-booking__one-calendar {
+	border: 0;
+	float: left;
+	margin-right: 0;
+	width: 50%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-header {
+	background: #f7f7f7;
+	font-weight: 700;
+	padding: 10px;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-header {
+	width: 100.1%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-header {
+	width: 100.1%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-title span {
+	color: #000 !important;
+	font-size: 14px;
+}
+
+.c-menu__toggle:focus,
+a,
+a:active,
+a:hover,
+input {
+	outline: 0;
+}
+
+.ui-state-disabled {
+	opacity: 0;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-next,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-prev {
+	display: none;
+	font-size: 30px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-next,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-prev {
+	display: inline-block;
+}
+
+.ui-datepicker-group-first .ui-datepicker-prev {
+	display: none;
+	width: 35px;
+}
+
+.ui-datepicker-group-first .ui-datepicker-prev {
+	display: inline-block;
+	float: left;
+	/* height: 100%; */
+	margin-right: 5%;
+	padding-top: calc(50% - 75px);
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-group-last .ui-datepicker-next {
+	/* height: 100%; */
+	padding-top: calc(50% - 75px);
+	text-align: right;
+	width: 35px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-icon {
+	color: transparent;
+	cursor: pointer;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w {
+	color: #000;
+	text-align: center;
+	top: 2px;
+	width: 35px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w {
+	left: 4px;
+}
+
+.ui-datepicker-next.ui-corner-all span,
+.ui-datepicker-prev.ui-corner-all span {
+	display: table-cell;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+.c-fab__brochure-chevron.chevron-left::after,
+.c-fab__submenu.prop-name-downloadbrochurepanel .c-fab__popup-title::before,
+.c-lightbox-olapic__prev-icon:before,
+.c-main-reviews__side-mobile-header-close::before,
+.c-main-reviews__side-sa-tour.prop-is-tour-visible::before,
+.c-paginator__navigation .js-prev-action:before,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w:before,
+.c-trip-detail-reviews__prev::before,
+.c-trip-itinerary .c-trip-itinerary__back-overview i:before {
+	content: "\e941";
+}
+
+.c-fab-chevron:before,
+.c-fab__brochure-chevron.chevron-right::after,
+.c-lightbox-olapic__next-icon:before,
+.c-paginator__navigation .js-next-action:before,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e:before,
+.c-trip-detail-reviews__next::before {
+	content: "\e942";
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-e::before,
+.c-trip-detail-calendar-booking__calendar .ui-icon-circle-triangle-w::before {
+	font-size: 17px;
+	font-size: 1.0625rem;
+	font-weight: 700;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	background: #fff;
+	margin: auto;
+	transition: opacity .6s;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar {
+	display: table;
+	margin: 0 5%;
+	opacity: 0;
+	table-layout: fixed;
+	width: calc(90% - 35px);
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar > thead {
+	border: 0;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar > thead th {
+	padding: 20px 0;
+	text-align: center;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-calendar > thead th span {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	color: #736e7e;
+	font-weight: 400;
+}
+
+.undefined {
+	color: #746d7f;
+	display: table-cell !important;
+	opacity: 1 !important;
+}
+
+.ui-datepicker-calendar td {
+	text-align: center;
+	height: 53px !important;
+}
+
+.c-trip-detail-calendar-booking__calendar .end,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-unselectable,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-unselectable a {
+	cursor: default;
+	pointer-events: none;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-other-month,
+.c-trip-detail-calendar-booking__calendar .ui-datepicker-unselectable {
+	border: 0 !important;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td {
+	cursor: pointer;
+	overflow-y: visible;
+	position: relative;
+	transition: background-color .3s, outline .3s;
+	vertical-align: top;
+	width: 14.28%;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker .has_discount:hover {
+	background-color: #7be6c8;
+	outline: #302a3d solid 1px;
+	z-index: 1;
+}
+
+.c-trip-detail-calendar-booking__calendar span,
+.c-trip-detail-calendar-booking__calendar td > a {
+	color: #736e7e;
+}
+
+.undefined span {
+	opacity: .5;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td span,
+.ui-datepicker td a {
+	display: inline-block;
+	line-height: 14px;
+	margin-top: 12px;
+	text-align: center;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td span::after {
+	content: "\A";
+	display: block;
+	line-height: .75;
+	white-space: pre;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td span::after {
+	line-height: inherit;
+}
+
+.selected-trip-duration {
+	background: #acf4e2 !important;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart {
+	background: #fafafa;
+	outline: #e1e1e1 solid 1px;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart .c-trip-detail-calendar-booking__calendar-span,
+.c-trip-detail-calendar-booking__calendar .end .c-trip-detail-calendar-booking__calendar-span {
+	font-size: 10px;
+	font-size: .625rem;
+	color: #119ce4;
+	height: 33%;
+	position: absolute;
+	right: 0;
+	top: 5px;
+	width: 10%;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart a {
+	color: #000 !important;
+	display: block;
+	font-weight: bolder;
+	line-height: 14px;
+	margin-top: 12px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__calendar-span-p {
+	font-weight: 400 !important;
+	margin-bottom: 4px;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	font-size: 13px;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p,
+.c-trip-detail-calendar-booking__calendar .end p {
+	display: block;
+	line-height: 14px;
+	margin-top: 4px;
+}
+
+.c-trip-detail-calendar-booking__calendar .ui-datepicker td.definite::after {
+	border-bottom: solid 6px transparent;
+	border-left: solid 6px #7be6c8;
+	border-right: solid 6px transparent;
+	border-top: solid 6px #7be6c8;
+	content: "";
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+
+.c-trip-detail-calendar-booking__calendar .depart p.pRed,
+.c-trip-detail-calendar-booking__calendar
+	.depart[data-tooltip-discount=true]
+	.c-trip-detail-calendar-booking__calendar-span-p,
+.c-trip-detail-calendar-booking__calendar .end p.pRed,
+.c-trip-detail-calendar-booking__calendar
+	.end[data-tooltip-discount=true]
+	.c-trip-detail-calendar-booking__calendar-span-p {
+	color: #fb0051;
+	font-weight: 800 !important;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last {
+	margin-right: 0;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-group-last {
+	position: relative;
+}
+
+.ui-datepicker-group-last table {
+	float: left;
+}
+
+#c-trip-detail-calendar-booking__calendar-from .ui-datepicker-row-break {
+	clear: both;
+}
+
+.c-trip-detail-calendar-main-messages,
+.c-trip-detail-calendar-specific-messages {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	text-align: center;
+}
+
+.c-trip-detail-calendar-main-messages {
+	background: #7be6c8;
+	display: none;
+}
+
+.c-trip-detail-calendar-main-messages {
+	display: block;
+	position: relative;
+	top: -25px;
+}
+
+.c-trip-hover-discount {
+	background: 0 0;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .25);
+	display: block;
+	height: auto;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	transition: opacity .3s;
+	width: auto;
+	z-index: 2;
+}
+
+.c-trip-hover-discount.prop-is-visible {
+	opacity: 1;
+}
+
+.c-trip-hover-discount__cont {
+	display: block;
+	height: auto;
+	outline: #7be6c8 solid 1px;
+	padding: 4px 2px;
+	position: relative;
+	width: auto;
+}
+
+.c-trip-hover-discount__background {
+	background: 0 0;
+	border: 5px solid #fff;
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.c-trip-hover-discount__wrapper {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: auto;
+	position: relative;
+	width: auto;
+}
+
+.c-trip-hover-discount__left {
+	background: 0 0;
+	border: 1px solid #000;
+	cursor: pointer;
+	display: block;
+	height: 49px;
+	margin-left: 2px;
+	margin-top: 1px;
+	position: relative;
+	width: 49px;
+}
+
+.c-trip-hover-discount__right {
+	background: #fff;
+	display: block;
+	height: auto;
+	position: relative;
+	width: auto;
+}
+
+.c-trip-hover-discount__right-background {
+	background: #fff;
+	display: block;
+	height: calc(100% + 2px);
+	left: 0;
+	position: absolute;
+	top: -1px;
+	width: calc(100% + 1px);
+}
+
+.c-trip-hover-discount__right-wrapper {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	/* height: 100%; */
+	height: 49px;
+	-webkit-justify-content: space-around;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+	padding: 0 20px;
+	position: relative;
+	width: auto;
+}
+
+.c-trip-hover-discount__right-top {
+	display: block;
+	height: auto;
+	position: relative;
+	text-align: center;
+	white-space: nowrap;
+	width: auto;
+}
+
+.c-trip-hover-discount__right-top-title {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 10px;
+	font-size: .625rem;
+	color: #fb0051;
+	display: block;
+	line-height: 10px;
+	position: relative;
+	text-transform: capitalize;
+}
+
+.c-trip-hover-discount__right-bottom {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: auto;
+	position: relative;
+	text-align: center;
+	width: auto;
+}
+
+.c-trip-hover-discount__right-bottom-left,
+.c-trip-hover-discount__right-bottom-right {
+	display: block;
+	height: auto;
+	padding: 0 10px;
+	position: relative;
+	text-align: center;
+	width: auto;
+}
+
+.c-trip-hover-discount__right-bottom-left-label,
+.c-trip-hover-discount__right-bottom-right-label {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 9px;
+	font-size: .5625rem;
+	color: rgba(0, 0, 0, .87);
+	display: block;
+	height: auto;
+	line-height: 9px;
+	position: relative;
+	text-align: center;
+	width: auto;
+}
+
+.c-trip-hover-discount__right-bottom-left-text,
+.c-trip-hover-discount__right-bottom-right-text {
+	font-size: 14px;
+	font-size: .875rem;
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	color: #1f1f1f;
+	display: block;
+	height: auto;
+	line-height: 14px;
+	position: relative;
+	text-align: center;
+	width: auto;
+}
+
+.c-trip-hover-discount__right-bottom-left-text.c-trip-hover-discount__right-bottom-left-text,
+.c-trip-hover-discount__right-bottom-right-text.c-trip-hover-discount__right-bottom-left-text {
+	text-decoration: line-through;
+}
+
+.c-trip-hover-discount__right-bottom-left-text.c-trip-hover-discount__right-bottom-right-text,
+.c-trip-hover-discount__right-bottom-right-text.c-trip-hover-discount__right-bottom-right-text {
+	font-weight: 700;
+}
+
+.c-trip-detail-calendar-booking-overlay {
+	height: 100%;
+	width: 100%;
+	background: 0 0;
+	display: none;
+	position: absolute;
+	z-index: 99999999;
+}
+
+.c-trip-detail-calendar-booking__calendar-warning {
+	clear: left;
+	display: block;
+}
+
+.c-trip-detail-calendar-booking__calendar-warning-mobile {
+	font-size: 12px;
+	font-size: .75rem;
+	clear: left;
+}
+
+.c-trip-detail-calendar-booking__calendar-warning-mobile {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+}
+
+.c-trip-detail-calendar-booking__calendar-warning-mobile p {
+	display: inline;
+}
+
+.c-trip-detail-calendar-booking__calendar-messages-outer {
+	font-size: 12px;
+	font-size: .75rem;
+	display: none;
+	font-weight: 700;
+	text-align: center;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-main-messages.c-trip-detail-calendar-messages::before {
+	border-bottom: solid 12px #7be6c8;
+	border-left: solid 12px transparent;
+	border-right: solid 12px transparent;
+	content: "";
+	left: 50%;
+	margin: 0 auto;
+	position: absolute;
+	top: -7px;
+}
+
+.c-trip-detail-calendar-main-messages.c-trip-detail-calendar-messages {
+	padding: 10px 0;
+}
+
+.c-trip-detail-calendar-booking__body-top-icons-calendar:before,
+.c-trip-detail-calendar-booking__calendar-warning-mobile::before,
+.form-group.c-form__select-dates:before {
+	content: "\e93e";
+}
+
+.c-trip-detail-calendar-booking__calendar-warning-mobile::before {
+	font-size: 13px;
+	font-size: .8125rem;
+	display: inline-block;
+	font-weight: 600;
+	line-height: 1px;
+	margin: 0 4px;
+	position: relative;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar-booking__calendar-ending {
+	font-size: 12px;
+	font-size: .75rem;
+	font-weight: 700;
+	text-align: center;
+}
+
+.c-trip-detail-calendar-booking__options-wrapper {
+	padding: 0;
+}
+
+.c-trip-detail-calendar-booking__info {
+	background-color: #efeef0;
+	cursor: default;
+	padding: 10px 0 25px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__info {
+	margin-left: -4px;
+	width: calc(100% + 8px);
+}
+.c-trip-detail-calendar-booking__info::before {
+	border-bottom: 9px solid #efeef0;
+	border-left: 13px solid transparent;
+	border-right: 13px solid transparent;
+	content: "";
+	height: 0;
+	position: absolute;
+	right: 39px;
+	top: -9px;
+	width: 0;
+}
+
+.c-trip-detail-calendar-booking__options {
+	background: #efeef0;
+	float: left;
+	padding-top: 25px;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__options {
+	padding-top: 40px;
+}
+
+.c-trip-detail-calendar-booking-title,
+.c-trip-detail-calendar-booking-title-inner {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking-title,
+.c-trip-detail-calendar-booking-title-inner {
+	font-size: 31px;
+	font-size: 1.9375rem;
+	margin-bottom: 38px;
+}
+
+.c-trip-detail-calendar-booking__options-item {
+	clear: both;
+	float: left;
+	margin-bottom: 9px;
+	padding: 0 10px;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__options-item {
+	margin-bottom: 2px;
+}
+
+.c-trip-detail-calendar-booking__options-item-header-outer {
+	color: #fb0051;
+	margin-bottom: 10px;
+	-webkit-transform: translateY(30%);
+	-ms-transform: translateY(30%);
+	transform: translateY(30%);
+}
+
+.c-trip-detail-calendar-booking__options-item-header-outer {
+	float: left;
+	margin-bottom: 0;
+	width: 25%;
+}
+
+.c-trip-detail-calendar-booking__options-item-icon-location {
+	display: table-cell;
+	font-size: 21px;
+	left: -4px;
+	padding-top: 3px;
+	position: relative;
+	vertical-align: top;
+}
+
+.c-autocomplete__item:not(.countries) i.c-autocomplete__map-marker:before,
+.c-trip-detail-calendar-booking__calendar-list-view-item-description ul li span.icon:before,
+.c-trip-detail-calendar-booking__options-item-icon-location:before,
+.c-trip-itinerary__card-body-leg-road-marker:before {
+	content: "\e964";
+}
+
+.c-trip-detail-calendar-booking__options-item-header {
+	color: #736e7e;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar-booking__options-item-header h4 {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+	color: #000;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+.c-trip-detail-calendar-booking__options-item-header p {
+	font-size: 14px;
+	font-size: .875rem;
+	line-height: 18px;
+	width: 99%;
+}
+
+.c-trip-detail-calendar-booking__options-item-wrapper-elements {
+	width: 75%;
+}
+
+.c-trip-detail-calendar-booking__options-item-wrapper-elements {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+.c-trip-detail-calendar-booking__options-item-outer {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	float: left;
+	margin-top: 11px;
+	max-width: 180px;
+	padding: 0 5px;
+	width: 50%;
+}
+
+.c-trip-detail-calendar-booking__options-item-outer {
+	width: 33%;
+}
+
+.c-trip-detail-calendar-booking__options-item .c-trip-detail-calendar-booking__options-item-outer:nth-child(odd) {
+	padding-left: 5px;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner {
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+	cursor: pointer;
+	display: table;
+	height: 100%;
+	min-height: 75px;
+	padding: 10px;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-selected {
+	background: #fff;
+	transition: background .3s;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	display: table-cell;
+	line-height: 18px;
+	padding-right: 9px;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p {
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 18px;
+	padding: 0;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p p {
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p p:nth-child(-n + 2) {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-p p.day {
+	font-size: 14px;
+	font-size: .875rem;
+	color: #736e7e;
+	line-height: 18px;
+	margin-top: 3px;
+}
+
+.c-trip-detail-calendar-booking__options-icon-wrapper {
+	display: table-cell;
+	position: relative;
+	vertical-align: middle;
+	width: 21px;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner-icon {
+	display: table-cell;
+	font-size: 10px;
+	font-weight: 700;
+	line-height: 15px;
+	padding-top: 6px;
+	position: relative;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner.c-trip-detail-calendar-booking__options-item-inner-selected
+	.c-trip-detail-calendar-booking__options-item-inner-icon:before {
+	background: #fb0051;
+	border: 5px solid #fff;
+	border-radius: 16px;
+	content: "";
+	height: 21px;
+	position: absolute;
+	width: 21px;
+}
+
+.c-trip-detail-calendar-booking__options-item-inner.c-trip-detail-calendar-booking__options-item-inner-selected
+	.c-trip-detail-calendar-booking__options-item-inner-icon:after {
+	border-radius: 14px;
+	font-size: 21px;
+	font-size: 1.3125rem;
+	border: 1px solid #fb0051;
+	content: "";
+	font-weight: 400;
+	height: 21px;
+	width: 21px;
+}
+
+.c-trip-detail-calendar-booking__spotlight-title {
+	background: #efeef0;
+	clear: both;
+	display: block;
+	float: left;
+	padding-top: 39px;
+	text-align: center;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__spotlight-title {
+	padding-top: 17px;
+}
+
+.c-trip-detail-calendar-booking-step,
+.c-trip-detail-calendar-booking__body-title h4 {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+}
+
+.c-trip-detail-calendar-booking-step {
+	font-size: 14px;
+	font-size: .875rem;
+	color: #746d7f;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__spotlight-title .c-trip-detail-calendar-booking-title,
+.c-trip-detail-calendar-booking__spotlight-title .c-trip-detail-calendar-booking-title-inner {
+	margin-bottom: 37px;
+}
+
+.c-trip-detail-calendar-booking__details {
+	background: #fff;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .1);
+	float: left;
+	font-size: 15px;
+	line-height: 24px;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details {
+	font-size: 16px;
+	margin-bottom: 2px;
+}
+
+.c-trip-detail-calendar-booking__details::after {
+	height: 100px;
+	width: 100%;
+	bottom: 0;
+	content: "";
+	display: block;
+	left: 0;
+	position: absolute;
+	-webkit-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+}
+
+.c-trip-detail-calendar-booking__details-main {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	clear: both;
+	float: left;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-main {
+	display: inline-block;
+	float: none;
+	padding: 20px 20px 0;
+}
+
+.c-trip-detail-calendar-booking__details-item-main {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	padding: 15px 10px 0;
+}
+
+.c-trip-detail-calendar-booking__details-item-main {
+	margin-bottom: 25px;
+	padding: 0;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-item-wrapper:first-child {
+	padding-right: 20px;
+}
+
+.c-trip-detail-calendar-booking-title-inner {
+	font-size: 21px;
+	font-size: 1.3125rem;
+}
+
+.c-trip-detail-calendar-booking__details-main h4 {
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__details-item-wrapper h4 {
+	margin-bottom: 12px;
+}
+
+.c-trip-detail-calendar-booking-title-overview div {
+	font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+	font-size: medium;
+	margin: 0px;
+}
+
+.c-trip-detail-calendar-booking__guarantees {
+	background: #f3f3f3;
+	display: none;
+	height: auto;
+	padding: 20px 20px 10px;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__guarantees {
+	display: block;
+	padding: 20px 0 15px;
+}
+
+.c-trip-detail-calendar-booking__guarantees-wrapper {
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: auto;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__guarantees-wrapper {
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	padding: 10px 15px 15px;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item {
+	display: block;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	height: auto;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-wrapper {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: auto;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-left {
+	cursor: pointer;
+	display: block;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: auto;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-icon {
+	font-size: 22px;
+	font-size: 1.375rem;
+	display: block;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=freedom]
+	.c-trip-detail-calendar-booking__guarantees-item-icon:before {
+	content: "\e918";
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right {
+	cursor: pointer;
+	display: block;
+	height: auto;
+	padding-left: 10px;
+	position: relative;
+	width: auto;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-title {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #746d7f;
+	display: block;
+	font-weight: 700;
+	height: auto;
+	line-height: 12px;
+	position: relative;
+	text-transform: uppercase;
+	width: auto;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-body {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 11px;
+	font-size: .6875rem;
+	color: #746d7f;
+	display: block;
+	height: auto;
+	line-height: 14px;
+	padding-top: 2px;
+	position: relative;
+	width: auto;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-body {
+	padding-top: 11px;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-body .more-icon {
+	font-size: 7px;
+	font-size: .4375rem;
+	color: #746d7f;
+}
+
+.c-trip-detail-calendar-booking__guarantees-item-right-body .more-icon:before {
+	content: "\e940";
+}
+
+.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=flex]
+	.c-trip-detail-calendar-booking__guarantees-item-icon:before,
+.c-trip-detail-calendar.prop-currency-pound
+	.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=flex]
+	.c-trip-detail-calendar-booking__guarantees-item-icon:before {
+	content: "\e92c";
+}
+
+.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=flex]
+	.c-trip-detail-calendar-booking__guarantees-item-icon::before {
+	position: relative;
+	top: -2px;
+}
+
+.c-trip-detail-calendar.prop-currency-dollar
+	.c-trip-detail-calendar-booking__guarantees-item[data-guarantee-type=flex]
+	.c-trip-detail-calendar-booking__guarantees-item-icon:before {
+	content: "\e92a";
+}
+
+.c-trip-detail-calendar__uplift-finance {
+	width: 33%;
+}
+
+.c-trip-detail-calendar__uplift-finance {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.c-trip-detail-calendar__uplift-finance .uplift-logo {
+	line-height: 0;
+}
+
+.c-trip-detail-calendar__uplift-finance .uplift-logo img {
+	height: 20px;
+}
+
+.c-trip-detail-calendar__uplift-finance .uplift-finance-message {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 11px;
+	font-size: .6875rem;
+	color: #736e7e;
+	line-height: 14px;
+	margin-top: 6px;
+}
+
+.c-trip-detail-calendar__uplift-finance .uplift-finance-message {
+	margin-top: 3px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-total {
+	background: #f7f7f7;
+	clear: both;
+	padding: 15px 0 0;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-total {
+	padding: 20px 0 0;
+	width: 100%;
+	z-index: 2;
+}
+
+.c-trip-detail__table-inner-wrap {
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	position: relative;
+}
+
+.c-trip-detail__table-inner-wrap {
+	padding: 10px 6px 0;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p:first-child,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-disc,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-was,
+.c-trip-detail-calendar-booking__total-price-copy {
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	line-height: 19px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-disc,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-was,
+.c-trip-detail-calendar-booking__uplift-section {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-disc,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-was,
+.c-trip-detail-calendar-booking__uplift-section {
+	-webkit-flex: none;
+	-ms-flex: none;
+	flex: none;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p:first-child,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-disc,
+.c-trip-detail-calendar-booking__details-accomodation-box-price-was,
+.c-trip-detail-calendar-booking__total-price-copy {
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	line-height: 19px;
+}
+
+.c-trip-detail-calendar__outer-box-price-disc {
+	text-align: left;
+}
+
+.c-trip-detail-calendar-booking__details-price-disc-discounted {
+	color: #000 !important;
+}
+
+.c-trip-detail-calendar-booking__total-price-copy {
+	font-weight: 700;
+	text-transform: uppercase;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.c-trip-detail-calendar__outer-box-price-was .c-trip-detail-calendar-booking__details-price-was {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 28px;
+	font-size: 1.75rem;
+	display: inline-block;
+	position: relative;
+}
+
+.c-trip-detail-calendar__outer-box-price-was .c-trip-detail-calendar-booking__details-price-was::before {
+	border-bottom: 2.5px solid #736e7e;
+	content: "";
+	position: absolute;
+	top: 11px;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p {
+	margin-bottom: 20px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-total-price,
+.c-trip-detail-calendar-booking__details-price-disc,
+.c-trip-detail-calendar__booking__details-total-price-save {
+	margin: 2px 0 10px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p p {
+	line-height: 19px;
+	position: relative;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-total-price,
+.c-trip-detail-calendar-booking__details-price-disc,
+.c-trip-detail-calendar__booking__details-total-price-save {
+	font-family: "Soleil W02 ExtraBold", arial, sans-serif;
+	font-size: 28px;
+	font-size: 1.75rem;
+	color: #000;
+	display: block;
+	line-height: 19px;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted {
+	color: #fb0051 !important;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-total-price,
+.c-trip-detail-calendar-booking__details-price-disc {
+	display: inline;
+}
+
+.c-trip-detail-calendar-booking__uplift-section .c-trip-detail-calendar-uplift__monthly-amount {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 28px;
+	font-size: 1.75rem;
+	color: #6469da;
+	line-height: 19px;
+	opacity: 1;
+	transition: opacity .2s linear;
+	transform: scale(1, 1);
+	transform-origin: 0px 0px;
+}
+
+.c-trip-detail-calendar-booking__uplift-section
+	.c-trip-detail-calendar-uplift__monthly-amount
+	span[data-up-from-dollars] {
+	margin-left: -6px;
+	margin-right: -3px;
+}
+
+.c-trip-detail-calendar-booking__uplift-section .c-trip-detail-calendar-booking__pay-from-title {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-calendar-booking__uplift-section .uplift-period__message {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	display: block;
+	margin-top: 0;
+}
+
+.c-fab__close-wrap,
+.c-fab__contact-menu,
+.c-fab__contact-panel,
+.c-fab__form,
+.c-fab__grid-share,
+.c-fab__submenu,
+.c-fab__submenu-intro,
+.c-form__dropdown.form-group,
+.c-form__input-wrap,
+.c-form__input.form-group,
+.c-paginator,
+.c-sso-social-buttons,
+.c-trip-detail-calendar__outer-button,
+.form-group,
+.form-submit-border {
+	zoom: 1;
+}
+
+.c-trip-detail-calendar__outer-button {
+	font-size: 16px;
+	font-size: 1rem;
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	clear: both;
+	color: #fff;
+	cursor: pointer;
+	min-width: calc(33% + 10px);
+	-webkit-order: 3;
+	-ms-flex-order: 3;
+	order: 3;
+	position: relative;
+	text-align: center;
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+.c-trip-detail-calendar__outer-button {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 0 0 10px;
+}
+
+.c-fab__close-wrap::after,
+.c-fab__close-wrap::before,
+.c-fab__contact-menu::after,
+.c-fab__contact-menu::before,
+.c-fab__contact-panel::after,
+.c-fab__contact-panel::before,
+.c-fab__form::after,
+.c-fab__form::before,
+.c-fab__grid-share::after,
+.c-fab__grid-share::before,
+.c-fab__submenu-intro::after,
+.c-fab__submenu-intro::before,
+.c-fab__submenu::after,
+.c-fab__submenu::before,
+.c-form__dropdown.form-group::after,
+.c-form__dropdown.form-group::before,
+.c-form__input-wrap::after,
+.c-form__input-wrap::before,
+.c-form__input.form-group::after,
+.c-form__input.form-group::before,
+.c-paginator::after,
+.c-paginator::before,
+.c-sso-social-buttons::after,
+.c-sso-social-buttons::before,
+.c-trip-detail-calendar__outer-button::after,
+.c-trip-detail-calendar__outer-button::before,
+.form-group::after,
+.form-group::before,
+.form-submit-border::after,
+.form-submit-border::before {
+	content: " ";
+	display: table;
+}
+
+.c-filter.prop-header-popup span.c-filter__reset,
+.c-main-reviews__side-sa-tours-button,
+.c-trip-detail-calendar-booking__details-accomodation-button,
+.c-trip-detail-st__see-all,
+.c-trip-reviews__cta,
+.c-trip-travel-style__cta {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 1.25;
+	margin: 5px 0;
+	max-width: 100%;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background-color .35s, color .35s;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button {
+	background-color: #fb0051;
+	border: 0;
+}
+
+.c-trip-detail-calendar__outer-button > * {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	max-width: inherit;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button {
+	background: #fb0051;
+	display: inline-block;
+	font-size: 13px;
+	height: auto;
+	line-height: 40px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button {
+	font-size: 16px !important;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button {
+	height: 50px;
+	line-height: 50px !important;
+	display: inline-block;
+	width: 100%;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-button i {
+	font-size: 16px;
+	margin-right: 5px;
+}
+
+.c-fab__text-link.c-fab__text-link-with-icon i.mdi-briefcase:before,
+.c-trip-detail-calendar-booking__details-accomodation-button i:before {
+	content: "\e93b";
+}
+
+.c-fab__close-wrap::after,
+.c-fab__contact-menu::after,
+.c-fab__contact-panel::after,
+.c-fab__form::after,
+.c-fab__grid-share::after,
+.c-fab__submenu-intro::after,
+.c-fab__submenu::after,
+.c-form__dropdown.form-group::after,
+.c-form__input-wrap::after,
+.c-form__input.form-group::after,
+.c-paginator::after,
+.c-sso-social-buttons::after,
+.c-trip-detail-calendar__outer-button::after,
+.form-group::after,
+.form-submit-border::after {
+	clear: both;
+}
+
+.uplift-full-message {
+	font-size: 10px;
+	font-size: .625rem;
+	color: #302a3d;
+	line-height: 1.3em;
+	text-align: center;
+	margin-top: 10px;
+}
+
+b,
+optgroup,
+strong {
+	font-weight: 700;
+}
+
+.uplift-link {
+	color: #0c60f0;
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.c-trip-detail-calendar__request-more-info {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	background: #f3f3f3;
+	color: #302a3d;
+	font-size: 13px;
+	line-height: 1.6em;
+	padding: 15px 20px;
+	text-align: center;
+}
+
+.c-trip-detail-calendar__request-more-info .questions-about-trip {
+	color: #6469da;
+}
+
+.c-trip-detail-calendar__request-more-info .get-a-quote__request-more-info {
+	color: #fb0051;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.c-trip-detail-calendar__request-more-info .get-a-quote__request-more-info::after {
+	font-size: 12px;
+	font-size: .75rem;
+}
+
+.c-trip-detail-calendar-booking__details-accomodation-box-p p:last-child {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	color: #736e7e;
+	font-weight: 300;
+}
+
+.c-trip-detail-info__main-image-cont {
+	width: 100%;
+	background-origin: padding-box;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: block;
+	height: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.c-trip-detail-info__main-image-cont {
+	width: 50%;
+	float: left;
+	min-height: 277px;
+}
+
+.c-trip-detail-info__main-image-cont {
+	min-height: 400px;
+	opacity: 1;
+}
+
+.mbt-video {
+	height: auto;
+	width: 100%;
+	position: relative;
+}
+
+.c-trip-detail-info__main-image-cont .mbt-video,
+.c-trip-detail-info__main-image-cont .mbt-video-container {
+	height: 100%;
+}
+
+.grid-container-1.display-wide .mbt-video.mbt-video-default,
+.mbt-video-container {
+	margin: 0 auto;
+	max-width: 1280px;
+}
+
+.mbt-video-container {
+	opacity: 1;
+	overflow: hidden;
+	position: relative;
+	z-index: 4;
+}
+
+.c-trip-detail-info__main-image-cont .mbt-video,
+.c-trip-detail-info__main-image-cont .mbt-video-container {
+	height: 100%;
+}
+
+.mbt-video-inner {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+
+.card-carousel-box::after,
+.mbt-video-container::after,
+.mbt-video-drag::after,
+.mbt-video::after {
+	content: "";
+}
+
+.mbt-video-container::after {
+	display: block;
+	padding-top: 75%;
+	width: 100%;
+}
+
+.c-trip-detail-info__main-image-cont .mbt-video-container::after,
+.c-trip-detail-info__main-image-cont .mbt-video::after {
+	padding-top: 0;
+}
+
+.c-trip-detail-info-bottom.media-carousel {
+	overflow: visible;
+	padding-top: 0;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-info-bottom.media-carousel {
+	background: #efeef0;
+	width: 50%;
+}
+
+.media-carousel::after,
+.media-carousel::before {
+	content: "";
+	display: block;
+	overflow: hidden;
+}
+
+.c-trip-detail-ugccarousel__cover {
+	left: 0;
+	position: relative;
+	transition: -webkit-transform .5s ease;
+	transition: transform .5s ease;
+	transition: transform .5s ease, -webkit-transform .5s ease;
+}
+
+.c-trip-detail-ugccarousel__cover {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	height: 100%;
+}
+
+.c-trip-detail-info__title-body-info-images {
+	background-color: #f3f3f3;
+	display: block;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-detail-info__title-body-info-images-wrapper {
+	display: block;
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+.olapic-widget-content-wrapper {
+	position: relative;
+}
+
+.c-trip-detail-olapic-wall-widget {
+	background: #efeef0;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+}
+
+.c-trip-detail-olapic-wall-widget {
+	height: 100%;
+	max-width: 640px;
+}
+
+.c-trip-detail-olapic-item {
+	background-position: center;
+	background-size: cover;
+	cursor: pointer;
+	float: left;
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding-bottom: 50%;
+	position: relative;
+	width: 50%;
+}
+
+.c-trip-detail-olapic-item {
+	height: 50%;
+	padding-bottom: 33.6%;
+	width: 33.33%;
+}
+ul {
+	list-style: none;
+}
+
+.c-trip-detail-olapic-box {
+	background: #7be6c8;
+}
+
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper {
+	color: #000;
+	left: 10px;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	word-break: break-word;
+}
+
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-hashtag-icon {
+	display: inline-block;
+	margin: -4px 5px 0 0;
+	vertical-align: middle;
+}
+
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-hashtag-icon {
+	font-size: 45px;
+	font-size: 2.8125rem;
+	display: block;
+	margin-bottom: 20px;
+	margin-right: 0;
+}
+
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-hashtag-icon:before,
+.c-trip-detail-olapic-user-name::before,
+.olapic-gallery-header-info::before,
+.olapic-gallery-photoby span::after {
+	content: "\e97d";
+}
+
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-hashtag-text {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	font-size: 20px;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-description {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	line-height: 1em;
+	margin-top: 3px;
+}
+
+.c-trip-detail-olapic-box .c-trip-detail-olapic-cta-wrapper .c-trip-detail-olapic-description {
+	margin: auto;
+	max-width: 70%;
+}
+
+.c-trip-detail-info-bottom-description {
+	background-color: #f5f5f5;
+	padding: 35px 17px 25px;
+}
+
+.c-trip-detail-info-bottom-description {
+	padding: 45px 0;
+}
+
+.c-trip-detail-info-bottom-description__wrapper {
+	margin: auto;
+}
+
+.c-trip-detail-info-bottom-description__wrapper {
+	width: 65.625%;
+}
+
+.c-trip-detail-info__title-text > h1,
+.c-trip-detail-info__title-text > h2,
+.c-trip-detail-info__title-text > h3 {
+	font-family: "Futura W01 ExtraBold Condensed", arial, sans-serif;
+	color: #302a3d;
+	font-size: 38px;
+	line-height: 40px;
+	padding-bottom: 35px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.c-trip-detail-info__description-text {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 14px;
+	line-height: 21px;
+	text-align: center;
+}
+
+.c-trip-detail-info__wrapper-affiliate {
+	background: #f3f3f3;
+}
+
+.c-trip-detail-info__title-body-affiliate {
+	height: 200px;
+	width: 100%;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 50px 8.33333%;
+	position: relative;
+}
+
+.c-trip-detail-info__title-body-affiliate {
+	min-height: 200px;
+	padding: 0 8.33333% 50px;
+}
+
+.c-trip-detail-info__title-body-affiliate > div {
+	height: auto;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: inline-block;
+	float: left;
+	position: relative;
+}
+
+.c-trip-detail-info__title-body-affiliate > div:first-child:nth-last-child(2) {
+	width: 30%;
+}
+
+.c-trip-detail-info__title-body-affiliate-img-cont {
+	height: 100%;
+	width: 100%;
+	display: block;
+	position: relative;
+}
+
+.c-trip-detail-info__title-body-affiliate-img-cont > span {
+	height: 100%;
+	width: 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: block;
+	position: absolute;
+}
+
+.c-trip-detail-info__title-body-affiliate-img-cont > span:first-child {
+	z-index: 2;
+}
+
+.c-trip-detail-info__title-body-affiliate > div {
+	height: auto;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: inline-block;
+	float: left;
+	position: relative;
+}
+
+.c-trip-detail-info__title-body-affiliate > div:first-child:nth-last-child(2) ~ div {
+	background-color: #fff;
+	width: 70%;
+}
+
+.c-trip-detail-info__title-body-affiliate-desc-cont {
+	height: 100%;
+	width: 100%;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 0 20px;
+	position: relative;
+}
+
+.c-trip-detail-info__title-body-affiliate-desc {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	color: #1f1f1f;
+	padding: 10px 0;
+	text-align: left;
+	width: 100%;
+}
+
+.c-trip-what-you-get {
+	/* height: 100%; */
+	padding: 20px 17px 45px;
+	width: 100%;
+}
+
+.c-trip-what-you-get {
+	padding: 20px 0 45px;
+}
+
+.c-trip-what-you-get__wrapper {
+	background-color: #fff;
+	box-shadow: 0 0 20px 1px rgba(0, 0, 0, .05);
+	display: block;
+	float: none !important;
+	/* height: 100%; */
+	margin: auto;
+	padding: 35px 0 20px;
+	position: relative;
+	width: 100%;
+}
+
+.c-trip-what-you-get__wrapper {
+	max-height: 700px;
+	overflow: hidden;
+	padding: 50px 20px 20px;
+	width: 82.91667%;
+}
+
+.c-trip-what-you-get__heading {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	font-size: 24px;
+	font-size: 1.5rem;
+	margin-bottom: 30px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.c-trip-what-you-get__heading {
+	font-size: 38px;
+	font-size: 2.375rem;
+	margin-bottom: 50px;
+}
+
+.c-trip-what-you-get__list {
+	display: block;
+	padding-right: 17px;
+	position: relative;
+	text-align: left;
+	width: 100%;
+}
+
+.c-trip-what-you-get__list {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: nowrap;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+}
+
+.c-trip-what-you-get__item {
+	font-size: 16px;
+	font-size: 1rem;
+	display: block;
+	-webkit-flex: 1 1 100px;
+	-ms-flex: 1 1 100px;
+	flex: 1 1 100px;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-flex-wrap: nowrap;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	line-height: 1.3em;
+	min-height: 48px;
+	position: relative;
+}
+
+.c-trip-what-you-get__item {
+	-webkit-justify-content: flex-start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	margin: 0 10px;
+}
+
+.c-trip-what-you-get__item:first-child,
+.c-trip-what-you-get__item:last-child {
+	margin: 0;
+}
+
+.c-trip-what-you-get__item-brief {
+	position: relative;
+}
+
+[class*=c-trip-what-you-get__icon][class*=accommodation] {
+	color: #ff6754;
+}
+
+[class*=c-trip-what-you-get__icon][class*=food] {
+	color: #70cab3;
+}
+
+[class*=c-trip-what-you-get__icon][class*=team] {
+	color: #ffc432;
+}
+
+[class*=c-trip-what-you-get__icon][class*=transport] {
+	color: #6469da;
+}
+
+[class*=c-trip-what-you-get__icon][class*=group] {
+	color: #257ea0;
+}
+
+[class*=c-trip-what-you-get__icon][class*=experiences] {
+	color: #83306f;
+}
+
+[class*=c-trip-what-you-get__icon] {
+	font-size: 48px;
+	font-size: 3rem;
+	display: block;
+	text-align: center;
+}
+
+[class*=c-trip-what-you-get__icon][class*=accommodation]:before {
+	content: "\e986";
+}
+
+.c-trip-what-you-get__title {
+	margin-top: 15px;
+}
+
+.c-trip-what-you-get__title {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	margin-bottom: .3em;
+}
+
+.c-trip-what-you-get__short-description {
+	font-size: 12px;
+	font-size: .75rem;
+	color: #8e8a96;
+	line-height: 1.4em;
+}
+
+[class*=c-trip-what-you-get__icon][class*=food]:before {
+	content: "\e92f";
+}
+
+[class*=c-trip-what-you-get__icon][class*=group]:before {
+	content: "\e932";
+}
+
+[class*=c-trip-what-you-get__icon][class*=transport]:before {
+	content: "\e933";
+}
+
+[class*=c-trip-what-you-get__icon][class*=experiences]:before {
+	content: "\e935";
+}
+
+[class*=c-trip-what-you-get__icon][class*=team]:before {
+	content: "\e936";
+}
+
+.c-trip-what-you-get__cta-wrapper {
+	margin-top: 20px;
+}
+
+.c-trip-what-you-get__colapsse-cta,
+.c-trip-what-you-get__expand-cta {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+.c-trip-what-you-get__expand-cta {
+	color: #fb0051;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	transition: color .35s;
+}
+
+.c-trip-what-you-get__expand-cta:hover {
+	color: #cf0043;
+}
+
+.c-trip-what-you-get__colapsse-cta {
+	display: none;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__colapsse-cta {
+	display: block;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__expand-cta {
+	display: none;
+}
+
+.c-trip-what-you-get__expand-cta-arrow {
+	background: #fff;
+	border-radius: 30%;
+	box-shadow: 0 0 5px 1px rgba(0, 0, 0, .1);
+	display: inline-block;
+	height: 26px;
+	margin-right: 10px;
+	overflow: hidden;
+	position: relative;
+	vertical-align: middle;
+	width: 20px;
+}
+
+.c-lightbox-olapic__related-trips-arrow-icon:before,
+.c-trip-detail-olapic-item:not(.c-trip-detail-olapic-box):before,
+.c-trip-what-you-get__expand-cta-arrow::before,
+.olapic-gallery-column .olapic-wall-image-wrapper:hover::before {
+	content: "\e952";
+}
+
+.c-trip-what-you-get__expand-cta-arrow::before {
+	font-size: 9px;
+	font-size: .5625rem;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%) rotate(45deg);
+	-ms-transform: translate(-50%, -50%) rotate(45deg);
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.c-trip-what-you-get__expand-cta:hover {
+	color: #cf0043;
+}
+
+.c-trip-what-you-get__expand-cta:hover .c-trip-what-you-get__expand-cta-arrow::before {
+	-webkit-animation-duration: .6s;
+	animation-duration: .6s;
+	-webkit-animation-name: animationArrowExpandCTA;
+	animation-name: animationArrowExpandCTA;
+	-webkit-animation-timing-function: ease-out;
+	animation-timing-function: ease-out;
+}
+
+@-webkit-keyframes animationArrowExpandCTA {
+	0%,
+	100% {
+		top: 50%;
+	}
+
+	20% {
+		top: 125%;
+	}
+
+	21% {
+		top: -20%;
+	}
+}
+
+@keyframes animationArrowExpandCTA {
+	0%,
+	100% {
+		top: 50%;
+	}
+
+	20% {
+		top: 125%;
+	}
+
+	21% {
+		top: -20%;
+	}
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__wrapper {
+	max-height: 2000px;
+	transition: max-height .6s;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__list {
+	display: block;
+	max-width: inherit;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item {
+	border-top: 1px solid #e7e4ee;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	margin: 0;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item > * {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding: 30px;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item .c-trip-what-you-get__title {
+	font-family: "Futura W01 ExtraBold Condensed", arial, sans-serif;
+	font-size: 18px;
+	font-size: 1.125rem;
+	text-transform: uppercase;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item .c-trip-what-you-get__counter {
+	font-size: 38px;
+	font-size: 2.375rem;
+	display: block;
+	height: 38px;
+	line-height: 1em;
+}
+
+.expandable-enter {
+	opacity: 0;
+}
+.expandable-enter-active {
+	opacity: 1;
+	transition: opacity 200ms;
+}
+.expandable-exit {
+	opacity: 0;
+}
+.expandable-exit-active {
+	opacity: 1;
+	transition: opacity 200ms;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item .c-trip-what-you-get__short-description {
+	font-size: 14px;
+	font-size: .875rem;
+	color: #000;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item .c-trip-what-you-get__item-brief {
+	max-width: 270px;
+	padding-left: 40px;
+}
+
+.c-free-text-box,
+.c-free-text-box * {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	overflow-wrap: break-word;
+	line-height: 1.5;
+	word-wrap: break-word;
+}
+
+.c-free-text-box {
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.c-free-text-box {
+	font-size: 16px;
+}
+
+.c-trip-what-you-get__large-description {
+	color: #000;
+	display: inline-block;
+	max-height: 0;
+	max-width: 150px;
+	overflow: hidden;
+}
+
+.prop-expanded .c-trip-what-you-get__large-description {
+	display: inline-block;
+	max-width: 100%;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item > * {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding: 30px;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__large-description {
+	height: inherit;
+	max-height: 100%;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item .c-trip-what-you-get__large-description {
+	text-align: left;
+}
+
+.c-trip-what-you-get.prop-expanded .c-trip-what-you-get__item:last-child {
+	border-bottom: 1px solid #e7e4ee;
+}
+
+.c-page-form,
+.c-page-form .c-form__compliant-notice,
+.c-page-form .c-form__policy-links {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+}
+
+.c-page-form {
+	min-height: 600px;
+	padding: 80px 30px;
+}
+
+.c-page-form.c-page-form-gaq {
+	min-width: 690px;
+}
+
+.c-page-form.c-page-form-gaq {
+	background: #efeef0;
+	margin: auto;
+	width: 50%;
+}
+
+.c-page-form__contact-info-head,
+.c-page-form__title {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	color: #302a3d;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.c-page-form__title {
+	font-size: 22px;
+	line-height: 1em;
+}
+
+.c-page-form__title.c-page-form__first-title {
+	font-size: 28px;
+	margin-bottom: -.4em;
+	position: relative;
+	top: -30px;
+}
+
+.c-page-form.c-page-form-gaq .c-page-form__first-title {
+	font-size: 29px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.trip-cover-m {
+	background-color: #fff;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+.trip-cover-m .trip-cover-m-link {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+
+.trip-cover-raq-content {
+	box-shadow: 0 0 20px 1px rgba(0, 0, 0, .05);
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 157px;
+	margin-bottom: 20px;
+	padding: 0;
+}
+
+.trip-cover-raq-left {
+	background-position: center;
+	background-size: cover;
+	display: inline-block;
+	height: 100%;
+	min-width: 157px;
+	padding: 0 20px;
+	width: 20%;
+}
+
+.trip-cover-raq-right {
+	padding: 0 20px;
+	width: 79%;
+}
+
+.trip-cover-raq-bottom-right,
+.trip-cover-raq-top-right {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	height: 50%;
+}
+
+.trip-cover-raq-top-right {
+	padding-top: 20px;
+}
+
+.trip-cover-raq-bottom-right {
+	padding-top: 10px;
+}
+
+.trip-cover-m-tour-name {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	color: #302a3d;
+	display: block;
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1.3em;
+	margin-bottom: 5px;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+.trip-cover-m-tour-name {
+	font-size: 21px;
+	margin-bottom: 5px;
+}
+
+.trip-cover-m-tour-name {
+	font-size: 23px;
+}
+
+.country-days__part,
+.original-discount-price__part {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 49%;
+}
+
+.trip-cover-m-item-info {
+	margin-right: 10px;
+}
+
+.trip-cover-m-item-info {
+	width: 50%;
+}
+
+.trip-cover-m-info-details .trip-cover-m-info-country-list,
+.trip-cover-m-item-info-title,
+.trip-cover-m-review-text {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+}
+
+.trip-cover-m-item-info-title {
+	color: #736e7e;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+.trip-cover-m-item-info-title {
+	font-size: 10px;
+}
+
+.trip-cover-m-item-info-value {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	color: #302a3d;
+	display: inline;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.trip-cover-m-item-info-value {
+	font-size: 26px;
+}
+
+.trip-cover-m-discount .value-cont {
+	color: rgba(251, 0, 81, .87);
+}
+
+input {
+	-moz-osx-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: #fff;
+	background-image: none;
+	background-origin: padding-box;
+	background-size: auto;
+	border-bottom-color: rgba(0, 0, 0, .117647);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-style: inset;
+	border-bottom-width: 1px;
+	border-image-outset: 0;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	outline: 0;
+}
+
+.c-page-form__content {
+	display: table;
+	margin: auto;
+	max-width: 1280px;
+	width: 100%;
+}
+
+.c-page-form .c-page-form__content {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+.c-page-form.c-page-form-gaq .c-page-form__content {
+	background: #fff;
+	box-shadow: 0 0 20px 1px rgba(0, 0, 0, .05);
+}
+
+.c-page-form__col {
+	display: table-cell;
+	padding: 0;
+	vertical-align: text-top;
+}
+
+.c-page-form.c-page-form-gaq .c-page-form__content .c-page-form__col {
+	padding: 27px 30px 34px;
+}
+
+.c-page-form__subtitle {
+	margin: 10px 0 25px;
+}
+
+.c-page-form.c-page-form-gaq .c-page-form__subtitle,
+.c-page-form.c-page-form-newsletter .c-page-form__subtitle {
+	font-family: "Trade Gothic Pro Condensed Bold", arial, sans-serif;
+	color: #302a3d;
+	font-size: 23px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.c-fab__form {
+	white-space: normal;
+	margin: 0;
+	padding: 0;
+}
+
+.c-fab__contact-sub,
+.c-fab__form,
+.c-fab__form .c-form_dateOfBirth .c-form__dates:nth-of-type(n + 2)::before {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+}
+
+.c-fab .checkbox,
+.text-left {
+	text-align: left;
+}
+
+.c-fab__form {
+	width: 100%;
+}
+
+.c-fab__form {
+	padding-top: 0;
+}
+
+.c-fab__close-wrap::after,
+.c-fab__close-wrap::before,
+.c-fab__contact-menu::after,
+.c-fab__contact-menu::before,
+.c-fab__contact-panel::after,
+.c-fab__contact-panel::before,
+.c-fab__form::after,
+.c-fab__form::before,
+.c-fab__grid-share::after,
+.c-fab__grid-share::before,
+.c-fab__submenu-intro::after,
+.c-fab__submenu-intro::before,
+.c-fab__submenu::after,
+.c-fab__submenu::before,
+.c-form__dropdown.form-group::after,
+.c-form__dropdown.form-group::before,
+.c-form__input-wrap::after,
+.c-form__input-wrap::before,
+.c-form__input.form-group::after,
+.c-form__input.form-group::before,
+.c-paginator::after,
+.c-paginator::before,
+.c-signin-page::after,
+.c-signin-page::before,
+.c-signup-page::after,
+.c-signup-page::before,
+.c-sso-social-buttons::after,
+.c-sso-social-buttons::before,
+.c-user-menu__controls::after,
+.c-user-menu__controls::before,
+.c-user-menu__link-button::after,
+.c-user-menu__link-button::before,
+.clearfix::after,
+.clearfix::before,
+.form-group::after,
+.form-group::before,
+.form-submit-border::after,
+.form-submit-border::before,
+.o-footer::after,
+.o-footer::before,
+.o-footer__content::after,
+.o-footer__content::before,
+footer.o-footer--alt::after,
+footer.o-footer--alt::before {
+	content: " ";
+	display: table;
+}
+
+.c-fab__form fieldset {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	border: 0;
+	display: block;
+}
+.c-page-form.c-page-form-gaq fieldset {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	padding: 0;
+}
+
+.c-page-form.c-page-form-gaq fieldset.c-form__title {
+	color: #302a3d;
+}
+
+.c-page-form.c-page-form-gaq fieldset legend {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 16px;
+	padding: 0;
+}
+
+.c-page-form.c-page-form-gaq fieldset.c-form__title legend {
+	font-size: 16px;
+}
+
+.c-page-form.c-page-form-gaq fieldset.c-form__title p {
+	font-size: 14px;
+}
+
+.c-page-form.c-page-form-gaq fieldset .row {
+	margin-top: 8px;
+}
+
+.c-form__dropdown.form-group,
+.c-form__input-wrap,
+.c-form__input.form-group,
+.form-group,
+.form-submit-border {
+	line-height: 16px;
+	margin-bottom: 30px;
+	min-height: 30px;
+	position: relative;
+}
+
+.c-form__dropdown.form-group,
+.c-form__input.form-group,
+.form-group,
+.form-submit-border {
+	border-bottom: 0;
+	float: left;
+	margin-bottom: 21px;
+	width: 100%;
+}
+
+.c-fab__form .form-group {
+	clear: none !important;
+	-webkit-transform: translate3d(1px, 1px, 1px);
+	transform: translate3d(1px, 1px, 1px);
+}
+
+.c-page-form.c-page-form-gaq fieldset .c-form__select-dates {
+	margin: 12px 0 20px !important;
+}
+
+.c-page-form.c-page-form-gaq fieldset .disabled {
+	opacity: 0.2;
+}
+
+.c-phone-menu .call-time-date:before,
+.c-search-widget__icon-field.c-search-widget__icon-field--time:before,
+.form-group.c-form__select-dates:before,
+.ticon-ui-calendar-view:before {
+	content: "\e93e";
+}
+
+.form-group.c-form__select-dates::before {
+	bottom: 14px;
+	font-size: 16px;
+	position: absolute;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+.form-control {
+	-webkit-transform: initial;
+	-ms-transform: initial;
+	transform: initial;
+}
+
+.c-fab__form input[type=text],
+.c-fab__form input[type=email],
+.c-fab__form input[type=tel],
+.c-fab__form input[type=number],
+.c-fab__form select,
+.c-fab__form textarea,
+.c-form__dropdown,
+.c-form__input {
+	-webkit-appearance: none;
+	border-radius: 0;
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	background: 0 0;
+	border: 0;
+	border-bottom: 1px solid #d5d3da;
+	color: #302a3d;
+	line-height: 1.2em;
+	margin-bottom: 5px;
+	min-height: 30px;
+	outline: 0;
+	position: relative;
+	width: 100%;
+	z-index: 3;
+}
+
+.c-fab__form input[type=text],
+.c-fab__form input[type=email],
+.c-fab__form input[type=tel],
+.c-fab__form input[type=number],
+.c-fab__form select,
+.c-fab__form textarea,
+.c-form__dropdown,
+.c-form__input {
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.c-fab__form select {
+	padding: 6px 18px 0 0;
+	-webkit-appearance: none;
+	appearance: none;
+	color: #fff;
+}
+
+.form-group.c-form__select-dates select {
+	padding-left: 25px;
+}
+
+.c-page-form .c-fab__form input[type=text],
+.c-page-form .c-fab__form input[type=email],
+.c-page-form .c-fab__form input[type=tel],
+.c-page-form .c-fab__form input[type=number],
+.c-page-form .c-fab__form select,
+.c-page-form .c-fab__form textarea {
+	border-bottom: 1px solid #d5d3da;
+	color: #302a3d;
+}
+
+.c-fab__form select option {
+	background-color: #cf0043;
+	text-transform: capitalize;
+}
+
+.c-fab__form select option:disabled {
+	color: #767e92;
+}
+
+.c-page-form .c-fab__form select option {
+	background-color: #fff;
+	color: #302a3d;
+}
+
+.c-page-form .c-fab__form select option:disabled {
+	color: #767e92;
+}
+
+.c-form__input-bar {
+	bottom: 5px;
+	display: block;
+	height: 1px;
+	position: relative;
+	width: 100%;
+	z-index: 3;
+}
+
+.c-form__input-bar::after,
+.c-form__input-bar::before {
+	background: #0a7dbe;
+	bottom: 1px;
+	content: "";
+	height: 2px;
+	position: absolute;
+	transition: width .2s ease-in-out;
+	width: 0;
+}
+
+.c-form__input-bar::after {
+	right: 50%;
+}
+
+.c-form__input-bar::before {
+	left: 50%;
+}
+
+.c-fab__input-bar::after,
+.c-fab__input-bar::before,
+body.sitecore-template-tour .c-fab__contact-panel {
+	background: #fff;
+}
+
+.c-form__input-bar.no-animate::after,
+.c-form__input-bar.no-animate::before {
+	width: 0;
+}
+
+.c-page-form .c-fab__input-bar::after,
+.c-page-form .c-fab__input-bar::before {
+	background: #5ed3b6;
+}
+
+.c-page-form.c-page-form-gaq .form-group {
+	margin-bottom: 30px !important;
+}
+
+.c-fab__form .checkbox {
+	margin: 10px 0 14px;
+	white-space: normal;
+}
+
+.c-page-form.c-page-form-gaq .checkbox {
+	color: #302a3d;
+	font-size: 14px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.c-fab__form label,
+.c-fab__form-counter,
+.c-fab__textarea-label,
+.c-form__label {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	color: #736e7e;
+	position: absolute;
+	-webkit-transform: translate3d(0, 8px, 0);
+	transform: translate3d(0, 8px, 0);
+	transition: all .3s ease-in-out;
+	z-index: 2;
+}
+
+.c-fab__form .checkbox label {
+	display: block;
+	padding-left: 26px;
+	position: relative;
+	-webkit-transform: inherit;
+	-ms-transform: inherit;
+	transform: inherit;
+}
+
+.c-page-form.c-page-form-gaq .checkbox label {
+	margin-left: -3px;
+	color: #302a3d;
+	font-size: 14px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.c-fab__form input[type=checkbox] {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background: 0 0;
+	border: 0;
+	opacity: 0;
+	width: 0;
+}
+
+.c-page-form.c-page-form-gaq input[type=checkbox] {
+	height: 14px;
+	width: 14px;
+	cursor: pointer;
+	left: 4px;
+	position: absolute;
+	top: 2px;
+	z-index: 2;
+}
+
+.c-fab__form input[type=checkbox] + .c-form__custom-checkbox {
+	font-size: 14px;
+	font-size: .875rem;
+	cursor: pointer;
+	display: inline-block;
+	left: 4px;
+	position: absolute;
+	top: 2px;
+}
+
+.c-fab__form input[type=checkbox] + .c-form__custom-checkbox:before,
+.c-form__custom-checkbox-wrap input[type=checkbox] + .c-form__custom-checkbox:before,
+.ticon-ui-checkbox-false:before {
+	content: "\e945";
+}
+
+input[type=checkbox],
+input[type=radio] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.c-fab__form input[type=checkbox]:checked + .c-form__custom-checkbox:before,
+.c-form__custom-checkbox-wrap input[type=checkbox][data-selected=true] + .c-form__custom-checkbox.checked:before,
+.ticon-ui-checkbox-true:before {
+	content: "\e946";
+}
+
+.c-page-form input[type=checkbox]:checked + .c-form__custom-checkbox::before {
+	background-color: #302a3d;
+	color: #5ed3b6;
+}
+
+.checkbox-ripple {
+	height: 34px;
+	width: 34px;
+	background-color: #fff;
+	border-radius: 50%;
+	content: "";
+	display: block;
+	opacity: 1;
+	position: absolute;
+	-webkit-transform: translate(-30%, -71%) scale(0, 0);
+	-ms-transform: translate(-30%, -71%) scale(0, 0);
+	transform: translate(-30%, -71%) scale(0, 0);
+	-webkit-transform-origin: center center;
+	-ms-transform-origin: center center;
+	transform-origin: center center;
+	transition: opacity .45s ease, -webkit-transform .45s cubic-bezier(0, 0, .2, 1);
+	transition: transform .45s cubic-bezier(0, 0, .2, 1), opacity .45s ease;
+	transition: transform .45s cubic-bezier(0, 0, .2, 1), opacity .45s ease,
+		-webkit-transform .45s cubic-bezier(0, 0, .2, 1);
+	z-index: 1;
+}
+
+.c-page-form .checkbox-ripple {
+	-webkit-transform: translate(-31.3%, -71%) scale(0, 0);
+	-ms-transform: translate(-31.3%, -71%) scale(0, 0);
+	transform: translate(-31.3%, -71%) scale(0, 0);
+}
+
+.c-page-form .checkbox-ripple {
+	background-color: #5ed3b6;
+}
+
+.c-fab__form .control-label::before {
+	content: "" !important;
+}
+
+.animate.c-fab__form-counter,
+.animate.c-fab__textarea-label,
+.animate.c-form__label,
+.c-fab__form label.animate {
+	font-size: 11px;
+	font-size: .6875rem;
+	-webkit-transform: translate3d(0, -13px, 0);
+	transform: translate3d(0, -13px, 0);
+}
+
+.c-page-form .c-fab__form label {
+	color: #767e92;
+}
+
+.c-form__field-tooltip input {
+	padding-right: 24px;
+}
+
+.form-flag {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	color: #302a3d;
+	font-size: 14px;
+	padding-top: 6px;
+}
+
+.c-fab__form .custom-phone-flag,
+.c-fab__form select[data-type=mobile-country-drop-list] {
+	z-index: -1;
+	opacity: 0;
+	position: absolute;
+}
+
+.c-fab__form .custom-phone-flag {
+	height: 30px;
+	width: auto;
+	white-space: nowrap;
+}
+
+.c-fab__form .form-group.country-drop-list-active .custom-phone-flag {
+	opacity: 1;
+	z-index: 4;
+}
+
+.c-fab__form .form-group.country-drop-list-active select[data-type=mobile-country-drop-list] {
+	z-index: 5;
+}
+
+.form-flag::before {
+	height: 11px;
+	width: 16px;
+	content: "";
+	display: inline-block;
+	line-height: 11px;
+	margin-right: 8px;
+	position: relative;
+	top: 1px;
+}
+
+.form-flag[data-iso=us]::before,
+.form-flag[data-iso=um]::before {
+	background-position: -16px -44px;
+}
+
+.c-fab__form input.custom-phone-input {
+	-moz-appearance: textfield;
+	position: relative;
+	z-index: 3;
+}
+
+.c-page-form .c-fab__form input[type=text],
+.c-page-form .c-fab__form input[type=email],
+.c-page-form .c-fab__form input[type=tel],
+.c-page-form .c-fab__form input[type=number],
+.c-page-form .c-fab__form select,
+.c-page-form .c-fab__form textarea {
+	border-bottom: 1px solid #d5d3da;
+	color: #302a3d;
+}
+
+.c-fab__form .c-form__departure-date,
+.c-fab__form .c-form__return-date,
+.c-fab__form .c-form_dateOfBirth,
+.c-fab__form .half,
+.c-fab__form .halfAvailableWidth,
+.c-fab__form .halfWidthLeft,
+.c-fab__form .halfWidthLeft50,
+.c-fab__form .halfWidthRight,
+.c-fab__form .halfWidthRight50 {
+	width: 45%;
+}
+
+.c-fab__form .halfWidthLeft {
+	float: left;
+}
+
+.c-fab__form .c-form__return-date,
+.c-fab__form .halfWidthRight,
+.c-fab__form .halfWidthRight50 {
+	float: right;
+}
+
+.c-page-form.c-page-form-gaq .c-form__multi-checkbox .control-label,
+.c-page-form.c-page-form-gaq .c-form__multi-checkbox-vertical .control-label {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	color: #302a3d;
+	font-size: 16px;
+	position: relative;
+}
+
+.c-page-form.c-page-form-gaq .checkbox {
+	color: #302a3d;
+	font-size: 14px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.c-page-form.c-page-form-gaq .c-form__multi-checkbox td label,
+.c-page-form.c-page-form-gaq .c-form__multi-checkbox-vertical td label {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	color: #302a3d;
+	font-size: 14px;
+	margin: 30px 21px 0 -2px;
+	padding-left: 26px;
+}
+
+.c-form__dropdown.form-group,
+.c-form__input-wrap,
+.c-form__input.form-group,
+.form-group,
+.form-submit-border {
+	line-height: 16px;
+	margin-bottom: 30px;
+	min-height: 30px;
+	position: relative;
+}
+
+.c-form__button-wrap-flex {
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+.c-form__dropdown.form-group,
+.c-form__input.form-group,
+.form-group,
+.form-submit-border {
+	border-bottom: 0;
+	float: left;
+	margin-bottom: 21px;
+	width: 100%;
+}
+
+.c-page-form-book-phone .form-submit-border,
+.c-page-form-gaq .form-submit-border {
+	text-align: left;
+}
+
+.c-page-form-book-phone .form-submit-border,
+.c-page-form-gaq .form-submit-border {
+	margin: 0;
+}
+
+.btn,
+.c-fab__btn,
+.c-form__btn {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	font-size: 14px;
+	font-size: .875rem;
+	-webkit-appearance: none;
+	background-color: #fff;
+	border: 1px solid rgba(48, 42, 61, .5);
+	border-radius: 2px;
+	color: rgba(48, 42, 61, .5);
+	float: right;
+	height: 50px;
+	outline: 0;
+	padding: 0 21px;
+	text-transform: uppercase;
+}
+
+.btn,
+.c-fab__btn,
+.c-form__btn {
+	height: 45px;
+}
+
+.c-form__button-wrap-flex > * {
+	vertical-align: middle;
+}
+
+.btn,
+.c-fab__btn {
+	float: none;
+}
+
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+.c-page-form .btn,
+.c-page-form .btn.btn-active,
+.c-page-form .c-fab__btn,
+.c-page-form .c-fab__btn.btn-active {
+	background: 0 0;
+	border: 1px solid #302a3d;
+	color: #302a3d;
+	padding: 0 50px;
+	width: 200px;
+}
+
+.c-chat-banner__cta,
+.c-feefo--dark .c-feefo__cta-button,
+.c-feefo--light .c-feefo__cta-button,
+.c-free-text-box a.soleil-cta-button,
+.c-free-text-box a.soleil-cta-button-black,
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box a.soleil-cta-button-white,
+.c-free-text-box span.soleil-cta-button,
+.c-free-text-box span.soleil-cta-button-black,
+.c-free-text-box span.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-white,
+.c-home-map__section-button,
+.c-newsletter__body .c-form__button-wrap-flex .btn,
+.c-page-form.c-page-form-gaq .btn,
+.editorial-snippet.theme-white .editorial-link.style-button,
+.hero .c-feefo--dark .c-feefo__cta-button,
+.hero .c-feefo--light .c-feefo__cta-button,
+.style-button,
+span.soleil-cta-button-black.cta-instagram {
+	font-family: "Soleil W02 Bold", arial, sans-serif;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 1.25;
+	margin: 5px 0;
+	max-width: 100%;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background-color .35s, color .35s;
+}
+
+.c-chat-banner__cta,
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-pink,
+.c-newsletter__body .c-form__button-wrap-flex .btn,
+.c-page-form.c-page-form-gaq .btn {
+	background-color: #fb0051;
+	border: 0;
+}
+
+.c-chat-banner__cta,
+.c-feefo--dark .c-feefo__cta-button,
+.c-feefo--light .c-feefo__cta-button,
+.c-free-text-box a.soleil-cta-button,
+.c-free-text-box a.soleil-cta-button-black,
+.c-free-text-box a.soleil-cta-button-pink,
+.c-free-text-box a.soleil-cta-button-white,
+.c-free-text-box span.soleil-cta-button,
+.c-free-text-box span.soleil-cta-button-black,
+.c-free-text-box span.soleil-cta-button-pink,
+.c-free-text-box span.soleil-cta-button-white,
+.c-home-map__section-button,
+.c-newsletter__body .c-form__button-wrap-flex .btn,
+.c-page-form.c-page-form-gaq .btn,
+.editorial-snippet.theme-white .editorial-link.style-button,
+.hero .c-feefo--dark .c-feefo__cta-button,
+.hero .c-feefo--light .c-feefo__cta-button,
+.style-button,
+span.soleil-cta-button-black.cta-instagram {
+	padding: 15px 30px;
+}
+
+.c-page-form.c-page-form-gaq .btn {
+	background-color: #fb0051;
+	margin-right: 28px;
+	opacity: 1;
+}
+
+.c-chat-banner__cta:focus,
+.c-chat-banner__cta:hover,
+.c-free-text-box a.soleil-cta-button-pink:focus,
+.c-free-text-box a.soleil-cta-button-pink:hover,
+.c-free-text-box span.soleil-cta-button-pink:focus,
+.c-free-text-box span.soleil-cta-button-pink:hover,
+.c-newsletter__body .c-form__button-wrap-flex .btn:focus,
+.c-newsletter__body .c-form__button-wrap-flex .btn:hover,
+.c-page-form.c-page-form-gaq .btn:focus,
+.c-page-form.c-page-form-gaq .btn:hover {
+	background-color: #cf0043;
+	color: #fff;
+}
+
+.c-form__policy-links {
+	font-family: "Soleil W02 Regular", arial, sans-serif;
+	font-size: 12px;
+	font-size: .75rem;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	line-height: 17px;
+	text-align: left;
+	width: auto;
+}
+
+.c-page-form .c-form__policy-links {
+	font-size: 12px;
+	font-size: .75rem;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	line-height: 17px;
+	text-align: left;
+	width: auto;
+}
+
+.c-page-form .c-form__policy-links a {
+	position: relative;
+}
+
+.c-page-form .c-form__compliant-notice {
+	font-size: 10px;
+	font-size: .625rem;
+	color: #736e7e;
+	line-height: 13px;
+	margin-top: 15px;
+	text-align: left;
+}
