@@ -13,7 +13,7 @@ const servedFolder = ENV === 'production' ? '../public' : '../dist';
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, servedFolder)));
 
 if (require.main === module) {
 	const server = new ApolloServer({
@@ -27,7 +27,7 @@ if (require.main === module) {
 	server.applyMiddleware({ app });
 
 	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, '../public/index.html'));
+		res.sendFile(path.join(__dirname, servedFolder, 'index.html'));
 	});
 
 	app.listen(PORT, () => console.log(`🚀 ${ENV} server ready at http://localhost:${PORT}${server.graphqlPath}`));
