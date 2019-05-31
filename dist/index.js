@@ -30653,7 +30653,7 @@ var Calendar = function Calendar(props) {
     style: {
       opacity: '1'
     }
-  }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, headerRow)), _react.default.createElement("tbody", null, generateCalendar(currentDate.getMonth() + props.position + 1, currentDate.getFullYear(), tripDays))), props.position === 1 && _react.default.createElement("a", {
+  }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, headerRow)), _react.default.createElement("tbody", null, generateCalendar(currentDate.getMonth() + props.position, currentDate.getFullYear(), tripDays))), props.position === 1 && _react.default.createElement("a", {
     className: "ui-datepicker-next ui-corner-all"
   }, _react.default.createElement("span", {
     className: "ui-icon ui-icon-circle-triangle-e"
@@ -35629,7 +35629,7 @@ var BookingDetails = function BookingDetails(props) {
     className: "c-trip-detail-calendar-booking__total-price-copy"
   }, "Total Price"), tripDiscountedPrice && _react.default.createElement("span", {
     className: "c-trip-detail-calendar-booking__details-accomodation-box-total-price c-trip-detail-calendar-booking__details-accomodation-box-total-price-discounted"
-  }, "$", tripDiscountedPrice), !tripDiscountedPrice && _react.default.createElement("span", {
+  }, "$", (0, _util.numberWithCommas)(tripDiscountedPrice)), !tripDiscountedPrice && _react.default.createElement("span", {
     className: "c-trip-detail-calendar-booking__details-accomodation-box-total-price"
   }, "$", (0, _util.numberWithCommas)(tourListPrice))), _react.default.createElement("p", null, "Based on twin share")), _react.default.createElement("div", {
     className: "c-trip-detail-calendar-booking__uplift-section discount-available"
@@ -63196,7 +63196,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57778" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63107" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
