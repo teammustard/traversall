@@ -204,7 +204,7 @@ const Calendar = (props) => {
 					<tr>{headerRow}</tr>
 				</thead>
 				<tbody>
-					{generateCalendar(currentDate.getMonth() + props.position + 1, currentDate.getFullYear(), tripDays)}
+					{generateCalendar(currentDate.getMonth() + props.position, currentDate.getFullYear(), tripDays)}
 				</tbody>
 			</table>
 			{props.position === 1 && (
