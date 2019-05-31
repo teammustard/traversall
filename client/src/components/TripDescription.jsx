@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { TourContext } from './tourContext';
 import TripFeatures from './TripFeatures';
+import { withRouter } from 'react-router-dom';
 
-const TripDescription = () => {
+const TripDescription = (props) => {
 	const tour = useContext(TourContext);
-	const randomPhoto = 'https://loremflickr.com/320/150/travel';
+	const randomPhoto = 'https://loremflickr.com/320/150/travel?random=' + props.history.length;
 
 	return (
 		<React.Fragment>
@@ -44,4 +45,4 @@ const TripDescription = () => {
 	);
 };
 
-export default TripDescription;
+export default withRouter(TripDescription);

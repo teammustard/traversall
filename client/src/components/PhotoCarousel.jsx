@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 const PhotoCarousel = (props) => {
 	const generatePhotos = () => {
@@ -10,7 +11,7 @@ const PhotoCarousel = (props) => {
 				<li
 					key={i}
 					className="c-trip-detail-olapic-item grid-item c-trip-detail-olapic-box c-olapic-trigger-item-js"
-					style={{ backgroundImage: `url(${randomPhoto}${i})` }}
+					style={{ backgroundImage: `url(${randomPhoto}${i}${props.history.length})` }}
 				/>
 			);
 		}
@@ -49,4 +50,4 @@ const PhotoCarousel = (props) => {
 	);
 };
 
-export default PhotoCarousel;
+export default withRouter(PhotoCarousel);

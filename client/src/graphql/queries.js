@@ -48,3 +48,12 @@ export const GET_ALL_COUNTRIES = gql`
 		}
 	}
 `;
+
+export const GET_ALL_TOURS = gql`
+	{
+		getTours {
+			value: id
+			label: name
+		}
+	}
+`;
