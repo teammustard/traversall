@@ -101,8 +101,9 @@ ul {
 }
 
 .prop-without-header .o-content__wrapper {
-	height: calc(100vh);
-	overflow-y: scroll;
+	/* height: calc(100vh); */
+	/* overflow-y: scroll; */
+	height: auto;
 }
 
 .c-menu,
@@ -474,8 +475,8 @@ ul {
 .o-content__wrapper {
 	display: inline-block;
 	height: calc(100vh - 52px);
-	overflow-x: hidden;
-	overflow-y: scroll;
+	/* overflow-x: hidden; */
+	/* overflow-y: scroll; */
 }
 
 .js-prevent-no-content {
