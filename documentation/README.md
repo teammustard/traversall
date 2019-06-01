@@ -9,9 +9,18 @@
 3. [Form Modal](#Form-Modal)
 
 ## Main-Page
+> The entire component is served in the `client/src/App.jsx` file.
+> - All subcomponents reside in the `client/src/components` folder
 
+![Main Page](documentation/component_page_detailed.jpg)
 
 ## Booking-Modal
 
+> The booking form and the request more info forms utilize the same modal container (`ModalContainer.jsx`), which dynamically loads either `BookingBody.jsx` or `RequestInfoBody.jsx` depending on which button was clicked
+
+![Booking Page](documentation/component_booking_details.jpg)
+
 
 ## Form-Modal
+
+![Form Page](documentation/component_form_details.jpg)

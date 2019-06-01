@@ -59,8 +59,8 @@ Beyond the npm modules required in package.json, you should have the following i
 > -- They are both required. `sqlite` is an *addon* to `sqlite3` that promisifies all the sqlite methods ([more info](https://www.npmjs.com/package/sqlite)). `sqlite` is *not* an old/outdated version of `sqlite3`
 
 ## Notes-Client-Side
-> **Components Overview**
-> - Please refer to the README in the `documentation` folder extensive details on the structure of the component
+> **IMPORTANT:  Components Overview**
+> - Please refer to the [README in the documentation folder](documentation/README.md) extensive details on the structure of the component
 
 > **GraphQL + React Hooks**
 > - GraphQL is implemented on the client-side using `Apollo Client` ([comprehensive tutorial](https://www.howtographql.com/react-apollo/0-introduction/))
