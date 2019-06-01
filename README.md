@@ -17,6 +17,7 @@
 2. [Requirements](#Requirements)
 3. [Notes - Server Side](#Notes-Server-Side)
 4. [Notes - Client Side](#Notes-Server-Side)
+5. [Notes - API](#Notes-API)
 
 ## Usage
 
@@ -71,3 +72,8 @@ Beyond the npm modules required in package.json, you should have the following i
 > **URL Routing**
 > - URL routing is entirely handled in the front-end (i.e., the Express server does not have any routes beyond serving index.html)
 > -- Routing is done via the `React Router` module ([npm link](https://github.com/ReactTraining/react-router))
+
+## Notes-API
+
+> **GraphQL API**
+> Additional information for the server's API can be found in the [API documentation](documentation/API_Documentation.md)
