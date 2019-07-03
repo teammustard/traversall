@@ -5,7 +5,7 @@
 ![Interface](documentation/interface.gif)
 
 
-> TraversAll is a replication of Contiki Travel Tour's tour page. It aims to provide the identical seamless, single-page-app framework build using React and GraphQL
+> TraversAll is a replication of Contiki Travel Tour's tour page. It aims to provide a seamless, single-page-app experience with functional interactive elements.
 > - 🎣 Built entirely using React Hooks with cutting-edge experimental GraphQL hooks support
 > - ☀️ GraphQL served through Apollo Client and Server
 > - 💗 Everything tests - unit tests, integration tests, and end-to-end tests using the delightful Jest
@@ -42,7 +42,6 @@ Beyond the npm modules required in package.json, you should have the following i
 > -- Refer to [Apollo's documentation](https://www.apollographql.com/docs/apollo-server/essentials/server/) for additional details
 
 > **GraphQL + React Hooks**
-> - GraphQL is implemented on the client-side using `Apollo Client` ([introduction](https://www.howtographql.com/react-apollo/0-introduction/))
 > - All React components are functional components
 >   - State management: Hooks + context
 >   - `Apollo Client` does not natively provide React hooks, hooks supported via experimental module ([React Apollo Hooks](https://github.com/trojanowski/react-apollo-hooks))
