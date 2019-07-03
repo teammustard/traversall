@@ -1,52 +1,52 @@
 {
-	"name": "kontiki_component_zackzeyu",
-	"version": "1.0.0",
-	"description": "> Kontiki is a replication of Contiki Travel Tour's tour details page. It aims to provide the identical seamless, single-page-app based presentation of Contiki's website.",
-	"scripts": {
-		"dev": "parcel client/src/index.js client/src/index.html",
-		"test": "jest",
-		"build": "parcel build client/src/index.js client/src/index.html --out-dir public --no-source-maps"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/teammustard/kontiki_component_zackzeyu.git"
-	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/teammustard/kontiki_component_zackzeyu/issues"
-	},
-	"homepage": "https://github.com/teammustard/kontiki_component_zackzeyu#readme",
-	"dependencies": {
-		"apollo-boost": "^0.3.1",
-		"apollo-server-express": "^2.5.0",
-		"bootstrap": "^4.3.1",
-		"cors": "^2.8.5",
-		"express": "^4.17.0",
-		"express-graphql": "^0.8.0",
-		"graphql": "^14.3.1",
-		"moment": "^2.24.0",
-		"nodemon": "^1.19.1",
-		"react": "^16.8.6",
-		"react-apollo": "^2.5.6",
-		"react-apollo-hooks": "^0.4.5",
-		"react-bootstrap": "^1.0.0-beta.8",
-		"react-dom": "^16.8.6",
-		"react-router": "^5.0.0",
-		"react-router-dom": "^5.0.0",
-		"react-select": "^3.0.3",
-		"react-transition-group": "^4.0.1",
-		"sqlite": "^3.0.3",
-		"sqlite3": "^4.0.8"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.4.5",
-		"@babel/preset-env": "^7.4.5",
-		"@babel/preset-react": "^7.0.0",
-		"babel-jest": "^24.8.0",
-		"easygraphql-tester": "^5.1.3",
-		"jest": "^24.8.0",
-		"parcel-bundler": "^1.12.3",
-		"supertest": "^4.0.2"
-	}
+  "name": "TraversAll",
+  "version": "1.0.0",
+  "description": "> TraversAll is a replication of Contiki Travel Tour's tour details page.",
+  "scripts": {
+    "dev": "parcel client/src/index.js client/src/index.html",
+    "test": "jest",
+    "build": "parcel build client/src/index.js client/src/index.html --out-dir public --no-source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teammustard/traversall.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teammustard/traversall/issues"
+  },
+  "homepage": "https://github.com/teammustard/traversall#readme",
+  "dependencies": {
+    "apollo-boost": "^0.3.1",
+    "apollo-server-express": "^2.6.7",
+    "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.4.1",
+    "moment": "^2.24.0",
+    "nodemon": "^1.19.1",
+    "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
+    "react-apollo-hooks": "^0.4.5",
+    "react-bootstrap": "^1.0.0-beta.9",
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "react-select": "^3.0.4",
+    "react-transition-group": "^4.2.1",
+    "sqlite": "^3.0.3",
+    "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
+    "easygraphql-tester": "^5.1.5",
+    "jest": "^24.8.0",
+    "parcel-bundler": "^1.12.3",
+    "supertest": "^4.0.2"
+  }
 }

@@ -1,4 +1,4 @@
-# Kontiki API Documentation
+# TraversAll API Documentation
 
 > The Booking Component utilizes GraphQL to manage API requests, so the typical RESTful API endpoints do not apply. Instead, GraphQL queries are used to request for information from the server.
 
